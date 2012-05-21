@@ -7,6 +7,22 @@ License: GPLv2+ (to be verified)
 #Url: http://not.sure.yet
 Source: kata-ckan-dev-%{version}.tgz
 #Patch1: tree-1.2-carrot.patch
+BuildRequires: gcc
+BuildRequires: git
+BuildRequires: libxml2-devel
+BuildRequires: libxslt-devel
+BuildRequires: mercurial
+BuildRequires: postgresql-devel
+BuildRequires: postgresql-server
+BuildRequires: python-devel
+BuildRequires: subversion
+BuildRequires: sudo
+Requires: libxml2
+Requires: libxslt
+Requires: postgresql
+Requires: postgresql-server
+Requires: sudo
+Conflicts: kata-ckan-prod
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
@@ -34,6 +50,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 /tmp/foo/foo
+
+%post
+echo "The real work goes here"
+
+%postun
+echo "Uninstallation not supported yet, better get a clean VM..."
 
 %changelog
 * Mon May 21 2012 Uwe Geuder <uwe.geuder@nomvok.com>
