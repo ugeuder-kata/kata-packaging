@@ -17,7 +17,7 @@ Requires: postgresql-devel
 Requires: postgresql-server
 Requires: python-devel
 Requires: subversion
-Requires: sudo
+Requires: wget
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
