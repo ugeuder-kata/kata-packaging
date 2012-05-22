@@ -23,7 +23,13 @@ Requires: postgresql
 Requires: postgresql-server
 Requires: sudo
 Conflicts: kata-ckan-prod
+# Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+# but the old-style(?) default %{_topdir}/BUILDROOT/... seems to work nicely
+# so we don't clutter yet another place in the directory tree
+
+%define ckanuser ckan
+%define scriptdir %{_datadir}/%{name}/setup-scripts
 
 %description
 Installs a CKAN environment using pip.
@@ -40,8 +46,8 @@ touch foo
 
 
 %install
-mkdir -p $RPM_BUILD_ROOT/tmp/foo
-cp foo $RPM_BUILD_ROOT/tmp/foo
+install -d $RPM_BUILD_ROOT/%{scriptdir}
+install getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
 
 %clean
@@ -49,10 +55,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-/tmp/foo/foo
+%{scriptdir}/getpyenv.sh
 
 %post
-echo "The real work goes here"
+useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
+sudo -u %{ckanuser} %{scriptdir}/getpyenv.sh
 
 %postun
 echo "Uninstallation not supported yet, better get a clean VM..."
