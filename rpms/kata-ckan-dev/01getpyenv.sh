@@ -1,10 +1,10 @@
 #! /bin/sh
 set -x
-cd
-pwd
-mkdir download
-cd download
+instloc=$1
+cd $instloc
+mkdir -p ${instloc}/download
+cd ${instloc}/download
 wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
-cd
+cd ..
 python download/virtualenv.py pyenv
 

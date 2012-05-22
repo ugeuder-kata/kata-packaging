@@ -8,6 +8,7 @@ License: GPLv2+ (to be verified)
 # just use plain source files instead of archive, easier for development
 #Source99: kata-ckan-dev-%{version}.tgz
 Source0: 01getpyenv.sh
+Source2: 80backuphome.sh
 Requires: gcc
 Requires: git
 Requires: libxml2-devel
@@ -36,6 +37,7 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 %prep
 %setup -c -T
 cp ../../SOURCES/01getpyenv.sh .
+cp ../../SOURCES/80backuphome.sh .
 
 %build
 echo "nothing to be built here"
@@ -44,6 +46,7 @@ echo "nothing to be built here"
 %install
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
 
 %clean
@@ -52,13 +55,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %{scriptdir}/01getpyenv.sh
+%{scriptdir}/80backuphome.sh
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
-sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh
+sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh /home/%{ckanuser}
+
+%preun
+%{scriptdir}/80backuphome.sh /home/%{ckanuser}
 
 %postun
-echo "Uninstallation not supported yet, better get a clean VM..."
+echo "Uninstallation not fully supported yet, better get a clean VM to be sure"
+echo "User account %{ckanuser} not deleted"
 
 %changelog
 * Mon May 21 2012 Uwe Geuder <uwe.geuder@nomvok.com>
