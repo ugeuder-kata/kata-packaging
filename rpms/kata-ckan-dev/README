@@ -1,9 +1,10 @@
 if you set up your rpmbuild environment under ~/rpmbuild
 like suggested in http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
-create 2 symbolic links to use this source
+create 2 symbolic links to use this source (currently we use plain files,
+which is not standard packaging, but nice for development work)
 
 here=$(pwd)
 cd ~/rpmbuild
 ln -s ${here}/kata-ckan-dev.spec SPECS/
 #ln -s ${here}/kata-ckan-dev-0.1.tgz SOURCES/
-ln -s ${here}/getpyenv.sh SOURCES/
+ln -s ${here}/01getpyenv.sh SOURCES/

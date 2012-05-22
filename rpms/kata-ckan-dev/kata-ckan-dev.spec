@@ -7,7 +7,7 @@ License: GPLv2+ (to be verified)
 #Url: http://not.sure.yet
 # just use plain source files instead of archive, easier for development
 #Source99: kata-ckan-dev-%{version}.tgz
-Source0: getpyenv.sh
+Source0: 01getpyenv.sh
 Requires: gcc
 Requires: git
 Requires: libxml2-devel
@@ -35,7 +35,7 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 
 %prep
 %setup -c -T
-cp ../../SOURCES/getpyenv.sh .
+cp ../../SOURCES/01getpyenv.sh .
 
 %build
 echo "nothing to be built here"
@@ -43,7 +43,7 @@ echo "nothing to be built here"
 
 %install
 install -d $RPM_BUILD_ROOT/%{scriptdir}
-install getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
 
 %clean
@@ -51,11 +51,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%{scriptdir}/getpyenv.sh
+%{scriptdir}/01getpyenv.sh
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
-sudo -u %{ckanuser} %{scriptdir}/getpyenv.sh
+sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh
 
 %postun
 echo "Uninstallation not supported yet, better get a clean VM..."
