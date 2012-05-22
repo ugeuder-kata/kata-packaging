@@ -5,22 +5,18 @@ Release: 1%{?dist}
 Group: Applications/File (to be verified)
 License: GPLv2+ (to be verified)
 #Url: http://not.sure.yet
-Source: kata-ckan-dev-%{version}.tgz
-#Patch1: tree-1.2-carrot.patch
-BuildRequires: gcc
-BuildRequires: git
-BuildRequires: libxml2-devel
-BuildRequires: libxslt-devel
-BuildRequires: mercurial
-BuildRequires: postgresql-devel
-BuildRequires: postgresql-server
-BuildRequires: python-devel
-BuildRequires: subversion
-BuildRequires: sudo
-Requires: libxml2
-Requires: libxslt
-Requires: postgresql
+# just use plain source files instead of archive, easier for development
+#Source99: kata-ckan-dev-%{version}.tgz
+Source0: getpyenv.sh
+Requires: gcc
+Requires: git
+Requires: libxml2-devel
+Requires: libxslt-devel
+Requires: mercurial
+Requires: postgresql-devel
 Requires: postgresql-server
+Requires: python-devel
+Requires: subversion
 Requires: sudo
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
@@ -38,11 +34,11 @@ on production systems. After installing a development system build
 a kata-ckan-prod.rpm package to capture the result of this installation.
 
 %prep
-%setup -q
+%setup -c -T
+cp ../../SOURCES/getpyenv.sh .
 
 %build
 echo "nothing to be built here"
-touch foo
 
 
 %install
