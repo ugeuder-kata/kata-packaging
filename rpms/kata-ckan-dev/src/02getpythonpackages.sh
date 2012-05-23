@@ -1,5 +1,10 @@
 #! /bin/sh
 set -x
+if [ -z "$SKIP02" ]
+then
+  echo "Skipping 02"
+  exit 0
+fi
 instloc=$1
 cd $instloc
 source pyenv/bin/activate

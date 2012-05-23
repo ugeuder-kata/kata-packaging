@@ -14,6 +14,7 @@ Requires: git
 Requires: libxml2-devel
 Requires: libxslt-devel
 Requires: mercurial
+Requires: patch
 Requires: postgresql-devel
 Requires: postgresql-server
 Requires: python-devel
@@ -27,6 +28,7 @@ Conflicts: kata-ckan-prod
 
 %define ckanuser ckan
 %define scriptdir %{_datadir}/%{name}/setup-scripts
+%define patchdir %{_datadir}/%{name}/setup-patches
 
 %description
 Installs a CKAN environment using pip.
@@ -39,14 +41,17 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 
 
 %build
-echo "nothing to be built here"
+diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 
 
 %install
 install -d $RPM_BUILD_ROOT/%{scriptdir}
+install -d $RPM_BUILD_ROOT/%{patchdir}
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 
 %clean
@@ -56,12 +61,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{scriptdir}/01getpyenv.sh
 %{scriptdir}/02getpythonpackages.sh
+%{scriptdir}/05setuppostgres.sh
 %{scriptdir}/80backuphome.sh
+%{patchdir}/pg_hba.conf.patch
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh /home/%{ckanuser}
 sudo -u %{ckanuser} %{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}
+%{scriptdir}/05setuppostgres.sh
 
 %preun
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}

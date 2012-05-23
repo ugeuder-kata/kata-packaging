@@ -1,5 +1,10 @@
 #! /bin/sh
 set -x
+if [ -z "$SKIP01" ]
+then
+  echo "Skipping 01"
+  exit 0
+fi
 instloc=$1
 cd $instloc
 mkdir -p ${instloc}/download
