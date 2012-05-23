@@ -1,0 +1,606 @@
+sudo rpm -i kata-ckan-dev-296236-1.el6.i686.rpm
+[sudo] password for geuder: 
+useradd: user 'ckan' already exists
++ instloc=/home/ckan
++ cd /home/ckan
++ mkdir -p /home/ckan/download
++ cd /home/ckan/download
++ wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-05-23 14:57:28--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+Resolving raw.github.com... 207.97.227.243
+Connecting to raw.github.com|207.97.227.243|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 101937 (100K) [text/plain]
+Saving to: `virtualenv.py'
+
+100%[===========================================================================================================================>] 101,937      264K/s   in 0.4s    
+
+2012-05-23 14:57:29 (264 KB/s) - `virtualenv.py' saved [101937/101937]
+
++ cd ..
++ python download/virtualenv.py pyenv
+New python executable in pyenv/bin/python
+Installing setuptools............................done.
+Installing pip.....................done.
++ instloc=/home/ckan
++ cd /home/ckan
++ source pyenv/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ pip install --ignore-installed -e git+https://github.com/okfn/ckan.git#egg=ckan
+Obtaining ckan from git+https://github.com/okfn/ckan.git#egg=ckan
+  Cloning https://github.com/okfn/ckan.git to ./pyenv/src/ckan
+  Running setup.py egg_info for package ckan
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+      warnings.warn(msg)
+    WARNING: ckanext.stats is a namespace package, but its __init__.py does
+    not declare_namespace(); setuptools 0.7 will REQUIRE this!
+    (See the setuptools manual under "Namespace Packages" for details.)
+    
+    warning: no files found matching '*' under directory 'ckanext/**/i18n'
+    no previously-included directories found matching '.git'
+Installing collected packages: ckan
+  Running setup.py develop for ckan
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+      warnings.warn(msg)
+    WARNING: ckanext.stats is a namespace package, but its __init__.py does
+    not declare_namespace(); setuptools 0.7 will REQUIRE this!
+    (See the setuptools manual under "Namespace Packages" for details.)
+    
+    warning: no files found matching '*' under directory 'ckanext/**/i18n'
+    no previously-included directories found matching '.git'
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckan.egg-link (link to .)
+    Adding ckan 1.8a to easy-install.pth file
+    Installing ckan-admin script to /home/ckan/pyenv/bin
+    
+    Installed /home/ckan/pyenv/src/ckan
+Successfully installed ckan
+Cleaning up...
++ pip install --ignore-installed -r pyenv/src/ckan/requires/lucid_missing.txt -r pyenv/src/ckan/requires/lucid_conflict.txt
+Obtaining pyutilib.component.core from svn+https://software.sandia.gov/svn/public/pyutilib/pyutilib.component.core/trunk@1972#egg=pyutilib.component.core (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 6))
+  Checking out https://software.sandia.gov/svn/public/pyutilib/pyutilib.component.core/trunk (to revision 1972) to ./pyenv/src/pyutilib.component.core
+  Running setup.py egg_info for package pyutilib.component.core
+Obtaining vdm from git+https://github.com/okfn/vdm.git@vdm-0.11#egg=vdm (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 8))
+  Cloning https://github.com/okfn/vdm.git (to vdm-0.11) to ./pyenv/src/vdm
+  Running setup.py egg_info for package vdm
+Obtaining autoneg from git+https://github.com/wwaites/autoneg.git@b4c727b164f411cc9d60#egg=autoneg (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 10))
+  Cloning https://github.com/wwaites/autoneg.git (to b4c727b164f411cc9d60) to ./pyenv/src/autoneg
+  Could not find a tag or branch 'b4c727b164f411cc9d60', assuming commit.
+  Running setup.py egg_info for package autoneg
+Obtaining flup from hg+http://hg.saddi.com/flup@301a58656bfb#egg=flup (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 12))
+  Cloning hg http://hg.saddi.com/flup (to revision 301a58656bfb) to ./pyenv/src/flup
+  Running setup.py egg_info for package flup
+Downloading/unpacking solrpy==0.9.4 (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 15))
+  Downloading solrpy-0.9.4.tar.gz (54Kb): 54Kb downloaded
+  Running setup.py egg_info for package solrpy
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '*.pyo' found anywhere in distribution
+Downloading/unpacking formalchemy==1.4.1 (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 16))
+  Downloading FormAlchemy-1.4.1.tar.gz (109Kb): 109Kb downloaded
+  Running setup.py egg_info for package formalchemy
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+      warnings.warn(msg)
+    .mo files compilation success
+    warning: no previously-included files found matching 'docs/*.py'
+    warning: no previously-included files found matching 'docs/Makefile'
+    warning: no previously-included files found matching '*.ini'
+    warning: no previously-included files found matching 'bootstrap.py'
+    warning: no previously-included files found matching 'RELEASE_NOTES.txt'
+    warning: no previously-included files matching '*' found under directory 'pylonsapp'
+    warning: no files found matching '*pt' under directory 'formalchemy'
+Downloading/unpacking pairtree==0.7.1-T (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 17))
+  Downloading Pairtree-0.7.1-T.tar.gz
+  Running setup.py egg_info for package pairtree
+Downloading/unpacking ofs==0.4.1 (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 18))
+  Downloading ofs-0.4.1.tar.gz (155Kb): 155Kb downloaded
+  Running setup.py egg_info for package ofs
+Downloading/unpacking apachemiddleware==0.1.1 (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 20))
+  Downloading apachemiddleware-0.1.1.tar.gz
+  Running setup.py egg_info for package apachemiddleware
+    warning: no files found matching 'ez_setup.py'
+Downloading/unpacking markupsafe==0.9.2 (from -r pyenv/src/ckan/requires/lucid_missing.txt (line 22))
+  Downloading MarkupSafe-0.9.2.tar.gz
+  Running setup.py egg_info for package markupsafe
+Downloading/unpacking Genshi==0.6 (from -r pyenv/src/ckan/requires/lucid_conflict.txt (line 7))
+  Downloading Genshi-0.6.tar.gz (433Kb): 433Kb downloaded
+  Running setup.py egg_info for package Genshi
+    warning: no previously-included files found matching 'doc/2000ft.graffle'
+    warning: no previously-included files matching '*' found under directory 'doc/logo.lineform'
+Downloading/unpacking sqlalchemy-migrate==0.7.1 (from -r pyenv/src/ckan/requires/lucid_conflict.txt (line 8))
+  Downloading sqlalchemy-migrate-0.7.1.tar.gz (101Kb): 101Kb downloaded
+  Running setup.py egg_info for package sqlalchemy-migrate
+    warning: no files found matching '*' under directory 'tests'
+    warning: no previously-included files matching '*pyc' found anywhere in distribution
+    warning: no previously-included files found matching '.hgtags'
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+Downloading/unpacking sqlalchemy==0.7.3 (from -r pyenv/src/ckan/requires/lucid_conflict.txt (line 9))
+  Downloading SQLAlchemy-0.7.3.tar.gz (2.5Mb): 2.5Mb downloaded
+  Running setup.py egg_info for package sqlalchemy
+    warning: no files found matching '*.jpg' under directory 'doc'
+    no previously-included directories found matching 'doc/build/output'
+Downloading/unpacking webhelpers==1.2 (from -r pyenv/src/ckan/requires/lucid_conflict.txt (line 10))
+  Downloading WebHelpers-1.2.tar.gz (189Kb): 189Kb downloaded
+  Running setup.py egg_info for package webhelpers
+    no previously-included directories found matching 'docs/_build'
+Downloading/unpacking Tempita (from formalchemy==1.4.1->-r pyenv/src/ckan/requires/lucid_missing.txt (line 16))
+  Downloading Tempita-0.5.1.tar.gz
+  Running setup.py egg_info for package Tempita
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+      warnings.warn(msg)
+Downloading/unpacking WebOb (from formalchemy==1.4.1->-r pyenv/src/ckan/requires/lucid_missing.txt (line 16))
+  Downloading WebOb-1.2rc1.zip (216Kb): 216Kb downloaded
+  Running setup.py egg_info for package WebOb
+    no previously-included directories found matching '*.pyc'
+    no previously-included directories found matching '*.pyo'
+Downloading/unpacking argparse (from ofs==0.4.1->-r pyenv/src/ckan/requires/lucid_missing.txt (line 18))
+  Downloading argparse-1.2.1.tar.gz (69Kb): 69Kb downloaded
+  Running setup.py egg_info for package argparse
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '*.pyo' found anywhere in distribution
+    warning: no previously-included files matching '*.orig' found anywhere in distribution
+    warning: no previously-included files matching '*.rej' found anywhere in distribution
+    no previously-included directories found matching 'doc/_build'
+    no previously-included directories found matching 'env24'
+    no previously-included directories found matching 'env25'
+    no previously-included directories found matching 'env26'
+    no previously-included directories found matching 'env27'
+Downloading/unpacking decorator (from sqlalchemy-migrate==0.7.1->-r pyenv/src/ckan/requires/lucid_conflict.txt (line 8))
+  Downloading decorator-3.3.3.tar.gz
+  Running setup.py egg_info for package decorator
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+      warnings.warn(msg)
+    warning: no previously-included files found matching 'Makefile'
+Downloading/unpacking setuptools (from sqlalchemy-migrate==0.7.1->-r pyenv/src/ckan/requires/lucid_conflict.txt (line 8))
+  Downloading setuptools-0.6c12dev-r88846.tar.gz (257Kb): 257Kb downloaded
+  Running setup.py egg_info for package setuptools
+Installing collected packages: pyutilib.component.core, vdm, autoneg, flup, solrpy, formalchemy, pairtree, ofs, apachemiddleware, markupsafe, Genshi, sqlalchemy-migrate, sqlalchemy, webhelpers, Tempita, WebOb, argparse, decorator, setuptools
+  Running setup.py develop for pyutilib.component.core
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/pyutilib.component.core.egg-link (link to .)
+    Adding pyutilib.component.core 4.1 to easy-install.pth file
+    
+    Installed /home/ckan/pyenv/src/pyutilib.component.core
+  Running setup.py develop for vdm
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/vdm.egg-link (link to .)
+    Adding vdm 0.10 to easy-install.pth file
+    
+    Installed /home/ckan/pyenv/src/vdm
+  Running setup.py develop for autoneg
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/autoneg.egg-link (link to .)
+    Adding autoneg 0.5 to easy-install.pth file
+    Installing autoneg_cgi script to /home/ckan/pyenv/bin
+    Installing autoneg_fcgi script to /home/ckan/pyenv/bin
+    Installing rdfan_cgi script to /home/ckan/pyenv/bin
+    Installing rdfan_fcgi script to /home/ckan/pyenv/bin
+    
+    Installed /home/ckan/pyenv/src/autoneg
+  Running setup.py develop for flup
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/flup.egg-link (link to .)
+    Adding flup 0.5 to easy-install.pth file
+    
+    Installed /home/ckan/pyenv/src/flup
+  Running setup.py install for solrpy
+    warning: no previously-included files matching '*.pyo' found anywhere in distribution
+  Running setup.py install for formalchemy
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+      warnings.warn(msg)
+    .mo files compilation success
+    warning: no previously-included files found matching 'docs/*.py'
+    warning: no previously-included files found matching 'docs/Makefile'
+    warning: no previously-included files found matching '*.ini'
+    warning: no previously-included files found matching 'bootstrap.py'
+    warning: no previously-included files found matching 'RELEASE_NOTES.txt'
+    warning: no previously-included files matching '*' found under directory 'pylonsapp'
+    warning: no files found matching '*pt' under directory 'formalchemy'
+  Running setup.py install for pairtree
+    changing mode of build/scripts-2.6/ppath from 644 to 755
+    changing mode of /home/ckan/pyenv/bin/ppath to 755
+  Running setup.py install for ofs
+    Installing ofs_upload script to /home/ckan/pyenv/bin
+  Running setup.py install for apachemiddleware
+    warning: no files found matching 'ez_setup.py'
+  Running setup.py install for markupsafe
+    building 'markupsafe._speedups' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c markupsafe/_speedups.c -o build/temp.linux-i686-2.6/markupsafe/_speedups.o
+    gcc -pthread -shared build/temp.linux-i686-2.6/markupsafe/_speedups.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/markupsafe/_speedups.so
+  Running setup.py install for Genshi
+    warning: no previously-included files found matching 'doc/2000ft.graffle'
+    warning: no previously-included files matching '*' found under directory 'doc/logo.lineform'
+  Running setup.py install for sqlalchemy-migrate
+    warning: no files found matching '*' under directory 'tests'
+    warning: no previously-included files matching '*pyc' found anywhere in distribution
+    warning: no previously-included files found matching '.hgtags'
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+    Installing migrate script to /home/ckan/pyenv/bin
+    Installing migrate-repository script to /home/ckan/pyenv/bin
+  Running setup.py install for sqlalchemy
+    building 'sqlalchemy.cprocessors' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c lib/sqlalchemy/cextension/processors.c -o build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/processors.o
+    gcc -pthread -shared build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/processors.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/sqlalchemy/cprocessors.so
+    building 'sqlalchemy.cresultproxy' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c lib/sqlalchemy/cextension/resultproxy.c -o build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/resultproxy.o
+    gcc -pthread -shared build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/resultproxy.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/sqlalchemy/cresultproxy.so
+    warning: no files found matching '*.jpg' under directory 'doc'
+    no previously-included directories found matching 'doc/build/output'
+  Running setup.py install for webhelpers
+    no previously-included directories found matching 'docs/_build'
+  Running setup.py install for Tempita
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+      warnings.warn(msg)
+  Running setup.py install for WebOb
+    no previously-included directories found matching '*.pyc'
+    no previously-included directories found matching '*.pyo'
+  Running setup.py install for argparse
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '*.pyo' found anywhere in distribution
+    warning: no previously-included files matching '*.orig' found anywhere in distribution
+    warning: no previously-included files matching '*.rej' found anywhere in distribution
+    no previously-included directories found matching 'doc/_build'
+    no previously-included directories found matching 'env24'
+    no previously-included directories found matching 'env25'
+    no previously-included directories found matching 'env26'
+    no previously-included directories found matching 'env27'
+  Running setup.py install for decorator
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+      warnings.warn(msg)
+    warning: no previously-included files found matching 'Makefile'
+  Found existing installation: setuptools 0.6c11
+    Uninstalling setuptools:
+      Successfully uninstalled setuptools
+  Running setup.py install for setuptools
+    Installing easy_install script to /home/ckan/pyenv/bin
+    Installing easy_install-2.6 script to /home/ckan/pyenv/bin
+Successfully installed pyutilib.component.core vdm autoneg flup solrpy formalchemy pairtree ofs apachemiddleware markupsafe Genshi sqlalchemy-migrate sqlalchemy webhelpers Tempita WebOb argparse decorator setuptools
+Cleaning up...
++ pip install webob==1.0.8
+Downloading/unpacking webob==1.0.8
+  Downloading WebOb-1.0.8.zip (194Kb): 194Kb downloaded
+  Running setup.py egg_info for package webob
+    no previously-included directories found matching '*.pyc'
+    no previously-included directories found matching '*.pyo'
+Installing collected packages: webob
+  Found existing installation: WebOb 1.2rc1
+    Uninstalling WebOb:
+      Successfully uninstalled WebOb
+  Running setup.py install for webob
+    no previously-included directories found matching '*.pyc'
+    no previously-included directories found matching '*.pyo'
+Successfully installed webob
+Cleaning up...
++ pip install --ignore-installed -r pyenv/src/ckan/requires/lucid_present.txt
+Downloading/unpacking babel==0.9.4 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 9))
+  Downloading Babel-0.9.4.tar.gz (1.8Mb): 1.8Mb downloaded
+  Running setup.py egg_info for package babel
+Downloading/unpacking psycopg2==2.0.13 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 10))
+  Downloading psycopg2-2.0.13.tar.gz (258Kb): 258Kb downloaded
+  Running setup.py egg_info for package psycopg2
+    warning: no files found matching '*.html' under directory 'doc'
+Downloading/unpacking lxml==2.2.4 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 11))
+  Downloading lxml-2.2.4.tar.gz (3.0Mb): 3.0Mb downloaded
+  Running setup.py egg_info for package lxml
+    Building lxml version 2.2.4.
+    NOTE: Trying to build without Cython, pre-generated 'src/lxml/lxml.etree.c' needs to be available.
+    Using build configuration of libxslt 1.1.26
+    Building against libxml2/libxslt in the following directory: /usr/lib
+    warning: no previously-included files found matching '*.py'
+Downloading/unpacking webob==1.0.8 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 14))
+  Downloading WebOb-1.0.8.zip (194Kb): 194Kb downloaded
+  Running setup.py egg_info for package webob
+    no previously-included directories found matching '*.pyc'
+    no previously-included directories found matching '*.pyo'
+Downloading/unpacking Pylons==0.9.7 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading Pylons-0.9.7.tar.gz (204Kb): 204Kb downloaded
+  Running setup.py egg_info for package Pylons
+    warning: no previously-included files matching '*' found under directory 'tests/test_units/session'
+    warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+    warning: no previously-included files matching '*.hgignore' found anywhere in distribution
+    warning: no previously-included files matching '*.hgtags' found anywhere in distribution
+Downloading/unpacking repoze.who==1.0.19 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 16))
+  Downloading repoze.who-1.0.19.tar.gz (79Kb): 79Kb downloaded
+  Running setup.py egg_info for package repoze.who
+Downloading/unpacking tempita==0.4 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 17))
+  Downloading Tempita-0.4.tar.gz
+  Running setup.py egg_info for package tempita
+Downloading/unpacking zope.interface==3.5.3 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 18))
+  Downloading zope.interface-3.5.3.tar.gz (115Kb): 115Kb downloaded
+  Running setup.py egg_info for package zope.interface
+Downloading/unpacking repoze.who.plugins.openid==0.5.3 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 20))
+  Downloading repoze.who.plugins.openid-0.5.3.tar.gz
+  Running setup.py egg_info for package repoze.who.plugins.openid
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'test_requires'
+      warnings.warn(msg)
+Downloading/unpacking repoze.who-friendlyform==1.0.8 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 23))
+  Downloading repoze.who-friendlyform-1.0.8.tar.gz
+  Running setup.py egg_info for package repoze.who-friendlyform
+    no previously-included directories found matching 'docs/build'
+    warning: no previously-included files matching '*' found under directory 'tests'
+    warning: no previously-included files matching '*~' found anywhere in distribution
+    warning: no previously-included files matching '*.egg' found anywhere in distribution
+    warning: no previously-included files matching '.directory' found anywhere in distribution
+Downloading/unpacking routes==1.11 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 24))
+  Downloading Routes-1.11.tar.gz (470Kb): 470Kb downloaded
+  Running setup.py egg_info for package routes
+    warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+    warning: no previously-included files matching '*.hgignore' found anywhere in distribution
+    warning: no previously-included files matching '*.hgtags' found anywhere in distribution
+Downloading/unpacking paste==1.7.2 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 25))
+  Downloading Paste-1.7.2.tar.gz (373Kb): 373Kb downloaded
+  Running setup.py egg_info for package paste
+Downloading/unpacking pastescript==1.7.3 (from -r pyenv/src/ckan/requires/lucid_present.txt (line 26))
+  Downloading PasteScript-1.7.3.tar.gz (127Kb): 127Kb downloaded
+  Running setup.py egg_info for package pastescript
+Downloading/unpacking WebHelpers>=0.6.4 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading WebHelpers-1.3.tar.gz (729Kb): 729Kb downloaded
+  Running setup.py egg_info for package WebHelpers
+    no previously-included directories found matching 'docs/_build'
+Downloading/unpacking Beaker>=1.2.2 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading Beaker-1.6.3.tar.gz (52Kb): 52Kb downloaded
+  Running setup.py egg_info for package Beaker
+Downloading/unpacking PasteDeploy>=1.3.3 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading PasteDeploy-1.5.0.tar.gz
+  Running setup.py egg_info for package PasteDeploy
+Downloading/unpacking FormEncode>=1.2.1 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading FormEncode-1.2.4.tar.gz (240Kb): 240Kb downloaded
+  Running setup.py egg_info for package FormEncode
+    warning: no files found matching '*.py' under directory '.'
+    no previously-included directories found matching '**/.svn'
+Downloading/unpacking simplejson>=2.0.8 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading simplejson-2.5.2.tar.gz (53Kb): 53Kb downloaded
+  Running setup.py egg_info for package simplejson
+Downloading/unpacking decorator>=2.3.2 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading decorator-3.3.3.tar.gz
+  Running setup.py egg_info for package decorator
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+      warnings.warn(msg)
+    warning: no previously-included files found matching 'Makefile'
+Downloading/unpacking nose>=0.10.4 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading nose-1.1.2.tar.gz (729Kb): 729Kb downloaded
+  Running setup.py egg_info for package nose
+Downloading/unpacking Mako>=0.2.4 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading Mako-0.7.0.tar.gz (398Kb): 398Kb downloaded
+  Running setup.py egg_info for package Mako
+    warning: no files found matching '*.xml' under directory 'examples'
+    warning: no files found matching '*.mako' under directory 'examples'
+    warning: no files found matching 'ez_setup.py'
+    no previously-included directories found matching 'doc/build/output'
+Downloading/unpacking WebError>=0.10.1 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading WebError-0.10.3.tar.gz (81Kb): 81Kb downloaded
+  Running setup.py egg_info for package WebError
+Downloading/unpacking WebTest>=1.1 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading WebTest-1.3.4.tar.gz (78Kb): 78Kb downloaded
+  Running setup.py egg_info for package WebTest
+    warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
+    warning: no files found matching '*.txt' under directory 'tests'
+Downloading/unpacking setuptools (from repoze.who==1.0.19->-r pyenv/src/ckan/requires/lucid_present.txt (line 16))
+  Downloading setuptools-0.6c12dev-r88846.tar.gz (257Kb): 257Kb downloaded
+  Running setup.py egg_info for package setuptools
+Downloading/unpacking python-openid>=2.0 (from repoze.who.plugins.openid==0.5.3->-r pyenv/src/ckan/requires/lucid_present.txt (line 20))
+  Downloading python-openid-2.2.5.zip (358Kb): 358Kb downloaded
+  Running setup.py egg_info for package python-openid
+    warning: no files found matching 'CHANGELOG'
+    warning: no files found matching '*.css' under directory 'doc'
+    warning: no files found matching '*.html' under directory 'doc'
+Downloading/unpacking MarkupSafe>=0.9.2 (from WebHelpers>=0.6.4->Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading MarkupSafe-0.15.tar.gz
+  Running setup.py egg_info for package MarkupSafe
+Downloading/unpacking Pygments (from WebError>=0.10.1->Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 15))
+  Downloading Pygments-1.5.tar.gz (3.7Mb): 3.7Mb downloaded
+  Running setup.py egg_info for package Pygments
+Installing collected packages: babel, psycopg2, lxml, webob, Pylons, repoze.who, tempita, zope.interface, repoze.who.plugins.openid, repoze.who-friendlyform, routes, paste, pastescript, WebHelpers, Beaker, PasteDeploy, FormEncode, simplejson, decorator, nose, Mako, WebError, WebTest, setuptools, python-openid, MarkupSafe, Pygments
+  Running setup.py install for babel
+    Installing pybabel script to /home/ckan/pyenv/bin
+  Running setup.py install for psycopg2
+    building 'psycopg2._psycopg' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/psycopgmodule.c -o build/temp.linux-i686-2.6/psycopg/psycopgmodule.o
+    /usr/include/python2.6/datetime.h:186: warning: ‘PyDateTimeAPI’ defined but not used
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/pqpath.c -o build/temp.linux-i686-2.6/psycopg/pqpath.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/typecast.c -o build/temp.linux-i686-2.6/psycopg/typecast.o
+    psycopg/typecast.c:36: warning: ‘skip_until_space’ defined but not used
+    /usr/include/python2.6/datetime.h:186: warning: ‘PyDateTimeAPI’ defined but not used
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/microprotocols.c -o build/temp.linux-i686-2.6/psycopg/microprotocols.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/microprotocols_proto.c -o build/temp.linux-i686-2.6/psycopg/microprotocols_proto.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/connection_type.c -o build/temp.linux-i686-2.6/psycopg/connection_type.o
+    psycopg/connection_type.c: In function ‘psyco_conn_reset’:
+    psycopg/connection_type.c:366: warning: implicit declaration of function ‘pq_reset’
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/connection_int.c -o build/temp.linux-i686-2.6/psycopg/connection_int.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/cursor_type.c -o build/temp.linux-i686-2.6/psycopg/cursor_type.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/cursor_int.c -o build/temp.linux-i686-2.6/psycopg/cursor_int.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/lobject_type.c -o build/temp.linux-i686-2.6/psycopg/lobject_type.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/lobject_int.c -o build/temp.linux-i686-2.6/psycopg/lobject_int.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_qstring.c -o build/temp.linux-i686-2.6/psycopg/adapter_qstring.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pboolean.c -o build/temp.linux-i686-2.6/psycopg/adapter_pboolean.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_binary.c -o build/temp.linux-i686-2.6/psycopg/adapter_binary.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_asis.c -o build/temp.linux-i686-2.6/psycopg/adapter_asis.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_list.c -o build/temp.linux-i686-2.6/psycopg/adapter_list.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_datetime.c -o build/temp.linux-i686-2.6/psycopg/adapter_datetime.o
+    /usr/include/python2.6/datetime.h:186: warning: ‘PyDateTimeAPI’ defined but not used
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pfloat.c -o build/temp.linux-i686-2.6/psycopg/adapter_pfloat.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.0.13 (dt dec ext pq3)" -DPG_VERSION_HEX=0x08040B -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -DHAVE_PQPROTOCOL3=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/utils.c -o build/temp.linux-i686-2.6/psycopg/utils.o
+    ./psycopg/psycopg.h:85: warning: ‘import_psycopg’ defined but not used
+    gcc -pthread -shared build/temp.linux-i686-2.6/psycopg/psycopgmodule.o build/temp.linux-i686-2.6/psycopg/pqpath.o build/temp.linux-i686-2.6/psycopg/typecast.o build/temp.linux-i686-2.6/psycopg/microprotocols.o build/temp.linux-i686-2.6/psycopg/microprotocols_proto.o build/temp.linux-i686-2.6/psycopg/connection_type.o build/temp.linux-i686-2.6/psycopg/connection_int.o build/temp.linux-i686-2.6/psycopg/cursor_type.o build/temp.linux-i686-2.6/psycopg/cursor_int.o build/temp.linux-i686-2.6/psycopg/lobject_type.o build/temp.linux-i686-2.6/psycopg/lobject_int.o build/temp.linux-i686-2.6/psycopg/adapter_qstring.o build/temp.linux-i686-2.6/psycopg/adapter_pboolean.o build/temp.linux-i686-2.6/psycopg/adapter_binary.o build/temp.linux-i686-2.6/psycopg/adapter_asis.o build/temp.linux-i686-2.6/psycopg/adapter_list.o build/temp.linux-i686-2.6/psycopg/adapter_datetime.o build/temp.linux-i686-2.6/psycopg/adapter_pfloat.o build/temp.linux-i686-2.6/psycopg/utils.o -L/usr/lib -L/usr/lib -lpython2.6 -lpq -o build/lib.linux-i686-2.6/psycopg2/_psycopg.so
+    warning: no files found matching '*.html' under directory 'doc'
+  Running setup.py install for lxml
+    Building lxml version 2.2.4.
+    NOTE: Trying to build without Cython, pre-generated 'src/lxml/lxml.etree.c' needs to be available.
+    Using build configuration of libxslt 1.1.26
+    Building against libxml2/libxslt in the following directory: /usr/lib
+    building 'lxml.etree' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/usr/include/python2.6 -c src/lxml/lxml.etree.c -o build/temp.linux-i686-2.6/src/lxml/lxml.etree.o -w
+    gcc -pthread -shared build/temp.linux-i686-2.6/src/lxml/lxml.etree.o -L/usr/lib -L/usr/lib -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-i686-2.6/lxml/etree.so
+    building 'lxml.objectify' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/usr/include/python2.6 -c src/lxml/lxml.objectify.c -o build/temp.linux-i686-2.6/src/lxml/lxml.objectify.o -w
+    gcc -pthread -shared build/temp.linux-i686-2.6/src/lxml/lxml.objectify.o -L/usr/lib -L/usr/lib -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-i686-2.6/lxml/objectify.so
+  Found existing installation: WebOb 1.0.8
+    Uninstalling WebOb:
+      Successfully uninstalled WebOb
+  Running setup.py install for webob
+    no previously-included directories found matching '*.pyc'
+    no previously-included directories found matching '*.pyo'
+  Running setup.py install for Pylons
+    warning: no previously-included files matching '*' found under directory 'tests/test_units/session'
+    warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+    warning: no previously-included files matching '*.hgignore' found anywhere in distribution
+    warning: no previously-included files matching '*.hgtags' found anywhere in distribution
+  Running setup.py install for repoze.who
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/__init__.py (namespace package)
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/__init__.py (namespace package)
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/plugins/__init__.py (namespace package)
+    Installing /home/ckan/pyenv/lib/python2.6/site-packages/repoze.who-1.0.19-py2.6-nspkg.pth
+  Found existing installation: Tempita 0.5.1
+    Uninstalling Tempita:
+      Successfully uninstalled Tempita
+  Running setup.py install for tempita
+  Running setup.py install for zope.interface
+    building 'zope.interface._zope_interface_coptimizations' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c src/zope/interface/_zope_interface_coptimizations.c -o build/temp.linux-i686-2.6/src/zope/interface/_zope_interface_coptimizations.o
+    gcc -pthread -shared build/temp.linux-i686-2.6/src/zope/interface/_zope_interface_coptimizations.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/zope/interface/_zope_interface_coptimizations.so
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/zope/__init__.py (namespace package)
+    Installing /home/ckan/pyenv/lib/python2.6/site-packages/zope.interface-3.5.3-py2.6-nspkg.pth
+  Running setup.py install for repoze.who.plugins.openid
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'test_requires'
+      warnings.warn(msg)
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/__init__.py (namespace package)
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/__init__.py (namespace package)
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/plugins/__init__.py (namespace package)
+    Installing /home/ckan/pyenv/lib/python2.6/site-packages/repoze.who.plugins.openid-0.5.3-py2.6-nspkg.pth
+  Running setup.py install for repoze.who-friendlyform
+    no previously-included directories found matching 'docs/build'
+    warning: no previously-included files matching '*' found under directory 'tests'
+    warning: no previously-included files matching '*~' found anywhere in distribution
+    warning: no previously-included files matching '*.egg' found anywhere in distribution
+    warning: no previously-included files matching '.directory' found anywhere in distribution
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/__init__.py (namespace package)
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/__init__.py (namespace package)
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/plugins/__init__.py (namespace package)
+    Installing /home/ckan/pyenv/lib/python2.6/site-packages/repoze.who_friendlyform-1.0.8-py2.6-nspkg.pth
+  Running setup.py install for routes
+    warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+    warning: no previously-included files matching '*.hgignore' found anywhere in distribution
+    warning: no previously-included files matching '*.hgtags' found anywhere in distribution
+  Running setup.py install for paste
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/paste/__init__.py (namespace package)
+    Installing /home/ckan/pyenv/lib/python2.6/site-packages/Paste-1.7.2-py2.6-nspkg.pth
+  Running setup.py install for pastescript
+    changing mode of build/scripts-2.6/paster from 644 to 755
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/paste/__init__.py (namespace package)
+    Searching for PasteDeploy
+    Reading http://pythonpaste.org/package_index.html
+    Reading http://pylons.groovie.org/project
+    Download error: [Errno -2] Name or service not known -- Some packages may not be found!
+    Reading http://pypi.python.org/simple/PasteDeploy/
+    Reading http://pythonpaste.org/deploy/
+    Reading http://pythonpaste.org/deploy/paste-deploy.html
+    Best match: PasteDeploy 1.5.0
+    Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
+    Processing PasteDeploy-1.5.0.tar.gz
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-kcWruS/PasteDeploy-1.5.0/egg-dist-tmp-3ILb1o
+    
+    Installed /home/ckan/pyenv/build/pastescript/PasteDeploy-1.5.0-py2.6.egg
+    Installing /home/ckan/pyenv/lib/python2.6/site-packages/PasteScript-1.7.3-py2.6-nspkg.pth
+    changing mode of /home/ckan/pyenv/bin/paster to 755
+    Installing paster script to /home/ckan/pyenv/bin
+  Found existing installation: WebHelpers 1.2
+    Uninstalling WebHelpers:
+      Successfully uninstalled WebHelpers
+  Running setup.py install for WebHelpers
+    Searching for PasteDeploy
+    Reading http://pypi.python.org/simple/PasteDeploy/
+    Reading http://pythonpaste.org/deploy/
+    Reading http://pythonpaste.org/deploy/paste-deploy.html
+    Best match: PasteDeploy 1.5.0
+    Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
+    Processing PasteDeploy-1.5.0.tar.gz
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-O2l2WA/PasteDeploy-1.5.0/egg-dist-tmp-tcyBBa
+    
+    Installed /home/ckan/pyenv/build/WebHelpers/PasteDeploy-1.5.0-py2.6.egg
+    no previously-included directories found matching 'docs/_build'
+  Running setup.py install for Beaker
+    Searching for PasteDeploy
+    Reading http://pypi.python.org/simple/PasteDeploy/
+    Reading http://pythonpaste.org/deploy/
+    Reading http://pythonpaste.org/deploy/paste-deploy.html
+    Best match: PasteDeploy 1.5.0
+    Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
+    Processing PasteDeploy-1.5.0.tar.gz
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-X8PzOq/PasteDeploy-1.5.0/egg-dist-tmp-btFP2P
+    
+    Installed /home/ckan/pyenv/build/Beaker/PasteDeploy-1.5.0-py2.6.egg
+  Running setup.py install for PasteDeploy
+    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/paste/__init__.py (namespace package)
+    Installing /home/ckan/pyenv/lib/python2.6/site-packages/PasteDeploy-1.5.0-py2.6-nspkg.pth
+  Running setup.py install for FormEncode
+    warning: no files found matching '*.py' under directory '.'
+    no previously-included directories found matching '**/.svn'
+  Running setup.py install for simplejson
+    building 'simplejson._speedups' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c simplejson/_speedups.c -o build/temp.linux-i686-2.6/simplejson/_speedups.o
+    simplejson/_speedups.c: In function ‘encoder_listencode_obj’:
+    simplejson/_speedups.c:2263: warning: comparison of distinct pointer types lacks a cast
+    simplejson/_speedups.c:2263: warning: passing argument 2 of ‘PyType_IsSubtype’ from incompatible pointer type
+    /usr/include/python2.6/object.h:435: note: expected ‘struct PyTypeObject *’ but argument is of type ‘struct PyObject *’
+    gcc -pthread -shared build/temp.linux-i686-2.6/simplejson/_speedups.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/simplejson/_speedups.so
+  Found existing installation: decorator 3.3.3
+    Uninstalling decorator:
+      Successfully uninstalled decorator
+  Running setup.py install for decorator
+    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+      warnings.warn(msg)
+    warning: no previously-included files found matching 'Makefile'
+  Running setup.py install for nose
+    Installing nosetests-2.6 script to /home/ckan/pyenv/bin
+    Installing nosetests script to /home/ckan/pyenv/bin
+  Running setup.py install for Mako
+    changing mode of build/scripts-2.6/mako-render from 644 to 755
+    warning: no files found matching '*.xml' under directory 'examples'
+    warning: no files found matching '*.mako' under directory 'examples'
+    warning: no files found matching 'ez_setup.py'
+    no previously-included directories found matching 'doc/build/output'
+    changing mode of /home/ckan/pyenv/bin/mako-render to 755
+  Running setup.py install for WebError
+    paster_plugins not set in setup(), but WebError.egg-info/paster_plugins.txt exists
+  Running setup.py install for WebTest
+    warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
+    warning: no files found matching '*.txt' under directory 'tests'
+  Found existing installation: setuptools 0.6c12dev-r88846
+    Uninstalling setuptools:
+      Successfully uninstalled setuptools
+  Running setup.py install for setuptools
+    Installing easy_install script to /home/ckan/pyenv/bin
+    Installing easy_install-2.6 script to /home/ckan/pyenv/bin
+  Running setup.py install for python-openid
+    warning: no files found matching 'CHANGELOG'
+    warning: no files found matching '*.css' under directory 'doc'
+    warning: no files found matching '*.html' under directory 'doc'
+  Found existing installation: MarkupSafe 0.9.2
+    Uninstalling MarkupSafe:
+      Successfully uninstalled MarkupSafe
+  Running setup.py install for MarkupSafe
+    building 'markupsafe._speedups' extension
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c markupsafe/_speedups.c -o build/temp.linux-i686-2.6/markupsafe/_speedups.o
+    gcc -pthread -shared build/temp.linux-i686-2.6/markupsafe/_speedups.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/markupsafe/_speedups.so
+  Running setup.py install for Pygments
+    Installing pygmentize script to /home/ckan/pyenv/bin
+Successfully installed babel psycopg2 lxml webob Pylons repoze.who tempita zope.interface repoze.who.plugins.openid repoze.who-friendlyform routes paste pastescript WebHelpers Beaker PasteDeploy FormEncode simplejson decorator nose Mako WebError WebTest setuptools python-openid MarkupSafe Pygments
+Cleaning up...
+[geuder@localhost ~]$

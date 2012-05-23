@@ -45,6 +45,7 @@ echo "nothing to be built here"
 %install
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
 
@@ -54,11 +55,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %{scriptdir}/01getpyenv.sh
+%{scriptdir}/02getpythonpackages.sh
 %{scriptdir}/80backuphome.sh
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh /home/%{ckanuser}
+sudo -u %{ckanuser} %{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}
 
 %preun
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}
