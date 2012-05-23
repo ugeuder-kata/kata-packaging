@@ -1,18 +1,12 @@
 Summary: Development and packaging environment for Kata CKAN
 Name: kata-ckan-dev
 %define autov %(echo $AUTOV)
-%if !%{autov}
-%{error:AUTOV not set}
-%endif
 Version: %autov
 Release: 1%{?dist}
 Group: Applications/File (to be verified)
 License: GPLv2+ (to be verified)
 #Url: http://not.sure.yet
-# just use plain source files instead of archive, easier for development
-#Source99: kata-ckan-dev-%{version}.tgz
-Source0: 01getpyenv.sh
-Source2: 80backuphome.sh
+Source0: kata-ckan-dev-%{version}.tgz
 Requires: gcc
 Requires: git
 Requires: libxml2-devel
@@ -39,9 +33,8 @@ on production systems. After installing a development system build
 a kata-ckan-prod.rpm package to capture the result of this installation.
 
 %prep
-%setup -c -T
-cp ../../SOURCES/01getpyenv.sh .
-cp ../../SOURCES/80backuphome.sh .
+%setup
+
 
 %build
 echo "nothing to be built here"
