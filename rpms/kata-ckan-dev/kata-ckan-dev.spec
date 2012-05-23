@@ -1,6 +1,10 @@
 Summary: Development and packaging environment for Kata CKAN
 Name: kata-ckan-dev
-Version: 0.1
+%define autov %(echo $AUTOV)
+%if !%{autov}
+%{error:AUTOV not set}
+%endif
+Version: %autov
 Release: 1%{?dist}
 Group: Applications/File (to be verified)
 License: GPLv2+ (to be verified)
