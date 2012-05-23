@@ -1,11 +1,6 @@
 if you set up your rpmbuild environment under ~/rpmbuild
 like suggested in http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
-create 3 symbolic links to use this source (currently we use plain files,
-which is not standard packaging, but nice for development work)
+you can call the script build-from-repo.sh from this directory
 
-here=$(pwd)
-cd ~/rpmbuild
-ln -s ${here}/kata-ckan-dev.spec SPECS/
-#ln -s ${here}/kata-ckan-dev-0.1.tgz SOURCES/
-ln -s ${here}/01getpyenv.sh SOURCES/
-ln -s ${here}/80backuphome.sh SOURCES/
+In case you want/need to call rpmbuild manually just make sure that AUTOV
+environment variable is set to some reasonable version number

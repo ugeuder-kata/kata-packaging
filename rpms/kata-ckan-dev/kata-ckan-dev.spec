@@ -1,6 +1,8 @@
 Summary: Development and packaging environment for Kata CKAN
 Name: kata-ckan-dev
 %define autov %(echo $AUTOV)
+# we had some check here to abort if AUTOV is not set, but it did not
+# work. See git history for details
 Version: %autov
 Release: 1%{?dist}
 Group: Applications/File (to be verified)
