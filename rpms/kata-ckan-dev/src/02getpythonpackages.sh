@@ -1,6 +1,7 @@
 #! /bin/sh
+# remember: we are not root here (%ckanuser from the spec file)
 set -x
-if [ -z "$SKIP02" ]
+if [ -f /tmp/kata-SKIP02 ]
 then
   echo "Skipping 02"
   exit 0

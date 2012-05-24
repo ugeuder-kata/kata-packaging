@@ -9,7 +9,7 @@ environment variable is set to some reasonable version number
 
 2. Installation
 
-If environment variable SKIP01 or SKIP02 is set Python packages are
+If files /tmp/kata-SKIP01 or /tmp/kata-SKIP02 is exist Python packages are
 not installed (useful for quick testing of other scripts, installing
 Python packages takes quite long)
 

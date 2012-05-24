@@ -1,6 +1,7 @@
 #! /bin/sh
+# remember: we are not root here (%ckanuser from the spec file)
 set -x
-if [ -z "$SKIP01" ]
+if [ -f /tmp/kata-SKIP01 ]
 then
   echo "Skipping 01"
   exit 0
@@ -12,4 +13,3 @@ cd ${instloc}/download
 wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 cd ..
 python download/virtualenv.py pyenv
-
