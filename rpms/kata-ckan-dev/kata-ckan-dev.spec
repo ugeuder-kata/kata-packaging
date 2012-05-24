@@ -36,6 +36,7 @@ This package is for internal development use only. Not intended to be used
 on production systems. After installing a development system build
 a kata-ckan-prod.rpm package to capture the result of this installation.
 
+
 %prep
 %setup
 
@@ -43,6 +44,7 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 %build
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
+diff -u patches/orig/search__init__.py patches/kata/search__init__.py >search__init__.py.patch || true
 
 
 %install
@@ -55,10 +57,12 @@ install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
+install search__init__.py.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
 
 %files
 %defattr(-,root,root)
@@ -69,6 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/development.ini.patch
+%{patchdir}/search__init__.py.patch
+
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
@@ -77,12 +83,15 @@ sudo -u %{ckanuser} %{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}
 %{scriptdir}/05setuppostgres.sh
 sudo -u %{ckanuser} %{scriptdir}/10setupckan.sh /home/%{ckanuser}
 
+
 %preun
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}
+
 
 %postun
 echo "Uninstallation not fully supported yet, better get a clean VM to be sure"
 echo "User account %{ckanuser} not deleted"
+
 
 %changelog
 * Mon May 21 2012 Uwe Geuder <uwe.geuder@nomvok.com>
