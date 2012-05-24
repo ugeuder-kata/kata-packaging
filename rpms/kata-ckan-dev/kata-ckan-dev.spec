@@ -42,6 +42,7 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 
 %build
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
+diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
 
 
 %install
@@ -50,8 +51,10 @@ install -d $RPM_BUILD_ROOT/%{patchdir}
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 
 %clean
@@ -62,14 +65,17 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/01getpyenv.sh
 %{scriptdir}/02getpythonpackages.sh
 %{scriptdir}/05setuppostgres.sh
+%{scriptdir}/10setupckan.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
+%{patchdir}/development.ini.patch
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh /home/%{ckanuser}
 sudo -u %{ckanuser} %{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}
 %{scriptdir}/05setuppostgres.sh
+sudo -u %{ckanuser} %{scriptdir}/10setupckan.sh /home/%{ckanuser}
 
 %preun
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}

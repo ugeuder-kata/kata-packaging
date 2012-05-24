@@ -12,3 +12,8 @@ source pyenv/bin/activate
 cd pyenv/src/ckan
 paster make-config ckan development.ini
 patch -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
+myip=$(ip addr show dev eth0 | grep "inet " | sed -E "s/ +inet +([^/]+).+/\1/")
+# TODO: needs to be really configurable
+ckanusermail=root@localhost
+sed -e "s/%%myip%%/${myip}/" -e "s/%%ckanusermail%%/${ckanusermail}/" development.ini > development.ini.1
+mv development.ini.1 development.ini
