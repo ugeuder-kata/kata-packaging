@@ -44,7 +44,7 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 %build
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
-diff -u patches/orig/search__init__.py patches/kata/search__init__.py >search__init__.py.patch || true
+diff -u patches/orig/search/__init__.py patches/kata/search/__init__.py >search__init__.py.patch || true
 
 
 %install

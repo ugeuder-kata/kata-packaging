@@ -10,7 +10,7 @@ instloc=$1
 cd $instloc
 source pyenv/bin/activate
 cd pyenv/src/ckan
-pushd ckan/lib/search >/dev/null
+pushd ckan/lib >/dev/null
 patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/search__init__.py.patch
 popd >/dev/null
 paster make-config ckan development.ini
