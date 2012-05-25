@@ -77,20 +77,8 @@
         <!-- Validates the signature of the metadata and filters out all by SP entities in order to save memory -->
         <!-- To use: fill in 'metadataURL' and 'backingFile' properties on MetadataResource element -->
         <metadata:MetadataProvider id="URLMD" xsi:type="metadata:FileBackedHTTPMetadataProvider"
-                          metadataURL="https://192.168.1.120/metadata.xml"
+                          metadataURL="http://192.168.1.120/shib/sp-metadata.xml"
                           backingFile="/opt/shibboleth-idp/metadata/sp-metadata.xml">
-		<!--
-            <metadata:MetadataFilter xsi:type="metadata:ChainingFilter">
-                <metadata:MetadataFilter xsi:type="metadata:RequiredValidUntil" 
-                                maxValidityInterval="P7D" />
-                <metadata:MetadataFilter xsi:type="metadata:SignatureValidation"
-                                trustEngineRef="shibboleth.MetadataTrustEngine"
-                                requireSignedMetadata="true" />
-	            <metadata:MetadataFilter xsi:type="metadata:EntityRoleWhiteList">
-                    <metadata:RetainedRole>samlmd:SPSSODescriptor</metadata:RetainedRole>
-                </metadata:MetadataFilter>
-            </metadata:MetadataFilter>
-		-->
         </metadata:MetadataProvider>
         
     </metadata:MetadataProvider>

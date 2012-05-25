@@ -75,3 +75,9 @@ ProxyPass /idp/ ajp://localhost:8009/idp/
     AuthUserFile /opt/shibboleth-idp/user.db
     require valid-user
 </Location>
+
+Config file locations:
+ * shib.conf /etc/httpd/conf.d/shib.conf
+ * httpd.conf /etc/httpd/conf/httpd.conf
+ * relying-party.xml /opt/shibboleth-idp/conf/relying-party.xml
+ * shibboleth2.xml /etc/shibboleth/shibboleth2.xml

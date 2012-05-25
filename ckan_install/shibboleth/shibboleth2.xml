@@ -20,7 +20,7 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="https://192.168.1.120/shibboleth"
+    <ApplicationDefaults entityID="https://192.168.1.120/shibboleth-sp"
                          REMOTE_USER="eppn persistent-id targeted-id">
 
         <!--
@@ -70,7 +70,7 @@
             styleSheet="/shibboleth/main.css"/>
         
         <!-- Example of remotely supplied batch of signed metadata. -->
-        <MetadataProvider type="XML" uri="https://192.168.1.120/idp/profile/Metadata/SAML"
+        <MetadataProvider type="XML" uri="http://192.168.1.120/shib/idp-metadata.xml"
               backingFilePath="idp-metadata.xml" reloadInterval="7200">
 		<!--
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
