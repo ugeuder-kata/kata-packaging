@@ -1,0 +1,24 @@
+<html xmlns:py="http://genshi.edgewall.org/"
+  xmlns:i18n="http://genshi.edgewall.org/i18n"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  py:strip="">
+
+  <py:def function="page_title">iRODS importer</py:def>
+<div py:match="content">
+<h2 class="head">
+	iRODS import for ${c.resource_name}, please fill in connection details:
+</h2>
+<form method="post" id="irods-form">
+	<label for="server">Server:</label><input type="text" name="server" value="" id="server"/>
+	<label for="username">User name:</label><input type="text" name="uname" value="" id="username"/>
+	<label for="password">Password: </label><input type="password" name="pw" value="" id="password"/>
+	<label for="port">Port: </label><input type="text" name="port" value="" id="port"/>
+	<br />
+	<input name="save" value="Import from iRODS" type="submit" />
+	<input type="hidden" name="resource" value="${c.resource_id}" id="resource_id"/>
+	<input type="hidden" name="dataset" value="${c.name}" id="dataset_id"/>
+
+</form>
+</div>
+<xi:include href="../../layout.html" />
+</html>
