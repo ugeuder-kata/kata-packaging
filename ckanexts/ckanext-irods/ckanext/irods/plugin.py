@@ -25,6 +25,11 @@ class iRODSPlugin(SingletonPlugin):
                     'url':'/irods/%s' % json.loads(c.resource_json)['id']
             }
             stream = stream | Transformer('body//div[@id="minornavigation"]/ul').append(HTML(html.IRODS_PILL%data))
+        elif routes.get('controller') == 'package' and routes.get('action') == 'read':
+            data = {
+                    'url':'/irods_import/%s' % c.current_package_id
+            }
+            stream = stream | Transformer('body//div[@id="minornavigation"]/ul').append(HTML(html.IRODS_PILL%data))
         return stream
 
     def update_config(self, config):
@@ -47,6 +52,9 @@ class iRODSPlugin(SingletonPlugin):
     def before_map(self, map):
         map.connect('irods', '/irods/{id}',
                     controller='ckanext.irods.controllers:iRODSView',
+                    action='view')
+        map.connect('irods_import', '/irods_import/{id}',
+                    controller='ckanext.irods.controllers:iRODSImport',
                     action='view')
         return map
 

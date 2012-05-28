@@ -6,17 +6,19 @@
   <py:def function="page_title">iRODS importer</py:def>
 <div py:match="content">
 <h2 class="head">
-	iRODS import for ${c.resource_name}, please fill in connection details:
+	iRODS import for <py:if test="c.resource_name">${c.resource_name} (resource)</py:if><py:if test="c.pkg">${c.pkg} (dataset)</py:if>, please fill in connection details
 </h2>
+<p>Fields marked with asterisk (*) must be filled.</p>
 <form method="post" id="irods-form">
-	<label for="server">Server:</label><input type="text" name="server" value="" id="server"/>
-	<label for="username">User name:</label><input type="text" name="uname" value="" id="username"/>
-	<label for="password">Password: </label><input type="password" name="pw" value="" id="password"/>
-	<label for="port">Port: </label><input type="text" name="port" value="" id="port"/>
+	<label for="server">Server: *</label><input type="text" name="server" value="" id="server"/>
+	<label for="username">User name: *</label><input type="text" name="uname" value="" id="username"/>
+	<label for="password">Password: *</label><input type="password" name="pw" value="" id="password"/>
+	<label for="port">Port: * (default is 1247)</label><input type="text" name="port" value="" id="port"/>
+	<label for="zone">Zone: *</label><input type="text" name="zone" value="" id="zone"/>
+	<label for="path">Path: *</label><input type="text" name="path" value="" id="path"/>
 	<br />
 	<input name="save" value="Import from iRODS" type="submit" />
 	<input type="hidden" name="resource" value="${c.resource_id}" id="resource_id"/>
-	<input type="hidden" name="dataset" value="${c.name}" id="dataset_id"/>
 
 </form>
 </div>
