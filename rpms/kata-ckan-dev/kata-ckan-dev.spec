@@ -54,6 +54,7 @@ install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
@@ -70,6 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/02getpythonpackages.sh
 %{scriptdir}/05setuppostgres.sh
 %{scriptdir}/10setupckan.sh
+%{scriptdir}/14openfirewall.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/development.ini.patch
@@ -82,7 +84,7 @@ sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh /home/%{ckanuser}
 sudo -u %{ckanuser} %{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}
 %{scriptdir}/05setuppostgres.sh
 sudo -u %{ckanuser} %{scriptdir}/10setupckan.sh /home/%{ckanuser}
-
+%{scriptdir}/14openfirewall.sh
 
 %preun
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}
@@ -90,7 +92,7 @@ sudo -u %{ckanuser} %{scriptdir}/10setupckan.sh /home/%{ckanuser}
 
 %postun
 echo "Uninstallation not fully supported yet, better get a clean VM to be sure"
-echo "User account %{ckanuser} not deleted"
+echo "User account %{ckanuser} not deleted, firewall change not reverted"
 
 
 %changelog
