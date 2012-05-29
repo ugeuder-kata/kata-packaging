@@ -9,7 +9,15 @@ environment variable is set to some reasonable version number
 
 2. Installation
 
-If files /tmp/kata-SKIP01 or /tmp/kata-SKIP02 is exist Python packages are
+In a plain mininal operating system installation running rpm -i will fail
+because of missing dependencies. These can be installed using a single command
+line as follows:
+
+$ sudo rpm -i kata-ckan-dev-305045-1.el6.i686.rpm 2>&1 | grep "is needed" | cut -c 2- | cut -f 1 -d " " | sudo xargs yum install -y
+
+3. Development features during installation
+
+If files /tmp/kata-SKIP01 or /tmp/kata-SKIP02 exist Python packages are
 not installed (useful for quick testing of other scripts, installing
 Python packages takes quite long)
 

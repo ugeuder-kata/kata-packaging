@@ -29,6 +29,7 @@ Conflicts: kata-ckan-prod
 %define ckanuser ckan
 %define scriptdir %{_datadir}/%{name}/setup-scripts
 %define patchdir %{_datadir}/%{name}/setup-patches
+%define katadatadir %{_datadir}/%{name}/setup-data
 
 %description
 Installs a CKAN environment using pip.
@@ -50,15 +51,18 @@ diff -u patches/orig/search/__init__.py patches/kata/search/__init__.py >search_
 %install
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
+install -d $RPM_BUILD_ROOT/%{katadatadir}
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install search__init__.py.patch $RPM_BUILD_ROOT/%{patchdir}/
+install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
 
 
 %clean
@@ -72,10 +76,12 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/05setuppostgres.sh
 %{scriptdir}/10setupckan.sh
 %{scriptdir}/14openfirewall.sh
+%{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/development.ini.patch
 %{patchdir}/search__init__.py.patch
+%{katadatadir}/pip.freeze
 
 
 %post
@@ -85,6 +91,8 @@ sudo -u %{ckanuser} %{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}
 %{scriptdir}/05setuppostgres.sh
 sudo -u %{ckanuser} %{scriptdir}/10setupckan.sh /home/%{ckanuser}
 %{scriptdir}/14openfirewall.sh
+# run this last so the user has a chance to see the output
+sudo -u %{ckanuser} %{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze
 
 %preun
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}
