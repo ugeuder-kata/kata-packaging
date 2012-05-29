@@ -1,0 +1,10 @@
+log of the first successful installation saved here (i386) (SHA-1 unknown)
+
+just in case we get problems with reproducability sometimes in the future
+when some of the download locations change
+
+pip.freeze of that installation was not saved.
+
+The saved pip.freeze is older, from the first manual installation. It
+still contains e.g. celery and amqplib dpendencies, which were removed
+a couple of days later.
