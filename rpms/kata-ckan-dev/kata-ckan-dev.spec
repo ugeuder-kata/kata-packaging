@@ -92,8 +92,8 @@ sudo -u %{ckanuser} %{scriptdir}/10setupckan.sh /home/%{ckanuser}
 
 %postun
 echo "Uninstallation not fully supported yet, better get a clean VM to be sure"
-echo "User account %{ckanuser} not deleted, firewall change not reverted"
-
+echo "User account %{ckanuser} not deleted, firewall change not reverted,"
+echo "postgresql configuration not reverted"
 
 %changelog
 * Mon May 21 2012 Uwe Geuder <uwe.geuder@nomvok.com>
