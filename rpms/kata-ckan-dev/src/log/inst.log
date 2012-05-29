@@ -1,4 +1,4 @@
-$ sudo rpm -i kata-ckan-dev-305108-1.el6.i686.rpm
+$ sudo rpm -i kata-ckan-dev-305136-1.el6.i686.rpm
 useradd: user 'ckan' already exists
 + '[' -f /tmp/kata-SKIP01 ']'
 + instloc=/home/ckan
@@ -6,7 +6,7 @@ useradd: user 'ckan' already exists
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-05-29 18:48:44--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-05-29 19:16:41--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -15,7 +15,7 @@ Saving to: `virtualenv.py'
 
 100%[===========================================================================================================================>] 101,937      261K/s   in 0.4s    
 
-2012-05-29 18:48:46 (261 KB/s) - `virtualenv.py' saved [101937/101937]
+2012-05-29 19:16:42 (261 KB/s) - `virtualenv.py' saved [101937/101937]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -483,7 +483,7 @@ Installing collected packages: babel, psycopg2, webob, Pylons, repoze.who, tempi
     Best match: PasteDeploy 1.5.0
     Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
     Processing PasteDeploy-1.5.0.tar.gz
-    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-HnQwMi/PasteDeploy-1.5.0/egg-dist-tmp-aYEk50
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-jDNLOo/PasteDeploy-1.5.0/egg-dist-tmp-6tolWO
     
     Installed /home/ckan/pyenv/build/pastescript/PasteDeploy-1.5.0-py2.6.egg
     Installing /home/ckan/pyenv/lib/python2.6/site-packages/PasteScript-1.7.3-py2.6-nspkg.pth
@@ -500,7 +500,7 @@ Installing collected packages: babel, psycopg2, webob, Pylons, repoze.who, tempi
     Best match: PasteDeploy 1.5.0
     Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
     Processing PasteDeploy-1.5.0.tar.gz
-    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-ILQaN9/PasteDeploy-1.5.0/egg-dist-tmp-BC7k3E
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-wJGlfD/PasteDeploy-1.5.0/egg-dist-tmp-9Y4gFZ
     
     Installed /home/ckan/pyenv/build/WebHelpers/PasteDeploy-1.5.0-py2.6.egg
     no previously-included directories found matching 'docs/_build'
@@ -512,7 +512,7 @@ Installing collected packages: babel, psycopg2, webob, Pylons, repoze.who, tempi
     Best match: PasteDeploy 1.5.0
     Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
     Processing PasteDeploy-1.5.0.tar.gz
-    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-ZA5Lm0/PasteDeploy-1.5.0/egg-dist-tmp-SzgzD6
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-wW9kxF/PasteDeploy-1.5.0/egg-dist-tmp-qO3oqC
     
     Installed /home/ckan/pyenv/build/Beaker/PasteDeploy-1.5.0-py2.6.egg
   Running setup.py install for PasteDeploy
@@ -647,8 +647,8 @@ Hunk #2 FAILED at 19.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:46: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-05-29 18:54:25,731 INFO  [ckan.model] CKAN database version upgraded: 0 -> 58
-2012-05-29 18:54:25,850 INFO  [ckan.model] Database initialised
+2012-05-29 19:23:12,164 INFO  [ckan.model] CKAN database version upgraded: 0 -> 58
+2012-05-29 19:23:12,273 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
 + instloc=/home/ckan
@@ -684,27 +684,8 @@ Initialising DB: SUCCESS
 + SETCOLOR_NORMAL='echo -en \033[0;39m'
 + diff - /usr/share/kata-ckan-dev/setup-data/pip.freeze
 + pip freeze
-+ echo -en '\033[1;31m'
-+ echo 'Python package mismatches:'
-Python package mismatches:                                                                                                                                           
-+ cat /tmp/kata-70.tmp                                                                                                                                               
-20a21,22                                                                                                                                                             
-> amqplib==1.0.2                                                                                                                                                     
-> anyjson==0.3.1                                                                                                                                                     
-23c25,27                                                                                                                                                             
-< -e git+https://github.com/okfn/ckan.git@773d4e11281485a48c3784cd513de1cfef8f1ca6#egg=ckan-dev                                                                      
----                                                                                                                                                                  
-> -e git+https://github.com/wwaites/autoneg.git@b4c727b164f411cc9d601afab4dcb9b76257acc4#egg=autoneg-dev                                                             
-> celery==2.5.3                                                                                                                                                      
-> -e git+https://github.com/okfn/ckan.git@20d06d6a7ca53b22e14ecb104e2f318fa2275f76#egg=ckan-dev                                                                      
-25a30,32                                                                                                                                                             
-> importlib==1.0.2                                                                                                                                                   
-> kombu==2.1.8                                                                                                                                                       
-> lxml==2.2.4                                                                                                                                                        
-27a35                                                                                                                                                                
-> ordereddict==1.1                                                                                                                                                   
-28a37                                                                                                                                                                
-> python-dateutil==1.5                                                                                                                                               
++ echo -en '\033[1;32m'
++ echo 'Python packages checked OK.'
+Python packages checked OK.                                                                                                                                          
 + echo -en '\033[0;39m'                                                                                                                                              
-+ rm -f /tmp/kata-70.tmp                                                                                                                                             
-[geuder@localhost ~]$
++ rm -f /tmp/kata-70.tmp
