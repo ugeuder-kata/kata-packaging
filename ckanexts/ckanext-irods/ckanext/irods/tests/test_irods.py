@@ -41,5 +41,30 @@ class TestRODS(FunctionalTestCase):
         assert 'IRODS' in res
 
     def test_resource_fetch(self):
-        Session = Mock()
-        getFileUserMetadata = Mock()
+        name = 'annakarenina'
+        pkg = Package.by_name(name)
+        res = pkg.resource_groups[0].resources[0]
+        result = self.app.get('/irods/'+res.id)
+        form = result.forms['irods-form']
+        form['server'] = 'irods.lan'
+        form['uname'] = 'rods'
+        form['pw'] = 'rods'
+        form['port'] = '1247'
+        form['zone'] = 'omaZone'
+        form['path'] = '/omaZone/home/rods/ale.spec'
+        formres = form.submit('save')
+        assert not 'Could not' in formres
+
+    def test_dataset_fetch(self):
+        name = 'annakarenina'
+        pkg = Package.by_name(name)
+        result = self.app.get('/irods_import/'+pkg.id)
+        form = result.forms['irods-form']
+        form['server'] = 'irods.lan'
+        form['uname'] = 'rods'
+        form['pw'] = 'rods'
+        form['port'] = '1247'
+        form['zone'] = 'omaZone'
+        form['path'] = '/omaZone/home/rods/ale.spec'
+        formres = form.submit('save')
+        assert not 'Could not' in formres

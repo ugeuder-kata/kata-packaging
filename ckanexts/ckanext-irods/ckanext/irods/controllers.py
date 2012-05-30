@@ -48,12 +48,13 @@ def sync_irods(params, id):
             resource.extras[key] = value
         Session.add(resource)
         conn.disconnect()
-        h.flash_success("iRODS import to resource OK!")
+        h.flash_success("iRODS import to resource OK! Imported %s metadatas" % i)
     else:
         h.flash_error("Could not connect to iRODS!")
     h.redirect_to(controller='package', action='resource_read', \
               id=resource.resource_group.package.name, \
               resource_id=resource.id)
+
 
 class iRODSImport(BaseController):
 
@@ -79,7 +80,7 @@ class iRODSImport(BaseController):
             coll = irodsCollection(conn, path)
             import_collection_to_package(coll, pkg, conn)
             conn.disconnect()
-            h.flash_success("iRODS import OK!")
+            h.flash_success("iRODS import to dataset OK!")
         else:
             h.flash_error("Could not connect to iRODS!")
         h.redirect_to(controller='package', action='read', id=id)
