@@ -3,12 +3,15 @@ from ckan.plugins import implements, SingletonPlugin
 from ckan.plugins import IRoutes
 from ckan.plugins import IGenshiStreamFilter
 from ckan.plugins import IConfigurer
+from ckan.plugins import IAuthorizer
+from ckan.logic import NotAuthorized
 from pylons.i18n import _
 from genshi.input import HTML
 from genshi.filters import Transformer
 import html
 import json
 import os
+import re
 
 log = logging.getLogger(__name__)
 
@@ -61,4 +64,22 @@ class iRODSPlugin(SingletonPlugin):
     def after_map(self, map):
         return map
 
-    
+class iRODSAuthorization(SingletonPlugin):
+    implements(IAuthorizer)
+
+    def is_authorized(self, username, action, domain_obj):
+        log.debug(domain_obj)
+        log.debug(action)
+        log.debug(username)
+        ValidIpAddressRegex = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
+        log.debug(re.match(ValidIpAddressRegex, username))
+        if re.match(ValidIpAddressRegex, username) != None:
+            log.debug("FALSE")
+            return False 
+        if username:
+            log.debug("TRUE")
+            return True
+    def get_authorization_groups(self, username):
+        return []
+    def get_roles(self, username):
+        return []

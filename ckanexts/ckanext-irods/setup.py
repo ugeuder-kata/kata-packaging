@@ -26,5 +26,6 @@ setup(
 	"""
     [ckan.plugins]
 	irods=ckanext.irods.plugin:iRODSPlugin
+	irods_auth=ckanext.irods.plugin:iRODSAuthorization
 	""",
 )

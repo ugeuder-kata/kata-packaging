@@ -38,7 +38,7 @@ class iRODSView(BaseController):
         return render('ckanext/irods/irods.html')
 
 def sync_irods(params, id):
-    from irods import getFileUserMetadata
+    from irods import getFileUserMetadata, rcModAccessControl
     rev = model.repo.new_revision()
     conn = get_connection_from_params(params)
     resource = Resource.get(id)
@@ -49,6 +49,8 @@ def sync_irods(params, id):
         fname = "%s/%s" % (path, resource.name.split('/')[-1])
         log.debug(fname)
         i = 0
+        access = rcModAccessControl()
+        log.debug(access.getPath())
         if conn:
             for met in getFileUserMetadata(conn, fname):
                 i += 1
