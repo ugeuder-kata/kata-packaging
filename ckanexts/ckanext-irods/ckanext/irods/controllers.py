@@ -39,18 +39,31 @@ class iRODSView(BaseController):
 
 def sync_irods(params, id):
     from irods import getFileUserMetadata
+    rev = model.repo.new_revision()
     conn = get_connection_from_params(params)
     resource = Resource.get(id)
     path = params['path']
-    if conn:
-        for met in getFileUserMetadata(conn, path):
-            key, value, _ = met
-            resource.extras[key] = value
-        Session.add(resource)
-        conn.disconnect()
-        h.flash_success("iRODS import to resource OK! Imported %s metadatas" % i)
+    extras = {}
+    # Lets handle only resources with file names
+    if resource.name:
+        fname = "%s/%s" % (path, resource.name.split('/')[-1])
+        log.debug(fname)
+        i = 0
+        if conn:
+            for met in getFileUserMetadata(conn, fname):
+                i += 1
+                key, value, _ = met
+                extras[key] = value
+            resource.extras = extras
+            Session.add(resource)
+            conn.disconnect()
+            model.repo.commit()
+            rev.message = "Update from iRODS, matched file %s" % fname
+            h.flash_success("iRODS import to resource OK! Imported %s metadatas" % i)
+        else:
+            h.flash_error("Could not connect to iRODS!")
     else:
-        h.flash_error("Could not connect to iRODS!")
+        h.flash_error("Resource is an URL, cannot import!")
     h.redirect_to(controller='package', action='resource_read', \
               id=resource.resource_group.package.name, \
               resource_id=resource.id)
@@ -78,9 +91,9 @@ class iRODSImport(BaseController):
         conn = get_connection_from_params(params)
         if (conn):
             coll = irodsCollection(conn, path)
-            import_collection_to_package(coll, pkg, conn)
+            num = import_collection_to_package(coll, pkg, conn)
             conn.disconnect()
-            h.flash_success("iRODS import to dataset OK!")
+            h.flash_success("iRODS import to dataset OK! Imported %s resources." % num)
         else:
             h.flash_error("Could not connect to iRODS!")
         h.redirect_to(controller='package', action='read', id=id)
@@ -88,31 +101,32 @@ class iRODSImport(BaseController):
 def import_collection_to_package(coll, pkg, conn):
     from irods import iRodsOpen
     rev = model.repo.new_revision()
-    log.debug(coll.getCollName())
+    i = 0
     for obj in coll.getObjects():
         extras = {} 
         fname, _ = obj
         fname = "%s/%s" % (coll.getCollName(), fname) 
         f = iRodsOpen(conn, fname, 'r')
-        log.debug(fname)
-        log.debug(f)
         if f:
-            for met in f.getUserMetadata():
-                key, value, _ = met
-                extras[key] = value
-                res = Resource.by_name(fname)
-                if not res:
+            i += 1
+            res = Resource.by_name(fname)
+            if not res:
                     res = Resource(url = 'irods://%s/%s' % (\
                             coll.getCollName(), str(fname)), \
                             name=fname, extras=extras, \
                             resource_type='file')
-                res.extras = extras
+            for met in f.getUserMetadata():
+                key, value, _ = met
+                extras[key] = value
+            res.extras = extras
             resgrp = pkg.resource_groups[0]
             resgrp.resources.append(res)
             Session.add(res)
             Session.add(resgrp)
+            rev.message = "Update from iRODS, matched file %s" % fname
     for met in coll.getUserMetadata():
         key, value, _ = met
         pkg.extras[key] = value
     Session.add(pkg)
     model.repo.commit()
+    return i
