@@ -6,6 +6,4 @@ mkdir log
 source pyenv/bin/activate
 cd pyenv/src/ckan
 paster serve development.ini &
-echo 1
 echo "%%PID%% $!"
-echo 2

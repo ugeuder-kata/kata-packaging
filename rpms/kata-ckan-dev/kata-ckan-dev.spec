@@ -95,14 +95,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
-sudo -u %{ckanuser} %{scriptdir}/01getpyenv.sh /home/%{ckanuser}
-sudo -u %{ckanuser} %{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}
+su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/05setuppostgres.sh
-sudo -u %{ckanuser} %{scriptdir}/10setupckan.sh /home/%{ckanuser}
+su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
 # run this last so the user has a chance to see the output
-sudo -u %{ckanuser} %{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze
+su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
 %preun
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}

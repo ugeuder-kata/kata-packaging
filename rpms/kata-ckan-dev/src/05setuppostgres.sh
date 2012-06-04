@@ -9,5 +9,6 @@ service postgresql start
 chkconfig postgresql on
 # following command from "postgres createuser -e -S -D -R -P ckanuser"
 # couldn't find a way to avoid prompting for the password
-sudo -u postgres psql -c "CREATE ROLE ckanuser PASSWORD 'md5372712b8c6097730c3164ddd4f9275e0' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN"
-sudo -u postgres createdb -O ckanuser ckantest
+cmd="CREATE ROLE ckanuser PASSWORD 'md5372712b8c6097730c3164ddd4f9275e0' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN"
+su -c 'psql -c "'"$cmd"'"' postgres
+su -c "createdb -O ckanuser ckantest" postgres
