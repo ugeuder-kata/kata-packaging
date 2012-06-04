@@ -1,0 +1,38 @@
+Babel==0.9.4
+Beaker==1.6.3
+FormAlchemy==1.4.1
+FormEncode==1.2.4
+Genshi==0.6
+Mako==0.7.0
+MarkupSafe==0.15
+Pairtree==0.7.1-T
+Paste==1.7.2
+PasteDeploy==1.5.0
+PasteScript==1.7.3
+Pygments==1.5
+Pylons==0.9.7
+Routes==1.11
+SQLAlchemy==0.7.3
+Tempita==0.4
+WebError==0.10.3
+WebHelpers==1.3
+WebOb==1.0.8
+WebTest==1.3.4
+apachemiddleware==0.1.1
+argparse==1.2.1
+-e git+https://github.com/okfn/ckan.git@773d4e11281485a48c3784cd513de1cfef8f1ca6#egg=ckan-dev
+decorator==3.3.3
+-e hg+http://hg.saddi.com/flup@301a58656bfbce7b77d538112b6348f67ce1162a#egg=flup-dev
+nose==1.1.2
+ofs==0.4.1
+psycopg2==2.0.13
+python-openid==2.2.5
+-e svn+https://software.sandia.gov/svn/public/pyutilib/pyutilib.component.core/trunk@1886#egg=pyutilib.component.core-4.1-py2.6-dev_r1886
+repoze.who==1.0.19
+repoze.who-friendlyform==1.0.8
+repoze.who.plugins.openid==0.5.3
+simplejson==2.5.2
+solrpy==0.9.4
+sqlalchemy-migrate==0.7.1
+-e git+https://github.com/okfn/vdm.git@0554de48c6d62d152699b53b98a7589dd5c71940#egg=vdm-dev
+zope.interface==3.5.3

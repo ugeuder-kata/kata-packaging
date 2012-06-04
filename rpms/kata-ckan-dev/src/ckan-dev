@@ -1,0 +1,88 @@
+#!/bin/bash
+#
+# ckan-dev      CKAN development environment
+#
+# chkconfig: 345 80 30
+# description: CKAN development is installed from upstream repos \
+#              it is fully functional
+# processname: ckan-dev
+# pidfile: /var/run/ckan-dev.pid
+#
+# Based on startup postfix startup script with contributions from
+# Simon J Mudd <sjmudd@pobox.com>, John A. Martin <jam@jamux.com>
+# Ajay Ramaswamy <ajayr@bigfoot.com> and Daniel Roesen.
+
+### BEGIN INIT INFO
+# Provides: ckan-dev
+# Required-Start: $local_fs $network $remote_fs postgresql
+# Required-Stop: $local_fs $network $remote_fs postgresql
+# Default-Start: 3 4 5
+# Default-Stop: 0 2 1 6
+# Short-Description: start and stop ckan-dev
+# Description: CKAN development is installed from upstream repos
+#              it is fully functional
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+# not sure whether the prog name is used anywhere besides for status output. 
+# Our naming is somewhat messy
+#  - init-script: ckan-dev
+#  - daemon start script: paster-ckan
+#  - daemon process: paster
+prog="ckan-dev"
+pidfile=/var/run/ckan-dev.pid
+
+status -p $pidfile $prog >/dev/null 2>&1
+running=$?
+
+start() {
+	[ "$EUID" != "0" ] && exit 4
+	echo -n $"Starting ckan-dev: "
+	daemon --pidfile $pidfile /usr/bin/paster-ckan && success || failure $"$prog start"
+	RETVAL=$?
+        echo
+	return $RETVAL
+}
+
+stop() {
+	[ "$EUID" != "0" ] && exit 4
+        # Stop daemons.
+	echo -n $"Shutting down ckan-dev: "
+	killproc -p $pidfile paster 2>/dev/null 1>&2 && success || failure $"$prog stop"
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && rm -f  $pidfile
+	echo
+	return $RETVAL
+}
+
+# See how we were called.
+case "$1" in
+  start)
+	[ $running -eq 0 ] && exit 0
+	start
+	;;
+  stop)
+	[ $running -eq 0 ] || exit 0
+	stop
+	;;
+  restart)
+	stop
+	start
+	;;
+  status)
+	status -p $pidfile $prog
+	;;
+  condrestart)
+	[ $running -eq 0 ] || exit 0
+	stop
+	start
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|restart|status|condrestart}"
+	exit 2
+esac
+
+exit $?

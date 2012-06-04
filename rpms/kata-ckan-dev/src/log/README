@@ -1,0 +1,12 @@
+pip.freeze is used during the installation to compare the result against
+a known result
+
+the install.log is just saved here in case we need to debug something later
+
+error1.log occured repeatedly on Mon 28-May-2012 The symptopm is
+
+Checking out https://software.sandia.gov/svn/public/pyutilib/pyutilib.component.core/trunk (to revision 1972) to ./pyenv/src/pyutilib.component.core
+svn: Can't find a temporary directory: Internal error
+
+Debugging did not lead to any result before the problem was no longer reprocible on Tuesday 29-May-2012.
+Keep the log just in case the issue comes up again.
