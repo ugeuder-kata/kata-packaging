@@ -127,16 +127,14 @@ def import_collection_to_package(params, id):
         for obj in coll.getObjects():
             extras = {} 
             fname, _ = obj
-            fname = "%s/%s" % (coll.getCollName(), fname) 
-            f = iRodsOpen(conn, fname, 'r')
+            fpath = "%s/%s" % (coll.getCollName(), fname) 
+            f = iRodsOpen(conn, fpath, 'r')
             if f:
                 i += 1
                 res = Resource.by_name(fname)
                 if not res:
-                    res = Resource(url = 'irods://%s/%s' % (\
-                            coll.getCollName(), str(fname)), \
-                            name=fname, extras=extras, \
-                            resource_type='file')
+                    res = Resource(url = '', name=fname, extras=extras, \
+                                   resource_type='file')
                 for met in f.getUserMetadata():
                     key, value, _ = met
                     extras[key] = value
