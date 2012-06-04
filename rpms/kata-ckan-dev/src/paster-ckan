@@ -1,17 +1,11 @@
 #!/bin/sh
-echo 1
-whoami
-#sudo -u ckan -s <<"END_SCRIPT" | cat > /var/log/paster-ckan-start
-cat <<"END_SCRIPT" > /var/log/paster-ckan-start
-set -x
-echo 2
-instloc=/home/ckan         # to be perfect this should be read from a conf file
-cd $instloc
-mkdir log
-source pyenv/bin/activate
-cd pyenv/src/ckan
-#paster serve development.ini 2>&1 >${instloc}/log/paster-ckan &
-paster serve development.ini &
-echo "%%PID%% $!"
-END_SCRIPT
-echo 3
+# this script is supposed to be executed as root
+log=/var/log/paster-ckan
+pidfile=/var/run/ckan-dev.pid
+exec 0>/dev/null >$log 2>&1
+sudo -u ckan -s paster-ckan2 
+until grep "%%PID%%" >/dev/null $log
+do
+  sleep 1 
+done
+grep "%%PID%%" $log | sed "s/%%PID%% //" >$pidfile

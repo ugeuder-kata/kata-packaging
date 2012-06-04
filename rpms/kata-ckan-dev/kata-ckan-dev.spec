@@ -52,6 +52,8 @@ diff -u patches/orig/search/__init__.py patches/kata/search/__init__.py >search_
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
+install -d $RPM_BUILD_ROOT/usr/bin
+install -d $RPM_BUILD_ROOT/etc/init.d
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -63,7 +65,9 @@ install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install search__init__.py.patch $RPM_BUILD_ROOT/%{patchdir}/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
-
+install paster-ckan $RPM_BUILD_ROOT/usr/bin/
+install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
+install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,6 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/development.ini.patch
 %{patchdir}/search__init__.py.patch
 %{katadatadir}/pip.freeze
+/usr/bin/paster-ckan
+/usr/bin/paster-ckan2
+/etc/init.d/ckan-dev
 
 
 %post

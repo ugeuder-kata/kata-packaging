@@ -27,6 +27,11 @@
 . /etc/rc.d/init.d/functions
 
 RETVAL=0
+# not sure whether the prog name is used anywhere besides for status output. 
+# Our naming is somewhat messy
+#  - init-script: ckan-dev
+#  - daemon start script: paster-ckan
+#  - daemon process: paster
 prog="ckan-dev"
 pidfile=/var/run/ckan-dev.pid
 
@@ -36,21 +41,19 @@ running=$?
 start() {
 	[ "$EUID" != "0" ] && exit 4
 	echo -n $"Starting ckan-dev: "
-	/usr/sbin/postfix start 2>/dev/null 1>&2 && success || failure $"$prog start"
+	daemon --pidfile $pidfile /usr/bin/paster-ckan && success || failure $"$prog start"
 	RETVAL=$?
-	[ $RETVAL -eq 0 ] && touch $lockfile
         echo
 	return $RETVAL
 }
 
 stop() {
 	[ "$EUID" != "0" ] && exit 4
-	conf_check
         # Stop daemons.
-	echo -n $"Shutting down postfix: "
-	/usr/sbin/postfix stop 2>/dev/null 1>&2 && success || failure $"$prog stop"
+	echo -n $"Shutting down ckan-dev: "
+	killproc -p $pidfile paster 2>/dev/null 1>&2 && success || failure $"$prog stop"
 	RETVAL=$?
-	[ $RETVAL -eq 0 ] && rm -f $lockfile $pidfile
+	[ $RETVAL -eq 0 ] && rm -f  $pidfile
 	echo
 	return $RETVAL
 }
