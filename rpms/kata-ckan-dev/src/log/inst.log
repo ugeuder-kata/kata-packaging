@@ -1,21 +1,20 @@
-$ sudo rpm -i kata-ckan-dev-305136-1.el6.i686.rpm
-useradd: user 'ckan' already exists
+$ sudo rpm -i kata-ckan-dev-314114-1.el6.i686.rpm
 + '[' -f /tmp/kata-SKIP01 ']'
 + instloc=/home/ckan
 + cd /home/ckan
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-05-29 19:16:41--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-06-05 01:00:21--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 101937 (100K) [text/plain]
-Saving to: `virtualenv.py'
+Saving to: “virtualenv.py”
 
-100%[===========================================================================================================================>] 101,937      261K/s   in 0.4s    
+100%[==========================================================================================================>] 101,937      138K/s   in 0.7s    
 
-2012-05-29 19:16:42 (261 KB/s) - `virtualenv.py' saved [101937/101937]
+2012-06-05 01:00:23 (138 KB/s) - “virtualenv.py” saved [101937/101937]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -36,8 +35,8 @@ Installing pip.....................done.
 ++ '[' '!' nondestructive = nondestructive ']'
 ++ VIRTUAL_ENV=/home/ckan/pyenv
 ++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
 ++ export PATH
 ++ '[' -n '' ']'
 ++ '[' -z '' ']'
@@ -368,7 +367,7 @@ Downloading/unpacking WebError>=0.10.1 (from Pylons==0.9.7->-r pyenv/src/ckan/re
   Downloading WebError-0.10.3.tar.gz (81Kb): 81Kb downloaded
   Running setup.py egg_info for package WebError
 Downloading/unpacking WebTest>=1.1 (from Pylons==0.9.7->-r pyenv/src/ckan/requires/lucid_present.txt (line 14))
-  Downloading WebTest-1.3.4.zip (105Kb): 105Kb downloaded
+  Downloading WebTest-1.3.4.tar.gz (78Kb): 78Kb downloaded
   Running setup.py egg_info for package WebTest
     warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
     warning: no files found matching '*.txt' under directory 'tests'
@@ -376,7 +375,7 @@ Downloading/unpacking setuptools (from repoze.who==1.0.19->-r pyenv/src/ckan/req
   Downloading setuptools-0.6c12dev-r88846.tar.gz (257Kb): 257Kb downloaded
   Running setup.py egg_info for package setuptools
 Downloading/unpacking python-openid>=2.0 (from repoze.who.plugins.openid==0.5.3->-r pyenv/src/ckan/requires/lucid_present.txt (line 19))
-  Downloading python-openid-2.2.5.zip (358Kb): 358Kb downloaded
+  Downloading python-openid-2.2.5.tar.gz (301Kb): 301Kb downloaded
   Running setup.py egg_info for package python-openid
     warning: no files found matching 'CHANGELOG'
     warning: no files found matching '*.css' under directory 'doc'
@@ -483,7 +482,7 @@ Installing collected packages: babel, psycopg2, webob, Pylons, repoze.who, tempi
     Best match: PasteDeploy 1.5.0
     Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
     Processing PasteDeploy-1.5.0.tar.gz
-    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-jDNLOo/PasteDeploy-1.5.0/egg-dist-tmp-6tolWO
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-mX3xuU/PasteDeploy-1.5.0/egg-dist-tmp-H449h_
     
     Installed /home/ckan/pyenv/build/pastescript/PasteDeploy-1.5.0-py2.6.egg
     Installing /home/ckan/pyenv/lib/python2.6/site-packages/PasteScript-1.7.3-py2.6-nspkg.pth
@@ -500,7 +499,7 @@ Installing collected packages: babel, psycopg2, webob, Pylons, repoze.who, tempi
     Best match: PasteDeploy 1.5.0
     Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
     Processing PasteDeploy-1.5.0.tar.gz
-    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-wJGlfD/PasteDeploy-1.5.0/egg-dist-tmp-9Y4gFZ
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-vb5Wsm/PasteDeploy-1.5.0/egg-dist-tmp-qhlKQq
     
     Installed /home/ckan/pyenv/build/WebHelpers/PasteDeploy-1.5.0-py2.6.egg
     no previously-included directories found matching 'docs/_build'
@@ -512,7 +511,7 @@ Installing collected packages: babel, psycopg2, webob, Pylons, repoze.who, tempi
     Best match: PasteDeploy 1.5.0
     Downloading http://pypi.python.org/packages/source/P/PasteDeploy/PasteDeploy-1.5.0.tar.gz#md5=f1a068a0b680493b6eaff3dd7690690f
     Processing PasteDeploy-1.5.0.tar.gz
-    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-wW9kxF/PasteDeploy-1.5.0/egg-dist-tmp-qO3oqC
+    Running PasteDeploy-1.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-jlTds4/PasteDeploy-1.5.0/egg-dist-tmp-TrPXRJ
     
     Installed /home/ckan/pyenv/build/Beaker/PasteDeploy-1.5.0-py2.6.egg
   Running setup.py install for PasteDeploy
@@ -583,9 +582,10 @@ patching file pg_hba.conf
 + service postgresql start
 Starting postgresql service: [  OK  ]
 + chkconfig postgresql on
-+ sudo -u postgres psql -c 'CREATE ROLE ckanuser PASSWORD '\''md5372712b8c6097730c3164ddd4f9275e0'\'' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN'
++ cmd='CREATE ROLE ckanuser PASSWORD '\''md5372712b8c6097730c3164ddd4f9275e0'\'' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN'
++ su -c 'psql -c "CREATE ROLE ckanuser PASSWORD '\''md5372712b8c6097730c3164ddd4f9275e0'\'' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN"' postgres
 CREATE ROLE
-+ sudo -u postgres createdb -O ckanuser ckantest
++ su -c 'createdb -O ckanuser ckantest' postgres
 + '[' -f /tmp/kata-SKIP10 ']'
 + instloc=/home/ckan
 + cd /home/ckan
@@ -600,8 +600,8 @@ CREATE ROLE
 ++ '[' '!' nondestructive = nondestructive ']'
 ++ VIRTUAL_ENV=/home/ckan/pyenv
 ++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
 ++ export PATH
 ++ '[' -n '' ']'
 ++ '[' -z '' ']'
@@ -647,10 +647,13 @@ Hunk #2 FAILED at 19.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:46: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-05-29 19:23:12,164 INFO  [ckan.model] CKAN database version upgraded: 0 -> 58
-2012-05-29 19:23:12,273 INFO  [ckan.model] Database initialised
+2012-06-05 01:06:37,895 INFO  [ckan.model] CKAN database version upgraded: 0 -> 58
+2012-06-05 01:06:37,999 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
++ service ckan-dev start
+[  OK  ] ckan-dev: [  OK  ]
++ chkconfig ckan-dev on
 + instloc=/home/ckan
 + expected=/usr/share/kata-ckan-dev/setup-data/pip.freeze
 + cd /home/ckan
@@ -665,8 +668,8 @@ Initialising DB: SUCCESS
 ++ '[' '!' nondestructive = nondestructive ']'
 ++ VIRTUAL_ENV=/home/ckan/pyenv
 ++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
 ++ export PATH
 ++ '[' -n '' ']'
 ++ '[' -z '' ']'
@@ -682,10 +685,10 @@ Initialising DB: SUCCESS
 + SETCOLOR_SUCCESS='echo -en \033[1;32m'
 + SETCOLOR_FAILURE='echo -en \033[1;31m'
 + SETCOLOR_NORMAL='echo -en \033[0;39m'
-+ diff - /usr/share/kata-ckan-dev/setup-data/pip.freeze
 + pip freeze
++ diff /usr/share/kata-ckan-dev/setup-data/pip.freeze -
 + echo -en '\033[1;32m'
 + echo 'Python packages checked OK.'
-Python packages checked OK.                                                                                                                                          
-+ echo -en '\033[0;39m'                                                                                                                                              
+Python packages checked OK.                                                                                                                         
++ echo -en '\033[0;39m'                                                                                                                             
 + rm -f /tmp/kata-70.tmp
