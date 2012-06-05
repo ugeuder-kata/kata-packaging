@@ -20,7 +20,7 @@ WebOb==1.0.8
 WebTest==1.3.4
 apachemiddleware==0.1.1
 argparse==1.2.1
--e git+https://github.com/okfn/ckan.git@ba4d37cfc8532a24e9f5bbf35735e5fdecc74e56#egg=ckan-dev
+-e git+https://github.com/okfn/ckan.git@f573a3a8d70f269c659f44282f798c6db08d9ece#egg=ckan-dev
 decorator==3.3.3
 -e hg+http://hg.saddi.com/flup@301a58656bfbce7b77d538112b6348f67ce1162a#egg=flup-dev
 nose==1.1.2

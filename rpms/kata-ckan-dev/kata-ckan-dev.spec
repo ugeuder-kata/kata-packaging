@@ -11,8 +11,6 @@ License: GPLv2+ (to be verified)
 Source0: kata-ckan-dev-%{version}.tgz
 Requires: gcc
 Requires: git
-Requires: libxml2-devel
-Requires: libxslt-devel
 Requires: mercurial
 Requires: patch
 Requires: postgresql-devel
