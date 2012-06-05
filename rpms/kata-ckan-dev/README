@@ -1,3 +1,11 @@
+Contents
+
+1. Building
+2. Installation
+3. Administration
+4. Development features during installation
+
+
 1. Building
 
 Requirements: Building has been tested in a plain minimal CentOS 6.2
@@ -22,6 +30,7 @@ you can call the script build-from-repo.sh from this directory
 In case you want/need to call rpmbuild manually just make sure that AUTOV
 environment variable is set to some reasonable version number
 
+
 2. Installation
 
 In a plain mininal operating system installation running rpm -i will fail
@@ -30,7 +39,23 @@ line as follows:
 
 $ sudo rpm -i kata-ckan-dev-305045-1.el6.i686.rpm 2>&1 | grep "is needed" | cut -c 2- | cut -f 1 -d " " | sudo xargs yum install -y
 
-3. Development features during installation
+
+3. Administration
+
+Check whether the CKAN server is running
+
+$ sudo service ckan-dev status
+
+Stop the server
+
+$ sudo service ckan-dev stop
+
+Start the server
+
+$ sudo service ckan-dev start
+
+
+4. Development features during installation
 
 If files /tmp/kata-SKIP01 or /tmp/kata-SKIP02 exist Python packages are
 not installed (useful for quick testing of other scripts, installing
