@@ -2,34 +2,42 @@
 e=$(date +%s)
 min=$(($e/60))
 version=$(($min%1000000))
-if [ -d kata-ckan-dev-${version} ]
+here=$(pwd)
+name=$(basename "$here")
+nv="${name}-${version}"
+if [ ! \(  "$name" = kata-ckan-dev \) -a ! \( "$name" = kata-ckan-prod \) ]
+then
+  echo "run this from kata-ckan-dev or kata-ckan-prod" >&2
+  echo "script deletes files with relative paths, which might not be generally a good idea" >&2
+  exit 2
+fi
+if [ -d "${nv}" ]
 # not very likely, but who cares...
 then
-  rm -rf kata-ckan-dev-${version}
+  rm -rf "${nv}"
 fi
-cp -a src kata-ckan-dev-${version}
-tar cjf kata-ckan-dev-${version}.tgz kata-ckan-dev-${version}/
-rm -rf kata-ckan-dev-${version}
-here=$(pwd)
+cp -a src "${nv}"
+tar cjf "${nv}.tgz" "${nv}/"
+rm -rf "${nv}"
 pushd ~/rpmbuild >/dev/null
 cd SPECS
-if [ -L kata-ckan-dev.spec ]
+if [ -L "${name}.spec" ]
 then
-  rm kata-ckan-dev.spec
+  rm "${name}.spec"
 fi
-ln -s ${here}/kata-ckan-dev.spec
+ln -s "${here}/${name}.spec"
 cd ../SOURCES
-if [ -L kata-ckan-dev-${version}.tgz ]
+if [ -L "${nv}.tgz" ]
 # not very likely, but who cares...
 then
-  rm kata-ckan-dev-${version}.tgz ]
+  rm "${nv}.tgz" ]
 fi
-ln -s ${here}/kata-ckan-dev-${version}.tgz
+ln -s "${here}/${nv}.tgz"
 cd ..
-AUTOV=${version} rpmbuild -ba SPECS/kata-ckan-dev.spec
-rm SPECS/kata-ckan-dev.spec
-rm SOURCES/kata-ckan-dev-${version}.tgz
+AUTOV="${version}" rpmbuild -ba "SPECS/${name}.spec"
+rm "SPECS/${name}.spec"
+rm "SOURCES/${nv}.tgz"
 popd >/dev/null
-rm kata-ckan-dev-${version}.tgz
+rm "${nv}.tgz"
 
 
