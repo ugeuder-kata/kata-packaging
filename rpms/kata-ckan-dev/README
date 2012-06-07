@@ -27,6 +27,8 @@ If you set up your rpmbuild environment under ~/rpmbuild
 like suggested in http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 you can call the script build-from-repo.sh from this directory
 
+These steps have also been automated in ../setup-buildenv.sh
+
 In case you want/need to call rpmbuild manually just make sure that AUTOV
 environment variable is set to some reasonable version number
 

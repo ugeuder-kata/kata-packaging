@@ -1,1 +1,11 @@
-not yet
+1. For reproducible results it is recommended to start always in a
+   fresh CentOS installation. Setup a user account for building
+   (building as root is generally not a good idea) and add it to
+   sudoers. Myself I use an LVM-based snapshot to be able to reuse the
+   same prepared virtual machine quickly.
+
+2. Install kata-ckan-dev-rpm (see ../kata-ckan-dev/README for hints)
+
+3. run ../setup-buildenv
+
+
