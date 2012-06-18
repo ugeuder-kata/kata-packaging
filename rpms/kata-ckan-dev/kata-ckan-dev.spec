@@ -103,6 +103,7 @@ su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
 %preun
+service ckan-dev stop
 %{scriptdir}/80backuphome.sh /home/%{ckanuser}
 
 
