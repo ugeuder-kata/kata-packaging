@@ -36,8 +36,7 @@ This package is for the production server.
 
 
 %build
-sudo find /home/ckan/pyenv ! -type d >ckanfiles.list 
-wc -l ckanfiles.list
+echo "nothing to be built"
 
 
 %install
@@ -54,10 +53,6 @@ sudo chown ${me} $RPM_BUILD_ROOT/home
 sudo chown ${me} $RPM_BUILD_ROOT/home/%{ckanuser}
 find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs rm -rf
 find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs rm -rf
-echo links
-find $RPM_BUILD_ROOT -type l
-echo done
-find $RPM_BUILD_ROOT -type f | wc -l
 #install -d $RPM_BUILD_ROOT/%{scriptdir}
 #install getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
@@ -66,7 +61,6 @@ find $RPM_BUILD_ROOT -type f | wc -l
 rm -rf $RPM_BUILD_ROOT
 
 %files
-# -f ckanfiles.list
 %defattr(-,%{ckanuser},%{ckanuser})
 /home/%{ckanuser}/pyenv
 #%{scriptdir}/getpyenv.sh
@@ -78,6 +72,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 echo Done
 
 %postun
+userdel -r %{ckanuser}
 echo "Uninstallation not supported yet, better get a clean VM..."
 
 %changelog
