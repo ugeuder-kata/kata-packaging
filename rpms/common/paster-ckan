@@ -1,0 +1,15 @@
+#!/bin/sh
+# this script is supposed to be executed as root
+log=/var/log/paster-ckan
+user=ckan
+pidfile=/var/run/ckan-dev.pid
+exec 0>/dev/null >$log 2>&1
+su -c paster-ckan2 $user
+# known bug: in case of malfunction the loop below will be endless and
+# system boot will not complete. Should be limited to a couple of
+# attempts
+until grep "%%PID%%" >/dev/null $log
+do
+  sleep 1 
+done
+grep "%%PID%%" $log | sed "s/%%PID%% //" >$pidfile

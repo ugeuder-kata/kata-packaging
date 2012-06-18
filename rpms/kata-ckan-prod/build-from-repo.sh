@@ -1,1 +1,1 @@
-../kata-ckan-dev/build-from-repo.sh
+../common/build-from-repo.sh

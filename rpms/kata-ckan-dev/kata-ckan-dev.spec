@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/05setuppostgres.sh
+%{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh

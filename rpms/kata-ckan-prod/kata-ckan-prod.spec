@@ -16,7 +16,7 @@ License: GPLv2+ (to be verified)
 Source: kata-ckan-prod-%{version}.tgz
 Requires: postgresql
 Requires: postgresql-server
-Requires: sudo
+Requires: patch
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...
@@ -26,6 +26,7 @@ BuildRequires: kata-ckan-dev
 
 %define ckanuser ckan
 %define scriptdir %{_datadir}/%{name}/setup-scripts
+%define patchdir %{_datadir}/%{name}/setup-patches
 
 %description
 Installs a complete Kata CKAN environment
@@ -36,7 +37,7 @@ This package is for the production server.
 
 
 %build
-echo "nothing to be built"
+diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 
 
 %install
@@ -46,30 +47,57 @@ echo "nothing to be built"
 # sudo is somewhat nasty here (interactive command) but building is
 # only carried out by people who know what they are doing...
 me=$(whoami)
+# run a dummy sudo first. Two sudo commands in a pipe sometimes screw up
+# the terminal when both prompting for the password
+sudo true
 sudo find /home/%{ckanuser}/pyenv -depth | sudo cpio -pdm --owner ${me}: $RPM_BUILD_ROOT/
 # not sure why, but testings show that the following 2 directories are not
 # owned by ${me}
 sudo chown ${me} $RPM_BUILD_ROOT/home
 sudo chown ${me} $RPM_BUILD_ROOT/home/%{ckanuser}
-find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs rm -rf
-find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs rm -rf
-#install -d $RPM_BUILD_ROOT/%{scriptdir}
-#install getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
+find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs -0 rm -rf
+find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs -0 rm -rf
+install -d $RPM_BUILD_ROOT/%{scriptdir}
+install -d $RPM_BUILD_ROOT/%{patchdir}
+install -d $RPM_BUILD_ROOT/usr/bin
+install -d $RPM_BUILD_ROOT/etc/init.d
+install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install paster-ckan $RPM_BUILD_ROOT/usr/bin/
+install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
+install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,%{ckanuser},%{ckanuser})
-/home/%{ckanuser}/pyenv
-#%{scriptdir}/getpyenv.sh
+%defattr(-,root,root)
+%attr(-,%{ckanuser},%{ckanuser}) /home/%{ckanuser}/pyenv
+%{scriptdir}/05setuppostgres.sh
+%{scriptdir}/10setupckanprod.sh
+%{scriptdir}/14openfirewall.sh
+%{scriptdir}/20setupckanservice.sh
+%{scriptdir}/80backuphome.sh
+%{patchdir}/pg_hba.conf.patch
+/usr/bin/paster-ckan
+/usr/bin/paster-ckan2
+/etc/init.d/ckan-dev
+
 
 %pre
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 
 %post
-echo Done
+%{scriptdir}/05setuppostgres.sh %{patchdir}
+su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/14openfirewall.sh
+%{scriptdir}/20setupckanservice.sh
+
 
 %postun
 userdel -r %{ckanuser}
