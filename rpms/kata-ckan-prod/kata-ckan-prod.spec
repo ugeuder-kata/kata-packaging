@@ -36,11 +36,28 @@ This package is for the production server.
 
 
 %build
-sudo find /home/ckan ! -type d >ckanfiles.list 
+sudo find /home/ckan/pyenv ! -type d >ckanfiles.list 
+wc -l ckanfiles.list
 
 
 %install
-sudo find /home/%{ckanuser} -depth | sudo cpio -pdm $RPM_BUILD_ROOT/home/%{ckanuser}
+# cpio: we need to be root to be able to read, but we don't preserve the 
+# ownership because rpmbuild will in trouble later with such files. 
+# %attr will take care of ownership eventually
+# sudo is somewhat nasty here (interactive command) but building is
+# only carried out by people who know what they are doing...
+me=$(whoami)
+sudo find /home/%{ckanuser}/pyenv -depth | sudo cpio -pdm --owner ${me}: $RPM_BUILD_ROOT/
+# not sure why, but testings show that the following 2 directories are not
+# owned by ${me}
+sudo chown ${me} $RPM_BUILD_ROOT/home
+sudo chown ${me} $RPM_BUILD_ROOT/home/%{ckanuser}
+find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs rm -rf
+find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs rm -rf
+echo links
+find $RPM_BUILD_ROOT -type l
+echo done
+find $RPM_BUILD_ROOT -type f | wc -l
 #install -d $RPM_BUILD_ROOT/%{scriptdir}
 #install getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
@@ -48,8 +65,10 @@ sudo find /home/%{ckanuser} -depth | sudo cpio -pdm $RPM_BUILD_ROOT/home/%{ckanu
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f ckanfiles.list
-%defattr(-,{%ckanuser},%{ckanuser})
+%files
+# -f ckanfiles.list
+%defattr(-,%{ckanuser},%{ckanuser})
+/home/%{ckanuser}/pyenv
 #%{scriptdir}/getpyenv.sh
 
 %pre
