@@ -9,7 +9,7 @@ fi
 instloc=$1
 cd $instloc
 source pyenv/bin/activate
-pip install --ignore-installed -e git+https://github.com/okfn/ckan.git#egg=ckan
-pip install --ignore-installed -r pyenv/src/ckan/pip-requirements.txt
+pip install -e git+https://github.com/okfn/ckan.git#egg=ckan
+pip install -r pyenv/src/ckan/pip-requirements.txt
 # according to installation instructions we need to deactive our pyenv here
 # will happen automatically because script ends here

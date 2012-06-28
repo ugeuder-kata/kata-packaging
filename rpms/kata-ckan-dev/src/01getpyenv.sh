@@ -12,4 +12,9 @@ mkdir -p ${instloc}/download
 cd ${instloc}/download
 wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 cd ..
+# --no-site-packages option should be used according to updated installation
+# instructions
+# however, it causes a deprecation warning, would only be required on 
+# older versions, so we drop it
+#python download/virtualenv.py --no-site-packages pyenv
 python download/virtualenv.py pyenv
