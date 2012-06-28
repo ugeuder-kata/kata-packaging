@@ -17,6 +17,8 @@ Source: kata-ckan-prod-%{version}.tgz
 Requires: postgresql
 Requires: postgresql-server
 Requires: patch
+Requires: libxslt
+Requires: rabbitmq-server
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...
@@ -65,6 +67,7 @@ install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 21setupoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install paster-ckan $RPM_BUILD_ROOT/usr/bin/
@@ -82,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/10setupckanprod.sh
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
+%{scriptdir}/21setupoaipmh.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 /usr/bin/paster-ckan
@@ -95,6 +99,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 %post
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/21setupoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
 
