@@ -9,5 +9,4 @@ fi
 instloc=$1
 cd $instloc
 source pyenv/bin/activate
-paster --plugin=ckanext-harvest harvester db init --config=$instloc/pyenv/src/ckan/development.ini
-paster --plugin=ckan sysadmin add harvest --config=$instloc/pyenv/src/ckan/development.ini
+paster --plugin=ckanext-harvest harvester initdb --config=$instloc/pyenv/src/ckan/development.ini

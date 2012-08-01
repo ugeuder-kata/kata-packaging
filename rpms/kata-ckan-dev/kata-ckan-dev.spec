@@ -60,6 +60,7 @@ install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 21installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 22installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 23installurn.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
@@ -84,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/21installddi.sh
 %{scriptdir}/22installoaipmh.sh
+%{scriptdir}/23installurn.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
@@ -105,6 +107,7 @@ su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/21installddi.sh /home/%{ckanuser}
 %{scriptdir}/22installoaipmh.sh /home/%{ckanuser}
+%{scriptdir}/23installurn.sh /home/%{ckanuser}
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
