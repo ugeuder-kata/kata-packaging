@@ -19,6 +19,7 @@ Requires: postgresql-server
 Requires: patch
 Requires: libxslt
 Requires: rabbitmq-server
+Requires: apache-solr
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...
