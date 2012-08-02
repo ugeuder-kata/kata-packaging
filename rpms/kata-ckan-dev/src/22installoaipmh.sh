@@ -8,4 +8,6 @@ source ../bin/activate
 pip install -e git+https://github.com/okfn/ckanext-harvest.git#egg=ckanext-harvest
 pip install carrot
 paster --plugin=ckanext-harvest harvester initdb --config=$instloc/pyenv/src/ckan/development.ini
-pip install -e git+https://github.com/locusf/ckanext-oaipmh.git#egg=ckanext-oaipmh
+git clone https://github.com/locusf/ckanext-oaipmh.git
+cd ckanext-oaipmh
+python setup.py install
