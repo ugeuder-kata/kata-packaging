@@ -1,20 +1,20 @@
-$ sudo rpm -i kata-ckan-dev-398531-1.el6.i686.rpm
+$ sudo rpm -i kata-ckan-dev-398572-1.el6.i686.rpm
 + '[' -f /tmp/kata-SKIP01 ']'
 + instloc=/home/ckan
 + cd /home/ckan
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-08-02 16:05:23--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-08-02 16:55:32--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 108233 (106K) [text/plain]
 Saving to: `virtualenv.py'
 
- 0% [                                                                                                                            ] 0           --.-K/s              75% [============================================================================================>                               ] 81,484       323K/s              100%[===========================================================================================================================>] 108,233      286K/s   in 0.4s    
+ 0% [                                                                                                                            ] 0           --.-K/s              75% [============================================================================================>                               ] 81,484       315K/s              100%[===========================================================================================================================>] 108,233      282K/s   in 0.4s    
 
-2012-08-02 16:05:24 (286 KB/s) - `virtualenv.py' saved [108233/108233]
+2012-08-02 16:55:33 (282 KB/s) - `virtualenv.py' saved [108233/108233]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -516,8 +516,6 @@ Now you should edit the config files
   development.ini
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
 patching file development.ini
-Hunk #2 FAILED at 19.
-1 out of 5 hunks FAILED -- saving rejects to file development.ini.rej
 ++ ip addr show dev eth0
 ++ sed -E 's/ +inet +([^/]+).+/\1/'
 ++ grep 'inet '
@@ -537,8 +535,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-08-02 16:09:58,974 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
-2012-08-02 16:09:59,094 INFO  [ckan.model] Database initialised
+2012-08-02 16:59:52,610 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
+2012-08-02 16:59:52,718 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
 + service ckan-dev start
@@ -577,8 +575,8 @@ Starting ckan-dev: [  OK  ][  OK  ]
 + SETCOLOR_SUCCESS='echo -en \033[1;32m'
 + SETCOLOR_FAILURE='echo -en \033[1;31m'
 + SETCOLOR_NORMAL='echo -en \033[0;39m'
-+ pip freeze
 + diff /usr/share/kata-ckan-dev/setup-data/pip.freeze -
++ pip freeze
 + echo -en '\033[1;32m'
 [1;32m+ echo 'Python packages checked OK.'
 Python packages checked OK.
