@@ -11,12 +11,10 @@ License: GPLv2+ (to be verified)
 Source0: kata-ckan-dev-%{version}.tgz
 Requires: gcc
 Requires: git
-Requires: mercurial
 Requires: patch
 Requires: postgresql-devel
 Requires: postgresql-server
 Requires: python-devel
-Requires: subversion
 Requires: wget
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...

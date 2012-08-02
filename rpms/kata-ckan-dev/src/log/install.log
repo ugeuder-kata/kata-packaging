@@ -1,20 +1,20 @@
-$ sudo rpm -i kata-ckan-dev-398335-1.el6.i686.rpm
+$ sudo rpm -i kata-ckan-dev-398451-1.el6.i686.rpm
 + '[' -f /tmp/kata-SKIP01 ']'
 + instloc=/home/ckan
 + cd /home/ckan
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-08-02 13:27:11--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-08-02 14:52:46--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 108233 (106K) [text/plain]
 Saving to: `virtualenv.py'
 
- 0% [                                                                                                                            ] 0           --.-K/s              75% [============================================================================================>                               ] 81,484       355K/s              100%[===========================================================================================================================>] 108,233      317K/s   in 0.3s    
+ 0% [                                                                                                                            ] 0           --.-K/s              75% [============================================================================================>                               ] 81,484       340K/s              100%[===========================================================================================================================>] 108,233      304K/s   in 0.3s    
 
-2012-08-02 13:27:12 (317 KB/s) - `virtualenv.py' saved [108233/108233]
+2012-08-02 14:52:47 (304 KB/s) - `virtualenv.py' saved [108233/108233]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -539,8 +539,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-08-02 13:31:31,279 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
-2012-08-02 13:31:31,390 INFO  [ckan.model] Database initialised
+2012-08-02 14:57:13,291 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
+2012-08-02 14:57:13,414 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
 + service ckan-dev start
@@ -581,65 +581,9 @@ Starting ckan-dev: [  OK  ][  OK  ]
 + SETCOLOR_NORMAL='echo -en \033[0;39m'
 + pip freeze
 + diff /usr/share/kata-ckan-dev/setup-data/pip.freeze -
-+ echo -en '\033[1;31m'
-[1;31m+ echo 'Python package mismatches:'
-Python package mismatches:
-+ cat /tmp/kata-70.tmp
-1c1
-< Babel==0.9.4
----
-> Babel==0.9.6
-3c3
-< FormAlchemy==1.4.1
----
-> FormAlchemy==1.4.2
-6c6
-< Mako==0.7.0
----
-> Mako==0.7.2
-9c9
-< Paste==1.7.2
----
-> Paste==1.7.5.1
-11c11
-< PasteScript==1.7.3
----
-> PasteScript==1.7.5
-14,16c14,16
-< Routes==1.11
-< SQLAlchemy==0.7.3
-< Tempita==0.4
----
-> Routes==1.13
-> SQLAlchemy==0.7.8
-> Tempita==0.5.1
-23c23
-< -e git+https://github.com/okfn/ckan.git@f573a3a8d70f269c659f44282f798c6db08d9ece#egg=ckan-dev
----
-> -e git+https://github.com/okfn/ckan.git@99adf3dddb4ef78b34d128e3a5f9031643e8b0e9#egg=ckan-dev
-25d24
-< -e hg+http://hg.saddi.com/flup@301a58656bfbce7b77d538112b6348f67ce1162a#egg=flup-dev
-28c27
-< psycopg2==2.0.13
----
-> psycopg2==2.4.5
-30c29,30
-< -e svn+https://software.sandia.gov/svn/public/pyutilib/pyutilib.component.core/trunk@1886#egg=pyutilib.component.core-4.1-py2.6-dev_r1886
----
-> pyutilib.component.core==4.5.3
-> repoze.lru==0.6
-34,36c34,36
-< simplejson==2.5.2
-< solrpy==0.9.4
-< sqlalchemy-migrate==0.7.1
----
-> simplejson==2.6.1
-> solrpy==0.9.5
-> sqlalchemy-migrate==0.7.2
-38c38
-< zope.interface==3.5.3
----
-> zope.interface==4.0.1
++ echo -en '\033[1;32m'
+[1;32m+ echo 'Python packages checked OK.'
+Python packages checked OK.
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 
