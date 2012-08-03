@@ -99,9 +99,18 @@ su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/20setupckanservice.sh
 
 
+%preun
+service ckan-dev stop
+# design assumption is that kata is on a "single purpose" server, we 
+# initialize postgres during installation, so we also stop it here
+service postgresql stop
+
 %postun
 userdel -r %{ckanuser}
-echo "Uninstallation not supported yet, better get a clean VM..."
+# TODO: we must support updates, but we must never ever lose the production
+# database
+echo 'Consider "rm -rf /var/lib/pgsql/data"' 
+echo "Uninstallation not really supported yet, better get a clean VM..."
 
 %changelog
 * Mon May 22 2012 Uwe Geuder <uwe.geuder@nomovok.com>
