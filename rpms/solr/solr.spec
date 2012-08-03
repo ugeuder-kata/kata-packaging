@@ -32,6 +32,8 @@ cat > $RPM_BUILD_ROOT/usr/share/tomcat6/conf/Catalina/localhost/solr.xml <<EOF
 EOF
 
 %post
+# To counter the issues with a 500 error on solr.
+sed -i 's/enable="${solr.velocity.enabled:true}"/enable="${solr.velocity.enabled:false}"/' /opt/solr/conf/solrconfig.xml
 service tomcat6 restart
 %files
 %attr(-,tomcat,tomcat)/opt/solr
