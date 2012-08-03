@@ -5,7 +5,7 @@ II.  Building kata-ckan-dev
 III. Installation of kata-ckan-dev
 IV.  Building kata-ckan-prod
 V.   Installing kata-ckan-prod
-
+VI.  Administrative tasks
 
 I. Overview 
 
@@ -58,7 +58,7 @@ II. Building kata-ckan-dev
 
 kata-ckan-dev is built in development machine 1. 
 
-Building has been tested in a plain minimal CentOS 6.2
+Building has been tested in a plain minimal CentOS 6.3
 installation. For my own administration I had already installed
 
 - openssh-client
@@ -134,3 +134,24 @@ $ sudo rpm -i kata-ckan-prod-335386-1.el6.x86_64.rpm
 
 Necessary user accounts will be created automatically, ckan installed
 as a service and the firewall will be opened for web access.
+
+
+VI.  Administrative tasks
+
+CKAN server is started automatically.
+
+To verify whether it is running use
+
+$ service ckan-dev status
+
+To stop it use
+
+# service ckan-dev stop
+
+Note: The meaning of "dev" is somewhat overloaded. Here it does not
+refer to the the dev.rpm (as opposed to the prod.rpm), but to CKAN's
+internal development version of the web server (as opposed to
+Apache). ckan-dev service is currently used on both the development
+machine 2 and the production machine. Later we will switch to Apache, I 
+guess)
+
