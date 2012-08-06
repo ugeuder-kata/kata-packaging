@@ -2,7 +2,10 @@ Contents
 
 I.   Overview
 II.  Building kata-ckan-dev
-III. Installation of kata-ckan-dev
+II.1 Building apache-solr for kata-ckan-dev
+III.1 Installation of apache-solr
+III.2 Installation of rabbitmq
+III.3 Installation of kata-ckan-dev
 IV.  Building kata-ckan-prod
 V.   Installing kata-ckan-prod
 VI.  Administrative tasks
@@ -81,8 +84,55 @@ like suggested in http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 For building the kata-ckan-dev package, go to subdirectory kata-ckan-dev and
 call the script ./build-from-repo.sh
 
+II.1 Building apache-solr for kata-ckan-dev
+SOLR is a key dependent component for CKAN, thus we need it built and packaged
+manually as it is not packaged in any separate repository.
 
-III. Installation of kata-ckan-dev
+This source repository of Nomovok contains a basic .spec file which has the
+necessary information regarding the format of the source tarball which is
+essential to the installation. The spec file resides in rpms/solr.
+
+Building it is straightforward, assuming one has a development machine 1 primed
+for building RPM packages from source. We just need to download a binary
+distribution of SOLR to ~/rpmbuild/SOURCES:
+ http://archive.apache.org/dist/lucene/solr/3.5.0/apache-solr-3.5.0.tgz
+
+And then issuing the rpmbuild command:
+ rpmbuild -ba solr.spec
+
+
+
+III.1 Installation of apache-solr
+
+To install necessary dependencies, please see this web site for more information:
+ http://blog.nexcess.net/2011/12/30/installing-apache-solr-on-centos/
+
+Only apply the extra jpackage repository and tomcat6 + openjdk installation
+stanzas. These stanzas need to be executed within development machine 2.
+
+The command produces a apache-solr-3.5.0-<arch>.rpm package, which can be then
+installed to development machine 2 with:
+ rpm -i apache-solr-3.5.0-arch.rpm
+
+III.2 Installation of rabbitmq
+
+Installation of rabbitmq is essential to enable the functionality of ckanext-harvester.
+To install it, follow the official guide of RabbitMQ:
+ http://www.rabbitmq.com/install-rpm.html
+
+Only install EPEL and then the rabbitmq package itself (via yum), do not enable
+any extra erlang repositories or install any of the erlang packages as it is
+not necessary.
+
+RabbitMQ is not automatically enabled as CentOS already has an AMQP server
+enabled so it needs to be disabled and RabbitMQ server enabled for it to function:
+ chkconfig qpidd off &&\
+ service qpidd stop &&\
+ chkconfig rabbitmq-server on &&\
+ service rabbitmq-server on
+
+
+III.3 Installation of kata-ckan-dev
 
 This step is done in development machine 2.
 
@@ -121,7 +171,8 @@ multiple repeatable installations later.
 
 V. Installing kata-ckan-prod
 
-This step is carried out in the production machine.
+This step is carried out in the production machine. Please make sure that
+both SOLR and RabbitMQ services are enabled as desribed in III.1 and III.2.
 
 In a plain mininal operating system installation running rpm -i will fail
 because of missing dependencies. Currently 3 dependencies are required:
