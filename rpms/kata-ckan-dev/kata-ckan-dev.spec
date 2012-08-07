@@ -58,9 +58,10 @@ install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 21installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 22installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 22installharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 23installurn.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -84,9 +85,10 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/10setupckan.sh
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
-%{scriptdir}/21installddi.sh
-%{scriptdir}/22installoaipmh.sh
+%{scriptdir}/22installharvester.sh
 %{scriptdir}/23installurn.sh
+%{scriptdir}/24installoaipmh.sh
+%{scriptdir}/25installddi.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/60installextensions.sh
 %{scriptdir}/70checkpythonpackages.sh
@@ -107,10 +109,10 @@ su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
-su -c "%{scriptdir}/%{scriptdir}/21installddi.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/%{scriptdir}/60installextensions.sh /home/%{ckanuser}"
 # run this last so the user has a chance to see the output
