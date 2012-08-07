@@ -109,12 +109,12 @@ su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
-su -c "%{scriptdir}/%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
-su -c "%{scriptdir}/%{scriptdir}/60installextensions.sh /home/%{ckanuser}"
+su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}"
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
