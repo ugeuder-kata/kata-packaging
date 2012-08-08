@@ -19,6 +19,7 @@ Requires: wget
 Requires: libxslt-devel
 Requires: rabbitmq-server
 Requires: apache-solr
+Requires: supervisor
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -69,6 +70,7 @@ install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
+install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install paster-ckan $RPM_BUILD_ROOT/usr/bin/
 install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
 install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
@@ -95,6 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/development.ini.patch
+%{katadatadir}/harvester.conf
 %{katadatadir}/pip.freeze
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2
@@ -113,6 +116,12 @@ su -c "%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
+# Lets do this last so our harvesters are correctly picked up by the daemons.
+cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
+# Enable tmp directory for logging. Otherwise goes to /
+sed -i 's/;directory/directory/' /etc/supervisord.conf
+service supervisord restart
+chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}"
 # run this last so the user has a chance to see the output
