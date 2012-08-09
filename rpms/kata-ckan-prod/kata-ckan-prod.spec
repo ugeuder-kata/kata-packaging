@@ -20,6 +20,7 @@ Requires: patch
 Requires: libxslt
 Requires: rabbitmq-server
 Requires: apache-solr
+Requires: supervisor
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...
@@ -70,12 +71,14 @@ install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 21setupoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install paster-ckan $RPM_BUILD_ROOT/usr/bin/
 install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
 install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
-
+install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
+install runharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -89,8 +92,11 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/21setupoaipmh.sh
 %{scriptdir}/30configsolr.sh
+%{scriptdir}/61setupsources.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
+%{scriptdir}/harvester.conf
+%{scriptdir}/runharvester.sh
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2
 /etc/init.d/ckan-dev
@@ -105,8 +111,15 @@ su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/21setupoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
+# Lets do this last so our harvesters are correctly picked up by the daemons.
+cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf
+# Enable tmp directory for logging. Otherwise goes to /
+sed -i 's/;directory/directory/' /etc/supervisord.conf
+service supervisord restart
+chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
-
+%{scriptdir}/61setupsources.sh /home/%{ckanuser}
+at -f %{scriptdir}/runharvester.sh 'now + 5 minute'
 
 %preun
 service ckan-dev stop

@@ -65,12 +65,14 @@ install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
+install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
 install paster-ckan $RPM_BUILD_ROOT/usr/bin/
 install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
 install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
@@ -93,11 +95,13 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/25installddi.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/60installextensions.sh
+%{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/development.ini.patch
 %{katadatadir}/harvester.conf
+%{katadatadir}/runharvester.sh
 %{katadatadir}/pip.freeze
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2
@@ -123,7 +127,9 @@ sed -i 's/;directory/directory/' /etc/supervisord.conf
 service supervisord restart
 chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
-su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}"
+su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/61setupsources.sh /home/%{ckanuser}
+at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
