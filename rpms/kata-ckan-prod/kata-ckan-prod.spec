@@ -70,7 +70,7 @@ install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 21setupoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 21setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
