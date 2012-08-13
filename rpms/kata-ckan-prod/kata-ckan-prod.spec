@@ -65,6 +65,7 @@ install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/usr/bin
 install -d $RPM_BUILD_ROOT/etc/init.d
+install -d $RPM_BUILD_ROOT/etc/cron.d
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -78,7 +79,7 @@ install paster-ckan $RPM_BUILD_ROOT/usr/bin/
 install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
 install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
-install runharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install harvester $RPM_BUILD_ROOT/etc/cron.d/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -90,16 +91,16 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/10setupckanprod.sh
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
-%{scriptdir}/21setupoaipmh.sh
+%{scriptdir}/21setupharvester.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 %{scriptdir}/harvester.conf
-%{scriptdir}/runharvester.sh
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2
 /etc/init.d/ckan-dev
+%attr(0644,root,root)/etc/cron.d/harvester
 
 
 %pre
@@ -108,7 +109,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 %post
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/21setupoaipmh.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
 # Lets do this last so our harvesters are correctly picked up by the daemons.
@@ -119,7 +120,6 @@ service supervisord restart
 chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
-at -f %{scriptdir}/runharvester.sh 'now + 5 minute'
 
 %preun
 service ckan-dev stop

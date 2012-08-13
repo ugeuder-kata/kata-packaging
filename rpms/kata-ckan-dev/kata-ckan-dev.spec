@@ -53,6 +53,7 @@ install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
 install -d $RPM_BUILD_ROOT/usr/bin
 install -d $RPM_BUILD_ROOT/etc/init.d
+install -d $RPM_BUILD_ROOT/etc/cron.d
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -72,10 +73,10 @@ install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
-install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
 install paster-ckan $RPM_BUILD_ROOT/usr/bin/
 install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
 install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
+install harvester $RPM_BUILD_ROOT/etc/cron.d/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,11 +102,11 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/development.ini.patch
 %{katadatadir}/harvester.conf
-%{katadatadir}/runharvester.sh
 %{katadatadir}/pip.freeze
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2
 /etc/init.d/ckan-dev
+%attr(0644,root,root)/etc/cron.d/harvester
 
 
 %post
@@ -129,7 +130,6 @@ chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
-at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
