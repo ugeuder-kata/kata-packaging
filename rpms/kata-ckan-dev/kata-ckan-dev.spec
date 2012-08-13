@@ -72,6 +72,7 @@ install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
+install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install paster-ckan $RPM_BUILD_ROOT/usr/bin/
 install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
@@ -102,6 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/development.ini.patch
 %{katadatadir}/harvester.conf
+%{katadatadir}/runharvester.sh
 %{katadatadir}/pip.freeze
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2

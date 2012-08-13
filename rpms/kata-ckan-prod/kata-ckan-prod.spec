@@ -79,6 +79,7 @@ install paster-ckan $RPM_BUILD_ROOT/usr/bin/
 install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
 install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
+install runharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
 
 %clean
@@ -97,6 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/80backuphome.sh
 %{patchdir}/pg_hba.conf.patch
 %{scriptdir}/harvester.conf
+%{scriptdir}/runharvester.sh
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2
 /etc/init.d/ckan-dev
