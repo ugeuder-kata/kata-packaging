@@ -130,6 +130,7 @@ chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
+at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
