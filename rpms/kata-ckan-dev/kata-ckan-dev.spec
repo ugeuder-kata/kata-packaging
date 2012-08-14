@@ -20,6 +20,7 @@ Requires: libxslt-devel
 Requires: rabbitmq-server
 Requires: apache-solr
 Requires: supervisor
+Requires: mod_wsgi
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -51,9 +52,8 @@ diff -u patches/orig/development.ini patches/kata/development.ini >development.i
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
-install -d $RPM_BUILD_ROOT/usr/bin
-install -d $RPM_BUILD_ROOT/etc/init.d
 install -d $RPM_BUILD_ROOT/etc/cron.d
+install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -74,10 +74,8 @@ install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
-install paster-ckan $RPM_BUILD_ROOT/usr/bin/
-install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
-install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
+install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -105,9 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %{katadatadir}/harvester.conf
 %{katadatadir}/runharvester.sh
 %{katadatadir}/pip.freeze
-/usr/bin/paster-ckan
-/usr/bin/paster-ckan2
-/etc/init.d/ckan-dev
+/etc/httpd/conf.d/kata.conf
 %attr(0644,root,root)/etc/cron.d/harvester
 
 
@@ -115,6 +111,20 @@ rm -rf $RPM_BUILD_ROOT
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
+cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
+import os
+instance_dir = '/home/ckan'
+config_file = '/home/ckan/pyenv/src/ckan/development.ini'
+pyenv_bin_dir = os.path.join(instance_dir, 'pyenv', 'bin')
+activate_this = os.path.join(pyenv_bin_dir, 'activate_this.py')
+execfile(activate_this, dict(__file__=activate_this))
+from paste.deploy import loadapp
+config_filepath = os.path.join(instance_dir, config_file)
+from paste.script.util.logging_config import fileConfig
+fileConfig(config_filepath)
+application = loadapp('config:%s' % config_filepath)
+EOF
+chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh

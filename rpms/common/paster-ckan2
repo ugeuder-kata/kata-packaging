@@ -1,9 +1,0 @@
-#!/bin/bash
-# this script is supposed to be executed as the ckan user
-instloc=/home/ckan         # to be perfect this should be read from a conf file
-cd $instloc
-mkdir log
-source pyenv/bin/activate
-cd pyenv/src/ckan
-paster serve development.ini &
-echo "%%PID%% $!"

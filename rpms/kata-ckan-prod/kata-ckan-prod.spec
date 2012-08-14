@@ -21,6 +21,7 @@ Requires: libxslt
 Requires: rabbitmq-server
 Requires: apache-solr
 Requires: supervisor
+Requires: mod_wsgi
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...
@@ -63,9 +64,8 @@ find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs -0 rm -rf
 find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs -0 rm -rf
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
-install -d $RPM_BUILD_ROOT/usr/bin
-install -d $RPM_BUILD_ROOT/etc/init.d
 install -d $RPM_BUILD_ROOT/etc/cron.d
+install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -75,12 +75,11 @@ install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
-install paster-ckan $RPM_BUILD_ROOT/usr/bin/
-install paster-ckan2 $RPM_BUILD_ROOT/usr/bin/
 install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
+install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -102,6 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 /usr/bin/paster-ckan
 /usr/bin/paster-ckan2
 /etc/init.d/ckan-dev
+/etc/httpd/conf.d/kata.conf
 %attr(0644,root,root)/etc/cron.d/harvester
 
 
@@ -113,6 +113,20 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
+cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
+import os
+instance_dir = '/home/ckan'
+config_file = '/home/ckan/pyenv/src/ckan/development.ini'
+pyenv_bin_dir = os.path.join(instance_dir, 'pyenv', 'bin')
+activate_this = os.path.join(pyenv_bin_dir, 'activate_this.py')
+execfile(activate_this, dict(__file__=activate_this))
+from paste.deploy import loadapp
+config_filepath = os.path.join(instance_dir, config_file)
+from paste.script.util.logging_config import fileConfig
+fileConfig(config_filepath)
+application = loadapp('config:%s' % config_filepath)
+EOF
+chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/20setupckanservice.sh
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf

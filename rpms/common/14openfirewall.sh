@@ -1,3 +1,3 @@
 #!/bin/sh
-lokkit --update -p 5000:tcp
+lokkit --update -p 80:tcp
 
