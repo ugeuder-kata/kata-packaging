@@ -25,7 +25,7 @@ Configuration:
 
 cd /etc/shibboleth
 sh metagen.sh -c sp-cert.pem -h localhost > metadata.xml
-cp metadata.xml /var/www/
+cp metadata.xml /var/www/html
 
 Shibboleth2 IdP
 ---

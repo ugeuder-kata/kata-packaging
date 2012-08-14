@@ -15,10 +15,10 @@
 
     <!--  Release the transient ID to anyone -->
     <afp:AttributeFilterPolicy id="releaseTransientIdToAnyone">
-        <afp:PolicyRequirementRule xsi:type="basic:ANY" />
+        <afp:PolicyRequirementRule xsi:type="basic:ANY"/>
 
         <afp:AttributeRule attributeID="transientId">
-            <afp:PermitValueRule xsi:type="basic:ANY" />
+            <afp:PermitValueRule xsi:type="basic:ANY"/>
         </afp:AttributeRule>
         <afp:AttributeRule attributeID="givenName">
             <afp:PermitValueRule xsi:type="basic:ANY" />

@@ -85,6 +85,7 @@
     -->
 
     <!-- Examples of LDAP-based attributes, uncomment to use these... -->
+    <!--
     <Attribute name="urn:mace:dir:attribute-def:cn" id="cn"/>
     <Attribute name="urn:mace:dir:attribute-def:sn" id="sn"/>
     <Attribute name="urn:mace:dir:attribute-def:givenName" id="givenName"/>
@@ -138,5 +139,6 @@
     <Attribute name="urn:oid:2.5.4.11" id="ou"/>
     <Attribute name="urn:oid:2.5.4.15" id="businessCategory"/>
     <Attribute name="urn:oid:2.5.4.19" id="physicalDeliveryOfficeName"/>
+    -->
 
 </Attributes>
