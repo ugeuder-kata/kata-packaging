@@ -9,16 +9,58 @@ postpone this for the moment.
 2. The build control
 
 Build control is the system that controls the overall build cycle.
-These are the follwing steps
+The build cycle consists of the steps listed below.
 
-1. in VM dev1: get newest source code from git and build
-2. reset VM dev2
-3. transfer dev.rpm from VM dev1 to VM dev2
-4. in VM dev2: install dev.rpm
-5. in VM dev2: get newest source and build prod.rpm
-6. reset VM prod
-7. transfer prod.rpm to  
+The VMs are called dev2 and prod. (dev1 is not needed in autobuild, but we
+keep the name free because it is referred to in other discussions like e.g. 
+rpms/README)
+
+1. reset VM dev2
+2. reset VM prod 
+3. in VM dev2: 
+     - get newest source code from git
+     - build dev.rpm
+     - install dev.rpm
+     - build prod.rpm 
+4. transfer prod.rpm from dev2 to prod
+5. in VM prod:
+     - install prod.rpm
+
+(Building apache-solr left out for the moment. Maybe we don't need to
+build it every time and fetch a ready rpm from company DAV?) 
+
+I don't think anybody has coded anything like this at this stage. So
+even if steps 1 & 2 are still open, we could already implement 3 - 5
+in a generic way that it assumes nothing else than ssh between the
+machines. If we get a central server infrastructure, steps 1 & 2 can
+be added later. If we don't get a central server infrastructure,
+everybody can carry out steps 1 & 2 on his own machine either manually
+or by an own script.
+
+Design proposal:
+
+The controller runs on an outside machine (outside of the autobuild
+system).  This could be the work PC of the person initiating the
+autobuild. (we might want a lock that no 2 autobuilds can be invoked
+at the same time. Company DAV might be a suitable place for the lock
+file). The controller is nothing but a script that submits the
+commands for steps 3-5 in the required order. Remote commands can be
+submitted using ssh. Files required for bootstrapping can be uploaded
+using scp. We just need to configure the VM images such that they have
+the public ssh keys of all users installed.
+
+For the script to work universally we need to agree the hostnames (or
+read them from a configuration file) My first suggestion would be
+to use simple hard-coded hostnames:
+
+  ab-kata-dev2
+  ab-kata-prod
+
+(ab stands for autobuild)
+
+I think it should be enough to put those to /etc/hosts of the user's own
+machine and the VM template.
 
 
-I don't think anybody has this at 
+ 
 
