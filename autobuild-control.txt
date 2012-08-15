@@ -1,0 +1,24 @@
+Autobuild has 2 main levels
+
+1. The snapshot & virtualization levels
+
+This is an open question. Aleksi uses ZFS & KVM, but Nomovok server
+uses Xen. ZFS we don't know, but maybe not. So maybe we can
+postpone this for the moment.
+
+2. The build control
+
+Build control is the system that controls the overall build cycle.
+These are the follwing steps
+
+1. in VM dev1: get newest source code from git and build
+2. reset VM dev2
+3. transfer dev.rpm from VM dev1 to VM dev2
+4. in VM dev2: install dev.rpm
+5. in VM dev2: get newest source and build prod.rpm
+6. reset VM prod
+7. transfer prod.rpm to  
+
+
+I don't think anybody has this at 
+
