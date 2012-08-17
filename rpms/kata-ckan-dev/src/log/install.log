@@ -1,20 +1,20 @@
-$ sudo rpm -i kata-ckan-dev-414245-1.el6.i686.rpm 
+$ sudo rpm -i kata-ckan-dev-414528-1.el6.i686.rpm
 + '[' -f /tmp/kata-SKIP01 ']'
 + instloc=/home/ckan
 + cd /home/ckan
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-08-13 13:52:04--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-08-13 18:30:46--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 108233 (106K) [text/plain]
 Saving to: `virtualenv.py'
 
- 0% [                                                                                                                            ] 0           --.-K/s              75% [============================================================================================>                               ] 81,484       337K/s              100%[===========================================================================================================================>] 108,233      299K/s   in 0.4s    
+ 0% [                                                                                                                            ] 0           --.-K/s              90% [===============================================================================================================>            ] 97,868       391K/s              100%[===========================================================================================================================>] 108,233      428K/s   in 0.2s    
 
-2012-08-13 13:52:05 (299 KB/s) - `virtualenv.py' saved [108233/108233]
+2012-08-13 18:30:46 (428 KB/s) - `virtualenv.py' saved [108233/108233]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -74,7 +74,7 @@ Installing collected packages: ckan
     warning: no files found matching '*' under directory 'ckanext/**/i18n'
     no previously-included directories found matching '.git'
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckan.egg-link (link to .)
-    Adding ckan 1.9a to easy-install.pth file
+    Adding ckan 1.8b to easy-install.pth file
     Installing ckan-admin script to /home/ckan/pyenv/bin
     
     Installed /home/ckan/pyenv/src/ckan
@@ -505,14 +505,14 @@ CREATE ROLE
 + cd pyenv/src/ckan
 + paster make-config ckan development.ini
 Distribution already installed:
-  ckan 1.9a from /home/ckan/pyenv/src/ckan
+  ckan 1.8b from /home/ckan/pyenv/src/ckan
 Creating development.ini
 Now you should edit the config files
   development.ini
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
 patching file development.ini
-++ ip addr show dev eth0
 ++ grep 'inet '
+++ ip addr show dev eth0
 ++ sed -E 's/ +inet +([^/]+).+/\1/'
 Device "eth0" does not exist.
 + myip=
@@ -530,8 +530,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-08-13 13:56:28,858 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
-2012-08-13 13:56:28,969 INFO  [ckan.model] Database initialised
+2012-08-13 18:35:21,115 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
+2012-08-13 18:35:21,237 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
 + service ckan-dev start
@@ -597,12 +597,12 @@ Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
 
-2012-08-13 13:56:45,392 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-08-13 13:56:45,643 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-08-13 18:35:36,724 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-13 18:35:36,777 DEBUG [ckanext.harvest.model] Harvest tables created
 DB tables created
 + paster --plugin=ckan user add harvester password=harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Creating user: 'harvester'
-<User id=736d5f53-1070-47ab-8a56-d664b83a0b08 name=harvester openid=None password=3c1ba6871e3744586bb6a65c51b2807cbaa4ab038483da9a3caa9a10159137c571a37ccff7637e00 fullname=None email=None apikey=c0269e89-9029-4455-b538-d9d0e51cfb31 created=2012-08-13 13:56:46.975078 reset_key=None about=None>
+<User id=193f6899-c2f3-404a-be7d-e9177e46d96a name=harvester openid=None password=3d158523ca621df57dbf04fa85e013315a3036e5ed13591e08cf3124324d5099a74e9372d04aa348 fullname=None email=None apikey=bd07e77a-806b-4d88-8a28-e6c6850e1c8a created=2012-08-13 18:35:38.048092 reset_key=None about=None>
 + paster --plugin=ckan sysadmin add harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Added harvester as sysadmin
 + instloc=/home/ckan
@@ -743,11 +743,11 @@ Finished processing dependencies for ckanext-urn==0.1
 ++ hash -r
 + git clone https://github.com/locusf/ckanext-oaipmh.git
 Initialized empty Git repository in /home/ckan/pyenv/src/ckanext-oaipmh/.git/
-remote: Counting objects: 102, done.[K
-remote: Compressing objects:   1% (1/84)   [Kremote: Compressing objects:   2% (2/84)   [Kremote: Compressing objects:   3% (3/84)   [Kremote: Compressing objects:   4% (4/84)   [Kremote: Compressing objects:   5% (5/84)   [Kremote: Compressing objects:   7% (6/84)   [Kremote: Compressing objects:   8% (7/84)   [Kremote: Compressing objects:   9% (8/84)   [Kremote: Compressing objects:  10% (9/84)   [Kremote: Compressing objects:  11% (10/84)   [Kremote: Compressing objects:  13% (11/84)   [Kremote: Compressing objects:  14% (12/84)   [Kremote: Compressing objects:  15% (13/84)   [Kremote: Compressing objects:  16% (14/84)   [Kremote: Compressing objects:  17% (15/84)   [Kremote: Compressing objects:  19% (16/84)   [Kremote: Compressing objects:  20% (17/84)   [Kremote: Compressing objects:  21% (18/84)   [Kremote: Compressing objects:  22% (19/84)   [Kremote: Compressing objects:  23% (20/84)   [Kremote: Compressing objects:  25% (21/84)   [Kremote: Compressing objects:  26% (22/84)   [Kremote: Compressing objects:  27% (23/84)   [Kremote: Compressing objects:  28% (24/84)   [Kremote: Compressing objects:  29% (25/84)   [Kremote: Compressing objects:  30% (26/84)   [Kremote: Compressing objects:  32% (27/84)   [Kremote: Compressing objects:  33% (28/84)   [Kremote: Compressing objects:  34% (29/84)   [Kremote: Compressing objects:  35% (30/84)   [Kremote: Compressing objects:  36% (31/84)   [Kremote: Compressing objects:  38% (32/84)   [Kremote: Compressing objects:  39% (33/84)   [Kremote: Compressing objects:  40% (34/84)   [Kremote: Compressing objects:  41% (35/84)   [Kremote: Compressing objects:  42% (36/84)   [Kremote: Compressing objects:  44% (37/84)   [Kremote: Compressing objects:  45% (38/84)   [Kremote: Compressing objects:  46% (39/84)   [Kremote: Compressing objects:  47% (40/84)   [Kremote: Compressing objects:  48% (41/84)   [Kremote: Compressing objects:  50% (42/84)   [Kremote: Compressing objects:  51% (43/84)   [Kremote: Compressing objects:  52% (44/84)   [Kremote: Compressing objects:  53% (45/84)   [Kremote: Compressing objects:  54% (46/84)   [Kremote: Compressing objects:  55% (47/84)   [Kremote: Compressing objects:  57% (48/84)   [Kremote: Compressing objects:  58% (49/84)   [Kremote: Compressing objects:  59% (50/84)   [Kremote: Compressing objects:  60% (51/84)   [Kremote: Compressing objects:  61% (52/84)   [Kremote: Compressing objects:  63% (53/84)   [Kremote: Compressing objects:  64% (54/84)   [Kremote: Compressing objects:  65% (55/84)   [Kremote: Compressing objects:  66% (56/84)   [Kremote: Compressing objects:  67% (57/84)   [Kremote: Compressing objects:  69% (58/84)   [Kremote: Compressing objects:  70% (59/84)   [Kremote: Compressing objects:  71% (60/84)   [Kremote: Compressing objects:  72% (61/84)   [Kremote: Compressing objects:  73% (62/84)   [Kremote: Compressing objects:  75% (63/84)   [Kremote: Compressing objects:  76% (64/84)   [Kremote: Compressing objects:  77% (65/84)   [Kremote: Compressing objects:  78% (66/84)   [Kremote: Compressing objects:  79% (67/84)   [Kremote: Compressing objects:  80% (68/84)   [Kremote: Compressing objects:  82% (69/84)   [Kremote: Compressing objects:  83% (70/84)   [Kremote: Compressing objects:  84% (71/84)   [Kremote: Compressing objects:  85% (72/84)   [Kremote: Compressing objects:  86% (73/84)   [Kremote: Compressing objects:  88% (74/84)   [Kremote: Compressing objects:  89% (75/84)   [Kremote: Compressing objects:  90% (76/84)   [Kremote: Compressing objects:  91% (77/84)   [Kremote: Compressing objects:  92% (78/84)   [Kremote: Compressing objects:  94% (79/84)   [Kremote: Compressing objects:  95% (80/84)   [Kremote: Compressing objects:  96% (81/84)   [Kremote: Compressing objects:  97% (82/84)   [Kremote: Compressing objects:  98% (83/84)   [Kremote: Compressing objects: 100% (84/84)   [Kremote: Compressing objects: 100% (84/84), done.[K
-remote: Total 102 (delta 48), reused 63 (delta 13)[K
-Receiving objects:   0% (1/102)   Receiving objects:   1% (2/102)   Receiving objects:   2% (3/102)   Receiving objects:   3% (4/102)   Receiving objects:   4% (5/102)   Receiving objects:   5% (6/102)   Receiving objects:   6% (7/102)   Receiving objects:   7% (8/102)   Receiving objects:   8% (9/102)   Receiving objects:   9% (10/102)   Receiving objects:  10% (11/102)   Receiving objects:  11% (12/102)   Receiving objects:  12% (13/102)   Receiving objects:  13% (14/102)   Receiving objects:  14% (15/102)   Receiving objects:  15% (16/102)   Receiving objects:  16% (17/102)   Receiving objects:  17% (18/102)   Receiving objects:  18% (19/102)   Receiving objects:  19% (20/102)   Receiving objects:  20% (21/102)   Receiving objects:  21% (22/102)   Receiving objects:  22% (23/102)   Receiving objects:  23% (24/102)   Receiving objects:  24% (25/102)   Receiving objects:  25% (26/102)   Receiving objects:  26% (27/102)   Receiving objects:  27% (28/102)   Receiving objects:  28% (29/102)   Receiving objects:  29% (30/102)   Receiving objects:  30% (31/102)   Receiving objects:  31% (32/102)   Receiving objects:  32% (33/102)   Receiving objects:  33% (34/102)   Receiving objects:  34% (35/102)   Receiving objects:  35% (36/102)   Receiving objects:  36% (37/102)   Receiving objects:  37% (38/102)   Receiving objects:  38% (39/102)   Receiving objects:  39% (40/102)   Receiving objects:  40% (41/102)   Receiving objects:  41% (42/102)   Receiving objects:  42% (43/102)   Receiving objects:  43% (44/102)   Receiving objects:  44% (45/102)   Receiving objects:  45% (46/102)   Receiving objects:  46% (47/102)   Receiving objects:  47% (48/102)   Receiving objects:  48% (49/102)   Receiving objects:  49% (50/102)   Receiving objects:  50% (51/102)   Receiving objects:  51% (53/102)   Receiving objects:  52% (54/102)   Receiving objects:  53% (55/102)   Receiving objects:  54% (56/102)   Receiving objects:  55% (57/102)   Receiving objects:  56% (58/102)   Receiving objects:  57% (59/102)   Receiving objects:  58% (60/102)   Receiving objects:  59% (61/102)   Receiving objects:  60% (62/102)   Receiving objects:  61% (63/102)   Receiving objects:  62% (64/102)   Receiving objects:  63% (65/102)   Receiving objects:  64% (66/102)   Receiving objects:  65% (67/102)   Receiving objects:  66% (68/102)   Receiving objects:  67% (69/102)   Receiving objects:  68% (70/102)   Receiving objects:  69% (71/102)   Receiving objects:  70% (72/102)   Receiving objects:  71% (73/102)   Receiving objects:  72% (74/102)   Receiving objects:  73% (75/102)   Receiving objects:  74% (76/102)   Receiving objects:  75% (77/102)   Receiving objects:  76% (78/102)   Receiving objects:  77% (79/102)   Receiving objects:  78% (80/102)   Receiving objects:  79% (81/102)   Receiving objects:  80% (82/102)   Receiving objects:  81% (83/102)   Receiving objects:  82% (84/102)   Receiving objects:  83% (85/102)   Receiving objects:  84% (86/102)   Receiving objects:  85% (87/102)   Receiving objects:  86% (88/102)   Receiving objects:  87% (89/102)   Receiving objects:  88% (90/102)   Receiving objects:  89% (91/102)   Receiving objects:  90% (92/102)   Receiving objects:  91% (93/102)   Receiving objects:  92% (94/102)   Receiving objects:  93% (95/102)   Receiving objects:  94% (96/102)   Receiving objects:  95% (97/102)   Receiving objects:  96% (98/102)   Receiving objects:  97% (99/102)   Receiving objects:  98% (100/102)   Receiving objects:  99% (101/102)   Receiving objects: 100% (102/102)   Receiving objects: 100% (102/102), 33.02 KiB, done.
-Resolving deltas:   0% (0/48)   Resolving deltas:  20% (10/48)   Resolving deltas:  25% (12/48)   Resolving deltas:  45% (22/48)   Resolving deltas:  47% (23/48)   Resolving deltas:  54% (26/48)   Resolving deltas:  70% (34/48)   Resolving deltas:  77% (37/48)   Resolving deltas:  83% (40/48)   Resolving deltas:  87% (42/48)   Resolving deltas:  93% (45/48)   Resolving deltas:  95% (46/48)   Resolving deltas: 100% (48/48)   Resolving deltas: 100% (48/48), done.
+remote: Counting objects: 109, done.[K
+remote: Compressing objects:   1% (1/91)   [Kremote: Compressing objects:   2% (2/91)   [Kremote: Compressing objects:   3% (3/91)   [Kremote: Compressing objects:   4% (4/91)   [Kremote: Compressing objects:   5% (5/91)   [Kremote: Compressing objects:   6% (6/91)   [Kremote: Compressing objects:   7% (7/91)   [Kremote: Compressing objects:   8% (8/91)   [Kremote: Compressing objects:   9% (9/91)   [Kremote: Compressing objects:  10% (10/91)   [Kremote: Compressing objects:  12% (11/91)   [Kremote: Compressing objects:  13% (12/91)   [Kremote: Compressing objects:  14% (13/91)   [Kremote: Compressing objects:  15% (14/91)   [Kremote: Compressing objects:  16% (15/91)   [Kremote: Compressing objects:  17% (16/91)   [Kremote: Compressing objects:  18% (17/91)   [Kremote: Compressing objects:  19% (18/91)   [Kremote: Compressing objects:  20% (19/91)   [Kremote: Compressing objects:  21% (20/91)   [Kremote: Compressing objects:  23% (21/91)   [Kremote: Compressing objects:  24% (22/91)   [Kremote: Compressing objects:  25% (23/91)   [Kremote: Compressing objects:  26% (24/91)   [Kremote: Compressing objects:  27% (25/91)   [Kremote: Compressing objects:  28% (26/91)   [Kremote: Compressing objects:  29% (27/91)   [Kremote: Compressing objects:  30% (28/91)   [Kremote: Compressing objects:  31% (29/91)   [Kremote: Compressing objects:  32% (30/91)   [Kremote: Compressing objects:  34% (31/91)   [Kremote: Compressing objects:  35% (32/91)   [Kremote: Compressing objects:  36% (33/91)   [Kremote: Compressing objects:  37% (34/91)   [Kremote: Compressing objects:  38% (35/91)   [Kremote: Compressing objects:  39% (36/91)   [Kremote: Compressing objects:  40% (37/91)   [Kremote: Compressing objects:  41% (38/91)   [Kremote: Compressing objects:  42% (39/91)   [Kremote: Compressing objects:  43% (40/91)   [Kremote: Compressing objects:  45% (41/91)   [Kremote: Compressing objects:  46% (42/91)   [Kremote: Compressing objects:  47% (43/91)   [Kremote: Compressing objects:  48% (44/91)   [Kremote: Compressing objects:  49% (45/91)   [Kremote: Compressing objects:  50% (46/91)   [Kremote: Compressing objects:  51% (47/91)   [Kremote: Compressing objects:  52% (48/91)   [Kremote: Compressing objects:  53% (49/91)   [Kremote: Compressing objects:  54% (50/91)   [Kremote: Compressing objects:  56% (51/91)   [Kremote: Compressing objects:  57% (52/91)   [Kremote: Compressing objects:  58% (53/91)   [Kremote: Compressing objects:  59% (54/91)   [Kremote: Compressing objects:  60% (55/91)   [Kremote: Compressing objects:  61% (56/91)   [Kremote: Compressing objects:  62% (57/91)   [Kremote: Compressing objects:  63% (58/91)   [Kremote: Compressing objects:  64% (59/91)   [Kremote: Compressing objects:  65% (60/91)   [Kremote: Compressing objects:  67% (61/91)   [Kremote: Compressing objects:  68% (62/91)   [Kremote: Compressing objects:  69% (63/91)   [Kremote: Compressing objects:  70% (64/91)   [Kremote: Compressing objects:  71% (65/91)   [Kremote: Compressing objects:  72% (66/91)   [Kremote: Compressing objects:  73% (67/91)   [Kremote: Compressing objects:  74% (68/91)   [Kremote: Compressing objects:  75% (69/91)   [Kremote: Compressing objects:  76% (70/91)   [Kremote: Compressing objects:  78% (71/91)   [Kremote: Compressing objects:  79% (72/91)   [Kremote: Compressing objects:  80% (73/91)   [Kremote: Compressing objects:  81% (74/91)   [Kremote: Compressing objects:  82% (75/91)   [Kremote: Compressing objects:  83% (76/91)   [Kremote: Compressing objects:  84% (77/91)   [Kremote: Compressing objects:  85% (78/91)   [Kremote: Compressing objects:  86% (79/91)   [Kremote: Compressing objects:  87% (80/91)   [Kremote: Compressing objects:  89% (81/91)   [Kremote: Compressing objects:  90% (82/91)   [Kremote: Compressing objects:  91% (83/91)   [Kremote: Compressing objects:  92% (84/91)   [Kremote: Compressing objects:  93% (85/91)   [Kremote: Compressing objects:  94% (86/91)   [Kremote: Compressing objects:  95% (87/91)   [Kremote: Compressing objects:  96% (88/91)   [Kremote: Compressing objects:  97% (89/91)   [Kremote: Compressing objects:  98% (90/91)   [Kremote: Compressing objects: 100% (91/91)   [Kremote: Compressing objects: 100% (91/91), done.[K
+Receiving objects:   0% (1/109)   Receiving objects:   1% (2/109)   Receiving objects:   2% (3/109)   Receiving objects:   3% (4/109)   Receiving objects:   4% (5/109)   Receiving objects:   5% (6/109)   Receiving objects:   6% (7/109)   Receiving objects:   7% (8/109)   Receiving objects:   8% (9/109)   Receiving objects:   9% (10/109)   Receiving objects:  10% (11/109)   Receiving objects:  11% (12/109)   Receiving objects:  12% (14/109)   Receiving objects:  13% (15/109)   Receiving objects:  14% (16/109)   Receiving objects:  15% (17/109)   Receiving objects:  16% (18/109)   Receiving objects:  17% (19/109)   Receiving objects:  18% (20/109)   Receiving objects:  19% (21/109)   Receiving objects:  20% (22/109)   Receiving objects:  21% (23/109)   Receiving objects:  22% (24/109)   Receiving objects:  23% (26/109)   Receiving objects:  24% (27/109)   Receiving objects:  25% (28/109)   remote: Total 109 (delta 53), reused 65 (delta 13)[K
+Receiving objects:  26% (29/109)   Receiving objects:  27% (30/109)   Receiving objects:  28% (31/109)   Receiving objects:  29% (32/109)   Receiving objects:  30% (33/109)   Receiving objects:  31% (34/109)   Receiving objects:  32% (35/109)   Receiving objects:  33% (36/109)   Receiving objects:  34% (38/109)   Receiving objects:  35% (39/109)   Receiving objects:  36% (40/109)   Receiving objects:  37% (41/109)   Receiving objects:  38% (42/109)   Receiving objects:  39% (43/109)   Receiving objects:  40% (44/109)   Receiving objects:  41% (45/109)   Receiving objects:  42% (46/109)   Receiving objects:  43% (47/109)   Receiving objects:  44% (48/109)   Receiving objects:  45% (50/109)   Receiving objects:  46% (51/109)   Receiving objects:  47% (52/109)   Receiving objects:  48% (53/109)   Receiving objects:  49% (54/109)   Receiving objects:  50% (55/109)   Receiving objects:  51% (56/109)   Receiving objects:  52% (57/109)   Receiving objects:  53% (58/109)   Receiving objects:  54% (59/109)   Receiving objects:  55% (60/109)   Receiving objects:  56% (62/109)   Receiving objects:  57% (63/109)   Receiving objects:  58% (64/109)   Receiving objects:  59% (65/109)   Receiving objects:  60% (66/109)   Receiving objects:  61% (67/109)   Receiving objects:  62% (68/109)   Receiving objects:  63% (69/109)   Receiving objects:  64% (70/109)   Receiving objects:  65% (71/109)   Receiving objects:  66% (72/109)   Receiving objects:  67% (74/109)   Receiving objects:  68% (75/109)   Receiving objects:  69% (76/109)   Receiving objects:  70% (77/109)   Receiving objects:  71% (78/109)   Receiving objects:  72% (79/109)   Receiving objects:  73% (80/109)   Receiving objects:  74% (81/109)   Receiving objects:  75% (82/109)   Receiving objects:  76% (83/109)   Receiving objects:  77% (84/109)   Receiving objects:  78% (86/109)   Receiving objects:  79% (87/109)   Receiving objects:  80% (88/109)   Receiving objects:  81% (89/109)   Receiving objects:  82% (90/109)   Receiving objects:  83% (91/109)   Receiving objects:  84% (92/109)   Receiving objects:  85% (93/109)   Receiving objects:  86% (94/109)   Receiving objects:  87% (95/109)   Receiving objects:  88% (96/109)   Receiving objects:  89% (98/109)   Receiving objects:  90% (99/109)   Receiving objects:  91% (100/109)   Receiving objects:  92% (101/109)   Receiving objects:  93% (102/109)   Receiving objects:  94% (103/109)   Receiving objects:  95% (104/109)   Receiving objects:  96% (105/109)   Receiving objects:  97% (106/109)   Receiving objects:  98% (107/109)   Receiving objects:  99% (108/109)   Receiving objects: 100% (109/109)   Receiving objects: 100% (109/109), 33.69 KiB, done.
+Resolving deltas:   0% (0/53)   Resolving deltas:  20% (11/53)   Resolving deltas:  24% (13/53)   Resolving deltas:  45% (24/53)   Resolving deltas:  47% (25/53)   Resolving deltas:  52% (28/53)   Resolving deltas:  69% (37/53)   Resolving deltas:  75% (40/53)   Resolving deltas:  83% (44/53)   Resolving deltas:  88% (47/53)   Resolving deltas:  94% (50/53)   Resolving deltas:  96% (51/53)   Resolving deltas: 100% (53/53)   Resolving deltas: 100% (53/53), done.
 + cd ckanext-oaipmh
 + python setup.py install
 no previously-included directories found matching 'test'
@@ -831,7 +831,7 @@ Reading http://www.infrae.com/download/oaipmh
 Best match: pyoai 2.4.4
 Downloading http://www.infrae.com/download/OAI/pyoai/2.4.4/pyoai-2.4.4.tar.gz
 Processing pyoai-2.4.4.tar.gz
-Running pyoai-2.4.4/setup.py -q bdist_egg --dist-dir /tmp/easy_install-LUOtAx/pyoai-2.4.4/egg-dist-tmp-NK4eRj
+Running pyoai-2.4.4/setup.py -q bdist_egg --dist-dir /tmp/easy_install-ArYEki/pyoai-2.4.4/egg-dist-tmp-5mhXHk
 Adding pyoai 2.4.4 to easy-install.pth file
 
 Installed /home/ckan/pyenv/lib/python2.6/site-packages/pyoai-2.4.4-py2.6.egg
@@ -841,7 +841,7 @@ Reading http://codespeak.net/lxml
 Best match: lxml 2.3.5
 Downloading http://lxml.de/files/lxml-2.3.5.tgz
 Processing lxml-2.3.5.tgz
-Running lxml-2.3.5/setup.py -q bdist_egg --dist-dir /tmp/easy_install-r8j7xD/lxml-2.3.5/egg-dist-tmp-UMOEXB
+Running lxml-2.3.5/setup.py -q bdist_egg --dist-dir /tmp/easy_install-fWPb6H/lxml-2.3.5/egg-dist-tmp-bPL_LR
 Building lxml version 2.3.5.
 Building without Cython.
 Using build configuration of libxslt 1.1.26
@@ -900,10 +900,10 @@ Successfully installed xmltodict
 Cleaning up...
 + git clone https://github.com/locusf/ckanext-ddi.git
 Initialized empty Git repository in /home/ckan/pyenv/src/ckanext-ddi/.git/
-remote: Counting objects: 80, done.[K
-remote: Compressing objects:   1% (1/74)   [Kremote: Compressing objects:   2% (2/74)   [Kremote: Compressing objects:   4% (3/74)   [Kremote: Compressing objects:   5% (4/74)   [Kremote: Compressing objects:   6% (5/74)   [Kremote: Compressing objects:   8% (6/74)   [Kremote: Compressing objects:   9% (7/74)   [Kremote: Compressing objects:  10% (8/74)   [Kremote: Compressing objects:  12% (9/74)   [Kremote: Compressing objects:  13% (10/74)   [Kremote: Compressing objects:  14% (11/74)   [Kremote: Compressing objects:  16% (12/74)   [Kremote: Compressing objects:  17% (13/74)   [Kremote: Compressing objects:  18% (14/74)   [Kremote: Compressing objects:  20% (15/74)   [Kremote: Compressing objects:  21% (16/74)   [Kremote: Compressing objects:  22% (17/74)   [Kremote: Compressing objects:  24% (18/74)   [Kremote: Compressing objects:  25% (19/74)   [Kremote: Compressing objects:  27% (20/74)   [Kremote: Compressing objects:  28% (21/74)   [Kremote: Compressing objects:  29% (22/74)   [Kremote: Compressing objects:  31% (23/74)   [Kremote: Compressing objects:  32% (24/74)   [Kremote: Compressing objects:  33% (25/74)   [Kremote: Compressing objects:  35% (26/74)   [Kremote: Compressing objects:  36% (27/74)   [Kremote: Compressing objects:  37% (28/74)   [Kremote: Compressing objects:  39% (29/74)   [Kremote: Compressing objects:  40% (30/74)   [Kremote: Compressing objects:  41% (31/74)   [Kremote: Compressing objects:  43% (32/74)   [Kremote: Compressing objects:  44% (33/74)   [Kremote: Compressing objects:  45% (34/74)   [Kremote: Compressing objects:  47% (35/74)   [Kremote: Compressing objects:  48% (36/74)   [Kremote: Compressing objects:  50% (37/74)   [Kremote: Compressing objects:  51% (38/74)   [Kremote: Compressing objects:  52% (39/74)   [Kremote: Compressing objects:  54% (40/74)   [Kremote: Compressing objects:  55% (41/74)   [Kremote: Compressing objects:  56% (42/74)   [Kremote: Compressing objects:  58% (43/74)   [Kremote: Compressing objects:  59% (44/74)   [Kremote: Compressing objects:  60% (45/74)   [Kremote: Compressing objects:  62% (46/74)   [Kremote: Compressing objects:  63% (47/74)   [Kremote: Compressing objects:  64% (48/74)   [Kremote: Compressing objects:  66% (49/74)   [Kremote: Compressing objects:  67% (50/74)   [Kremote: Compressing objects:  68% (51/74)   [Kremote: Compressing objects:  70% (52/74)   [Kremote: Compressing objects:  71% (53/74)   [Kremote: Compressing objects:  72% (54/74)   [Kremote: Compressing objects:  74% (55/74)   [Kremote: Compressing objects:  75% (56/74)   [Kremote: Compressing objects:  77% (57/74)   [Kremote: Compressing objects:  78% (58/74)   [Kremote: Compressing objects:  79% (59/74)   [Kremote: Compressing objects:  81% (60/74)   [Kremote: Compressing objects:  82% (61/74)   [Kremote: Compressing objects:  83% (62/74)   [Kremote: Compressing objects:  85% (63/74)   [Kremote: Compressing objects:  86% (64/74)   [Kremote: Compressing objects:  87% (65/74)   [Kremote: Compressing objects:  89% (66/74)   [Kremote: Compressing objects:  90% (67/74)   [Kremote: Compressing objects:  91% (68/74)   [Kremote: Compressing objects:  93% (69/74)   [Kremote: Compressing objects:  94% (70/74)   [Kremote: Compressing objects:  95% (71/74)   [Kremote: Compressing objects:  97% (72/74)   [Kremote: Compressing objects:  98% (73/74)   [Kremote: Compressing objects: 100% (74/74)   [Kremote: Compressing objects: 100% (74/74), done.[K
-Unpacking objects:   1% (1/80)   Unpacking objects:   2% (2/80)   Unpacking objects:   3% (3/80)   Unpacking objects:   5% (4/80)   Unpacking objects:   6% (5/80)   Unpacking objects:   7% (6/80)   Unpacking objects:   8% (7/80)   Unpacking objects:  10% (8/80)   Unpacking objects:  11% (9/80)   Unpacking objects:  12% (10/80)   Unpacking objects:  13% (11/80)   Unpacking objects:  15% (12/80)   Unpacking objects:  16% (13/80)   Unpacking objects:  17% (14/80)   Unpacking objects:  18% (15/80)   Unpacking objects:  20% (16/80)   Unpacking objects:  21% (17/80)   Unpacking objects:  22% (18/80)   Unpacking objects:  23% (19/80)   Unpacking objects:  25% (20/80)   Unpacking objects:  26% (21/80)   Unpacking objects:  27% (22/80)   Unpacking objects:  28% (23/80)   Unpacking objects:  30% (24/80)   Unpacking objects:  31% (25/80)   Unpacking objects:  32% (26/80)   Unpacking objects:  33% (27/80)   remote: Total 80 (delta 27), reused 58 (delta 5)[K
-Unpacking objects:  35% (28/80)   Unpacking objects:  36% (29/80)   Unpacking objects:  37% (30/80)   Unpacking objects:  38% (31/80)   Unpacking objects:  40% (32/80)   Unpacking objects:  41% (33/80)   Unpacking objects:  42% (34/80)   Unpacking objects:  43% (35/80)   Unpacking objects:  45% (36/80)   Unpacking objects:  46% (37/80)   Unpacking objects:  47% (38/80)   Unpacking objects:  48% (39/80)   Unpacking objects:  50% (40/80)   Unpacking objects:  51% (41/80)   Unpacking objects:  52% (42/80)   Unpacking objects:  53% (43/80)   Unpacking objects:  55% (44/80)   Unpacking objects:  56% (45/80)   Unpacking objects:  57% (46/80)   Unpacking objects:  58% (47/80)   Unpacking objects:  60% (48/80)   Unpacking objects:  61% (49/80)   Unpacking objects:  62% (50/80)   Unpacking objects:  63% (51/80)   Unpacking objects:  65% (52/80)   Unpacking objects:  66% (53/80)   Unpacking objects:  67% (54/80)   Unpacking objects:  68% (55/80)   Unpacking objects:  70% (56/80)   Unpacking objects:  71% (57/80)   Unpacking objects:  72% (58/80)   Unpacking objects:  73% (59/80)   Unpacking objects:  75% (60/80)   Unpacking objects:  76% (61/80)   Unpacking objects:  77% (62/80)   Unpacking objects:  78% (63/80)   Unpacking objects:  80% (64/80)   Unpacking objects:  81% (65/80)   Unpacking objects:  82% (66/80)   Unpacking objects:  83% (67/80)   Unpacking objects:  85% (68/80)   Unpacking objects:  86% (69/80)   Unpacking objects:  87% (70/80)   Unpacking objects:  88% (71/80)   Unpacking objects:  90% (72/80)   Unpacking objects:  91% (73/80)   Unpacking objects:  92% (74/80)   Unpacking objects:  93% (75/80)   Unpacking objects:  95% (76/80)   Unpacking objects:  96% (77/80)   Unpacking objects:  97% (78/80)   Unpacking objects:  98% (79/80)   Unpacking objects: 100% (80/80)   Unpacking objects: 100% (80/80), done.
+remote: Counting objects: 87, done.[K
+remote: Compressing objects:   1% (1/81)   [Kremote: Compressing objects:   2% (2/81)   [Kremote: Compressing objects:   3% (3/81)   [Kremote: Compressing objects:   4% (4/81)   [Kremote: Compressing objects:   6% (5/81)   [Kremote: Compressing objects:   7% (6/81)   [Kremote: Compressing objects:   8% (7/81)   [Kremote: Compressing objects:   9% (8/81)   [Kremote: Compressing objects:  11% (9/81)   [Kremote: Compressing objects:  12% (10/81)   [Kremote: Compressing objects:  13% (11/81)   [Kremote: Compressing objects:  14% (12/81)   [Kremote: Compressing objects:  16% (13/81)   [Kremote: Compressing objects:  17% (14/81)   [Kremote: Compressing objects:  18% (15/81)   [Kremote: Compressing objects:  19% (16/81)   [Kremote: Compressing objects:  20% (17/81)   [Kremote: Compressing objects:  22% (18/81)   [Kremote: Compressing objects:  23% (19/81)   [Kremote: Compressing objects:  24% (20/81)   [Kremote: Compressing objects:  25% (21/81)   [Kremote: Compressing objects:  27% (22/81)   [Kremote: Compressing objects:  28% (23/81)   [Kremote: Compressing objects:  29% (24/81)   [Kremote: Compressing objects:  30% (25/81)   [Kremote: Compressing objects:  32% (26/81)   [Kremote: Compressing objects:  33% (27/81)   [Kremote: Compressing objects:  34% (28/81)   [Kremote: Compressing objects:  35% (29/81)   [Kremote: Compressing objects:  37% (30/81)   [Kremote: Compressing objects:  38% (31/81)   [Kremote: Compressing objects:  39% (32/81)   [Kremote: Compressing objects:  40% (33/81)   [Kremote: Compressing objects:  41% (34/81)   [Kremote: Compressing objects:  43% (35/81)   [Kremote: Compressing objects:  44% (36/81)   [Kremote: Compressing objects:  45% (37/81)   [Kremote: Compressing objects:  46% (38/81)   [Kremote: Compressing objects:  48% (39/81)   [Kremote: Compressing objects:  49% (40/81)   [Kremote: Compressing objects:  50% (41/81)   [Kremote: Compressing objects:  51% (42/81)   [Kremote: Compressing objects:  53% (43/81)   [Kremote: Compressing objects:  54% (44/81)   [Kremote: Compressing objects:  55% (45/81)   [Kremote: Compressing objects:  56% (46/81)   [Kremote: Compressing objects:  58% (47/81)   [Kremote: Compressing objects:  59% (48/81)   [Kremote: Compressing objects:  60% (49/81)   [Kremote: Compressing objects:  61% (50/81)   [Kremote: Compressing objects:  62% (51/81)   [Kremote: Compressing objects:  64% (52/81)   [Kremote: Compressing objects:  65% (53/81)   [Kremote: Compressing objects:  66% (54/81)   [Kremote: Compressing objects:  67% (55/81)   [Kremote: Compressing objects:  69% (56/81)   [Kremote: Compressing objects:  70% (57/81)   [Kremote: Compressing objects:  71% (58/81)   [Kremote: Compressing objects:  72% (59/81)   [Kremote: Compressing objects:  74% (60/81)   [Kremote: Compressing objects:  75% (61/81)   [Kremote: Compressing objects:  76% (62/81)   [Kremote: Compressing objects:  77% (63/81)   [Kremote: Compressing objects:  79% (64/81)   [Kremote: Compressing objects:  80% (65/81)   [Kremote: Compressing objects:  81% (66/81)   [Kremote: Compressing objects:  82% (67/81)   [Kremote: Compressing objects:  83% (68/81)   [Kremote: Compressing objects:  85% (69/81)   [Kremote: Compressing objects:  86% (70/81)   [Kremote: Compressing objects:  87% (71/81)   [Kremote: Compressing objects:  88% (72/81)   [Kremote: Compressing objects:  90% (73/81)   [Kremote: Compressing objects:  91% (74/81)   [Kremote: Compressing objects:  92% (75/81)   [Kremote: Compressing objects:  93% (76/81)   [Kremote: Compressing objects:  95% (77/81)   [Kremote: Compressing objects:  96% (78/81)   [Kremote: Compressing objects:  97% (79/81)   [Kremote: Compressing objects:  98% (80/81)   [Kremote: Compressing objects: 100% (81/81)   [Kremote: Compressing objects: 100% (81/81), done.[K
+Unpacking objects:   1% (1/87)   Unpacking objects:   2% (2/87)   Unpacking objects:   3% (3/87)   Unpacking objects:   4% (4/87)   Unpacking objects:   5% (5/87)   Unpacking objects:   6% (6/87)   Unpacking objects:   8% (7/87)   Unpacking objects:   9% (8/87)   Unpacking objects:  10% (9/87)   Unpacking objects:  11% (10/87)   Unpacking objects:  12% (11/87)   Unpacking objects:  13% (12/87)   Unpacking objects:  14% (13/87)   Unpacking objects:  16% (14/87)   Unpacking objects:  17% (15/87)   Unpacking objects:  18% (16/87)   Unpacking objects:  19% (17/87)   Unpacking objects:  20% (18/87)   Unpacking objects:  21% (19/87)   Unpacking objects:  22% (20/87)   Unpacking objects:  24% (21/87)   Unpacking objects:  25% (22/87)   Unpacking objects:  26% (23/87)   Unpacking objects:  27% (24/87)   Unpacking objects:  28% (25/87)   Unpacking objects:  29% (26/87)   Unpacking objects:  31% (27/87)   Unpacking objects:  32% (28/87)   Unpacking objects:  33% (29/87)   Unpacking objects:  34% (30/87)   remote: Total 87 (delta 30), reused 62 (delta 5)[K
+Unpacking objects:  35% (31/87)   Unpacking objects:  36% (32/87)   Unpacking objects:  37% (33/87)   Unpacking objects:  39% (34/87)   Unpacking objects:  40% (35/87)   Unpacking objects:  41% (36/87)   Unpacking objects:  42% (37/87)   Unpacking objects:  43% (38/87)   Unpacking objects:  44% (39/87)   Unpacking objects:  45% (40/87)   Unpacking objects:  47% (41/87)   Unpacking objects:  48% (42/87)   Unpacking objects:  49% (43/87)   Unpacking objects:  50% (44/87)   Unpacking objects:  51% (45/87)   Unpacking objects:  52% (46/87)   Unpacking objects:  54% (47/87)   Unpacking objects:  55% (48/87)   Unpacking objects:  56% (49/87)   Unpacking objects:  57% (50/87)   Unpacking objects:  58% (51/87)   Unpacking objects:  59% (52/87)   Unpacking objects:  60% (53/87)   Unpacking objects:  62% (54/87)   Unpacking objects:  63% (55/87)   Unpacking objects:  64% (56/87)   Unpacking objects:  65% (57/87)   Unpacking objects:  66% (58/87)   Unpacking objects:  67% (59/87)   Unpacking objects:  68% (60/87)   Unpacking objects:  70% (61/87)   Unpacking objects:  71% (62/87)   Unpacking objects:  72% (63/87)   Unpacking objects:  73% (64/87)   Unpacking objects:  74% (65/87)   Unpacking objects:  75% (66/87)   Unpacking objects:  77% (67/87)   Unpacking objects:  78% (68/87)   Unpacking objects:  79% (69/87)   Unpacking objects:  80% (70/87)   Unpacking objects:  81% (71/87)   Unpacking objects:  82% (72/87)   Unpacking objects:  83% (73/87)   Unpacking objects:  85% (74/87)   Unpacking objects:  86% (75/87)   Unpacking objects:  87% (76/87)   Unpacking objects:  88% (77/87)   Unpacking objects:  89% (78/87)   Unpacking objects:  90% (79/87)   Unpacking objects:  91% (80/87)   Unpacking objects:  93% (81/87)   Unpacking objects:  94% (82/87)   Unpacking objects:  95% (83/87)   Unpacking objects:  96% (84/87)   Unpacking objects:  97% (85/87)   Unpacking objects:  98% (86/87)   Unpacking objects: 100% (87/87)   Unpacking objects: 100% (87/87), done.
 + cd ckanext-ddi
 + python setup.py install
 no previously-included directories found matching 'test'
@@ -1006,8 +1006,12 @@ Starting tomcat6: [  OK  ]
 + sed -i '/^ckan.plugins/s|$| harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester|' /home/ckan/pyenv/src/ckan/development.ini
 + service ckan-dev restart
 + instloc=/home/ckan
++ service rabbitmq-server start
+Starting rabbitmq-server: SUCCESS
+rabbitmq-server.
++ chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-08-13 13:58:43,857 DEBUG [ckanext.oaipmh.plugin] Route name            Methods Path                
+2012-08-13 18:37:41,168 DEBUG [ckanext.oaipmh.plugin] Route name            Methods Path                
                               /error/{action}     
                               /error/{action}/{id}
                       OPTIONS *url                
@@ -1019,14 +1023,14 @@ harvest                       /harvest
 harvesting_job_create         /harvest/refresh/:id
                               /harvest/object/:id 
 oai                           /oai                
-2012-08-13 13:58:44,147 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-08-13 13:58:44,157 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-08-13 13:58:44,282 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-08-13 18:37:41,255 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-13 18:37:41,260 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-08-13 18:37:41,289 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
 
-2012-08-13 13:58:44,340 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-08-13 13:58:44,396 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 41571ebc-5b2e-44fb-97f3-28366df258fa
+2012-08-13 18:37:41,310 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-08-13 18:37:41,329 INFO  [ckanext.harvest.logic.action.create] Harvest source created: deef5c24-8c6f-411e-90bf-b755aea99998
 Created new harvest source:
-Source id: 41571ebc-5b2e-44fb-97f3-28366df258fa
+Source id: deef5c24-8c6f-411e-90bf-b755aea99998
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -1035,11 +1039,11 @@ publisher:
      jobs: 0
 
 There is 1 harvest source
-2012-08-13 13:58:44,467 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'41571ebc-5b2e-44fb-97f3-28366df258fa'}
-2012-08-13 13:58:44,527 INFO  [ckanext.harvest.logic.action.create] Harvest job saved c11923e2-d444-4059-a3bb-f13b4ffe928c
+2012-08-13 18:37:41,357 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'deef5c24-8c6f-411e-90bf-b755aea99998'}
+2012-08-13 18:37:41,382 INFO  [ckanext.harvest.logic.action.create] Harvest job saved ae00c887-85a1-4ca5-add7-854629533a03
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-08-13 13:58:46,323 DEBUG [ckanext.oaipmh.plugin] Route name            Methods Path                
+2012-08-13 18:37:42,671 DEBUG [ckanext.oaipmh.plugin] Route name            Methods Path                
                               /error/{action}     
                               /error/{action}/{id}
                       OPTIONS *url                
@@ -1051,14 +1055,14 @@ harvest                       /harvest
 harvesting_job_create         /harvest/refresh/:id
                               /harvest/object/:id 
 oai                           /oai                
-2012-08-13 13:58:46,569 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-08-13 13:58:46,583 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-08-13 13:58:46,670 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-08-13 18:37:42,761 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-13 18:37:42,763 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-08-13 18:37:42,793 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
 
-2012-08-13 13:58:46,742 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-08-13 13:58:46,771 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 9d60a764-70cf-46a8-b36f-fd59d9c9dc05
+2012-08-13 18:37:42,813 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-08-13 18:37:42,831 INFO  [ckanext.harvest.logic.action.create] Harvest source created: a43f5803-0ba1-4a49-99fd-6181c41b0e19
 Created new harvest source:
-Source id: 9d60a764-70cf-46a8-b36f-fd59d9c9dc05
+Source id: a43f5803-0ba1-4a49-99fd-6181c41b0e19
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -1067,20 +1071,15 @@ publisher:
      jobs: 0
 
 There are 2 harvest sources
-2012-08-13 13:58:46,857 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'9d60a764-70cf-46a8-b36f-fd59d9c9dc05'}
-2012-08-13 13:58:46,908 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 63361fd4-e49f-478c-a724-2a4ae98d6122
+2012-08-13 18:37:42,865 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'a43f5803-0ba1-4a49-99fd-6181c41b0e19'}
+2012-08-13 18:37:42,889 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 061a0f4d-5e84-4fbc-a022-7bf91efaee83
 A new Harvest Job for this source has also been created
-+ service rabbitmq-server start
-Starting rabbitmq-server: SUCCESS
-rabbitmq-server.
-+ chkconfig rabbitmq-server on
 + service ckan-dev restart
 Shutting down ckan-dev: [  OK  ]
 Starting ckan-dev: [  OK  ][  OK  ]
 + service supervisord restart
 Stopping supervisord: [  OK  ]
 Starting supervisord: [  OK  ]
-job 1 at 2012-08-13 14:03
 + instloc=/home/ckan
 + expected=/usr/share/kata-ckan-dev/setup-data/pip.freeze
 + cd /home/ckan
@@ -1114,8 +1113,8 @@ job 1 at 2012-08-13 14:03
 + SETCOLOR_SUCCESS='echo -en \033[1;32m'
 + SETCOLOR_FAILURE='echo -en \033[1;31m'
 + SETCOLOR_NORMAL='echo -en \033[0;39m'
-+ pip freeze
 + diff /usr/share/kata-ckan-dev/setup-data/pip.freeze -
++ pip freeze
 + echo -en '\033[1;31m'
 [1;31m+ echo 'Python package mismatches:'
 Python package mismatches:
@@ -1127,7 +1126,7 @@ Python package mismatches:
 < -e git+https://github.com/okfn/ckan.git@99adf3dddb4ef78b34d128e3a5f9031643e8b0e9#egg=ckan-dev
 ---
 > carrot==0.10.7
-> -e git+https://github.com/okfn/ckan.git@abf6adb3fbd537f509ac690ca06c345281ba09a1#egg=ckan-dev
+> -e git+https://github.com/okfn/ckan.git@0d0e5a09eddf54544a1737fa45b248532ac7c875#egg=ckan-dev
 > ckanext-ddi==0.1
 > -e git+https://github.com/okfn/ckanext-harvest.git@a8aebac9656a121909736e4272f210f40d924d01#egg=ckanext_harvest-dev
 > ckanext-oaipmh==0.1

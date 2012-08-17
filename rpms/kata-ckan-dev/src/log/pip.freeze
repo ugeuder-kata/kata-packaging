@@ -23,7 +23,7 @@ anyjson==0.3.3
 apachemiddleware==0.1.1
 argparse==1.2.1
 carrot==0.10.7
--e git+https://github.com/okfn/ckan.git@abf6adb3fbd537f509ac690ca06c345281ba09a1#egg=ckan-dev
+-e git+https://github.com/okfn/ckan.git@0d0e5a09eddf54544a1737fa45b248532ac7c875#egg=ckan-dev
 ckanext-ddi==0.1
 -e git+https://github.com/okfn/ckanext-harvest.git@a8aebac9656a121909736e4272f210f40d924d01#egg=ckanext_harvest-dev
 ckanext-oaipmh==0.1
