@@ -1,5 +1,5 @@
 Babel==0.9.6
-Beaker==1.6.3
+Beaker==1.6.4
 FormAlchemy==1.4.2
 FormEncode==1.2.4
 Genshi==0.6
@@ -23,7 +23,7 @@ anyjson==0.3.3
 apachemiddleware==0.1.1
 argparse==1.2.1
 carrot==0.10.7
--e git+https://github.com/okfn/ckan.git@0d0e5a09eddf54544a1737fa45b248532ac7c875#egg=ckan-dev
+-e git+https://github.com/okfn/ckan.git@85df0117cc85416f134084b3a2a1f5e8b51aec92#egg=ckan-dev
 ckanext-ddi==0.1
 -e git+https://github.com/okfn/ckanext-harvest.git@a8aebac9656a121909736e4272f210f40d924d01#egg=ckanext_harvest-dev
 ckanext-oaipmh==0.1
