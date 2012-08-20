@@ -44,8 +44,9 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 
 
 %build
-diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
+diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
+diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 
 
 %install
@@ -54,6 +55,7 @@ install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
 install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
+# setup scripts (keep them numerically ordered)
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -69,13 +71,20 @@ install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
-install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
-install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
+# misc scripts (keep them alphabetically ordered by filename)
+install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
-install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
+# patches (keep them alphabetically ordered by filename)
+install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
+install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+# misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
+install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
+install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
+
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,6 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
+# same order as above
 %{scriptdir}/01getpyenv.sh
 %{scriptdir}/02getpythonpackages.sh
 %{scriptdir}/05setuppostgres.sh
@@ -98,13 +108,16 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
-%{patchdir}/pg_hba.conf.patch
-%{patchdir}/development.ini.patch
-%{katadatadir}/harvester.conf
+%{scriptdir}/myip.sh
+# sic! following script in datadir
 %{katadatadir}/runharvester.sh
-%{katadatadir}/pip.freeze
-/etc/httpd/conf.d/kata.conf
+%{patchdir}/development.ini.patch
+%{patchdir}/httpd.conf.patch
+%{patchdir}/pg_hba.conf.patch
 %attr(0644,root,root)/etc/cron.d/harvester
+%{katadatadir}/harvester.conf
+/etc/httpd/conf.d/kata.conf
+%{katadatadir}/pip.freeze
 
 
 %post
@@ -128,7 +141,7 @@ chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
-%{scriptdir}/20setupckanservice.sh
+%{scriptdir}/20setupckanservice.sh %{patchdir}
 su -c "%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
