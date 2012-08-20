@@ -163,13 +163,11 @@ su -c "%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/90shibbolethsp.sh
 su -c "%{scriptdir}/91ckanextshibboleth.sh /home/%{ckanuser}" %{ckanuser}
 service shibd restart
 serivce httpd restart
-
-su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
-
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
