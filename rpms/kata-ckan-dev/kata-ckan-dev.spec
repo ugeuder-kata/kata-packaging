@@ -73,6 +73,7 @@ install 22installharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 23installurn.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 26installsitemap.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -114,6 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/23installurn.sh
 %{scriptdir}/24installoaipmh.sh
 %{scriptdir}/25installddi.sh
+%{scriptdir}/26installsitemap.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/60installextensions.sh
 %{scriptdir}/61setupsources.sh
@@ -165,6 +167,9 @@ su -c "%{scriptdir}/90shibbolethsp.sh
 su -c "%{scriptdir}/91ckanextshibboleth.sh /home/%{ckanuser}" %{ckanuser}
 service shibd restart
 serivce httpd restart
+
+su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
+
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
