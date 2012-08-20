@@ -1,0 +1,1 @@
+../../common/91ckanextshibboleth.sh

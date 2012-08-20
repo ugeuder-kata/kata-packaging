@@ -21,6 +21,7 @@ Requires: rabbitmq-server
 Requires: apache-solr
 Requires: supervisor
 Requires: mod_wsgi
+Requires: shibboleth
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -71,6 +72,8 @@ install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 90shibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 91ckanextshibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
 # misc scripts (keep them alphabetically ordered by filename)
 install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
@@ -83,6 +86,8 @@ install harvester $RPM_BUILD_ROOT/etc/cron.d/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
+install attribute-map.xml $RPM_BUILD_ROOT/%{scriptdir}/
+install attribute-policy.xml $RPM_BUILD_ROOT/%{scriptdir}/
 
 
 
@@ -108,7 +113,11 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
+%{scriptdir}/90shibbolethsp.sh
+%{scriptdir}/91ckanextshibboleth.sh
 %{scriptdir}/myip.sh
+%{scriptdir}/attribute-map.xml
+%{scriptdir}/attribute-policy.xml
 # sic! following script in datadir
 %{katadatadir}/runharvester.sh
 %{patchdir}/development.ini.patch
@@ -146,6 +155,10 @@ su -c "%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/90shibbolethsp.sh
+su -c "%{scriptdir}/91ckanextshibboleth.sh /home/%{ckanuser}" %{ckanuser}
+service shibd restart
+serivce httpd restart
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
