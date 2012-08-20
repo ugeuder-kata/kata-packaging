@@ -1,20 +1,20 @@
-$ sudo rpm -i kata-ckan-dev-419799-1.el6.i686.rpm
+$ sudo rpm -i kata-ckan-dev-423707-1.el6.i686.rpm
 + '[' -f /tmp/kata-SKIP01 ']'
 + instloc=/home/ckan
 + cd /home/ckan
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-08-17 13:04:02--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-08-20 03:33:49--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 108233 (106K) [text/plain]
-Saving to: `virtualenv.py'
+Saving to: “virtualenv.py”
 
- 0% [                                                                                                                            ] 0           --.-K/s              75% [============================================================================================>                               ] 81,484       327K/s              100%[===========================================================================================================================>] 108,233      292K/s   in 0.4s    
+ 0% [                                                                                                                                                ] 0           --.-K/s              90% [=================================================================================================================================>              ] 97,868       378K/s              100%[===============================================================================================================================================>] 108,233      413K/s   in 0.3s    
 
-2012-08-17 13:04:03 (292 KB/s) - `virtualenv.py' saved [108233/108233]
+2012-08-20 03:33:50 (413 KB/s) - “virtualenv.py” saved [108233/108233]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -245,12 +245,12 @@ Downloading/unpacking WebError>=0.10.1 (from Pylons==0.9.7->-r pyenv/src/ckan/pi
   Downloading WebError-0.10.3.tar.gz (81Kb):   Downloading WebError-0.10.3.tar.gz (81Kb):   5%  4.1Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  10%  8.2Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  15%  12Kb   Downloading WebError-0.10.3.tar.gz (81Kb):  20%  16Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  25%  20Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  30%  24Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  35%  28Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  40%  32Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  45%  36Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  50%  40Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  55%  45Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  60%  49Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  65%  53Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  70%  57Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  75%  61Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  80%  65Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  85%  69Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  90%  73Kb  Downloading WebError-0.10.3.tar.gz (81Kb):  95%  77Kb  Downloading WebError-0.10.3.tar.gz (81Kb): 100%  81Kb  Downloading WebError-0.10.3.tar.gz (81Kb):             Downloading WebError-0.10.3.tar.gz (81Kb): 81Kb downloaded
   Running setup.py egg_info for package WebError
 Downloading/unpacking WebTest>=1.1 (from Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
-  Downloading WebTest-1.3.4.tar.gz (78Kb):   Downloading WebTest-1.3.4.tar.gz (78Kb):   5%  4.1Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  10%  8.2Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  15%  12Kb   Downloading WebTest-1.3.4.tar.gz (78Kb):  20%  16Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  26%  20Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  31%  24Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  36%  28Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  41%  32Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  46%  36Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  52%  40Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  57%  45Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  62%  49Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  67%  53Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  72%  57Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  78%  61Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  83%  65Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  88%  69Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  93%  73Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):  99%  77Kb  Downloading WebTest-1.3.4.tar.gz (78Kb): 100%  78Kb  Downloading WebTest-1.3.4.tar.gz (78Kb):             Downloading WebTest-1.3.4.tar.gz (78Kb): 78Kb downloaded
+  Downloading WebTest-1.3.4.zip (105Kb):   Downloading WebTest-1.3.4.zip (105Kb):   3%  4.1Kb  Downloading WebTest-1.3.4.zip (105Kb):   7%  8.2Kb  Downloading WebTest-1.3.4.zip (105Kb):  11%  12Kb   Downloading WebTest-1.3.4.zip (105Kb):  15%  16Kb  Downloading WebTest-1.3.4.zip (105Kb):  19%  20Kb  Downloading WebTest-1.3.4.zip (105Kb):  23%  24Kb  Downloading WebTest-1.3.4.zip (105Kb):  27%  28Kb  Downloading WebTest-1.3.4.zip (105Kb):  31%  32Kb  Downloading WebTest-1.3.4.zip (105Kb):  34%  36Kb  Downloading WebTest-1.3.4.zip (105Kb):  38%  40Kb  Downloading WebTest-1.3.4.zip (105Kb):  42%  45Kb  Downloading WebTest-1.3.4.zip (105Kb):  46%  49Kb  Downloading WebTest-1.3.4.zip (105Kb):  50%  53Kb  Downloading WebTest-1.3.4.zip (105Kb):  54%  57Kb  Downloading WebTest-1.3.4.zip (105Kb):  58%  61Kb  Downloading WebTest-1.3.4.zip (105Kb):  62%  65Kb  Downloading WebTest-1.3.4.zip (105Kb):  65%  69Kb  Downloading WebTest-1.3.4.zip (105Kb):  69%  73Kb  Downloading WebTest-1.3.4.zip (105Kb):  73%  77Kb  Downloading WebTest-1.3.4.zip (105Kb):  77%  81Kb  Downloading WebTest-1.3.4.zip (105Kb):  81%  86Kb  Downloading WebTest-1.3.4.zip (105Kb):  85%  90Kb  Downloading WebTest-1.3.4.zip (105Kb):  89%  94Kb  Downloading WebTest-1.3.4.zip (105Kb):  93%  98Kb  Downloading WebTest-1.3.4.zip (105Kb):  96%  102Kb  Downloading WebTest-1.3.4.zip (105Kb): 100%  105Kb  Downloading WebTest-1.3.4.zip (105Kb):              Downloading WebTest-1.3.4.zip (105Kb): 105Kb downloaded
   Running setup.py egg_info for package WebTest
     warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
     warning: no files found matching '*.txt' under directory 'tests'
 Downloading/unpacking python-openid>=2.0 (from repoze.who.plugins.openid==0.5.3->-r pyenv/src/ckan/pip-requirements.txt (line 24))
-  Downloading python-openid-2.2.5.zip (358Kb):   Downloading python-openid-2.2.5.zip (358Kb):   1%  4.1Kb  Downloading python-openid-2.2.5.zip (358Kb):   2%  8.2Kb  Downloading python-openid-2.2.5.zip (358Kb):   3%  12Kb   Downloading python-openid-2.2.5.zip (358Kb):   4%  16Kb  Downloading python-openid-2.2.5.zip (358Kb):   5%  20Kb  Downloading python-openid-2.2.5.zip (358Kb):   6%  24Kb  Downloading python-openid-2.2.5.zip (358Kb):   8%  28Kb  Downloading python-openid-2.2.5.zip (358Kb):   9%  32Kb  Downloading python-openid-2.2.5.zip (358Kb):  10%  36Kb  Downloading python-openid-2.2.5.zip (358Kb):  11%  40Kb  Downloading python-openid-2.2.5.zip (358Kb):  12%  45Kb  Downloading python-openid-2.2.5.zip (358Kb):  13%  49Kb  Downloading python-openid-2.2.5.zip (358Kb):  14%  53Kb  Downloading python-openid-2.2.5.zip (358Kb):  16%  57Kb  Downloading python-openid-2.2.5.zip (358Kb):  17%  61Kb  Downloading python-openid-2.2.5.zip (358Kb):  18%  65Kb  Downloading python-openid-2.2.5.zip (358Kb):  19%  69Kb  Downloading python-openid-2.2.5.zip (358Kb):  20%  73Kb  Downloading python-openid-2.2.5.zip (358Kb):  21%  77Kb  Downloading python-openid-2.2.5.zip (358Kb):  22%  81Kb  Downloading python-openid-2.2.5.zip (358Kb):  24%  86Kb  Downloading python-openid-2.2.5.zip (358Kb):  25%  90Kb  Downloading python-openid-2.2.5.zip (358Kb):  26%  94Kb  Downloading python-openid-2.2.5.zip (358Kb):  27%  98Kb  Downloading python-openid-2.2.5.zip (358Kb):  28%  102Kb  Downloading python-openid-2.2.5.zip (358Kb):  29%  106Kb  Downloading python-openid-2.2.5.zip (358Kb):  30%  110Kb  Downloading python-openid-2.2.5.zip (358Kb):  32%  114Kb  Downloading python-openid-2.2.5.zip (358Kb):  33%  118Kb  Downloading python-openid-2.2.5.zip (358Kb):  34%  122Kb  Downloading python-openid-2.2.5.zip (358Kb):  35%  126Kb  Downloading python-openid-2.2.5.zip (358Kb):  36%  131Kb  Downloading python-openid-2.2.5.zip (358Kb):  37%  135Kb  Downloading python-openid-2.2.5.zip (358Kb):  38%  139Kb  Downloading python-openid-2.2.5.zip (358Kb):  40%  143Kb  Downloading python-openid-2.2.5.zip (358Kb):  41%  147Kb  Downloading python-openid-2.2.5.zip (358Kb):  42%  151Kb  Downloading python-openid-2.2.5.zip (358Kb):  43%  155Kb  Downloading python-openid-2.2.5.zip (358Kb):  44%  159Kb  Downloading python-openid-2.2.5.zip (358Kb):  45%  163Kb  Downloading python-openid-2.2.5.zip (358Kb):  46%  167Kb  Downloading python-openid-2.2.5.zip (358Kb):  48%  172Kb  Downloading python-openid-2.2.5.zip (358Kb):  49%  176Kb  Downloading python-openid-2.2.5.zip (358Kb):  50%  180Kb  Downloading python-openid-2.2.5.zip (358Kb):  51%  184Kb  Downloading python-openid-2.2.5.zip (358Kb):  52%  188Kb  Downloading python-openid-2.2.5.zip (358Kb):  53%  192Kb  Downloading python-openid-2.2.5.zip (358Kb):  54%  196Kb  Downloading python-openid-2.2.5.zip (358Kb):  56%  200Kb  Downloading python-openid-2.2.5.zip (358Kb):  57%  204Kb  Downloading python-openid-2.2.5.zip (358Kb):  58%  208Kb  Downloading python-openid-2.2.5.zip (358Kb):  59%  212Kb  Downloading python-openid-2.2.5.zip (358Kb):  60%  217Kb  Downloading python-openid-2.2.5.zip (358Kb):  61%  221Kb  Downloading python-openid-2.2.5.zip (358Kb):  62%  225Kb  Downloading python-openid-2.2.5.zip (358Kb):  64%  229Kb  Downloading python-openid-2.2.5.zip (358Kb):  65%  233Kb  Downloading python-openid-2.2.5.zip (358Kb):  66%  237Kb  Downloading python-openid-2.2.5.zip (358Kb):  67%  241Kb  Downloading python-openid-2.2.5.zip (358Kb):  68%  245Kb  Downloading python-openid-2.2.5.zip (358Kb):  69%  249Kb  Downloading python-openid-2.2.5.zip (358Kb):  70%  253Kb  Downloading python-openid-2.2.5.zip (358Kb):  72%  258Kb  Downloading python-openid-2.2.5.zip (358Kb):  73%  262Kb  Downloading python-openid-2.2.5.zip (358Kb):  74%  266Kb  Downloading python-openid-2.2.5.zip (358Kb):  75%  270Kb  Downloading python-openid-2.2.5.zip (358Kb):  76%  274Kb  Downloading python-openid-2.2.5.zip (358Kb):  77%  278Kb  Downloading python-openid-2.2.5.zip (358Kb):  78%  282Kb  Downloading python-openid-2.2.5.zip (358Kb):  80%  286Kb  Downloading python-openid-2.2.5.zip (358Kb):  81%  290Kb  Downloading python-openid-2.2.5.zip (358Kb):  82%  294Kb  Downloading python-openid-2.2.5.zip (358Kb):  83%  299Kb  Downloading python-openid-2.2.5.zip (358Kb):  84%  303Kb  Downloading python-openid-2.2.5.zip (358Kb):  85%  307Kb  Downloading python-openid-2.2.5.zip (358Kb):  86%  311Kb  Downloading python-openid-2.2.5.zip (358Kb):  88%  315Kb  Downloading python-openid-2.2.5.zip (358Kb):  89%  319Kb  Downloading python-openid-2.2.5.zip (358Kb):  90%  323Kb  Downloading python-openid-2.2.5.zip (358Kb):  91%  327Kb  Downloading python-openid-2.2.5.zip (358Kb):  92%  331Kb  Downloading python-openid-2.2.5.zip (358Kb):  93%  335Kb  Downloading python-openid-2.2.5.zip (358Kb):  94%  339Kb  Downloading python-openid-2.2.5.zip (358Kb):  96%  344Kb  Downloading python-openid-2.2.5.zip (358Kb):  97%  348Kb  Downloading python-openid-2.2.5.zip (358Kb):  98%  352Kb  Downloading python-openid-2.2.5.zip (358Kb):  99%  356Kb  Downloading python-openid-2.2.5.zip (358Kb): 100%  358Kb  Downloading python-openid-2.2.5.zip (358Kb):              Downloading python-openid-2.2.5.zip (358Kb): 358Kb downloaded
+  Downloading python-openid-2.2.5.tar.gz (301Kb):   Downloading python-openid-2.2.5.tar.gz (301Kb):   1%  4.1Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):   2%  8.2Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):   4%  12Kb   Downloading python-openid-2.2.5.tar.gz (301Kb):   5%  16Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):   6%  20Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):   8%  24Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):   9%  28Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  10%  32Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  12%  36Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  13%  40Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  14%  45Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  16%  49Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  17%  53Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  19%  57Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  20%  61Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  21%  65Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  23%  69Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  24%  73Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  25%  77Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  27%  81Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  28%  86Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  29%  90Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  31%  94Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  32%  98Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  33%  102Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  35%  106Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  36%  110Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  38%  114Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  39%  118Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  40%  122Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  42%  126Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  43%  131Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  44%  135Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  46%  139Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  47%  143Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  48%  147Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  50%  151Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  51%  155Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  52%  159Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  54%  163Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  55%  167Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  57%  172Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  58%  176Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  59%  180Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  61%  184Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  62%  188Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  63%  192Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  65%  196Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  66%  200Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  67%  204Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  69%  208Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  70%  212Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  71%  217Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  73%  221Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  74%  225Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  76%  229Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  77%  233Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  78%  237Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  80%  241Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  81%  245Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  82%  249Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  84%  253Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  85%  258Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  86%  262Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  88%  266Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  89%  270Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  90%  274Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  92%  278Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  93%  282Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  95%  286Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  96%  290Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  97%  294Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):  99%  299Kb  Downloading python-openid-2.2.5.tar.gz (301Kb): 100%  301Kb  Downloading python-openid-2.2.5.tar.gz (301Kb):              Downloading python-openid-2.2.5.tar.gz (301Kb): 301Kb downloaded
   Running setup.py egg_info for package python-openid
     warning: no files found matching 'CHANGELOG'
     warning: no files found matching '*.css' under directory 'doc'
@@ -530,15 +530,23 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-08-17 13:10:31,425 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
-2012-08-17 13:10:31,665 INFO  [ckan.model] Database initialised
+2012-08-20 03:39:34,793 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
+2012-08-20 03:39:34,951 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
-+ service httpd restart
++ patchdir=/usr/share/kata-ckan-dev/setup-patches
++ service httpd stop
 Stopping httpd: [FAILED]
-Starting httpd: httpd: apr_sockaddr_info_get() failed for ckandev2
-httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName
-[  OK  ]
++ pushd /etc/httpd/conf
++ patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/httpd.conf.patch
+patching file httpd.conf
++ mv httpd.conf httpd.conf.step1
+++ dirname /usr/share/kata-ckan-dev/setup-scripts/20setupckanservice.sh
++ myipcmd=/usr/share/kata-ckan-dev/setup-scripts/myip.sh
+++ /usr/share/kata-ckan-dev/setup-scripts/myip.sh
++ myip=192.168.56.62
++ sed -e s/%%MYIP%%/192.168.56.62/ httpd.conf.step1
++ popd
 + chkconfig httpd on
 + chown -R ckan:apache /home/ckan/pyenv
 + chmod -R 755 /home/ckan
@@ -610,12 +618,12 @@ Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
 
-2012-08-17 13:11:41,916 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-08-17 13:11:42,149 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-08-20 03:40:55,645 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-20 03:40:56,240 DEBUG [ckanext.harvest.model] Harvest tables created
 DB tables created
 + paster --plugin=ckan user add harvester password=harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Creating user: 'harvester'
-<User id=52e4be18-2520-4188-a67f-e84583209148 name=harvester openid=None password=ff5d22a4b89449ba24e9db4058e4ac0d6e00449014a0dc1a7c21daae686676b95ba643741a775d4b fullname=None email=None apikey=03963039-707b-44da-a84c-5ffaf3732993 created=2012-08-17 13:11:44.195290 reset_key=None about=None>
+<User id=9cc8bd28-8717-497e-8be7-6bee7fb876ec name=harvester openid=None password=7f6b7bbbfe3e7e6c9b87e74fd5425fefa94e65de491195d9e8c0357f82e63a19685fb6bc19b520d3 fullname=None email=None apikey=526c8da2-da1a-4d7f-b0f7-add701287cfb created=2012-08-20 03:40:57.775062 reset_key=None about=None>
 + paster --plugin=ckan sysadmin add harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Added harvester as sysadmin
 + instloc=/home/ckan
@@ -758,8 +766,8 @@ Finished processing dependencies for ckanext-urn==0.1
 Initialized empty Git repository in /home/ckan/pyenv/src/ckanext-oaipmh/.git/
 remote: Counting objects: 115, done.[K
 remote: Compressing objects:   1% (1/96)   [Kremote: Compressing objects:   2% (2/96)   [Kremote: Compressing objects:   3% (3/96)   [Kremote: Compressing objects:   4% (4/96)   [Kremote: Compressing objects:   5% (5/96)   [Kremote: Compressing objects:   6% (6/96)   [Kremote: Compressing objects:   7% (7/96)   [Kremote: Compressing objects:   8% (8/96)   [Kremote: Compressing objects:   9% (9/96)   [Kremote: Compressing objects:  10% (10/96)   [Kremote: Compressing objects:  11% (11/96)   [Kremote: Compressing objects:  12% (12/96)   [Kremote: Compressing objects:  13% (13/96)   [Kremote: Compressing objects:  14% (14/96)   [Kremote: Compressing objects:  15% (15/96)   [Kremote: Compressing objects:  16% (16/96)   [Kremote: Compressing objects:  17% (17/96)   [Kremote: Compressing objects:  18% (18/96)   [Kremote: Compressing objects:  19% (19/96)   [Kremote: Compressing objects:  20% (20/96)   [Kremote: Compressing objects:  21% (21/96)   [Kremote: Compressing objects:  22% (22/96)   [Kremote: Compressing objects:  23% (23/96)   [Kremote: Compressing objects:  25% (24/96)   [Kremote: Compressing objects:  26% (25/96)   [Kremote: Compressing objects:  27% (26/96)   [Kremote: Compressing objects:  28% (27/96)   [Kremote: Compressing objects:  29% (28/96)   [Kremote: Compressing objects:  30% (29/96)   [Kremote: Compressing objects:  31% (30/96)   [Kremote: Compressing objects:  32% (31/96)   [Kremote: Compressing objects:  33% (32/96)   [Kremote: Compressing objects:  34% (33/96)   [Kremote: Compressing objects:  35% (34/96)   [Kremote: Compressing objects:  36% (35/96)   [Kremote: Compressing objects:  37% (36/96)   [Kremote: Compressing objects:  38% (37/96)   [Kremote: Compressing objects:  39% (38/96)   [Kremote: Compressing objects:  40% (39/96)   [Kremote: Compressing objects:  41% (40/96)   [Kremote: Compressing objects:  42% (41/96)   [Kremote: Compressing objects:  43% (42/96)   [Kremote: Compressing objects:  44% (43/96)   [Kremote: Compressing objects:  45% (44/96)   [Kremote: Compressing objects:  46% (45/96)   [Kremote: Compressing objects:  47% (46/96)   [Kremote: Compressing objects:  48% (47/96)   [Kremote: Compressing objects:  50% (48/96)   [Kremote: Compressing objects:  51% (49/96)   [Kremote: Compressing objects:  52% (50/96)   [Kremote: Compressing objects:  53% (51/96)   [Kremote: Compressing objects:  54% (52/96)   [Kremote: Compressing objects:  55% (53/96)   [Kremote: Compressing objects:  56% (54/96)   [Kremote: Compressing objects:  57% (55/96)   [Kremote: Compressing objects:  58% (56/96)   [Kremote: Compressing objects:  59% (57/96)   [Kremote: Compressing objects:  60% (58/96)   [Kremote: Compressing objects:  61% (59/96)   [Kremote: Compressing objects:  62% (60/96)   [Kremote: Compressing objects:  63% (61/96)   [Kremote: Compressing objects:  64% (62/96)   [Kremote: Compressing objects:  65% (63/96)   [Kremote: Compressing objects:  66% (64/96)   [Kremote: Compressing objects:  67% (65/96)   [Kremote: Compressing objects:  68% (66/96)   [Kremote: Compressing objects:  69% (67/96)   [Kremote: Compressing objects:  70% (68/96)   [Kremote: Compressing objects:  71% (69/96)   [Kremote: Compressing objects:  72% (70/96)   [Kremote: Compressing objects:  73% (71/96)   [Kremote: Compressing objects:  75% (72/96)   [Kremote: Compressing objects:  76% (73/96)   [Kremote: Compressing objects:  77% (74/96)   [Kremote: Compressing objects:  78% (75/96)   [Kremote: Compressing objects:  79% (76/96)   [Kremote: Compressing objects:  80% (77/96)   [Kremote: Compressing objects:  81% (78/96)   [Kremote: Compressing objects:  82% (79/96)   [Kremote: Compressing objects:  83% (80/96)   [Kremote: Compressing objects:  84% (81/96)   [Kremote: Compressing objects:  85% (82/96)   [Kremote: Compressing objects:  86% (83/96)   [Kremote: Compressing objects:  87% (84/96)   [Kremote: Compressing objects:  88% (85/96)   [Kremote: Compressing objects:  89% (86/96)   [Kremote: Compressing objects:  90% (87/96)   [Kremote: Compressing objects:  91% (88/96)   [Kremote: Compressing objects:  92% (89/96)   [Kremote: Compressing objects:  93% (90/96)   [Kremote: Compressing objects:  94% (91/96)   [Kremote: Compressing objects:  95% (92/96)   [Kremote: Compressing objects:  96% (93/96)   [Kremote: Compressing objects:  97% (94/96)   [Kremote: Compressing objects:  98% (95/96)   [Kremote: Compressing objects: 100% (96/96)   [Kremote: Compressing objects: 100% (96/96), done.[K
-Receiving objects:   0% (1/115)   Receiving objects:   1% (2/115)   Receiving objects:   2% (3/115)   Receiving objects:   3% (4/115)   Receiving objects:   4% (5/115)   Receiving objects:   5% (6/115)   Receiving objects:   6% (7/115)   Receiving objects:   7% (9/115)   Receiving objects:   8% (10/115)   Receiving objects:   9% (11/115)   Receiving objects:  10% (12/115)   Receiving objects:  11% (13/115)   Receiving objects:  12% (14/115)   Receiving objects:  13% (15/115)   Receiving objects:  14% (17/115)   Receiving objects:  15% (18/115)   Receiving objects:  16% (19/115)   Receiving objects:  17% (20/115)   Receiving objects:  18% (21/115)   Receiving objects:  19% (22/115)   Receiving objects:  20% (23/115)   Receiving objects:  21% (25/115)   Receiving objects:  22% (26/115)   Receiving objects:  23% (27/115)   Receiving objects:  24% (28/115)   Receiving objects:  25% (29/115)   Receiving objects:  26% (30/115)   Receiving objects:  27% (32/115)   Receiving objects:  28% (33/115)   Receiving objects:  29% (34/115)   Receiving objects:  30% (35/115)   Receiving objects:  31% (36/115)   Receiving objects:  32% (37/115)   Receiving objects:  33% (38/115)   Receiving objects:  34% (40/115)   Receiving objects:  35% (41/115)   Receiving objects:  36% (42/115)   Receiving objects:  37% (43/115)   Receiving objects:  38% (44/115)   Receiving objects:  39% (45/115)   remote: Total 115 (delta 57), reused 68 (delta 14)[K
-Receiving objects:  40% (46/115)   Receiving objects:  41% (48/115)   Receiving objects:  42% (49/115)   Receiving objects:  43% (50/115)   Receiving objects:  44% (51/115)   Receiving objects:  45% (52/115)   Receiving objects:  46% (53/115)   Receiving objects:  47% (55/115)   Receiving objects:  48% (56/115)   Receiving objects:  49% (57/115)   Receiving objects:  50% (58/115)   Receiving objects:  51% (59/115)   Receiving objects:  52% (60/115)   Receiving objects:  53% (61/115)   Receiving objects:  54% (63/115)   Receiving objects:  55% (64/115)   Receiving objects:  56% (65/115)   Receiving objects:  57% (66/115)   Receiving objects:  58% (67/115)   Receiving objects:  59% (68/115)   Receiving objects:  60% (69/115)   Receiving objects:  61% (71/115)   Receiving objects:  62% (72/115)   Receiving objects:  63% (73/115)   Receiving objects:  64% (74/115)   Receiving objects:  65% (75/115)   Receiving objects:  66% (76/115)   Receiving objects:  67% (78/115)   Receiving objects:  68% (79/115)   Receiving objects:  69% (80/115)   Receiving objects:  70% (81/115)   Receiving objects:  71% (82/115)   Receiving objects:  72% (83/115)   Receiving objects:  73% (84/115)   Receiving objects:  74% (86/115)   Receiving objects:  75% (87/115)   Receiving objects:  76% (88/115)   Receiving objects:  77% (89/115)   Receiving objects:  78% (90/115)   Receiving objects:  79% (91/115)   Receiving objects:  80% (92/115)   Receiving objects:  81% (94/115)   Receiving objects:  82% (95/115)   Receiving objects:  83% (96/115)   Receiving objects:  84% (97/115)   Receiving objects:  85% (98/115)   Receiving objects:  86% (99/115)   Receiving objects:  87% (101/115)   Receiving objects:  88% (102/115)   Receiving objects:  89% (103/115)   Receiving objects:  90% (104/115)   Receiving objects:  91% (105/115)   Receiving objects:  92% (106/115)   Receiving objects:  93% (107/115)   Receiving objects:  94% (109/115)   Receiving objects:  95% (110/115)   Receiving objects:  96% (111/115)   Receiving objects:  97% (112/115)   Receiving objects:  98% (113/115)   Receiving objects:  99% (114/115)   Receiving objects: 100% (115/115)   Receiving objects: 100% (115/115), 34.20 KiB, done.
+remote: Total 115 (delta 57), reused 68 (delta 14)[K
+Receiving objects:   0% (1/115)   Receiving objects:   1% (2/115)   Receiving objects:   2% (3/115)   Receiving objects:   3% (4/115)   Receiving objects:   4% (5/115)   Receiving objects:   5% (6/115)   Receiving objects:   6% (7/115)   Receiving objects:   7% (9/115)   Receiving objects:   8% (10/115)   Receiving objects:   9% (11/115)   Receiving objects:  10% (12/115)   Receiving objects:  11% (13/115)   Receiving objects:  12% (14/115)   Receiving objects:  13% (15/115)   Receiving objects:  14% (17/115)   Receiving objects:  15% (18/115)   Receiving objects:  16% (19/115)   Receiving objects:  17% (20/115)   Receiving objects:  18% (21/115)   Receiving objects:  19% (22/115)   Receiving objects:  20% (23/115)   Receiving objects:  21% (25/115)   Receiving objects:  22% (26/115)   Receiving objects:  23% (27/115)   Receiving objects:  24% (28/115)   Receiving objects:  25% (29/115)   Receiving objects:  26% (30/115)   Receiving objects:  27% (32/115)   Receiving objects:  28% (33/115)   Receiving objects:  29% (34/115)   Receiving objects:  30% (35/115)   Receiving objects:  31% (36/115)   Receiving objects:  32% (37/115)   Receiving objects:  33% (38/115)   Receiving objects:  34% (40/115)   Receiving objects:  35% (41/115)   Receiving objects:  36% (42/115)   Receiving objects:  37% (43/115)   Receiving objects:  38% (44/115)   Receiving objects:  39% (45/115)   Receiving objects:  40% (46/115)   Receiving objects:  41% (48/115)   Receiving objects:  42% (49/115)   Receiving objects:  43% (50/115)   Receiving objects:  44% (51/115)   Receiving objects:  45% (52/115)   Receiving objects:  46% (53/115)   Receiving objects:  47% (55/115)   Receiving objects:  48% (56/115)   Receiving objects:  49% (57/115)   Receiving objects:  50% (58/115)   Receiving objects:  51% (59/115)   Receiving objects:  52% (60/115)   Receiving objects:  53% (61/115)   Receiving objects:  54% (63/115)   Receiving objects:  55% (64/115)   Receiving objects:  56% (65/115)   Receiving objects:  57% (66/115)   Receiving objects:  58% (67/115)   Receiving objects:  59% (68/115)   Receiving objects:  60% (69/115)   Receiving objects:  61% (71/115)   Receiving objects:  62% (72/115)   Receiving objects:  63% (73/115)   Receiving objects:  64% (74/115)   Receiving objects:  65% (75/115)   Receiving objects:  66% (76/115)   Receiving objects:  67% (78/115)   Receiving objects:  68% (79/115)   Receiving objects:  69% (80/115)   Receiving objects:  70% (81/115)   Receiving objects:  71% (82/115)   Receiving objects:  72% (83/115)   Receiving objects:  73% (84/115)   Receiving objects:  74% (86/115)   Receiving objects:  75% (87/115)   Receiving objects:  76% (88/115)   Receiving objects:  77% (89/115)   Receiving objects:  78% (90/115)   Receiving objects:  79% (91/115)   Receiving objects:  80% (92/115)   Receiving objects:  81% (94/115)   Receiving objects:  82% (95/115)   Receiving objects:  83% (96/115)   Receiving objects:  84% (97/115)   Receiving objects:  85% (98/115)   Receiving objects:  86% (99/115)   Receiving objects:  87% (101/115)   Receiving objects:  88% (102/115)   Receiving objects:  89% (103/115)   Receiving objects:  90% (104/115)   Receiving objects:  91% (105/115)   Receiving objects:  92% (106/115)   Receiving objects:  93% (107/115)   Receiving objects:  94% (109/115)   Receiving objects:  95% (110/115)   Receiving objects:  96% (111/115)   Receiving objects:  97% (112/115)   Receiving objects:  98% (113/115)   Receiving objects:  99% (114/115)   Receiving objects: 100% (115/115)   Receiving objects: 100% (115/115), 34.20 KiB, done.
 Resolving deltas:   0% (0/57)   Resolving deltas:  21% (12/57)   Resolving deltas:  24% (14/57)   Resolving deltas:  45% (26/57)   Resolving deltas:  47% (27/57)   Resolving deltas:  52% (30/57)   Resolving deltas:  70% (40/57)   Resolving deltas:  75% (43/57)   Resolving deltas:  77% (44/57)   Resolving deltas:  84% (48/57)   Resolving deltas:  89% (51/57)   Resolving deltas:  94% (54/57)   Resolving deltas:  96% (55/57)   Resolving deltas: 100% (57/57)   Resolving deltas: 100% (57/57), done.
 + cd ckanext-oaipmh
 + python setup.py install
@@ -844,7 +852,7 @@ Reading http://www.infrae.com/download/oaipmh
 Best match: pyoai 2.4.4
 Downloading http://www.infrae.com/download/OAI/pyoai/2.4.4/pyoai-2.4.4.tar.gz
 Processing pyoai-2.4.4.tar.gz
-Running pyoai-2.4.4/setup.py -q bdist_egg --dist-dir /tmp/easy_install-fnm5BS/pyoai-2.4.4/egg-dist-tmp-RmDrcu
+Running pyoai-2.4.4/setup.py -q bdist_egg --dist-dir /tmp/easy_install-T3MgqS/pyoai-2.4.4/egg-dist-tmp-NVKD9k
 Adding pyoai 2.4.4 to easy-install.pth file
 
 Installed /home/ckan/pyenv/lib/python2.6/site-packages/pyoai-2.4.4-py2.6.egg
@@ -854,7 +862,7 @@ Reading http://codespeak.net/lxml
 Best match: lxml 2.3.5
 Downloading http://lxml.de/files/lxml-2.3.5.tgz
 Processing lxml-2.3.5.tgz
-Running lxml-2.3.5/setup.py -q bdist_egg --dist-dir /tmp/easy_install-D7oTOy/lxml-2.3.5/egg-dist-tmp-w9PYT7
+Running lxml-2.3.5/setup.py -q bdist_egg --dist-dir /tmp/easy_install-jNiYj0/lxml-2.3.5/egg-dist-tmp-oJnZy8
 Building lxml version 2.3.5.
 Building without Cython.
 Using build configuration of libxslt 1.1.26
@@ -1017,22 +1025,20 @@ Starting tomcat6: [  OK  ]
 + instloc=/home/ckan
 + extensions='harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester'
 + sed -i '/^ckan.plugins/s|$| harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester|' /home/ckan/pyenv/src/ckan/development.ini
-+ service ckan-dev restart
-ckan-dev: unrecognized service
 + instloc=/home/ckan
 + service rabbitmq-server start
 Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-08-17 13:14:23,305 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-08-17 13:14:23,308 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-08-17 13:14:23,347 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-08-20 03:43:15,263 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-20 03:43:15,266 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-08-20 03:43:15,294 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
 
-2012-08-17 13:14:23,380 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-08-17 13:14:23,410 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 12d5f82f-4b2d-4756-866f-a039de181211
+2012-08-20 03:43:15,314 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-08-20 03:43:15,336 INFO  [ckanext.harvest.logic.action.create] Harvest source created: c942aada-6df4-43ea-9719-417e094541ea
 Created new harvest source:
-Source id: 12d5f82f-4b2d-4756-866f-a039de181211
+Source id: c942aada-6df4-43ea-9719-417e094541ea
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -1041,18 +1047,18 @@ publisher:
      jobs: 0
 
 There is 1 harvest source
-2012-08-17 13:14:23,454 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'12d5f82f-4b2d-4756-866f-a039de181211'}
-2012-08-17 13:14:23,477 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 19364401-5cd2-4793-88d3-d7e50f8d1a8a
+2012-08-20 03:43:15,365 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'c942aada-6df4-43ea-9719-417e094541ea'}
+2012-08-20 03:43:15,390 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 30015a18-5b47-4676-9ff2-f7f3956c3044
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-08-17 13:14:24,979 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-08-17 13:14:24,983 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-08-17 13:14:25,025 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-08-20 03:43:16,779 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-20 03:43:16,782 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-08-20 03:43:16,809 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
 
-2012-08-17 13:14:25,059 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-08-17 13:14:25,093 INFO  [ckanext.harvest.logic.action.create] Harvest source created: a5682e05-c030-4b6a-9fb3-6ae428db2773
+2012-08-20 03:43:16,829 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-08-20 03:43:16,849 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 9ea71984-47eb-4f57-bf46-62de02aed127
 Created new harvest source:
-Source id: a5682e05-c030-4b6a-9fb3-6ae428db2773
+Source id: 9ea71984-47eb-4f57-bf46-62de02aed127
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -1061,18 +1067,18 @@ publisher:
      jobs: 0
 
 There are 2 harvest sources
-2012-08-17 13:14:25,172 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'a5682e05-c030-4b6a-9fb3-6ae428db2773'}
-2012-08-17 13:14:25,209 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 29bd0dfe-b494-4eb6-b53a-56dead048b2c
+2012-08-20 03:43:16,967 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'9ea71984-47eb-4f57-bf46-62de02aed127'}
+2012-08-20 03:43:17,018 INFO  [ckanext.harvest.logic.action.create] Harvest job saved c11fda39-ca17-4c0a-b267-ff36136774de
 A new Harvest Job for this source has also been created
 + service httpd restart
-Stopping httpd: [  OK  ]
+Stopping httpd: [FAILED]
 Starting httpd: httpd: apr_sockaddr_info_get() failed for ckandev2
 httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName
 [  OK  ]
 + service supervisord restart
 Stopping supervisord: [  OK  ]
 Starting supervisord: [  OK  ]
-job 1 at 2012-08-17 13:19
+job 1 at 2012-08-20 03:48
 + instloc=/home/ckan
 + expected=/usr/share/kata-ckan-dev/setup-data/pip.freeze
 + cd /home/ckan
@@ -1112,14 +1118,14 @@ job 1 at 2012-08-17 13:19
 [1;31m+ echo 'Python package mismatches:'
 Python package mismatches:
 + cat /tmp/kata-70.tmp
-2c2
-< Beaker==1.6.3
----
-> Beaker==1.6.4
 26c26
-< -e git+https://github.com/okfn/ckan.git@0d0e5a09eddf54544a1737fa45b248532ac7c875#egg=ckan-dev
+< -e git+https://github.com/okfn/ckan.git@85df0117cc85416f134084b3a2a1f5e8b51aec92#egg=ckan-dev
 ---
-> -e git+https://github.com/okfn/ckan.git@85df0117cc85416f134084b3a2a1f5e8b51aec92#egg=ckan-dev
+> -e git+https://github.com/okfn/ckan.git@eae560d4bbf3ad0972a52b8cd19ac4893a9e4352#egg=ckan-dev
+28c28
+< -e git+https://github.com/okfn/ckanext-harvest.git@a8aebac9656a121909736e4272f210f40d924d01#egg=ckanext_harvest-dev
+---
+> -e git+https://github.com/okfn/ckanext-harvest.git@c1f83e0d3e5b6c6ce9922b2bf973fb951763c075#egg=ckanext_harvest-dev
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 
