@@ -1,0 +1,1 @@
+../../common/92shibbolethspconfig.sh
