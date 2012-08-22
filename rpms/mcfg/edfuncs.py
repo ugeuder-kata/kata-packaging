@@ -42,10 +42,10 @@ class edfuncs:
     if os.path.exists( toFile ):
       raise IOError, "Output file " + toFile + " already exists"
     t = open( toFile , "w")
-    fromstr = "%%" + fromStr.upper() + "%%"
+    fromStr = "%%" + fromStr.upper() + "%%"
     for line in f:
-      line.replace( fromStr, toStr )
-      t.write( toStr )
+      line = line.replace( fromStr, toStr )
+      t.write( line )
     t.close()
     f.close()
 
