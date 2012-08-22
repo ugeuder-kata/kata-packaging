@@ -1,0 +1,196 @@
+The master configuration (mcfg) tool
+
+
+1. Purpose
+
+The master configuration tool is used for scripted installation of a big
+system with many subsystems. The purpose that all configuration information is
+edited into a single file before installation starts. After that installation
+can proceed without any prompts or further editing steps.  The installation
+becomes fully reproducible during testing and the configuration information is
+also available for later re-installs and upgrades during production.
+ 
+The master configuration tools should be a generic and extensible framework.
+In its basic form one can imagine its functionality as not much more than the
+sed editor. Substitute some strings (template values inserted during system
+development) in a configuration file with another string (parameter value
+given by the administrator). However, the idea is that new editors (functions
+that do some kind of editing in a configuration file) can be added easily.
+
+In order to support genericity we assume that a mcfg template is used.
+The mcfg template specifies the configuration files to be a
+
+
+2. Rationale
+
+Often systems are first installed, then configured and eventually started.
+However, this is an ideal sequence. In real life quite often configuration is
+incomplete when the system is started the first time, which leads to a broken
+system state. So even after the configuration is corrected or completed the
+system can no longer operate before some traces of the unsuccessful attempts
+are cleaned out. Using a mcfg we try to reduce the liklihood of such
+"trial and error" configurations.
+ 
+
+4. Roles
+
+  Admin
+
+    Installs a system, technically (in our case) one or more rpm
+    packages. Before doing so she or he edits a mcfg file,
+    which enables the installed system to start working without any further
+    configuration work.
+
+  Packager
+
+    Packages the system (in our case into rpm, but that's not visible in the
+    master configuration tool, so it could be used for other installations,
+    too) Needs to write a mcfg template, a file which tells
+    the mcfg tool, which configuration files need to be edited and what
+    editing operations are done in each file. The packager might also want
+    to provide a sample mcfg file, which the admin can edit.
+
+
+5. Terminology
+
+  Configuration file: Some file in the system that needs editing to make
+  the system operational.
+
+  Target: A file edited by the mcfg tool. Although in most cases the target
+  will be a configuration file, technically there is no hinder to edit
+  something else, e.g. an installation script (before its execution)
+
+  Editor: a function doing certain editing. The easisest editor is
+  "replace", basically the string.replace() function in Python. Another
+  editor could duplicate lines and replace a value (some configuration
+  files need a new line if a list of item). Yet another editor could
+  copy a file into the target location (e.g. install a certificate)  
+
+
+6. Requirements
+
+R1: The tool should be simple, robust, and quick to implement
+
+R2: The tool must be extensible (new ways of editing files). Extensions
+    should not break existing master configuration files and templates.
+
+R3: The tool must support incremental and iterative execution. At each
+    invocation only some of the editing operations are executed (increments). 
+    It must be possible to edit the same configuration file more than once
+    (iteration)
+
+R4: (optional) Master configuration should be in one file.
+
+R5: The mcfg file should use an easy syntax. (Administrators might not
+    be familier with obejct orineted programming or some particular
+    programming language)
+
+R6: A parser for the mcfg file and the mcfg template should readily exist,
+    we don't want to implement one.
+
+R7: The tool should support a syntax check and a test for completeness of the
+    mcfg file. This helps avoiding failed (partial) installations resulting in
+    an undefined system state, because some parameter was not available or the
+    mcfg tool aborted during installation.
+
+
+7. Design decisions
+
+D1: We use python to implement the tool
+
+D2: mcfg template and mcfg file are INI files (supported by Python class
+    ConfigParser, meets R5 and R6) 
+
+D3: in the first phase we can leave out the support for increments. However,
+    we put the parmater already into the mcfg template. It will be ignored
+    until implemented.
+
+
+6. Sample files
+
+Each section in an INI file refers to one target.
+
+
+6.1 Sample mcfg file
+
+The mcfg should be self-explaining for everybody who has worked with an
+INI file before.
+
+---- example-mcfg-file ----
+
+[DEFAULT]
+hostname_everywhere: kata-test1.csc.fi
+
+[ckan.ini]
+;; see http://docs.python.org/library/configparser.html for explanation
+;; of interpolation
+hostname: %(hostname_everywhere)s   ;; do not edit, taken from DEFAULT
+admin_email: kata-admin@csc.fi
+
+[HAKA]
+spname: %(hostname_everywhere)s     ;; do not edit, taken from DEFAULT
+some_other: foo
+xyz: /home/admin/cert1.pem
+
+---- EOF ----
+
+Ths nice bonus we get from Python ConfigParser is the use of default values.
+Some parameters like the hostname are likely to be needed by many subsystems,
+i. e. targets. By using the built-in interpolation the administrator needs
+to specify the value only once in the DEFAULT section (The substition
+mechanism might not be know to every adminstrator which is in contradiction to
+R5. This can be alleviated if the packager adds a comment "do not edit"
+
+
+6.2 Sample mcfg template
+
+The mcfg template instructs the mcfg tool how to use the parameters found
+in the mcfg file. (Or the other way round the packager defines in the mcfg
+template what parameter are needed in the mcfg file and how they are used)
+
+A mcfg file is only complete if it contains all sections given in the
+template. Furthermore it is only complete if each section has all parameters
+of the equivalent section in the template (except secial paramters starting
+with mcfg_)
+
+The meaning of the mcfg template might not be as intuitive as the mcfg file.
+Some inline comments have been added for explanation. The administrator
+does not need to edit or even read the template file, so this should not
+cause problems.
+
+This mcfg template example belongs to the mcfg file example above.
+
+---- sample mcfg template ----
+
+[ckan.ini]    ;; a target (just a descriptive name)
+
+;; mcfg_filename is a mandatory special parameter specifying the filename 
+;; of the target to the mcfg tool
+mcfg_filename: /home/ckan/pyenv/src/development.ini
+
+;; All other parameters list the editors needed for this target.
+;; The same parameter must also occur in the mcfg file, otherwise the 
+;; mcfg is incomplete and should not pass pre-installation test (R7).
+;;
+;; The exact meaning of the paramater name is editor specific, but generally
+;; it somehow denotes the item the editor has to edit inside the target.
+;;
+;; The value is
+;;     - an integer: for increment control (when this editor needs to
+;;                   be run)
+;;     - a space as separator
+;;     - the name of the editor function
+hostname: 10 replace
+admin_email: 20 replace
+
+[HAKA]
+mcfg_filename: /etc/shibboleth/somefile
+spname: 30 replace
+some_other: 40 duplicate
+
+[shibboleth-cert-foo]
+mcfg_filename: /etc/shibboleth/somewhere/cert.pem
+location: 10 copyFile
+
+
+---- EOF ----
