@@ -31,31 +31,25 @@ import os.path
 class edfuncs:
 
   @staticmethod
-  def replace( fromfile, tofile, fromstr, tostr ):
-    f = open( fromfile , "r" )
-    t = open( tofile , "w")
-    fromstr = "%%" + fromstr.upper() + "%%"
+  def replace( fromFile, toFile, fromStr, toStr ):
+    f = open( fromFile , "r" )
+    t = open( toFile , "w")
+    fromstr = "%%" + fromStr.upper() + "%%"
     for line in f:
-      line.replce( fromstr, tostr )
-      print >> t , tostr
+      line.replace( fromStr, tostr )
+      t.write( toStr )
     t.close()
     f.close()
 
   @staticmethod
-  def copyFile( fromFileDummy, toFile, parDummy, copyFrom )
+  def copyFile( fromFileDummy, toFile, parDummy, copyFrom ):
     if paramater.lower() != "location" :
       raise ValueError , "Unknown parameter: " + location
-    if not os.path.exists( copyFrom )
-      raise IOError , "Input file " + copyFrom + " missing
+    if not os.path.exists( copyFrom ):
+      raise IOError , "Input file " + copyFrom + " missing"
 
     os.system( "cp " + copyFrom + " " + toFile )
 
-  @staticmethod
-  def copyFile_check( fileDummy, parameter, copyFrom )
-    if paramater.lower() != "location" :
-      raise ValueError , "Unknown parameter: " + location
-    if not os.path.exists( copyFrom )
-      raise IOError , "Input file " + copyFrom + " missing
 
  
     
