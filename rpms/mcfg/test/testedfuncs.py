@@ -1,6 +1,7 @@
 import sys
 import os
 import inspect
+import filecmp
 
 # we live in subdirectory test, so we need to import the code to be tested
 # from the parent directory. I don't like this hack, please suggest something
@@ -20,21 +21,22 @@ class TestEdfuncs(unittest.TestCase):
 
   def test_replaceSuccessful(self):
     iFileName = os.path.join( self.testFilesDir , "replace1.in" )
-    iFile = open( iFileName , "r" )
     print >> sys.stderr , "\n%s:%d: tempnam risk neglected, please suggest improvement" % ( __file__ , inspect.currentframe().f_lineno )
     oFileName = os.tempnam( )
-    oFile = open( oFileName , "w" )
     # we could call the editor function in a easier way here, but let's
     # simulate it once the way it will be done when the name comes from a 
     # text file
     func = getattr( edfuncs.edfuncs , "replace" )
-    func( iFile , oFile , 'toBeReplaced' , 'replacement' )
-    oFile.close()
-    iFile.close()
+    func( iFileName , oFileName , 'toBeReplaced' , 'replacement' )
     # maybe by using difflib instead of filecmp we could replace tempnam
     # by tmpfile???
-    self.assertTrue( filecmp.cmp( iFileName , oFileName ))
-    os.unlink( oFileName )
+    oFileNameExpected = os.path.join( self.testFilesDir , "replace1.out.expected" )
+    result = filecmp.cmp( oFileName , oFileNameExpected )
+    if result:
+      os.unlink( oFileName )
+    else:
+      print >>sys.stderr , "\nUnexpected result in" , oFileName  
+    self.assertTrue( result )
 
 
   def test_replaceInputFileMissing(self):

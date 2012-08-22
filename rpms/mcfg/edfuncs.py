@@ -24,6 +24,12 @@
 #   toFile: This is really the target. The readily edited configuration file
 #   fromString: the string to be replaced
 #   toString: the replacement string    
+#
+# fromFile and toFile are taken as fileNames and opened and closed by
+# the editor function. Of course when several editors are called after each
+# other this is somewhat inefficient compared to running each editor on the
+# same buffer. However, with the data volume expected to be handled by 
+# this tool we prefer the simple implementation.
 
 import os
 import os.path
@@ -38,7 +44,7 @@ class edfuncs:
     t = open( toFile , "w")
     fromstr = "%%" + fromStr.upper() + "%%"
     for line in f:
-      line.replace( fromStr, tostr )
+      line.replace( fromStr, toStr )
       t.write( toStr )
     t.close()
     f.close()
