@@ -49,6 +49,12 @@ diff -u patches/orig/development.ini patches/kata/development.ini >development.i
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 
+# Shibboleth related patches
+diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
+diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
+diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
+diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
+
 
 %install
 install -d $RPM_BUILD_ROOT/%{scriptdir}
