@@ -33,6 +33,8 @@ class edfuncs:
   @staticmethod
   def replace( fromFile, toFile, fromStr, toStr ):
     f = open( fromFile , "r" )
+    if os.path.exists( toFile ):
+      raise IOError, "Output file " + toFile + " already exists"
     t = open( toFile , "w")
     fromstr = "%%" + fromStr.upper() + "%%"
     for line in f:
