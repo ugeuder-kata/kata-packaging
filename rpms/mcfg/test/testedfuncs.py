@@ -74,6 +74,18 @@ class TestEdfuncs(unittest.TestCase):
       self.assertEqual( "Input file " + doesNotExist + " missing" , str(e))
 
 
+  def test_CopyFileTargetFileAlreadyThere(self):
+    iFileName = os.path.join( self.testFilesDir , "replace1.in" )
+    oFileName = os.path.join( self.testFilesDir , "replace1.out.expected" )
+    args = ( "dummy", oFileName, "location",  iFileName )
+    self.assertRaises( IOError , edfuncs.edfuncs.copyFile , *args )
+    # see comment about assertRaises above
+    try:
+      edfuncs.edfuncs.copyFile( *args )
+    except IOError as e:
+      self.assertEqual( "Target file " + oFileName + " already exists" , str(e))
+
+
   def test_CopyFileWrongParameter(self):
     args = ( "dummy" , "dummy" , "wrong" , "dummy" )
     self.assertRaises( ValueError , edfuncs.edfuncs.copyFile, *args ) 
