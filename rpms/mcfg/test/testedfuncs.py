@@ -1,6 +1,5 @@
 import sys
 import os
-import inspect
 import filecmp
 import datetime
 
@@ -21,6 +20,7 @@ class TestEdfuncs(unittest.TestCase):
     self.testFilesDir = os.path.join( here , "files" )
 
   def test_replaceSuccessful(self):
+    # same files used by TestEditor.test_invokeEditor
     iFileName = os.path.join( self.testFilesDir , "replace1.in" )
 
     # originally we used os.tempnam() here but it clutters up the test output
