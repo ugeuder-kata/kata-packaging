@@ -1,22 +1,25 @@
-import sys
-import os
-import filecmp
 import datetime
+import filecmp
+import os
+import sys
+import unittest
 
 # we live in subdirectory test, so we need to import the code to be tested
 # from the parent directory. I don't like this hack, please suggest something
-# better
-hackedPath = [ os.path.join( sys.path[0] , "..") ]
+# better (well, nose does it already, but maybe not everybody uses it)
+here=os.path.split( __file__ )[0]
+if here == '' :
+  here = os.getcwd()
+above=os.path.split( here )[0]
+hackedPath = [ above ]
 hackedPath.extend( sys.path )
 sys.path = hackedPath
 
 import edfuncs
-import unittest
 
 class TestEdfuncs(unittest.TestCase):
 
   def setUp(self):
-    here = sys.path[1]
     self.testFilesDir = os.path.join( here , "files" )
 
   def test_replaceSuccessful(self):
