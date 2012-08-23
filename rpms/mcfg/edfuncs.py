@@ -50,9 +50,9 @@ class edfuncs:
     f.close()
 
   @staticmethod
-  def copyFile( fromFileDummy, toFile, parDummy, copyFrom ):
-    if paramater.lower() != "location" :
-      raise ValueError , "Unknown parameter: " + location
+  def copyFile( fromFileDummy, toFile, parameter, copyFrom ):
+    if parameter.lower() != "location" :
+      raise ValueError , "Unknown parameter: " + parameter
     if not os.path.exists( copyFrom ):
       raise IOError , "Input file " + copyFrom + " missing"
 
