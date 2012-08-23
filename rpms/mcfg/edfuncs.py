@@ -55,8 +55,16 @@ class edfuncs:
       raise ValueError , "Unknown parameter: " + parameter
     if not os.path.exists( copyFrom ):
       raise IOError , "Input file " + copyFrom + " missing"
+    if os.path.exists( toFile ):
+      raise IOError , "Target file " + toFile + " already exists"
 
     os.system( "cp " + copyFrom + " " + toFile )
+
+# Python does not allow setting attributes on methods (see PEP232)
+# so we do it aftetwards. Maybe we should get rid of the whole class
+# it serves no purpose at the moment  
+edfuncs.replace.backup = True
+edfuncs.copyFile.backup = False
 
 
  

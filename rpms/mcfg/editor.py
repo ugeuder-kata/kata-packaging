@@ -19,6 +19,11 @@ class editor:
 
   def runIt( self, fromFile, toFile) :
     # incr ignored for the time being
+    
     func = getattr( edfuncs.edfuncs , self.edFunc )
+    if func.backup :
+      print "target must exist, back it up by renaming and use as input"
+    else :
+      print "target must not exist"
     func( fromFile , toFile , *self.parList )
 
