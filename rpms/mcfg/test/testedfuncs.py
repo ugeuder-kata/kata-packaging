@@ -58,11 +58,27 @@ class TestEdfuncs(unittest.TestCase):
 
 
   def test_CopyFileInputFileMissing(self):
-    raise NotImplementedError
+    doesNotExist = "/tmp/seqwe/doesNotExist"
+    args = ( "dummy", "dummy", "location",  doesNotExist )
+    self.assertRaises( IOError , edfuncs.edfuncs.copyFile , *args ) 
+    # in Python 2.7 we could have used assertRaises as context manager,
+    # in the first place, but we need to support Python 2.6
+    # (of course this could be coded differently using try, but the
+    # assertRaises conveys the idea what we are doing)
+    try:
+      edfuncs.edfuncs.copyFile( *args )
+    except IOError as e:
+      self.assertEqual( "Input file " + doesNotExist + " missing" , str(e))
+
 
   def test_CopyFileWrongParameter(self):
-    self.assertRaises( ValueError , edfuncs.edfuncs.copyFile , 
-                                   "dummy" , "dummy" , "wrong" , "dummy" )
+    args = ( "dummy" , "dummy" , "wrong" , "dummy" )
+    self.assertRaises( ValueError , edfuncs.edfuncs.copyFile, *args ) 
+    # see comment about assertRaises above
+    try:
+      edfuncs.edfuncs.copyFile( *args )
+    except ValueError as e:
+      self.assertEqual( "Unknown parameter: wrong" , str(e))
 
 
 if __name__ == '__main__':
