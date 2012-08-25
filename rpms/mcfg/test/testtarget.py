@@ -27,18 +27,18 @@ class TestTarget(unittest.TestCase):
 
   def test_emptyEdlist(self):
     sampleFile = os.path.join(self.testFilesDir, "replace1.in" )
-    targetFile = os.path.join(self.testFilesDir, "emptyEdlist.out-"
+    targetfile = os.path.join(self.testFilesDir, "emptyEdlist.out-"
                                         + datetime.datetime.now().isoformat())
-    shutil.copy(sampleFile, targetFile)
+    shutil.copy(sampleFile, targetfile)
     t = target.Target()
-    t.targetFile = targetFile
-    t.runEditors(77)
-    self.assertTrue(filecmp.cmp(sampleFile, targetFile))
-    os.unlink(targetFile)
+    t.targetfile = targetfile
+    t.run_editors(77)
+    self.assertTrue(filecmp.cmp(sampleFile, targetfile))
+    os.unlink(targetfile)
 
   def test_contradictingBackup(self):
     t = target.Target()
-    t.targetFile = "contradictive"
+    t.targetfile = "contradictive"
     t.edlist.append(editor.editor("replace", 10, ("foo", "bar")))
     t.edlist.append(editor.editor("copyFile", 10, ("location", "inputFile")))
     self.assertRaises(ValueError, t.backup)
