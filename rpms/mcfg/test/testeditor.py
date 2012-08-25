@@ -31,8 +31,8 @@ class TestEditor(unittest.TestCase):
     oFileName = os.path.join( self.testFilesDir , "editor.out-"
                                         + datetime.datetime.now().isoformat())
 
-    e = editor.editor( "replace" , 10 , ( "toBeReplaced" , "replacement" ))
-    e.runIt( iFileName , oFileName )
+    edi = editor.Editor( "replace" , 10 , ( "toBeReplaced" , "replacement" ))
+    edi.run_it( iFileName , oFileName )
 
     oFileNameExpected = os.path.join( self.testFilesDir , "replace1.out.expected" )
     result = filecmp.cmp( oFileName , oFileNameExpected )
@@ -43,9 +43,9 @@ class TestEditor(unittest.TestCase):
     self.assertTrue( result )
 
   def test_backup(self):
-    e = editor.editor("replace", 10, ("toBeReplaced", "replacement"))
+    e = editor.Editor("replace", 10, ("toBeReplaced", "replacement"))
     self.assertTrue(e.backup())
-    e = editor.editor("copyFile", 10, ("location", "foo"))
+    e = editor.Editor("copy_file", 10, ("location", "foo"))
     self.assertFalse(e.backup())
 
 if __name__ == '__main__':

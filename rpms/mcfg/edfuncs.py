@@ -34,7 +34,7 @@
 import os
 import os.path
 
-class edfuncs:
+class Edfuncs:
 
   @staticmethod
   def replace( fromFile, toFile, fromStr, toStr ):
@@ -50,7 +50,7 @@ class edfuncs:
     f.close()
 
   @staticmethod
-  def copyFile( fromFileDummy, toFile, parameter, copyFrom ):
+  def copy_file( fromFileDummy, toFile, parameter, copyFrom ):
     if parameter.lower() != "location" :
       raise ValueError , "Unknown parameter: " + parameter
     if not os.path.exists( copyFrom ):
@@ -63,8 +63,8 @@ class edfuncs:
 # Python does not allow setting attributes on methods (see PEP232)
 # so we do it aftetwards. Maybe we should get rid of the whole class
 # it serves no purpose at the moment  
-edfuncs.replace.backup = True
-edfuncs.copyFile.backup = False
+Edfuncs.replace.backup = True
+Edfuncs.copy_file.backup = False
 
 
  
