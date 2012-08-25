@@ -13,17 +13,16 @@ class editor:
 # all naming with the semantics of the replace edfunc in mind  
 
   def __init__(self, edFunc , incr, parList):
-    self.edFunc = edFunc
+    self.func = getattr(edfuncs.edfuncs, edFunc)
+    self.name = edFunc      # we don't really need the name, but keep it
+                            # for potential error messages and debugging
     self.incr = incr
     self.parList = parList
 
-  def runIt( self, fromFile, toFile) :
-    # incr ignored for the time being
-    
-    func = getattr( edfuncs.edfuncs , self.edFunc )
-    if func.backup :
-      print "target must exist, back it up by renaming and use as input"
-    else :
-      print "target must not exist"
-    func( fromFile , toFile , *self.parList )
 
+  def runIt(self, fromFile, toFile):
+    # incr ignored for the time being
+    self.func(fromFile, toFile, *self.parList)
+
+  def backup(self):
+    return self.func.backup
