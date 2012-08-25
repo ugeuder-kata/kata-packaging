@@ -30,9 +30,9 @@ class Target:
         """Run all editors on the edlist relevant for the current increment
         Take care of backup. Backup serves two purposes: A editor cannot
         read & write the same file anyway, but also it makes it easier to
-        debug if something goes wrong. However we keep only the backup of the
+        debug if something goes wrong. However, we keep only the backup of the
         first editor otherwise it gets to messy (in really tricky cases
-        on could still commment out the unlink statement).
+        one could still commment out the unlink statement).
         """
 
         backup = self.backup()
