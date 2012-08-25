@@ -39,8 +39,8 @@ class TestTarget(unittest.TestCase):
   def test_contradictingBackup(self):
     t = target.Target()
     t.targetfile = "contradictive"
-    t.edlist.append(editor.editor("replace", 10, ("foo", "bar")))
-    t.edlist.append(editor.editor("copyFile", 10, ("location", "inputFile")))
+    t.edlist.append(editor.Editor("replace", 10, ("foo", "bar")))
+    t.edlist.append(editor.Editor("copy_file", 10, ("location", "inputFile")))
     self.assertRaises(ValueError, t.backup)
     # in Python 2.7 we could have used assertRaises as context manager,
     # in the first place, but we need to support Python 2.6
