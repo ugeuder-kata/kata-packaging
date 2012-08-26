@@ -2,6 +2,7 @@
 
 import itertools
 import os
+import os.path
 import shutil
 
 class Target:
@@ -34,8 +35,21 @@ class Target:
         first editor otherwise it gets to messy (in really tricky cases
         one could still commment out the unlink statement).
         """
-
+        if self.targetfile == None:
+            raise ValueError, "template error: no mcfg_filename"
         backup = self.backup()
+        if backup:
+            # don't follow symbolic links, maybe not so much a
+            # security issue here, but can at least cause confusion
+            if not (os.path.exists(self.targetfile) and
+                    os.path.isfile(self.targetfile) and
+                    not os.path.islink(self.targetfile)):
+                raise IOError, "Target file {0} does not exist or is not " \
+                                 "a regular file".format(self.targetfile)
+        else:
+            if len(self.edlist) > 0 and os.path.exists(self.targetfile):
+                raise IOError, "Target file {0} already exists".format(
+                                 self.targetfile)
         for (num, edi) in itertools.imap(None, itertools.count(1), self.edlist):
             in_file = None
             if backup:
@@ -43,7 +57,7 @@ class Target:
                 if num > 1:
                     in_file = "{0}.{1}".format(in_file, num)
                 shutil.move(self.targetfile, in_file)
-            edi.runIt(in_file, self.targetfile)
+            edi.run_it(in_file, self.targetfile)
             if backup and num > 1:
                 os.unlink(in_file)
 
