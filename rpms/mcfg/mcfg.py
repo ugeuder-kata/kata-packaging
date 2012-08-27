@@ -10,17 +10,18 @@ class Mcfg:
     """All functionality related to ini files and overall flow control
     goes here.
     """
-    SPECIAL_FILENAME="mcfg_filename"
+    SPECIAL_FILENAME = "mcfg_filename"
 
     def __init__(self, templatefile, mcfgfile):
+        self.targetlist = []
         template_ini = ConfigParser.SafeConfigParser()
         files = template_ini.read(templatefile)
         if files != [templatefile]:
             # in theory there could also be more than one, but let's keep 
             # the error message simple
             raise IOError, "Template {0} not found".format(templatefile)
-        self.master_ini = ConfigParser.SafeConfigParser()
-        files = self.master_ini.read(mcfgfile)
+        master_ini = ConfigParser.SafeConfigParser()
+        files = master_ini.read(mcfgfile)
         if files != [ mcfgfile ] :
             # as above
             raise IOError, "Master config file {0} not found".format(mcfgfile)
@@ -31,25 +32,10 @@ class Mcfg:
                     tgt.targetfile = value
                 else:
                     incr, edname = self.parsevalue(value)
-                    edi = editor.Editor(edname, incr, 
-                                        self.getparlist(sec, name))
-
-    def getparlist(self, sec, name):
-        """get the parlist for an editor.
-           - sec: the ini file section
-           - name: the parameter name
-        returns: parlist, list of parameters for the editor taken from
-           master ini. Currently limited to 2 elements (name, value)
-        """
-        try:
-          items = self.master_ini.items(sec)
-        except Exception:
-          raise
-        try:
-          print "\n***" , items
-          value = items[name]
-        except Exception:
-          raise
+                    edi = editor.Editor(edname, incr,
+                                        (name, master_ini.get(sec, name)))
+                    tgt.edlist.append(edi)
+            self.targetlist.append(tgt)
 
 
     @staticmethod
@@ -64,14 +50,18 @@ class Mcfg:
         if blankpos < 1:
             raise ValueError, "Increment value must be separated from " \
                              "editor name by space: {0}".format(text)
-        param=text[blankpos+1:]
+        param = text[blankpos+1:]
         try:
-            incr=int(text[:blankpos])
+            incr = int(text[:blankpos])
         except ValueError:
             raise ValueError, "Increment value must numeric: " \
                  ">>>{0}<<< {1}".format(text[:blankpos],param)
         return (incr, param)
 
+    def run_editors(self, incr):
+        """Run editors on all targets for current increment"""
+        for tgt in self.targetlist:
+            tgt.run_editors(incr)
 
 if __name__ == "__main__":
     print "TODO"
