@@ -1,10 +1,17 @@
-"""The mcfg main module"""
+"""Usage: mcfg.py <operation> <template.ini> <master.ini> [<increment>]
+       - operation can be either verify or run
+       - increment is mandatory for run, optional (and ignored if present)
+         for verify
+"""
 
 import ConfigParser
 import sys
 
 import target
 import editor
+
+RUN = 1
+VERIFY = 2
 
 class Mcfg:
     """All functionality related to ini files and overall flow control
@@ -63,5 +70,43 @@ class Mcfg:
         for tgt in self.targetlist:
             tgt.run_editors(incr)
 
+    @staticmethod
+    def run_from_cmd(args):
+        """Parse the command line (see module __doc__)
+           return 2 on syntax error
+           Python will return 1 if some exception occurs. So we don't
+           do anything else but basic syntax checking here, the rest of the
+           code will throw an exception if the the parameters are not good.
+        """
+        # TODO: in order to be testable this should really be it's own
+        # module so we can use a mock Mcfg
+        usage = globals()["__doc__"]
+        result = 0
+        if not len(args) in (4, 5) :
+            result = 2
+        elif "run".startswith(args[1]):
+            operation = RUN
+            if len(args) != 5:
+                result = 2
+            else:
+                try:
+                    run_incr = int(args[4])
+                except ValueError:
+                    result = 2
+        elif "verify".startswith(args[1]):
+            operation = VERIFY
+        else:
+            result = 2
+        if result != 2:
+            if operation == RUN:
+                master = Mcfg( args[2] , args[3])
+                master.run_editors(run_incr)
+            else:
+                raise NotImplementedError, "verify"
+        else:
+            print >> sys.stderr, usage
+        return result
+
 if __name__ == "__main__":
-    print "TODO"
+    status = Mcfg.run_from_cmd(sys.argv)
+    sys.exit(status)
