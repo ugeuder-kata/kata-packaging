@@ -1,5 +1,4 @@
 """tests for the mcfg module"""
-import datetime
 import filecmp
 import os
 import shutil
@@ -65,6 +64,73 @@ class TestMcfg(unittest.TestCase):
         templatefile = os.path.join(self.test_files_dir, "template1.ini")
         mcfgfile = os.path.join(self.test_files_dir, "master1.ini")
         mcfg.Mcfg(templatefile, mcfgfile)
+        # TODO, check that things went right, this would be best done
+        # using mock target and editor
+
+    def test_system_ok(self):
+        """This is not really a unit test, but more a system test.
+        Test a full example
+        """
+        templatefile = os.path.join(self.test_files_dir, "template2.ini")
+        # targets are located in /tmp because we don't know anything
+        # about the directory tree of the machine where this test is executed
+        mcfgfile = os.path.join(self.test_files_dir, "master2.ini")
+        target_ckan = "/tmp/mcfg-test-ckan.ini"
+        target_haka = "/tmp/mcfg-test-haka.ini"
+        target_cert = "/tmp/mcfg-test-cert.pem"
+        testin_ckan = os.path.join(self.test_files_dir, "ckan1.ini")
+        testin_haka = os.path.join(self.test_files_dir, "haka1.ini")
+        testin_cert = os.path.join(self.test_files_dir, "cert1.pem")
+        expected_ckan = os.path.join(self.test_files_dir, "ckan1.expected")
+        expected_haka = os.path.join(self.test_files_dir, "haka1.expected")
+        input_cert = "/tmp/input.pem"
+        shutil.copy(testin_ckan, target_ckan)
+        shutil.copy(testin_haka, target_haka)
+        shutil.copy(testin_cert, input_cert)
+        try:
+            os.unlink(target_cert)
+        except OSError:
+            pass
+        testmcfg = mcfg.Mcfg(templatefile, mcfgfile)
+        thisincr = 10
+        testmcfg.run_editors(thisincr)
+        
+        result = filecmp.cmp(expected_ckan, target_ckan)
+        if result:
+            os.unlink(target_ckan)
+        else:
+            print >> sys.stderr, "incorrect output {0}".format(target_ckan)
+        self.assertTrue(result)
+        
+        backup = "{0}.backup.{1}".format(target_ckan, thisincr)
+        result = filecmp.cmp(testin_ckan, backup)
+        if result:
+            os.unlink(backup)
+        else:
+            print >> sys.stderr, "incorrect output {0}".format(backup)
+        self.assertTrue(result)
+        
+        result = filecmp.cmp(expected_haka, target_haka)
+        if result:
+            os.unlink(target_haka)
+        else:
+            print >> sys.stderr, "incorrect output {0}".format(target_haka)
+        self.assertTrue(result)
+
+        backup = "{0}.backup.{1}".format(target_haka, thisincr)
+        result = filecmp.cmp(testin_haka, backup)
+        if result:
+            os.unlink(backup)
+        else:
+            print >> sys.stderr, "incorrect output {0}".format(backup)
+        self.assertTrue(result)
+        
+        self.assertTrue(filecmp.cmp(testin_cert, target_cert))
+        os.unlink(target_cert)
+        os.unlink(input_cert)
+
+
+        
 
 
 if __name__ == '__main__':

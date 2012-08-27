@@ -130,7 +130,7 @@ admin_email: kata-admin@csc.fi
 [HAKA]
 spname: %(hostname_everywhere)s     ;; do not edit, taken from DEFAULT
 some_other: foo
-xyz: /home/admin/cert1.pem
+location: /home/admin/cert1.pem
 
 ---- EOF ----
 
@@ -190,7 +190,7 @@ some_other: 40 duplicate
 
 [shibboleth-cert-foo]
 mcfg_filename: /etc/shibboleth/somewhere/cert.pem
-location: 10 copyFile
+location: 10 copy_file
 
 
 ---- EOF ----
