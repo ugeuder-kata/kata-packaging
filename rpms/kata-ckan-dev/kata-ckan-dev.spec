@@ -164,7 +164,7 @@ su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/90shibbolethsp.sh
+#su -c "%{scriptdir}/90shibbolethsp.sh
 su -c "%{scriptdir}/91ckanextshibboleth.sh /home/%{ckanuser}" %{ckanuser}
 service shibd restart
 serivce httpd restart
