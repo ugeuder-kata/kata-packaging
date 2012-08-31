@@ -10,6 +10,14 @@ License: AGPLv3+
 #Url: http://not.sure.yet
 Source0: mcfg-%{version}.tgz
 Requires: python
+#
+# according to http://fedoraproject.org/wiki/Packaging:Python#BuildRequires
+# we need
+#
+# BuildRequires: python2-devel
+#
+# but it works wothout in a clean machine so we leave it commented out
+#
 BuildArch: noarch
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
