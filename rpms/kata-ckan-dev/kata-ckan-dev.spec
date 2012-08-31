@@ -79,8 +79,7 @@ install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 90shibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 91ckanextshibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 90shibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
 # misc scripts (keep them alphabetically ordered by filename)
 install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
@@ -121,8 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
-%{scriptdir}/90shibbolethsp.sh
-%{scriptdir}/91ckanextshibboleth.sh
+%{scriptdir}/90shibboleth.sh
 %{scriptdir}/myip.sh
 %{scriptdir}/attribute-map.xml
 %{scriptdir}/attribute-policy.xml
@@ -141,6 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
+
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
@@ -154,6 +153,7 @@ from paste.script.util.logging_config import fileConfig
 fileConfig(config_filepath)
 application = loadapp('config:%s' % config_filepath)
 EOF
+
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
@@ -164,10 +164,6 @@ su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
-#su -c "%{scriptdir}/90shibbolethsp.sh
-su -c "%{scriptdir}/91ckanextshibboleth.sh /home/%{ckanuser}" %{ckanuser}
-service shibd restart
-serivce httpd restart
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
@@ -178,6 +174,10 @@ chkconfig supervisord on
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
+
+# Shibboleth
+su -c "%{scriptdir}/90shibboleth.sh /home/%{ckanuser}" %{ckanuser}
+
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
