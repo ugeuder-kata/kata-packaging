@@ -89,8 +89,8 @@ install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
-install attribute-map.xml $RPM_BUILD_ROOT/%{patchdir}/
-install attribute-policy.xml $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-map.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-policy.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
@@ -123,13 +123,14 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/80backuphome.sh
 %{scriptdir}/90shibboleth.sh
 %{scriptdir}/myip.sh
-%{scriptdir}/attribute-map.xml
-%{scriptdir}/attribute-policy.xml
+
 # sic! following script in datadir
 %{katadatadir}/runharvester.sh
 %{patchdir}/development.ini.patch
 %{patchdir}/httpd.conf.patch
 %{patchdir}/pg_hba.conf.patch
+%{patchdir}/attribute-map.xml.patch
+%{patchdir}/attribute-policy.xml.patch
 %attr(0644,root,root)/etc/cron.d/harvester
 %{katadatadir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
