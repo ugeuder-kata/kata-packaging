@@ -51,7 +51,6 @@ diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || 
 
 # Shibboleth related patches
 diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
-diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
 diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
 diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
 
@@ -62,6 +61,7 @@ install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
 install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
+
 # setup scripts (keep them numerically ordered)
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -80,22 +80,23 @@ install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 90shibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
+
 # misc scripts (keep them alphabetically ordered by filename)
 install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
+
 # patches (keep them alphabetically ordered by filename)
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-map.xml $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-policy.xml $RPM_BUILD_ROOT/%{patchdir}/
+
 # misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
-install attribute-map.xml $RPM_BUILD_ROOT/%{scriptdir}/
-install attribute-policy.xml $RPM_BUILD_ROOT/%{scriptdir}/
-
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
