@@ -7,8 +7,9 @@
 import ConfigParser
 import sys
 
-import target
 import editor
+import incremental
+import target
 
 RUN = 1
 VERIFY = 2
@@ -100,7 +101,8 @@ class Mcfg:
         if result != 2:
             if operation == RUN:
                 master = Mcfg( args[2] , args[3])
-                master.run_editors(run_incr)
+                incr = incremental.Incremental(run_incr)
+                master.run_editors(incr)
             else:
                 raise NotImplementedError, "verify"
         else:
