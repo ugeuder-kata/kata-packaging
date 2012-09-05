@@ -5,4 +5,4 @@ instloc=$1
 cd $instloc
 cd pyenv/src
 source ../bin/activate
-pip install -e git+https://github.com/locusf/ckanext-urn.git#egg=ckanext-urn
+pip install -e git+https://github.com/kata-csc/ckanext-urn.git#egg=ckanext-urn
