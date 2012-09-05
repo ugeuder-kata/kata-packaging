@@ -74,12 +74,12 @@ install 23installurn.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 26installsitemap.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 27installshibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 90shibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
 # misc scripts (keep them alphabetically ordered by filename)
 install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -117,12 +117,12 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/24installoaipmh.sh
 %{scriptdir}/25installddi.sh
 %{scriptdir}/26installsitemap.sh
+%{scriptdir}/27installshibboleth.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/60installextensions.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
-%{scriptdir}/90shibboleth.sh
 %{scriptdir}/myip.sh
 
 # sic! following script in datadir
@@ -168,6 +168,8 @@ su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/27installshibboleth.sh /home/%{ckanuser}" %{ckanuser}
+
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
@@ -178,9 +180,6 @@ chkconfig supervisord on
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
-
-# Shibboleth
-su -c "%{scriptdir}/90shibboleth.sh /home/%{ckanuser}" %{ckanuser}
 
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}

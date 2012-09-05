@@ -1,1 +1,0 @@
-../../common/90shibboleth.sh
