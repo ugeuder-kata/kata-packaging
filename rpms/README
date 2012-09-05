@@ -136,11 +136,11 @@ III.3 Installation of kata-ckan-dev
 
 This step is done in development machine 2.
 
-In a plain minimal operating system installation running rpm -i will fail
-because of missing dependencies. These can be installed using a single command
-line as follows:
-
-$ sudo rpm -i kata-ckan-dev-305045-1.el6.i686.rpm 2>&1 | grep "is needed" | cut -c 2- | cut -f 1 -d " " | sudo xargs yum install -y
+In a plain minimal operating system installation running rpm -i will
+fail because of missing dependencies. These can be installed using a
+single command line as described in footnote [1] in file
+INSTALL. (Command removed from this internal development document, so
+we need to update it only once in the "official" installation guide.)
 
 After that install the package
 
