@@ -46,6 +46,7 @@ kata installation.
 
 
 %build
+# TODO: do we want to test all of them? requires mock
 python test/testedfuncs.py
 
 
@@ -56,8 +57,9 @@ install -d $RPM_BUILD_ROOT/%{configdir}
 install -d $RPM_BUILD_ROOT/%{exampledir}
 install edfuncs.py $RPM_BUILD_ROOT/%{pydir}/
 install editor.py $RPM_BUILD_ROOT/%{pydir}/
-install target.py $RPM_BUILD_ROOT/%{pydir}/
+install incremental.py $RPM_BUILD_ROOT/%{pydir}/
 install mcfg.py $RPM_BUILD_ROOT/%{pydir}/
+install target.py $RPM_BUILD_ROOT/%{pydir}/
 install DESIGN.txt $RPM_BUILD_ROOT/%{docdir}/
 install samples/kata-template.ini $RPM_BUILD_ROOT/%{configdir}/
 install samples/kata-master.ini $RPM_BUILD_ROOT/%{exampledir}/
@@ -71,8 +73,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{pydir}/edfuncs.py*
 %{pydir}/editor.py*
-%{pydir}/target.py*
+%{pydir}/incremental.py*
 %{pydir}/mcfg.py*
+%{pydir}/target.py*
 %{docdir}/DESIGN.txt
 %{configdir}/kata-template.ini
 %{exampledir}/kata-master.ini
