@@ -47,6 +47,7 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
+diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
 
 
 %install
@@ -68,6 +69,7 @@ install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 26installsitemap.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 31configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -79,6 +81,7 @@ install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
 # misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
@@ -106,6 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/25installddi.sh
 %{scriptdir}/26installsitemap.sh
 %{scriptdir}/30configsolr.sh
+%{scriptdir}/31configshibbolethsp.sh
 %{scriptdir}/60installextensions.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
@@ -116,6 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/development.ini.patch
 %{patchdir}/httpd.conf.patch
 %{patchdir}/pg_hba.conf.patch
+%{patchdir}/shibboleth2.xml.patch
 %attr(0644,root,root)/etc/cron.d/harvester
 %{katadatadir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
@@ -156,6 +161,7 @@ sed -i 's/;directory/directory/' /etc/supervisord.conf
 service supervisord restart
 chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
+%{scriptdir}/31configshibbolethsp.sh /home/%{ckanuser}
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 at -f %{katadatadir}/runharvester.sh 'now + 5 minute'

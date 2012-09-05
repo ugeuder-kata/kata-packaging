@@ -20,7 +20,9 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="%%ENTITYID%%">
+    <ApplicationDefaults entityID="https://sp.example.org/shibboleth"
+                         REMOTE_USER="eppn persistent-id targeted-id">
+
         <!--
         Controls session lifetimes, address checks, cookie handling, and the protocol handlers.
         You MUST supply an effectively unique handlerURL value for each of your applications.
@@ -39,7 +41,8 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
-            <SSO discoveryProtocol="SAMLDS" discoveryURL="https://testsp.funet.fi/shibboleth/WAYF">
+            <SSO entityID="https://idp.example.org/idp/shibboleth"
+                 discoveryProtocol="SAMLDS" discoveryURL="https://ds.example.org/DS/WAYF">
               SAML2 SAML1
             </SSO>
 
@@ -68,13 +71,13 @@
             styleSheet="/shibboleth-sp/main.css"/>
         
         <!-- Example of remotely supplied batch of signed metadata. -->
-        <MetadataProvider type="XML" uri="https://haka.funet.fi/metadata/haka_test_metadata_signed.xml"
+        <!--
+        <MetadataProvider type="XML" uri="http://federation.org/federation-metadata.xml"
               backingFilePath="federation-metadata.xml" reloadInterval="7200">
-			<!--
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <MetadataFilter type="Signature" certificate="fedsigner.pem"/>
-			-->
         </MetadataProvider>
+        -->
 
         <!-- Example of locally maintained metadata. -->
         <!--
