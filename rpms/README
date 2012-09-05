@@ -9,6 +9,7 @@ III.3 Installation of kata-ckan-dev
 IV.  Building kata-ckan-prod
 V.   Installing kata-ckan-prod
 VI.  Administrative tasks
+VII. Shibboleth
 
 I. Overview 
 
@@ -16,9 +17,16 @@ Kata building and installation comprises 2 packages on 3 (virtual) machines
 as follows:
 
 1. Build kata-ckan-dev package on development machine 1
-2. Install kata-ckan-dev package on development machine 2
-3. Build kata-ckan-prod on development machine 2
-4. Install kata-ckan-prod on production machine
+
+2. Install Shibboleth2 yum repository:
+   
+   $ cd /etc/yum.repos.d/
+   $ wget http://download.opensuse.org/repositories/security://shibboleth/CentOS_CentOS-6/security:shibboleth.repo
+   $ yum update && yum install shibboleth
+
+3. Install kata-ckan-dev package on development machine 2
+4. Build kata-ckan-prod on development machine 2
+5. Install kata-ckan-prod on production machine
 
 Rationale:
 

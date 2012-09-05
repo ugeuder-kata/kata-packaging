@@ -21,6 +21,7 @@ Requires: rabbitmq-server
 Requires: apache-solr
 Requires: supervisor
 Requires: mod_wsgi
+Requires: shibboleth
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -45,9 +46,12 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 
 %build
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
+diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
+diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
+diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
 
 
 %install
@@ -56,6 +60,7 @@ install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
 install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
+
 # setup scripts (keep them numerically ordered)
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -68,27 +73,32 @@ install 23installurn.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 26installsitemap.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 27installshibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 31configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
+
 # misc scripts (keep them alphabetically ordered by filename)
 install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
+
 # patches (keep them alphabetically ordered by filename)
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
+install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-map.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-policy.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+
 # misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
-
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -108,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/24installoaipmh.sh
 %{scriptdir}/25installddi.sh
 %{scriptdir}/26installsitemap.sh
+%{scriptdir}/27installshibboleth.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/31configshibbolethsp.sh
 %{scriptdir}/60installextensions.sh
@@ -115,12 +126,16 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/80backuphome.sh
 %{scriptdir}/myip.sh
+
 # sic! following script in datadir
 %{katadatadir}/runharvester.sh
 %{patchdir}/development.ini.patch
+%{patchdir}/who.ini.patch
 %{patchdir}/httpd.conf.patch
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/shibboleth2.xml.patch
+%{patchdir}/attribute-map.xml.patch
+%{patchdir}/attribute-policy.xml.patch
 %attr(0644,root,root)/etc/cron.d/harvester
 %{katadatadir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
@@ -131,6 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
+
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
@@ -144,6 +160,7 @@ from paste.script.util.logging_config import fileConfig
 fileConfig(config_filepath)
 application = loadapp('config:%s' % config_filepath)
 EOF
+
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
@@ -154,6 +171,8 @@ su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/27installshibboleth.sh /home/%{ckanuser}" %{ckanuser}
+
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
@@ -165,6 +184,10 @@ chkconfig supervisord on
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
+
+service shibd restart
+service httpd restart
+
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
 
