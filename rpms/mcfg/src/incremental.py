@@ -71,7 +71,7 @@ class Incremental:
     def get_stat_file_name():
         """Returns name of the file used to the store the last increment"""
         # this method can be called by unitttests to manipulate the status
-        return "/tmp/{0}-incrmenental".format(
+        return "/tmp/{0}-incremental".format(
             pwd.getpwuid(os.getuid()).pw_name)
 
     def __int__(self):
