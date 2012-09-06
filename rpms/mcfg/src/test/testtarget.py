@@ -1,10 +1,12 @@
 """tests for the target module"""
 import datetime
 import filecmp
+import mock
 import os
 import shutil
 import sys
 import unittest
+
 
 # we live in subdirectory test, so we need to import the code to be tested
 # from the parent directory. I don't like this hack, please suggest something
@@ -36,7 +38,9 @@ class TestTarget(unittest.TestCase):
         shutil.copy(samplefile, targetfile)
         tgt = target.Target()
         tgt.targetfile = targetfile
-        tgt.run_editors(77)
+        incr = mock.Mock()
+        incr.is_current.return_value = True
+        tgt.run_editors(incr)
         self.assertTrue(filecmp.cmp(samplefile, targetfile))
         os.unlink(targetfile)
 
@@ -78,6 +82,10 @@ class TestTarget(unittest.TestCase):
         tgt.targetfile = targetfile
         tgt.edlist.append(editor.Editor("replace", 10,
                                         ("email", "admin@here.org")))
+        thisincr = mock.Mock()
+        thisincr.is_current.return_value = True
+        thisincr.__int__ = mock.Mock()
+        thisincr.__int__.return_value = 10
         tgt.run_editors(thisincr)
         result = filecmp.cmp(targetfile, expected)
         self.assertTrue(result)
@@ -98,8 +106,11 @@ class TestTarget(unittest.TestCase):
         targetfile = os.path.join(self.test_files_dir, "two_replacements.conf")
         expected = os.path.join(self.test_files_dir,
                                 "two_replacements.expected")
-        thisincr = 22
-        backupfile = "{0}.backup.{1}".format(targetfile, thisincr)
+        thisincr = mock.Mock()
+        thisincr.is_current.return_value = True
+        thisincr.__int__ = mock.Mock()
+        thisincr.__int__.return_value = 22
+        backupfile = "{0}.backup.{1}".format(targetfile, int(thisincr))
         shutil.copy(sample, targetfile)
         tgt = target.Target()
         tgt.targetfile = targetfile
@@ -126,7 +137,7 @@ class TestTarget(unittest.TestCase):
         infile = os.path.join(self.test_files_dir, "two_replacements.sample")
         targetfile = os.path.join(self.test_files_dir,
                                   "two_replacements.expected")
-        thisincr = 22
+        thisincr = mock.Mock()
         tgt = target.Target()
         tgt.targetfile = targetfile
         tgt.edlist.append(editor.Editor("copy_file", thisincr,
@@ -142,7 +153,7 @@ class TestTarget(unittest.TestCase):
     def test_replacement_input_missing(self):
         """Call a replacement editor without the target existing"""
         targetfile = os.path.join(self.test_files_dir, "one_replacement.conf")
-        thisincr = 10
+        thisincr = mock.Mock()
         tgt = target.Target()
         tgt.targetfile = targetfile
         tgt.edlist.append(editor.Editor("replace", 10,

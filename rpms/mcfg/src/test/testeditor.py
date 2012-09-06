@@ -48,5 +48,11 @@ class TestEditor(unittest.TestCase):
     e = editor.Editor("copy_file", 10, ("location", "foo"))
     self.assertFalse(e.backup())
 
+  def test_int_conversion(self):
+    """test that integer conversion results in increment value"""
+    edi = editor.Editor("replace", 77, ("toBeReplaced", "replacement"))
+    self.assertEqual(77,int(edi))
+
+
 if __name__ == '__main__':
   unittest.main()
