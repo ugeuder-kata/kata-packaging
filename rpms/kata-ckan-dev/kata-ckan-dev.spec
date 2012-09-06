@@ -147,10 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
-
-# REMOVE THIS
-%{scriptdir}/31configshibbolethsp.sh /home/%{ckanuser}
-# END
+%{scriptdir}/03configshibbolethsp.sh
 
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
@@ -185,7 +182,6 @@ sed -i 's/;directory/directory/' /etc/supervisord.conf
 service supervisord restart
 chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
-#su -c "%{scriptdir}/31configshibbolethsp.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
