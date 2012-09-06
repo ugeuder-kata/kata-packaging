@@ -5,5 +5,4 @@ instloc=$1
 cd $instloc
 cd pyenv/src
 source ../bin/activate
-pip install -e git+https://github.com/martinblech/xmltodict.git#egg=xmltodict
-pip install -e git+https://github.com/locusf/ckanext-ddi.git#egg=ckanext-ddi
+pip install -e git+https://github.com/kata-csc/ckanext-ddi.git#egg=ckanext-ddi
