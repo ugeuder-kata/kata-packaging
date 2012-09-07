@@ -43,17 +43,11 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 %prep
 %setup
 
-
 %build
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
-diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
-
-# Shibboleth related patches
-diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
-diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
-
+diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 
 %install
 install -d $RPM_BUILD_ROOT/%{scriptdir}
@@ -90,8 +84,6 @@ install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
-install attribute-map.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
-install attribute-policy.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
@@ -131,8 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/who.ini.patch
 %{patchdir}/httpd.conf.patch
 %{patchdir}/pg_hba.conf.patch
-%{patchdir}/attribute-map.xml.patch
-%{patchdir}/attribute-policy.xml.patch
 %attr(0644,root,root)/etc/cron.d/harvester
 %{katadatadir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
@@ -168,7 +158,7 @@ su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/27installshibboleth.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/27installshibboleth.sh /home/%{ckanuser} %{ckanuser}
 
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
