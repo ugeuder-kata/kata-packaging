@@ -5,4 +5,4 @@ instloc=$1
 cd $instloc
 cd pyenv/src
 source ../bin/activate
-pip install -e git+git://github.com/harripal/ckanext-shibboleth.git#egg=ckanext-shibboleth
+pip install -e git+git://github.com/kata-csc/ckanext-shibboleth.git#egg=ckanext-shibboleth
