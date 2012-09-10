@@ -61,7 +61,7 @@ class TestTarget(unittest.TestCase):
         try:
             tgt.backup()
         except ValueError as exc:
-            self.assertEqual( "Editors with incompatible backup policy in " \
+            self.assertEqual( "Editors with incompatible backup policy for " \
                              "contradictive", str(exc))
 
     def test_one_replacement(self):
