@@ -100,7 +100,7 @@ General remarks: Never build anything as root. Of course for installing
 (rpm -i and yum install) root is required, usage of sudo is a good practice
 to avoid being root for "too long".
 
-Two our packages get automatically increasing version numbers based on build
+Two of our packages get automatically increasing version numbers based on build
 time. So the version numbers mentioned in this document will be smaller on
 than those you see in real life.
 
