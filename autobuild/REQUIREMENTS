@@ -1,0 +1,22 @@
+host and usernames can be found from autobuild.sh (they are actually
+configurable, but this has not been tested)
+
+a (private) ssh key is used to access the buildhost, it must be
+authorized for both the autobuild user and root. The local location is
+configurable (as before)
+
+On the buildhost the build user needs sudo access to root without password and
+required tty in order to run rpm and yum commands
+
+#
+# Disable "ssh hostname sudo <cmd>", because it will show the password in clear.
+#         You have to run "ssh -t hostname sudo <cmd>".
+#
+Defaults    requiretty
+Defaults:abuild !requiretty     #last match used
+
+...
+
+abuild  ALL=(root)   NOPASSWD: /bin/rpm, /usr/bin/yum
+
+ 
