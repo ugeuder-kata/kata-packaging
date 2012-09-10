@@ -80,5 +80,5 @@ class Target:
             for edi in self.edlist:
                 if result != edi.backup():
                     raise ValueError, "Editors with incompatible backup " \
-                                     "policy in {0}".format(self.targetfile)
+                                     "policy for {0}".format(self.targetfile)
         return result
