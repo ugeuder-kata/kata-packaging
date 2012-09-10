@@ -32,4 +32,26 @@ Defaults:abuild !requiretty     #last match used
 
 abuild  ALL=(root)   NOPASSWD: /bin/rpm, /usr/bin/yum
 
- 
+3.) http proxy
+
+It might be useful to use a local http proxy, because a lot of packages
+are downloaded from the net repeatedly.
+
+For wget the proxy can be set in /etc/environment like this
+
+http_proxy=http://192.168.56.68:80
+
+
+yum doens't seem to obey this environment variable, it needs its own
+configuration in /etc/yum.conf like this
+
+proxy=http://192.168.56.68:80
+
+
+Note: Apache disk cache file size is limited to 1 MB by default.
+      http://httpd.apache.org/docs/2.2/mod/mod_disk_cache.html
+
+      E.g. Solr source tar ball is about 70 MB, so I changed the limit to
+      100 MB like this
+
+      CacheMaxFileSize 100000000
