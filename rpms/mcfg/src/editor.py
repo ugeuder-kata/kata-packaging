@@ -1,3 +1,5 @@
+import logging
+
 import edfuncs
 
 class Editor:
@@ -21,7 +23,9 @@ class Editor:
 
 
   def run_it(self, fromFile, toFile):
-    # incr ignored for the time being
+    """run the editor function in this instance"""
+    logging.debug("Editor.run_it %s(%s, %s, %s)", self.name, fromFile,
+                   toFile, str(self.parList))
     self.func(fromFile, toFile, *self.parList)
 
   def backup(self):
