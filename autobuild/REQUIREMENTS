@@ -1,10 +1,23 @@
+1.) ssh requirements
+
 host and usernames can be found from autobuild.sh (they are actually
 configurable, but this has not been tested)
 
-a (private) ssh key is used to access the buildhost, it must be
-authorized for both the autobuild user and root. The local location is
-configurable (as before)
+a (private) ssh key is used to access the buildhost, it's public
+counterpart must be authorized for the autobuild user. The local
+location is configurable (as before)
 
+Historical note: In some phase we also required ssh access to root@buildhost.
+This has been replaced by sudo as below, because 
+
+1.) it makes use of the existing setup-buildenv.sh easier
+2.) we don't need to copy the private key to the build host (e.g.
+    if we modified setup@buildenv.sh to do a ssh root@localhost in case
+    there is no tty)
+
+
+2.) sudo requirements
+ 
 On the buildhost the build user needs sudo access to root without password and
 required tty in order to run rpm and yum commands
 
