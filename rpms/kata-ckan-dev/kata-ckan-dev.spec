@@ -143,7 +143,6 @@ rm -rf $RPM_BUILD_ROOT
 /etc/httpd/conf.d/kata.conf
 %{katadatadir}/pip.freeze
 
-
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
