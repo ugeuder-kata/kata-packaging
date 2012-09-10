@@ -42,6 +42,7 @@ This package is for the production server.
 
 
 %build
+diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 
 
@@ -66,6 +67,7 @@ install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
+# setup scripts (keep them numerically ordered)
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -74,11 +76,15 @@ install 21setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
-install ckan-dev $RPM_BUILD_ROOT/etc/init.d/
-install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
+# misc scripts (keep them alphabetically ordered by filename)
+install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
+# patches (keep them alphabetically ordered by filename)
+install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+# misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
+install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 
 %clean
@@ -95,14 +101,13 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/80backuphome.sh
-%{patchdir}/pg_hba.conf.patch
-%{scriptdir}/harvester.conf
+%{scriptdir}/myip.sh
 %{scriptdir}/runharvester.sh
-/usr/bin/paster-ckan
-/usr/bin/paster-ckan2
-/etc/init.d/ckan-dev
-/etc/httpd/conf.d/kata.conf
+%{patchdir}/httpd.conf.patch
+%{patchdir}/pg_hba.conf.patch
 %attr(0644,root,root)/etc/cron.d/harvester
+%{scriptdir}/harvester.conf
+/etc/httpd/conf.d/kata.conf
 
 
 %pre
@@ -127,7 +132,7 @@ fileConfig(config_filepath)
 application = loadapp('config:%s' % config_filepath)
 EOF
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
-%{scriptdir}/20setupckanservice.sh
+%{scriptdir}/20setupckanservice.sh %{patchdir}
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /

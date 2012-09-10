@@ -29,6 +29,9 @@
         <afp:AttributeRule attributeID="commonName">
             <afp:PermitValueRule xsi:type="basic:ANY" />
         </afp:AttributeRule>
+        <afp:AttributeRule attributeID="uid">
+            <afp:PermitValueRule xsi:type="basic:ANY" />
+        </afp:AttributeRule>
     </afp:AttributeFilterPolicy>
 
 

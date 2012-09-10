@@ -1,20 +1,20 @@
-$ sudo rpm -i kata-ckan-dev-398572-1.el6.i686.rpm
+$ sudo rpm -i kata-ckan-dev-423707-1.el6.i686.rpm
 + '[' -f /tmp/kata-SKIP01 ']'
 + instloc=/home/ckan
 + cd /home/ckan
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-08-02 16:55:32--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-08-20 03:33:49--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 108233 (106K) [text/plain]
-Saving to: `virtualenv.py'
+Saving to: “virtualenv.py”
 
- 0% [                                                                                                                            ] 0           --.-K/s              75% [============================================================================================>                               ] 81,484       315K/s              100%[===========================================================================================================================>] 108,233      282K/s   in 0.4s    
+ 0% [                                                                                                                                                ] 0           --.-K/s              90% [=================================================================================================================================>              ] 97,868       378K/s              100%[===============================================================================================================================================>] 108,233      413K/s   in 0.3s    
 
-2012-08-02 16:55:33 (282 KB/s) - `virtualenv.py' saved [108233/108233]
+2012-08-20 03:33:50 (413 KB/s) - “virtualenv.py” saved [108233/108233]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -74,7 +74,7 @@ Installing collected packages: ckan
     warning: no files found matching '*' under directory 'ckanext/**/i18n'
     no previously-included directories found matching '.git'
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckan.egg-link (link to .)
-    Adding ckan 1.9a to easy-install.pth file
+    Adding ckan 1.8b to easy-install.pth file
     Installing ckan-admin script to /home/ckan/pyenv/bin
     
     Installed /home/ckan/pyenv/src/ckan
@@ -114,7 +114,7 @@ Downloading/unpacking solrpy==0.9.5 (from -r pyenv/src/ckan/pip-requirements.txt
     warning: no previously-included files matching '*.pyc' found anywhere in distribution
     warning: no previously-included files matching '*.pyo' found anywhere in distribution
 Downloading/unpacking formalchemy==1.4.2 (from -r pyenv/src/ckan/pip-requirements.txt (line 12))
-  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):   Downloading FormAlchemy-1.4.2.tar.gz (115Kb):   3%  4.1Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):   7%  8.2Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  10%  12Kb   Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  14%  16Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  17%  20Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  21%  24Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  24%  28Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  28%  32Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  31%  36Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  35%  40Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  39%  45Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  42%  49Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  46%  53Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  49%  57Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  53%  61Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  56%  65Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  60%  69Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  63%  73Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  67%  77Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  71%  81Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  74%  86Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  78%  90Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  81%  94Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  85%  98Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  88%  102Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  92%  106Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  95%  110Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):  99%  114Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb): 100%  115Kb  Downloading FormAlchemy-1.4.2.tar.gz (115Kb):              Downloading FormAlchemy-1.4.2.tar.gz (115Kb): 115Kb downloaded
+  Downloading FormAlchemy-1.4.2.zip (172Kb):   Downloading FormAlchemy-1.4.2.zip (172Kb):   2%  4.1Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):   4%  8.2Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):   7%  12Kb   Downloading FormAlchemy-1.4.2.zip (172Kb):   9%  16Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  11%  20Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  14%  24Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  16%  28Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  19%  32Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  21%  36Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  23%  40Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  26%  45Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  28%  49Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  30%  53Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  33%  57Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  35%  61Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  38%  65Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  40%  69Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  42%  73Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  45%  77Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  47%  81Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  49%  86Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  52%  90Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  54%  94Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  57%  98Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  59%  102Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  61%  106Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  64%  110Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  66%  114Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  68%  118Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  71%  122Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  73%  126Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  76%  131Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  78%  135Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  80%  139Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  83%  143Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  85%  147Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  88%  151Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  90%  155Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  92%  159Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  95%  163Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  97%  167Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):  99%  172Kb  Downloading FormAlchemy-1.4.2.zip (172Kb): 100%  172Kb  Downloading FormAlchemy-1.4.2.zip (172Kb):              Downloading FormAlchemy-1.4.2.zip (172Kb): 172Kb downloaded
   Running setup.py egg_info for package formalchemy
     /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
       warnings.warn(msg)
@@ -212,7 +212,7 @@ Downloading/unpacking argparse (from ofs==0.4.1->-r pyenv/src/ckan/pip-requireme
     no previously-included directories found matching 'env26'
     no previously-included directories found matching 'env27'
 Downloading/unpacking Beaker>=1.2.2 (from Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
-  Downloading Beaker-1.6.3.tar.gz (52Kb):   Downloading Beaker-1.6.3.tar.gz (52Kb):   7%  4.1Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  15%  8.2Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  23%  12Kb   Downloading Beaker-1.6.3.tar.gz (52Kb):  31%  16Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  39%  20Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  47%  24Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  54%  28Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  62%  32Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  70%  36Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  78%  40Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  86%  45Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):  94%  49Kb  Downloading Beaker-1.6.3.tar.gz (52Kb): 100%  52Kb  Downloading Beaker-1.6.3.tar.gz (52Kb):             Downloading Beaker-1.6.3.tar.gz (52Kb): 52Kb downloaded
+  Downloading Beaker-1.6.4.tar.gz (54Kb):   Downloading Beaker-1.6.4.tar.gz (54Kb):   7%  4.1Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  15%  8.2Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  22%  12Kb   Downloading Beaker-1.6.4.tar.gz (54Kb):  30%  16Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  37%  20Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  45%  24Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  52%  28Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  60%  32Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  67%  36Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  75%  40Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  82%  45Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  90%  49Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):  97%  53Kb  Downloading Beaker-1.6.4.tar.gz (54Kb): 100%  54Kb  Downloading Beaker-1.6.4.tar.gz (54Kb):             Downloading Beaker-1.6.4.tar.gz (54Kb): 54Kb downloaded
   Running setup.py egg_info for package Beaker
 Downloading/unpacking PasteDeploy>=1.3.3 (from Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
   Downloading PasteDeploy-1.5.0.tar.gz
@@ -503,22 +503,17 @@ CREATE ROLE
 ++ '[' -n /bin/sh -o -n '' ']'
 ++ hash -r
 + cd pyenv/src/ckan
-+ pushd ckan/lib
-+ patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/search__init__.py.patch
-patching file search/__init__.py
-Hunk #1 succeeded at 27 (offset 3 lines).
-+ popd
 + paster make-config ckan development.ini
 Distribution already installed:
-  ckan 1.9a from /home/ckan/pyenv/src/ckan
+  ckan 1.8b from /home/ckan/pyenv/src/ckan
 Creating development.ini
 Now you should edit the config files
   development.ini
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
 patching file development.ini
 ++ ip addr show dev eth0
-++ sed -E 's/ +inet +([^/]+).+/\1/'
 ++ grep 'inet '
+++ sed -E 's/ +inet +([^/]+).+/\1/'
 Device "eth0" does not exist.
 + myip=
 + ckanusermail=root@localhost
@@ -535,13 +530,555 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-08-02 16:59:52,610 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
-2012-08-02 16:59:52,718 INFO  [ckan.model] Database initialised
+2012-08-20 03:39:34,793 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
+2012-08-20 03:39:34,951 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
-+ service ckan-dev start
-Starting ckan-dev: [  OK  ][  OK  ]
-+ chkconfig ckan-dev on
++ patchdir=/usr/share/kata-ckan-dev/setup-patches
++ service httpd stop
+Stopping httpd: [FAILED]
++ pushd /etc/httpd/conf
++ patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/httpd.conf.patch
+patching file httpd.conf
++ mv httpd.conf httpd.conf.step1
+++ dirname /usr/share/kata-ckan-dev/setup-scripts/20setupckanservice.sh
++ myipcmd=/usr/share/kata-ckan-dev/setup-scripts/myip.sh
+++ /usr/share/kata-ckan-dev/setup-scripts/myip.sh
++ myip=192.168.56.62
++ sed -e s/%%MYIP%%/192.168.56.62/ httpd.conf.step1
++ popd
++ chkconfig httpd on
++ chown -R ckan:apache /home/ckan/pyenv
++ chmod -R 755 /home/ckan
++ setsebool -P httpd_can_network_connect 1
++ chcon -R --type=httpd_sys_content_t /home/ckan
++ touch /home/ckan/pyenv/ckan.log
++ chown ckan:apache /home/ckan/pyenv/ckan.log
++ chmod g+w /home/ckan/pyenv/ckan.log
++ chmod -R g+w /home/ckan/pyenv/src/ckan/data /home/ckan/pyenv/src/ckan/sstore
++ sed -i 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' /usr/lib64/python2.6/ctypes/__init__.py
+sed: can't read /usr/lib64/python2.6/ctypes/__init__.py: No such file or directory
++ instloc=/home/ckan
++ cd /home/ckan
++ cd pyenv/src
++ source ../bin/activate
+++ deactivate nondestructive
+++ unset pydoc
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ alias 'pydoc=python -m pydoc'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ pip install -e git+https://github.com/okfn/ckanext-harvest.git#egg=ckanext-harvest
+Obtaining ckanext-harvest from git+https://github.com/okfn/ckanext-harvest.git#egg=ckanext-harvest
+  Cloning https://github.com/okfn/ckanext-harvest.git to ./ckanext-harvest
+  Running setup.py egg_info for package ckanext-harvest
+Installing collected packages: ckanext-harvest
+  Running setup.py develop for ckanext-harvest
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-harvest.egg-link (link to .)
+    Adding ckanext-harvest 0.2 to easy-install.pth file
+    
+    Installed /home/ckan/pyenv/src/ckanext-harvest
+Successfully installed ckanext-harvest
+Cleaning up...
++ pip install carrot
+Downloading/unpacking carrot
+  Downloading carrot-0.10.7.tar.gz (62Kb):   Downloading carrot-0.10.7.tar.gz (62Kb):   6%  4.1Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  13%  8.2Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  19%  12Kb   Downloading carrot-0.10.7.tar.gz (62Kb):  26%  16Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  32%  20Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  39%  24Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  46%  28Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  52%  32Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  59%  36Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  65%  40Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  72%  45Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  79%  49Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  85%  53Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  92%  57Kb  Downloading carrot-0.10.7.tar.gz (62Kb):  98%  61Kb  Downloading carrot-0.10.7.tar.gz (62Kb): 100%  62Kb  Downloading carrot-0.10.7.tar.gz (62Kb):             Downloading carrot-0.10.7.tar.gz (62Kb): 62Kb downloaded
+  Running setup.py egg_info for package carrot
+Downloading/unpacking anyjson (from carrot)
+  Downloading anyjson-0.3.3.tar.gz
+  Running setup.py egg_info for package anyjson
+Downloading/unpacking amqplib>=0.6 (from carrot)
+  Downloading amqplib-1.0.2.tgz (58Kb):   Downloading amqplib-1.0.2.tgz (58Kb):   6%  4.1Kb  Downloading amqplib-1.0.2.tgz (58Kb):  13%  8.2Kb  Downloading amqplib-1.0.2.tgz (58Kb):  20%  12Kb   Downloading amqplib-1.0.2.tgz (58Kb):  27%  16Kb  Downloading amqplib-1.0.2.tgz (58Kb):  34%  20Kb  Downloading amqplib-1.0.2.tgz (58Kb):  41%  24Kb  Downloading amqplib-1.0.2.tgz (58Kb):  48%  28Kb  Downloading amqplib-1.0.2.tgz (58Kb):  55%  32Kb  Downloading amqplib-1.0.2.tgz (58Kb):  62%  36Kb  Downloading amqplib-1.0.2.tgz (58Kb):  69%  40Kb  Downloading amqplib-1.0.2.tgz (58Kb):  76%  45Kb  Downloading amqplib-1.0.2.tgz (58Kb):  83%  49Kb  Downloading amqplib-1.0.2.tgz (58Kb):  90%  53Kb  Downloading amqplib-1.0.2.tgz (58Kb):  97%  57Kb  Downloading amqplib-1.0.2.tgz (58Kb): 100%  58Kb  Downloading amqplib-1.0.2.tgz (58Kb):             Downloading amqplib-1.0.2.tgz (58Kb): 58Kb downloaded
+  Running setup.py egg_info for package amqplib
+Installing collected packages: carrot, anyjson, amqplib
+  Running setup.py install for carrot
+  Running setup.py install for anyjson
+  Running setup.py install for amqplib
+Successfully installed carrot anyjson amqplib
+Cleaning up...
++ paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
+
+2012-08-20 03:40:55,645 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-20 03:40:56,240 DEBUG [ckanext.harvest.model] Harvest tables created
+DB tables created
++ paster --plugin=ckan user add harvester password=harvester --config=/home/ckan/pyenv/src/ckan/development.ini
+Creating user: 'harvester'
+<User id=9cc8bd28-8717-497e-8be7-6bee7fb876ec name=harvester openid=None password=7f6b7bbbfe3e7e6c9b87e74fd5425fefa94e65de491195d9e8c0357f82e63a19685fb6bc19b520d3 fullname=None email=None apikey=526c8da2-da1a-4d7f-b0f7-add701287cfb created=2012-08-20 03:40:57.775062 reset_key=None about=None>
++ paster --plugin=ckan sysadmin add harvester --config=/home/ckan/pyenv/src/ckan/development.ini
+Added harvester as sysadmin
++ instloc=/home/ckan
++ cd /home/ckan
++ cd pyenv/src
++ source ../bin/activate
+++ deactivate nondestructive
+++ unset pydoc
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ alias 'pydoc=python -m pydoc'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ git clone https://github.com/locusf/ckanext-urn.git
+Initialized empty Git repository in /home/ckan/pyenv/src/ckanext-urn/.git/
+remote: Counting objects: 31, done.[K
+remote: Compressing objects:   4% (1/24)   [Kremote: Compressing objects:   8% (2/24)   [Kremote: Compressing objects:  12% (3/24)   [Kremote: Compressing objects:  16% (4/24)   [Kremote: Compressing objects:  20% (5/24)   [Kremote: Compressing objects:  25% (6/24)   [Kremote: Compressing objects:  29% (7/24)   [Kremote: Compressing objects:  33% (8/24)   [Kremote: Compressing objects:  37% (9/24)   [Kremote: Compressing objects:  41% (10/24)   [Kremote: Compressing objects:  45% (11/24)   [Kremote: Compressing objects:  50% (12/24)   [Kremote: Compressing objects:  54% (13/24)   [Kremote: Compressing objects:  58% (14/24)   [Kremote: Compressing objects:  62% (15/24)   [Kremote: Compressing objects:  66% (16/24)   [Kremote: Compressing objects:  70% (17/24)   [Kremote: Compressing objects:  75% (18/24)   [Kremote: Compressing objects:  79% (19/24)   [Kremote: Compressing objects:  83% (20/24)   [Kremote: Compressing objects:  87% (21/24)   [Kremote: Compressing objects:  91% (22/24)   [Kremote: Compressing objects:  95% (23/24)   [Kremote: Compressing objects: 100% (24/24)   [Kremote: Compressing objects: 100% (24/24), done.[K
+remote: Total 31 (delta 7), reused 27 (delta 5)[K
+Unpacking objects:   3% (1/31)   Unpacking objects:   6% (2/31)   Unpacking objects:   9% (3/31)   Unpacking objects:  12% (4/31)   Unpacking objects:  16% (5/31)   Unpacking objects:  19% (6/31)   Unpacking objects:  22% (7/31)   Unpacking objects:  25% (8/31)   Unpacking objects:  29% (9/31)   Unpacking objects:  32% (10/31)   Unpacking objects:  35% (11/31)   Unpacking objects:  38% (12/31)   Unpacking objects:  41% (13/31)   Unpacking objects:  45% (14/31)   Unpacking objects:  48% (15/31)   Unpacking objects:  51% (16/31)   Unpacking objects:  54% (17/31)   Unpacking objects:  58% (18/31)   Unpacking objects:  61% (19/31)   Unpacking objects:  64% (20/31)   Unpacking objects:  67% (21/31)   Unpacking objects:  70% (22/31)   Unpacking objects:  74% (23/31)   Unpacking objects:  77% (24/31)   Unpacking objects:  80% (25/31)   Unpacking objects:  83% (26/31)   Unpacking objects:  87% (27/31)   Unpacking objects:  90% (28/31)   Unpacking objects:  93% (29/31)   Unpacking objects:  96% (30/31)   Unpacking objects: 100% (31/31)   Unpacking objects: 100% (31/31), done.
++ cd ckanext-urn
++ python setup.py install
+no previously-included directories found matching 'test'
+
+Installed /home/ckan/pyenv/src/ckanext-urn/coverage-3.5.2-py2.6-linux-i686.egg
+running install
+running bdist_egg
+running egg_info
+creating ckanext_urn.egg-info
+writing ckanext_urn.egg-info/PKG-INFO
+writing namespace_packages to ckanext_urn.egg-info/namespace_packages.txt
+writing top-level names to ckanext_urn.egg-info/top_level.txt
+writing dependency_links to ckanext_urn.egg-info/dependency_links.txt
+writing entry points to ckanext_urn.egg-info/entry_points.txt
+writing manifest file 'ckanext_urn.egg-info/SOURCES.txt'
+reading manifest file 'ckanext_urn.egg-info/SOURCES.txt'
+writing manifest file 'ckanext_urn.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-i686/egg
+running install_lib
+running build_py
+creating build
+creating build/lib
+creating build/lib/ckanext
+copying ckanext/__init__.py -> build/lib/ckanext
+creating build/lib/ckanext/urn
+copying ckanext/urn/__init__.py -> build/lib/ckanext/urn
+copying ckanext/urn/controller.py -> build/lib/ckanext/urn
+copying ckanext/urn/plugin.py -> build/lib/ckanext/urn
+copying ckanext/urn/html.py -> build/lib/ckanext/urn
+creating build/lib/ckanext/urn/test
+copying ckanext/urn/test/__init__.py -> build/lib/ckanext/urn/test
+copying ckanext/urn/test/test_urn.py -> build/lib/ckanext/urn/test
+creating build/bdist.linux-i686
+creating build/bdist.linux-i686/egg
+creating build/bdist.linux-i686/egg/ckanext
+copying build/lib/ckanext/__init__.py -> build/bdist.linux-i686/egg/ckanext
+creating build/bdist.linux-i686/egg/ckanext/urn
+creating build/bdist.linux-i686/egg/ckanext/urn/test
+copying build/lib/ckanext/urn/test/__init__.py -> build/bdist.linux-i686/egg/ckanext/urn/test
+copying build/lib/ckanext/urn/test/test_urn.py -> build/bdist.linux-i686/egg/ckanext/urn/test
+copying build/lib/ckanext/urn/__init__.py -> build/bdist.linux-i686/egg/ckanext/urn
+copying build/lib/ckanext/urn/controller.py -> build/bdist.linux-i686/egg/ckanext/urn
+copying build/lib/ckanext/urn/plugin.py -> build/bdist.linux-i686/egg/ckanext/urn
+copying build/lib/ckanext/urn/html.py -> build/bdist.linux-i686/egg/ckanext/urn
+byte-compiling build/bdist.linux-i686/egg/ckanext/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/urn/test/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/urn/test/test_urn.py to test_urn.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/urn/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/urn/controller.py to controller.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/urn/plugin.py to plugin.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/urn/html.py to html.pyc
+creating build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_urn.egg-info/PKG-INFO -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_urn.egg-info/SOURCES.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_urn.egg-info/dependency_links.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_urn.egg-info/entry_points.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_urn.egg-info/namespace_packages.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_urn.egg-info/not-zip-safe -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_urn.egg-info/top_level.txt -> build/bdist.linux-i686/egg/EGG-INFO
+creating dist
+creating 'dist/ckanext_urn-0.1-py2.6.egg' and adding 'build/bdist.linux-i686/egg' to it
+removing 'build/bdist.linux-i686/egg' (and everything under it)
+Processing ckanext_urn-0.1-py2.6.egg
+creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext_urn-0.1-py2.6.egg
+Extracting ckanext_urn-0.1-py2.6.egg to /home/ckan/pyenv/lib/python2.6/site-packages
+Adding ckanext-urn 0.1 to easy-install.pth file
+
+Installed /home/ckan/pyenv/lib/python2.6/site-packages/ckanext_urn-0.1-py2.6.egg
+Processing dependencies for ckanext-urn==0.1
+Finished processing dependencies for ckanext-urn==0.1
++ instloc=/home/ckan
++ cd /home/ckan
++ cd pyenv/src
++ source ../bin/activate
+++ deactivate nondestructive
+++ unset pydoc
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ alias 'pydoc=python -m pydoc'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ git clone https://github.com/locusf/ckanext-oaipmh.git
+Initialized empty Git repository in /home/ckan/pyenv/src/ckanext-oaipmh/.git/
+remote: Counting objects: 115, done.[K
+remote: Compressing objects:   1% (1/96)   [Kremote: Compressing objects:   2% (2/96)   [Kremote: Compressing objects:   3% (3/96)   [Kremote: Compressing objects:   4% (4/96)   [Kremote: Compressing objects:   5% (5/96)   [Kremote: Compressing objects:   6% (6/96)   [Kremote: Compressing objects:   7% (7/96)   [Kremote: Compressing objects:   8% (8/96)   [Kremote: Compressing objects:   9% (9/96)   [Kremote: Compressing objects:  10% (10/96)   [Kremote: Compressing objects:  11% (11/96)   [Kremote: Compressing objects:  12% (12/96)   [Kremote: Compressing objects:  13% (13/96)   [Kremote: Compressing objects:  14% (14/96)   [Kremote: Compressing objects:  15% (15/96)   [Kremote: Compressing objects:  16% (16/96)   [Kremote: Compressing objects:  17% (17/96)   [Kremote: Compressing objects:  18% (18/96)   [Kremote: Compressing objects:  19% (19/96)   [Kremote: Compressing objects:  20% (20/96)   [Kremote: Compressing objects:  21% (21/96)   [Kremote: Compressing objects:  22% (22/96)   [Kremote: Compressing objects:  23% (23/96)   [Kremote: Compressing objects:  25% (24/96)   [Kremote: Compressing objects:  26% (25/96)   [Kremote: Compressing objects:  27% (26/96)   [Kremote: Compressing objects:  28% (27/96)   [Kremote: Compressing objects:  29% (28/96)   [Kremote: Compressing objects:  30% (29/96)   [Kremote: Compressing objects:  31% (30/96)   [Kremote: Compressing objects:  32% (31/96)   [Kremote: Compressing objects:  33% (32/96)   [Kremote: Compressing objects:  34% (33/96)   [Kremote: Compressing objects:  35% (34/96)   [Kremote: Compressing objects:  36% (35/96)   [Kremote: Compressing objects:  37% (36/96)   [Kremote: Compressing objects:  38% (37/96)   [Kremote: Compressing objects:  39% (38/96)   [Kremote: Compressing objects:  40% (39/96)   [Kremote: Compressing objects:  41% (40/96)   [Kremote: Compressing objects:  42% (41/96)   [Kremote: Compressing objects:  43% (42/96)   [Kremote: Compressing objects:  44% (43/96)   [Kremote: Compressing objects:  45% (44/96)   [Kremote: Compressing objects:  46% (45/96)   [Kremote: Compressing objects:  47% (46/96)   [Kremote: Compressing objects:  48% (47/96)   [Kremote: Compressing objects:  50% (48/96)   [Kremote: Compressing objects:  51% (49/96)   [Kremote: Compressing objects:  52% (50/96)   [Kremote: Compressing objects:  53% (51/96)   [Kremote: Compressing objects:  54% (52/96)   [Kremote: Compressing objects:  55% (53/96)   [Kremote: Compressing objects:  56% (54/96)   [Kremote: Compressing objects:  57% (55/96)   [Kremote: Compressing objects:  58% (56/96)   [Kremote: Compressing objects:  59% (57/96)   [Kremote: Compressing objects:  60% (58/96)   [Kremote: Compressing objects:  61% (59/96)   [Kremote: Compressing objects:  62% (60/96)   [Kremote: Compressing objects:  63% (61/96)   [Kremote: Compressing objects:  64% (62/96)   [Kremote: Compressing objects:  65% (63/96)   [Kremote: Compressing objects:  66% (64/96)   [Kremote: Compressing objects:  67% (65/96)   [Kremote: Compressing objects:  68% (66/96)   [Kremote: Compressing objects:  69% (67/96)   [Kremote: Compressing objects:  70% (68/96)   [Kremote: Compressing objects:  71% (69/96)   [Kremote: Compressing objects:  72% (70/96)   [Kremote: Compressing objects:  73% (71/96)   [Kremote: Compressing objects:  75% (72/96)   [Kremote: Compressing objects:  76% (73/96)   [Kremote: Compressing objects:  77% (74/96)   [Kremote: Compressing objects:  78% (75/96)   [Kremote: Compressing objects:  79% (76/96)   [Kremote: Compressing objects:  80% (77/96)   [Kremote: Compressing objects:  81% (78/96)   [Kremote: Compressing objects:  82% (79/96)   [Kremote: Compressing objects:  83% (80/96)   [Kremote: Compressing objects:  84% (81/96)   [Kremote: Compressing objects:  85% (82/96)   [Kremote: Compressing objects:  86% (83/96)   [Kremote: Compressing objects:  87% (84/96)   [Kremote: Compressing objects:  88% (85/96)   [Kremote: Compressing objects:  89% (86/96)   [Kremote: Compressing objects:  90% (87/96)   [Kremote: Compressing objects:  91% (88/96)   [Kremote: Compressing objects:  92% (89/96)   [Kremote: Compressing objects:  93% (90/96)   [Kremote: Compressing objects:  94% (91/96)   [Kremote: Compressing objects:  95% (92/96)   [Kremote: Compressing objects:  96% (93/96)   [Kremote: Compressing objects:  97% (94/96)   [Kremote: Compressing objects:  98% (95/96)   [Kremote: Compressing objects: 100% (96/96)   [Kremote: Compressing objects: 100% (96/96), done.[K
+remote: Total 115 (delta 57), reused 68 (delta 14)[K
+Receiving objects:   0% (1/115)   Receiving objects:   1% (2/115)   Receiving objects:   2% (3/115)   Receiving objects:   3% (4/115)   Receiving objects:   4% (5/115)   Receiving objects:   5% (6/115)   Receiving objects:   6% (7/115)   Receiving objects:   7% (9/115)   Receiving objects:   8% (10/115)   Receiving objects:   9% (11/115)   Receiving objects:  10% (12/115)   Receiving objects:  11% (13/115)   Receiving objects:  12% (14/115)   Receiving objects:  13% (15/115)   Receiving objects:  14% (17/115)   Receiving objects:  15% (18/115)   Receiving objects:  16% (19/115)   Receiving objects:  17% (20/115)   Receiving objects:  18% (21/115)   Receiving objects:  19% (22/115)   Receiving objects:  20% (23/115)   Receiving objects:  21% (25/115)   Receiving objects:  22% (26/115)   Receiving objects:  23% (27/115)   Receiving objects:  24% (28/115)   Receiving objects:  25% (29/115)   Receiving objects:  26% (30/115)   Receiving objects:  27% (32/115)   Receiving objects:  28% (33/115)   Receiving objects:  29% (34/115)   Receiving objects:  30% (35/115)   Receiving objects:  31% (36/115)   Receiving objects:  32% (37/115)   Receiving objects:  33% (38/115)   Receiving objects:  34% (40/115)   Receiving objects:  35% (41/115)   Receiving objects:  36% (42/115)   Receiving objects:  37% (43/115)   Receiving objects:  38% (44/115)   Receiving objects:  39% (45/115)   Receiving objects:  40% (46/115)   Receiving objects:  41% (48/115)   Receiving objects:  42% (49/115)   Receiving objects:  43% (50/115)   Receiving objects:  44% (51/115)   Receiving objects:  45% (52/115)   Receiving objects:  46% (53/115)   Receiving objects:  47% (55/115)   Receiving objects:  48% (56/115)   Receiving objects:  49% (57/115)   Receiving objects:  50% (58/115)   Receiving objects:  51% (59/115)   Receiving objects:  52% (60/115)   Receiving objects:  53% (61/115)   Receiving objects:  54% (63/115)   Receiving objects:  55% (64/115)   Receiving objects:  56% (65/115)   Receiving objects:  57% (66/115)   Receiving objects:  58% (67/115)   Receiving objects:  59% (68/115)   Receiving objects:  60% (69/115)   Receiving objects:  61% (71/115)   Receiving objects:  62% (72/115)   Receiving objects:  63% (73/115)   Receiving objects:  64% (74/115)   Receiving objects:  65% (75/115)   Receiving objects:  66% (76/115)   Receiving objects:  67% (78/115)   Receiving objects:  68% (79/115)   Receiving objects:  69% (80/115)   Receiving objects:  70% (81/115)   Receiving objects:  71% (82/115)   Receiving objects:  72% (83/115)   Receiving objects:  73% (84/115)   Receiving objects:  74% (86/115)   Receiving objects:  75% (87/115)   Receiving objects:  76% (88/115)   Receiving objects:  77% (89/115)   Receiving objects:  78% (90/115)   Receiving objects:  79% (91/115)   Receiving objects:  80% (92/115)   Receiving objects:  81% (94/115)   Receiving objects:  82% (95/115)   Receiving objects:  83% (96/115)   Receiving objects:  84% (97/115)   Receiving objects:  85% (98/115)   Receiving objects:  86% (99/115)   Receiving objects:  87% (101/115)   Receiving objects:  88% (102/115)   Receiving objects:  89% (103/115)   Receiving objects:  90% (104/115)   Receiving objects:  91% (105/115)   Receiving objects:  92% (106/115)   Receiving objects:  93% (107/115)   Receiving objects:  94% (109/115)   Receiving objects:  95% (110/115)   Receiving objects:  96% (111/115)   Receiving objects:  97% (112/115)   Receiving objects:  98% (113/115)   Receiving objects:  99% (114/115)   Receiving objects: 100% (115/115)   Receiving objects: 100% (115/115), 34.20 KiB, done.
+Resolving deltas:   0% (0/57)   Resolving deltas:  21% (12/57)   Resolving deltas:  24% (14/57)   Resolving deltas:  45% (26/57)   Resolving deltas:  47% (27/57)   Resolving deltas:  52% (30/57)   Resolving deltas:  70% (40/57)   Resolving deltas:  75% (43/57)   Resolving deltas:  77% (44/57)   Resolving deltas:  84% (48/57)   Resolving deltas:  89% (51/57)   Resolving deltas:  94% (54/57)   Resolving deltas:  96% (55/57)   Resolving deltas: 100% (57/57)   Resolving deltas: 100% (57/57), done.
++ cd ckanext-oaipmh
++ python setup.py install
+no previously-included directories found matching 'test'
+
+Installed /home/ckan/pyenv/src/ckanext-oaipmh/coverage-3.5.2-py2.6-linux-i686.egg
+running install
+running bdist_egg
+running egg_info
+creating ckanext_oaipmh.egg-info
+writing requirements to ckanext_oaipmh.egg-info/requires.txt
+writing ckanext_oaipmh.egg-info/PKG-INFO
+writing namespace_packages to ckanext_oaipmh.egg-info/namespace_packages.txt
+writing top-level names to ckanext_oaipmh.egg-info/top_level.txt
+writing dependency_links to ckanext_oaipmh.egg-info/dependency_links.txt
+writing entry points to ckanext_oaipmh.egg-info/entry_points.txt
+writing manifest file 'ckanext_oaipmh.egg-info/SOURCES.txt'
+reading manifest file 'ckanext_oaipmh.egg-info/SOURCES.txt'
+writing manifest file 'ckanext_oaipmh.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-i686/egg
+running install_lib
+running build_py
+creating build
+creating build/lib
+creating build/lib/ckanext
+copying ckanext/__init__.py -> build/lib/ckanext
+creating build/lib/ckanext/oaipmh
+copying ckanext/oaipmh/harvester.py -> build/lib/ckanext/oaipmh
+copying ckanext/oaipmh/__init__.py -> build/lib/ckanext/oaipmh
+copying ckanext/oaipmh/controller.py -> build/lib/ckanext/oaipmh
+copying ckanext/oaipmh/plugin.py -> build/lib/ckanext/oaipmh
+copying ckanext/oaipmh/oaipmh_server.py -> build/lib/ckanext/oaipmh
+creating build/lib/ckanext/oaipmh/tests
+copying ckanext/oaipmh/tests/test_oai.py -> build/lib/ckanext/oaipmh/tests
+copying ckanext/oaipmh/tests/__init__.py -> build/lib/ckanext/oaipmh/tests
+copying ckanext/oaipmh/tests/testdata.py -> build/lib/ckanext/oaipmh/tests
+creating build/bdist.linux-i686
+creating build/bdist.linux-i686/egg
+creating build/bdist.linux-i686/egg/ckanext
+creating build/bdist.linux-i686/egg/ckanext/oaipmh
+copying build/lib/ckanext/oaipmh/harvester.py -> build/bdist.linux-i686/egg/ckanext/oaipmh
+copying build/lib/ckanext/oaipmh/__init__.py -> build/bdist.linux-i686/egg/ckanext/oaipmh
+copying build/lib/ckanext/oaipmh/controller.py -> build/bdist.linux-i686/egg/ckanext/oaipmh
+copying build/lib/ckanext/oaipmh/plugin.py -> build/bdist.linux-i686/egg/ckanext/oaipmh
+copying build/lib/ckanext/oaipmh/oaipmh_server.py -> build/bdist.linux-i686/egg/ckanext/oaipmh
+creating build/bdist.linux-i686/egg/ckanext/oaipmh/tests
+copying build/lib/ckanext/oaipmh/tests/test_oai.py -> build/bdist.linux-i686/egg/ckanext/oaipmh/tests
+copying build/lib/ckanext/oaipmh/tests/__init__.py -> build/bdist.linux-i686/egg/ckanext/oaipmh/tests
+copying build/lib/ckanext/oaipmh/tests/testdata.py -> build/bdist.linux-i686/egg/ckanext/oaipmh/tests
+copying build/lib/ckanext/__init__.py -> build/bdist.linux-i686/egg/ckanext
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/harvester.py to harvester.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/controller.py to controller.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/plugin.py to plugin.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/oaipmh_server.py to oaipmh_server.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/tests/test_oai.py to test_oai.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/tests/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/oaipmh/tests/testdata.py to testdata.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/__init__.py to __init__.pyc
+creating build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/PKG-INFO -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/SOURCES.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/dependency_links.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/entry_points.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/namespace_packages.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/not-zip-safe -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/requires.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_oaipmh.egg-info/top_level.txt -> build/bdist.linux-i686/egg/EGG-INFO
+creating dist
+creating 'dist/ckanext_oaipmh-0.1-py2.6.egg' and adding 'build/bdist.linux-i686/egg' to it
+removing 'build/bdist.linux-i686/egg' (and everything under it)
+Processing ckanext_oaipmh-0.1-py2.6.egg
+creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext_oaipmh-0.1-py2.6.egg
+Extracting ckanext_oaipmh-0.1-py2.6.egg to /home/ckan/pyenv/lib/python2.6/site-packages
+Adding ckanext-oaipmh 0.1 to easy-install.pth file
+
+Installed /home/ckan/pyenv/lib/python2.6/site-packages/ckanext_oaipmh-0.1-py2.6.egg
+Processing dependencies for ckanext-oaipmh==0.1
+Searching for pyoai
+Reading http://pypi.python.org/simple/pyoai/
+Reading http://www.infrae.com/download/oaipmh
+Best match: pyoai 2.4.4
+Downloading http://www.infrae.com/download/OAI/pyoai/2.4.4/pyoai-2.4.4.tar.gz
+Processing pyoai-2.4.4.tar.gz
+Running pyoai-2.4.4/setup.py -q bdist_egg --dist-dir /tmp/easy_install-T3MgqS/pyoai-2.4.4/egg-dist-tmp-NVKD9k
+Adding pyoai 2.4.4 to easy-install.pth file
+
+Installed /home/ckan/pyenv/lib/python2.6/site-packages/pyoai-2.4.4-py2.6.egg
+Searching for lxml
+Reading http://pypi.python.org/simple/lxml/
+Reading http://codespeak.net/lxml
+Best match: lxml 2.3.5
+Downloading http://lxml.de/files/lxml-2.3.5.tgz
+Processing lxml-2.3.5.tgz
+Running lxml-2.3.5/setup.py -q bdist_egg --dist-dir /tmp/easy_install-jNiYj0/lxml-2.3.5/egg-dist-tmp-oJnZy8
+Building lxml version 2.3.5.
+Building without Cython.
+Using build configuration of libxslt 1.1.26
+Building against libxml2/libxslt in the following directory: /usr/lib
+Adding lxml 2.3.5 to easy-install.pth file
+
+Installed /home/ckan/pyenv/lib/python2.6/site-packages/lxml-2.3.5-py2.6-linux-i686.egg
+Searching for ckanext-harvest==0.2
+Best match: ckanext-harvest 0.2
+ckanext-harvest 0.2 is already the active version in easy-install.pth
+
+Using /home/ckan/pyenv/src/ckanext-harvest
+Finished processing dependencies for ckanext-oaipmh==0.1
++ instloc=/home/ckan
++ cd /home/ckan
++ cd pyenv/src
++ source ../bin/activate
+++ deactivate nondestructive
+++ unset pydoc
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ alias 'pydoc=python -m pydoc'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ pip install -e git+https://github.com/martinblech/xmltodict.git#egg=xmltodict
+Obtaining xmltodict from git+https://github.com/martinblech/xmltodict.git#egg=xmltodict
+  Cloning https://github.com/martinblech/xmltodict.git to ./xmltodict
+Unpacking objects:   2% (1/39)   Unpacking objects:   5% (2/39)   Unpacking objects:   7% (3/39)   Unpacking objects:  10% (4/39)   Unpacking objects:  12% (5/39)   Unpacking objects:  15% (6/39)   Unpacking objects:  17% (7/39)   Unpacking objects:  20% (8/39)   Unpacking objects:  23% (9/39)   Unpacking objects:  25% (10/39)   Unpacking objects:  28% (11/39)   Unpacking objects:  30% (12/39)   Unpacking objects:  33% (13/39)   Unpacking objects:  35% (14/39)   Unpacking objects:  38% (15/39)   Unpacking objects:  41% (16/39)   Unpacking objects:  43% (17/39)   Unpacking objects:  46% (18/39)   Unpacking objects:  48% (19/39)   Unpacking objects:  51% (20/39)   Unpacking objects:  53% (21/39)   Unpacking objects:  56% (22/39)   Unpacking objects:  58% (23/39)   Unpacking objects:  61% (24/39)   Unpacking objects:  64% (25/39)   Unpacking objects:  66% (26/39)   Unpacking objects:  69% (27/39)   Unpacking objects:  71% (28/39)   Unpacking objects:  74% (29/39)   Unpacking objects:  76% (30/39)   Unpacking objects:  79% (31/39)   Unpacking objects:  82% (32/39)   Unpacking objects:  84% (33/39)   Unpacking objects:  87% (34/39)   Unpacking objects:  89% (35/39)   Unpacking objects:  92% (36/39)   Unpacking objects:  94% (37/39)   Unpacking objects:  97% (38/39)   Unpacking objects: 100% (39/39)   Unpacking objects: 100% (39/39), done.
+  Running setup.py egg_info for package xmltodict
+Installing collected packages: xmltodict
+  Running setup.py develop for xmltodict
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/xmltodict.egg-link (link to .)
+    Adding xmltodict 0.1 to easy-install.pth file
+    
+    Installed /home/ckan/pyenv/src/xmltodict
+Successfully installed xmltodict
+Cleaning up...
++ git clone https://github.com/locusf/ckanext-ddi.git
+Initialized empty Git repository in /home/ckan/pyenv/src/ckanext-ddi/.git/
+remote: Counting objects: 92, done.[K
+remote: Compressing objects:   1% (1/86)   [Kremote: Compressing objects:   2% (2/86)   [Kremote: Compressing objects:   3% (3/86)   [Kremote: Compressing objects:   4% (4/86)   [Kremote: Compressing objects:   5% (5/86)   [Kremote: Compressing objects:   6% (6/86)   [Kremote: Compressing objects:   8% (7/86)   [Kremote: Compressing objects:   9% (8/86)   [Kremote: Compressing objects:  10% (9/86)   [Kremote: Compressing objects:  11% (10/86)   [Kremote: Compressing objects:  12% (11/86)   [Kremote: Compressing objects:  13% (12/86)   [Kremote: Compressing objects:  15% (13/86)   [Kremote: Compressing objects:  16% (14/86)   [Kremote: Compressing objects:  17% (15/86)   [Kremote: Compressing objects:  18% (16/86)   [Kremote: Compressing objects:  19% (17/86)   [Kremote: Compressing objects:  20% (18/86)   [Kremote: Compressing objects:  22% (19/86)   [Kremote: Compressing objects:  23% (20/86)   [Kremote: Compressing objects:  24% (21/86)   [Kremote: Compressing objects:  25% (22/86)   [Kremote: Compressing objects:  26% (23/86)   [Kremote: Compressing objects:  27% (24/86)   [Kremote: Compressing objects:  29% (25/86)   [Kremote: Compressing objects:  30% (26/86)   [Kremote: Compressing objects:  31% (27/86)   [Kremote: Compressing objects:  32% (28/86)   [Kremote: Compressing objects:  33% (29/86)   [Kremote: Compressing objects:  34% (30/86)   [Kremote: Compressing objects:  36% (31/86)   [Kremote: Compressing objects:  37% (32/86)   [Kremote: Compressing objects:  38% (33/86)   [Kremote: Compressing objects:  39% (34/86)   [Kremote: Compressing objects:  40% (35/86)   [Kremote: Compressing objects:  41% (36/86)   [Kremote: Compressing objects:  43% (37/86)   [Kremote: Compressing objects:  44% (38/86)   [Kremote: Compressing objects:  45% (39/86)   [Kremote: Compressing objects:  46% (40/86)   [Kremote: Compressing objects:  47% (41/86)   [Kremote: Compressing objects:  48% (42/86)   [Kremote: Compressing objects:  50% (43/86)   [Kremote: Compressing objects:  51% (44/86)   [Kremote: Compressing objects:  52% (45/86)   [Kremote: Compressing objects:  53% (46/86)   [Kremote: Compressing objects:  54% (47/86)   [Kremote: Compressing objects:  55% (48/86)   [Kremote: Compressing objects:  56% (49/86)   [Kremote: Compressing objects:  58% (50/86)   [Kremote: Compressing objects:  59% (51/86)   [Kremote: Compressing objects:  60% (52/86)   [Kremote: Compressing objects:  61% (53/86)   [Kremote: Compressing objects:  62% (54/86)   [Kremote: Compressing objects:  63% (55/86)   [Kremote: Compressing objects:  65% (56/86)   [Kremote: Compressing objects:  66% (57/86)   [Kremote: Compressing objects:  67% (58/86)   [Kremote: Compressing objects:  68% (59/86)   [Kremote: Compressing objects:  69% (60/86)   [Kremote: Compressing objects:  70% (61/86)   [Kremote: Compressing objects:  72% (62/86)   [Kremote: Compressing objects:  73% (63/86)   [Kremote: Compressing objects:  74% (64/86)   [Kremote: Compressing objects:  75% (65/86)   [Kremote: Compressing objects:  76% (66/86)   [Kremote: Compressing objects:  77% (67/86)   [Kremote: Compressing objects:  79% (68/86)   [Kremote: Compressing objects:  80% (69/86)   [Kremote: Compressing objects:  81% (70/86)   [Kremote: Compressing objects:  82% (71/86)   [Kremote: Compressing objects:  83% (72/86)   [Kremote: Compressing objects:  84% (73/86)   [Kremote: Compressing objects:  86% (74/86)   [Kremote: Compressing objects:  87% (75/86)   [Kremote: Compressing objects:  88% (76/86)   [Kremote: Compressing objects:  89% (77/86)   [Kremote: Compressing objects:  90% (78/86)   [Kremote: Compressing objects:  91% (79/86)   [Kremote: Compressing objects:  93% (80/86)   [Kremote: Compressing objects:  94% (81/86)   [Kremote: Compressing objects:  95% (82/86)   [Kremote: Compressing objects:  96% (83/86)   [Kremote: Compressing objects:  97% (84/86)   [Kremote: Compressing objects:  98% (85/86)   [Kremote: Compressing objects: 100% (86/86)   [Kremote: Compressing objects: 100% (86/86), done.[K
+Unpacking objects:   1% (1/92)   Unpacking objects:   2% (2/92)   Unpacking objects:   3% (3/92)   Unpacking objects:   4% (4/92)   Unpacking objects:   5% (5/92)   Unpacking objects:   6% (6/92)   Unpacking objects:   7% (7/92)   Unpacking objects:   8% (8/92)   Unpacking objects:   9% (9/92)   Unpacking objects:  10% (10/92)   Unpacking objects:  11% (11/92)   Unpacking objects:  13% (12/92)   Unpacking objects:  14% (13/92)   Unpacking objects:  15% (14/92)   Unpacking objects:  16% (15/92)   Unpacking objects:  17% (16/92)   Unpacking objects:  18% (17/92)   Unpacking objects:  19% (18/92)   Unpacking objects:  20% (19/92)   Unpacking objects:  21% (20/92)   Unpacking objects:  22% (21/92)   Unpacking objects:  23% (22/92)   Unpacking objects:  25% (23/92)   Unpacking objects:  26% (24/92)   Unpacking objects:  27% (25/92)   Unpacking objects:  28% (26/92)   Unpacking objects:  29% (27/92)   Unpacking objects:  30% (28/92)   Unpacking objects:  31% (29/92)   Unpacking objects:  32% (30/92)   remote: Total 92 (delta 32), reused 65 (delta 5)[K
+Unpacking objects:  33% (31/92)   Unpacking objects:  34% (32/92)   Unpacking objects:  35% (33/92)   Unpacking objects:  36% (34/92)   Unpacking objects:  38% (35/92)   Unpacking objects:  39% (36/92)   Unpacking objects:  40% (37/92)   Unpacking objects:  41% (38/92)   Unpacking objects:  42% (39/92)   Unpacking objects:  43% (40/92)   Unpacking objects:  44% (41/92)   Unpacking objects:  45% (42/92)   Unpacking objects:  46% (43/92)   Unpacking objects:  47% (44/92)   Unpacking objects:  48% (45/92)   Unpacking objects:  50% (46/92)   Unpacking objects:  51% (47/92)   Unpacking objects:  52% (48/92)   Unpacking objects:  53% (49/92)   Unpacking objects:  54% (50/92)   Unpacking objects:  55% (51/92)   Unpacking objects:  56% (52/92)   Unpacking objects:  57% (53/92)   Unpacking objects:  58% (54/92)   Unpacking objects:  59% (55/92)   Unpacking objects:  60% (56/92)   Unpacking objects:  61% (57/92)   Unpacking objects:  63% (58/92)   Unpacking objects:  64% (59/92)   Unpacking objects:  65% (60/92)   Unpacking objects:  66% (61/92)   Unpacking objects:  67% (62/92)   Unpacking objects:  68% (63/92)   Unpacking objects:  69% (64/92)   Unpacking objects:  70% (65/92)   Unpacking objects:  71% (66/92)   Unpacking objects:  72% (67/92)   Unpacking objects:  73% (68/92)   Unpacking objects:  75% (69/92)   Unpacking objects:  76% (70/92)   Unpacking objects:  77% (71/92)   Unpacking objects:  78% (72/92)   Unpacking objects:  79% (73/92)   Unpacking objects:  80% (74/92)   Unpacking objects:  81% (75/92)   Unpacking objects:  82% (76/92)   Unpacking objects:  83% (77/92)   Unpacking objects:  84% (78/92)   Unpacking objects:  85% (79/92)   Unpacking objects:  86% (80/92)   Unpacking objects:  88% (81/92)   Unpacking objects:  89% (82/92)   Unpacking objects:  90% (83/92)   Unpacking objects:  91% (84/92)   Unpacking objects:  92% (85/92)   Unpacking objects:  93% (86/92)   Unpacking objects:  94% (87/92)   Unpacking objects:  95% (88/92)   Unpacking objects:  96% (89/92)   Unpacking objects:  97% (90/92)   Unpacking objects:  98% (91/92)   Unpacking objects: 100% (92/92)   Unpacking objects: 100% (92/92), done.
++ cd ckanext-ddi
++ python setup.py install
+no previously-included directories found matching 'test'
+
+Installed /home/ckan/pyenv/src/ckanext-ddi/coverage-3.5.2-py2.6-linux-i686.egg
+running install
+running bdist_egg
+running egg_info
+creating ckanext_ddi.egg-info
+writing requirements to ckanext_ddi.egg-info/requires.txt
+writing ckanext_ddi.egg-info/PKG-INFO
+writing namespace_packages to ckanext_ddi.egg-info/namespace_packages.txt
+writing top-level names to ckanext_ddi.egg-info/top_level.txt
+writing dependency_links to ckanext_ddi.egg-info/dependency_links.txt
+writing entry points to ckanext_ddi.egg-info/entry_points.txt
+writing manifest file 'ckanext_ddi.egg-info/SOURCES.txt'
+reading manifest file 'ckanext_ddi.egg-info/SOURCES.txt'
+writing manifest file 'ckanext_ddi.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-i686/egg
+running install_lib
+running build_py
+creating build
+creating build/lib
+creating build/lib/ckanext
+copying ckanext/__init__.py -> build/lib/ckanext
+creating build/lib/ckanext/ddi
+copying ckanext/ddi/harvester.py -> build/lib/ckanext/ddi
+copying ckanext/ddi/__init__.py -> build/lib/ckanext/ddi
+creating build/lib/ckanext/ddi/commands
+copying ckanext/ddi/commands/__init__.py -> build/lib/ckanext/ddi/commands
+copying ckanext/ddi/commands/ddi_import.py -> build/lib/ckanext/ddi/commands
+creating build/lib/ckanext/ddi/tests
+copying ckanext/ddi/tests/__init__.py -> build/lib/ckanext/ddi/tests
+copying ckanext/ddi/tests/test_ddiharvester.py -> build/lib/ckanext/ddi/tests
+copying ckanext/ddi/tests/testdata.py -> build/lib/ckanext/ddi/tests
+creating build/bdist.linux-i686
+creating build/bdist.linux-i686/egg
+creating build/bdist.linux-i686/egg/ckanext
+copying build/lib/ckanext/__init__.py -> build/bdist.linux-i686/egg/ckanext
+creating build/bdist.linux-i686/egg/ckanext/ddi
+copying build/lib/ckanext/ddi/harvester.py -> build/bdist.linux-i686/egg/ckanext/ddi
+copying build/lib/ckanext/ddi/__init__.py -> build/bdist.linux-i686/egg/ckanext/ddi
+creating build/bdist.linux-i686/egg/ckanext/ddi/commands
+copying build/lib/ckanext/ddi/commands/__init__.py -> build/bdist.linux-i686/egg/ckanext/ddi/commands
+copying build/lib/ckanext/ddi/commands/ddi_import.py -> build/bdist.linux-i686/egg/ckanext/ddi/commands
+creating build/bdist.linux-i686/egg/ckanext/ddi/tests
+copying build/lib/ckanext/ddi/tests/__init__.py -> build/bdist.linux-i686/egg/ckanext/ddi/tests
+copying build/lib/ckanext/ddi/tests/test_ddiharvester.py -> build/bdist.linux-i686/egg/ckanext/ddi/tests
+copying build/lib/ckanext/ddi/tests/testdata.py -> build/bdist.linux-i686/egg/ckanext/ddi/tests
+byte-compiling build/bdist.linux-i686/egg/ckanext/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/ddi/harvester.py to harvester.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/ddi/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/ddi/commands/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/ddi/commands/ddi_import.py to ddi_import.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/ddi/tests/__init__.py to __init__.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/ddi/tests/test_ddiharvester.py to test_ddiharvester.pyc
+byte-compiling build/bdist.linux-i686/egg/ckanext/ddi/tests/testdata.py to testdata.pyc
+creating build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/PKG-INFO -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/SOURCES.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/dependency_links.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/entry_points.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/namespace_packages.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/not-zip-safe -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/requires.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying ckanext_ddi.egg-info/top_level.txt -> build/bdist.linux-i686/egg/EGG-INFO
+creating dist
+creating 'dist/ckanext_ddi-0.1-py2.6.egg' and adding 'build/bdist.linux-i686/egg' to it
+removing 'build/bdist.linux-i686/egg' (and everything under it)
+Processing ckanext_ddi-0.1-py2.6.egg
+creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext_ddi-0.1-py2.6.egg
+Extracting ckanext_ddi-0.1-py2.6.egg to /home/ckan/pyenv/lib/python2.6/site-packages
+Adding ckanext-ddi 0.1 to easy-install.pth file
+
+Installed /home/ckan/pyenv/lib/python2.6/site-packages/ckanext_ddi-0.1-py2.6.egg
+Processing dependencies for ckanext-ddi==0.1
+Searching for xmltodict==0.1
+Best match: xmltodict 0.1
+xmltodict 0.1 is already the active version in easy-install.pth
+
+Using /home/ckan/pyenv/src/xmltodict
+Searching for lxml==2.3.5
+Best match: lxml 2.3.5
+Processing lxml-2.3.5-py2.6-linux-i686.egg
+lxml 2.3.5 is already the active version in easy-install.pth
+
+Using /home/ckan/pyenv/lib/python2.6/site-packages/lxml-2.3.5-py2.6-linux-i686.egg
+Finished processing dependencies for ckanext-ddi==0.1
+Stopping supervisord: [FAILED]
+Starting supervisord: [  OK  ]
++ instloc=/home/ckan
++ cp /opt/solr/conf/schema.xml /opt/solr/conf/schema.xml.bak
++ cp /home/ckan/pyenv/src/ckan/ckan/config/solr/schema-1.4.xml /opt/solr/conf/schema.xml
++ service tomcat6 restart
+Stopping tomcat6: [  OK  ]
+Starting tomcat6: [  OK  ]
++ chkconfig tomcat6 on
++ instloc=/home/ckan
++ extensions='harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester'
++ sed -i '/^ckan.plugins/s|$| harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester|' /home/ckan/pyenv/src/ckan/development.ini
++ instloc=/home/ckan
++ service rabbitmq-server start
+Starting rabbitmq-server: SUCCESS
+rabbitmq-server.
++ chkconfig rabbitmq-server on
++ /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
+2012-08-20 03:43:15,263 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-20 03:43:15,266 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-08-20 03:43:15,294 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+
+2012-08-20 03:43:15,314 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-08-20 03:43:15,336 INFO  [ckanext.harvest.logic.action.create] Harvest source created: c942aada-6df4-43ea-9719-417e094541ea
+Created new harvest source:
+Source id: c942aada-6df4-43ea-9719-417e094541ea
+      url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
+     type: DDI
+   active: True
+     user: 
+publisher: 
+     jobs: 0
+
+There is 1 harvest source
+2012-08-20 03:43:15,365 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'c942aada-6df4-43ea-9719-417e094541ea'}
+2012-08-20 03:43:15,390 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 30015a18-5b47-4676-9ff2-f7f3956c3044
+A new Harvest Job for this source has also been created
++ /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
+2012-08-20 03:43:16,779 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-08-20 03:43:16,782 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-08-20 03:43:16,809 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+
+2012-08-20 03:43:16,829 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-08-20 03:43:16,849 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 9ea71984-47eb-4f57-bf46-62de02aed127
+Created new harvest source:
+Source id: 9ea71984-47eb-4f57-bf46-62de02aed127
+      url: http://helda.helsinki.fi/oai/request
+     type: OAI-PMH
+   active: True
+     user: 
+publisher: 
+     jobs: 0
+
+There are 2 harvest sources
+2012-08-20 03:43:16,967 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'9ea71984-47eb-4f57-bf46-62de02aed127'}
+2012-08-20 03:43:17,018 INFO  [ckanext.harvest.logic.action.create] Harvest job saved c11fda39-ca17-4c0a-b267-ff36136774de
+A new Harvest Job for this source has also been created
++ service httpd restart
+Stopping httpd: [FAILED]
+Starting httpd: httpd: apr_sockaddr_info_get() failed for ckandev2
+httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName
+[  OK  ]
++ service supervisord restart
+Stopping supervisord: [  OK  ]
+Starting supervisord: [  OK  ]
+job 1 at 2012-08-20 03:48
 + instloc=/home/ckan
 + expected=/usr/share/kata-ckan-dev/setup-data/pip.freeze
 + cd /home/ckan
@@ -575,11 +1112,20 @@ Starting ckan-dev: [  OK  ][  OK  ]
 + SETCOLOR_SUCCESS='echo -en \033[1;32m'
 + SETCOLOR_FAILURE='echo -en \033[1;31m'
 + SETCOLOR_NORMAL='echo -en \033[0;39m'
-+ diff /usr/share/kata-ckan-dev/setup-data/pip.freeze -
 + pip freeze
-+ echo -en '\033[1;32m'
-[1;32m+ echo 'Python packages checked OK.'
-Python packages checked OK.
++ diff /usr/share/kata-ckan-dev/setup-data/pip.freeze -
++ echo -en '\033[1;31m'
+[1;31m+ echo 'Python package mismatches:'
+Python package mismatches:
++ cat /tmp/kata-70.tmp
+26c26
+< -e git+https://github.com/okfn/ckan.git@85df0117cc85416f134084b3a2a1f5e8b51aec92#egg=ckan-dev
+---
+> -e git+https://github.com/okfn/ckan.git@eae560d4bbf3ad0972a52b8cd19ac4893a9e4352#egg=ckan-dev
+28c28
+< -e git+https://github.com/okfn/ckanext-harvest.git@a8aebac9656a121909736e4272f210f40d924d01#egg=ckanext_harvest-dev
+---
+> -e git+https://github.com/okfn/ckanext-harvest.git@c1f83e0d3e5b6c6ce9922b2bf973fb951763c075#egg=ckanext_harvest-dev
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 

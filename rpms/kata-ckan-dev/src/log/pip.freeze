@@ -1,5 +1,5 @@
 Babel==0.9.6
-Beaker==1.6.3
+Beaker==1.6.4
 FormAlchemy==1.4.2
 FormEncode==1.2.4
 Genshi==0.6
@@ -18,13 +18,22 @@ WebError==0.10.3
 WebHelpers==1.3
 WebOb==1.0.8
 WebTest==1.3.4
+amqplib==1.0.2
+anyjson==0.3.3
 apachemiddleware==0.1.1
 argparse==1.2.1
--e git+https://github.com/okfn/ckan.git@99adf3dddb4ef78b34d128e3a5f9031643e8b0e9#egg=ckan-dev
+carrot==0.10.7
+-e git+https://github.com/okfn/ckan.git@85df0117cc85416f134084b3a2a1f5e8b51aec92#egg=ckan-dev
+ckanext-ddi==0.1
+-e git+https://github.com/okfn/ckanext-harvest.git@a8aebac9656a121909736e4272f210f40d924d01#egg=ckanext_harvest-dev
+ckanext-oaipmh==0.1
+ckanext-urn==0.1
 decorator==3.3.3
+lxml==2.3.5
 nose==1.1.2
 ofs==0.4.1
 psycopg2==2.4.5
+pyoai==2.4.4
 python-openid==2.2.5
 pyutilib.component.core==4.5.3
 repoze.lru==0.6
@@ -35,4 +44,5 @@ simplejson==2.6.1
 solrpy==0.9.5
 sqlalchemy-migrate==0.7.2
 -e git+https://github.com/okfn/vdm.git@0554de48c6d62d152699b53b98a7589dd5c71940#egg=vdm-dev
+-e git+https://github.com/martinblech/xmltodict.git@069cbc971b92eafa047aa4e7604c22806f8c5fb2#egg=xmltodict-dev
 zope.interface==4.0.1

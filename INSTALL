@@ -1,0 +1,58 @@
+Installation for kata administrators
+
+Installation should be carried out on a clean RHEL 6 / CentOS 6 machine
+
+
+I. Packages delivered:
+
+1. mcfg.rpm
+2. apache-solr.rpm
+3. kata-prod.rpm
+
+(rpm files will have version numbers in their names, these have been left
+out in this document for the sake of simplicity) 
+
+
+II. Installation steps
+
+1. Enable EPEL repo
+   1.a. "wget http://www.nic.funet.fi/pub/mirrors/fedora.redhat.com/pub/epel/6/i386/epel-release-6-7.noarch.rpm"
+   1.b. "sudo rpm -i epel-release-6-7.noarch.rpm"
+
+2. Install Apache solr
+
+   2.a. "sudo rpm -i apache-solr.rpm"
+   2.b. above command will most likely fail, because dependencies are missing,
+        install the dependencies listed using "sudo yum install ..." [1]
+   2.c. "sudo rpm -i apache-solr.rpm"
+
+3. Install master configuration tool
+
+   3.a. "sudo mcfg.rpm"
+   3.b. copy the provided master configuration sample file 
+        "sudo cp -i /usr/share/mcfg/examples/kata-master.ini /root/"
+   3.c. Edit it "sudo -e /root/kata-master.ini"
+        TODO: provide documentation for the parameters in the file
+
+4. Install kata
+
+   4.a. "sudo rpm -i kata.rpm"
+   4.b. above command will most likely fail, because dependencies are missing,
+        install the dependencies listed using "sudo yum install ... [1]
+   4.c. "sudo rpm -i apache-solr.rpm"
+
+5. Use kata
+
+   System is operational. All configuration has happened in step 3.c.
+
+
+Footnotes
+
+[1] If you don't want to type the names of the missing dependencies you
+can use a pipe like this. (For advanced system admins, you are running
+"automatic" commands read in from a pipe as root!)
+
+sudo rpm -i package-being-tried.rpm 2>&1 | grep "is needed" | grep -v -F ".so" | cut -c 2- | cut -f 1 -d " " | sudo xargs yum install -y
+
+TODO: check the pipe, especially the 2nd grep statement has been typed here
+without testing in real life.
