@@ -1,5 +1,6 @@
 """tests for the mcfg module"""
 import filecmp
+import mock
 import os
 import shutil
 import sys
@@ -69,7 +70,7 @@ class TestMcfg(unittest.TestCase):
 
     def test_system_ok(self):
         """This is not really a unit test, but more a system test.
-        Test a full example
+        Test a full example (only incremental is mocked)
         """
         templatefile = os.path.join(self.test_files_dir, "template2.ini")
         # targets are located in /tmp because we don't know anything
@@ -92,7 +93,10 @@ class TestMcfg(unittest.TestCase):
         except OSError:
             pass
         testmcfg = mcfg.Mcfg(templatefile, mcfgfile)
-        thisincr = 10
+        thisincr = mock.Mock()
+        thisincr.is_current.return_value = True
+        thisincr.__int__ = mock.Mock()
+        thisincr.__int__.return_value = 99
         testmcfg.run_editors(thisincr)
         
         result = filecmp.cmp(expected_ckan, target_ckan)
@@ -102,7 +106,7 @@ class TestMcfg(unittest.TestCase):
             print >> sys.stderr, "incorrect output {0}".format(target_ckan)
         self.assertTrue(result)
         
-        backup = "{0}.backup.{1}".format(target_ckan, thisincr)
+        backup = "{0}.backup.{1}".format(target_ckan, int(thisincr))
         result = filecmp.cmp(testin_ckan, backup)
         if result:
             os.unlink(backup)
@@ -117,7 +121,7 @@ class TestMcfg(unittest.TestCase):
             print >> sys.stderr, "incorrect output {0}".format(target_haka)
         self.assertTrue(result)
 
-        backup = "{0}.backup.{1}".format(target_haka, thisincr)
+        backup = "{0}.backup.{1}".format(target_haka, int(thisincr))
         result = filecmp.cmp(testin_haka, backup)
         if result:
             os.unlink(backup)

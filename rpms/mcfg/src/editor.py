@@ -3,7 +3,7 @@ import edfuncs
 class Editor:
 
 # an editor does not store information about its target. Target : editor
-# is 1 : n relation ship, so the details belong to the target. A reverse
+# is a 1 : n relationship, so the details belong to the target. A reverse
 # pointer is not needed for our purpose.
 
 # although currenently edfuncs take always 4 paramaters we just store a list
@@ -26,3 +26,9 @@ class Editor:
 
   def backup(self):
     return self.func.backup
+
+  def __int__(self):
+    """Magic function __int__ returns the increment the editor belongs to"""
+    # This might not be a least-surprise choice, but it makes it easy
+    # to filter lists of editors during incremental execution
+    return self.incr

@@ -38,6 +38,7 @@ class Target:
         if self.targetfile == None:
             raise ValueError, "template error: no mcfg_filename"
         backup = self.backup()
+        incr_edlist = filter( incr.is_current, self.edlist)
         if backup:
             # don't follow symbolic links, maybe not so much a
             # security issue here, but can at least cause confusion
@@ -47,13 +48,13 @@ class Target:
                 raise IOError, "Target file {0} does not exist or is not " \
                                  "a regular file".format(self.targetfile)
         else:
-            if len(self.edlist) > 0 and os.path.exists(self.targetfile):
+            if len(incr_edlist) > 0 and os.path.exists(self.targetfile):
                 raise IOError, "Target file {0} already exists".format(
                                  self.targetfile)
-        for (num, edi) in itertools.imap(None, itertools.count(1), self.edlist):
+        for (num, edi) in itertools.imap(None, itertools.count(1), incr_edlist):
             in_file = None
             if backup:
-                in_file = "{0}.backup.{1}".format(self.targetfile, incr)
+                in_file = "{0}.backup.{1}".format(self.targetfile, int(incr))
                 if num > 1:
                     in_file = "{0}.{1}".format(in_file, num)
                 shutil.move(self.targetfile, in_file)
@@ -67,6 +68,11 @@ class Target:
         Otherwise all editors on the list must agree on the property, if not
         an exception will be raised.
         """
+        # we calcalute backup over the whole edlist, not only over the current
+        # increment. In theory we could support copy_file in an earlier
+        # increment and replace in a later one. But it just makes things
+        # more complicated and as long as we don't have a use case for it,
+        # we don't support it.
         if len(self.edlist) == 0:
             result = False
         else:
