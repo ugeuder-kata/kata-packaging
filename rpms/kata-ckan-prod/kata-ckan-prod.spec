@@ -22,6 +22,8 @@ Requires: rabbitmq-server
 Requires: apache-solr
 Requires: supervisor
 Requires: mod_wsgi
+Requires: shibboleth
+Requires: mcfg
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...
@@ -42,9 +44,14 @@ This package is for the production server.
 
 
 %build
+diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
+diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
+diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
-
+diff -u patches/orig/shib.conf patches/kata/shib.conf >shib.conf.patch || true
+diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
+diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 
 %install
 # cpio: we need to be root to be able to read, but we don't preserve the 
@@ -68,11 +75,13 @@ install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 # setup scripts (keep them numerically ordered)
+install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 21setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 27installshibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -80,8 +89,15 @@ install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 # patches (keep them alphabetically ordered by filename)
+install attribute-map.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-policy.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install shib.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
+
 # misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
@@ -90,14 +106,17 @@ install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+
 %files
 %defattr(-,root,root)
 %attr(-,%{ckanuser},%{ckanuser}) /home/%{ckanuser}/pyenv
+%{scriptdir}/03configshibbolethsp.sh
 %{scriptdir}/05setuppostgres.sh
 %{scriptdir}/10setupckanprod.sh
 %{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/21setupharvester.sh
+%{scriptdir}/27installshibboleth.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/80backuphome.sh
@@ -109,6 +128,13 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
 
+%{patchdir}/attribute-map.xml.patch
+%{patchdir}/attribute-policy.xml.patch
+%{patchdir}/development.ini.patch
+%{patchdir}/shib.conf.patch
+%{patchdir}/shibboleth2.xml.patch
+%{patchdir}/who.ini.patch
+
 
 %pre
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
@@ -118,6 +144,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/14openfirewall.sh
+%{scriptdir}/03configshibbolethsp.sh
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
@@ -133,6 +160,8 @@ application = loadapp('config:%s' % config_filepath)
 EOF
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/20setupckanservice.sh %{patchdir}
+%{scriptdir}/27installshibboleth.sh /home/%{ckanuser} %{ckanuser}
+
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
@@ -156,5 +185,8 @@ echo 'Consider "rm -rf /var/lib/pgsql/data"'
 echo "Uninstallation not really supported yet, better get a clean VM..."
 
 %changelog
+* Tue Sep 11 2012 Harri Palojärvi <harri.palojarvi@nomovok.com>
+- Added shibboleth
+
 * Mon May 22 2012 Uwe Geuder <uwe.geuder@nomovok.com>
 - Initial version
