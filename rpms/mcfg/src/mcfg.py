@@ -5,6 +5,8 @@
 """
 
 import ConfigParser
+import logging
+import os
 import sys
 
 import editor
@@ -81,6 +83,7 @@ class Mcfg:
         """
         # TODO: in order to be testable this should really be it's own
         # module so we can use a mock Mcfg
+        Mcfg.set_log_level()
         usage = globals()["__doc__"]
         result = 0
         if not len(args) in (4, 5) :
@@ -108,6 +111,15 @@ class Mcfg:
         else:
             print >> sys.stderr, usage
         return result
+
+    @staticmethod
+    def set_log_level():
+        """Get the log level from environment and set it to logging module"""
+        level = os.getenv("MCFG_LOG", "warning")
+        numeric_level = getattr(logging, level.upper(), None)
+        if not isinstance(numeric_level, int):
+            raise ValueError('Invalid log level: %s' % level)
+        logging.basicConfig(level=numeric_level)
 
 if __name__ == "__main__":
     status = Mcfg.run_from_cmd(sys.argv)

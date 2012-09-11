@@ -1,5 +1,8 @@
 The master configuration (mcfg) tool
 
+Section 1. - 6. served as the design document for this tool.
+Section 7. mentions some implmenetatin details
+
 
 1. Purpose
 
@@ -194,3 +197,52 @@ location: 10 copy_file
 
 
 ---- EOF ----
+
+
+7. Increment functionality
+
+TODO. Some documentation can be found in file 
+/usr/share/mcfg/tool/incremental.py
+
+
+8. Implementation details
+
+Currently we have 2 editors, copy_file and replace. More will be added
+as needed.
+
+Each editor has a backup policy. In case the file is (conceptionally)
+edited in place (replace editor), the old version will be backed up
+first. The idea is to make debugging for packagers easier.  In case
+the file is being installed (editor copy_file) no backup is taken, but
+the tool makes sure that the file to be installed does not yet
+exist. (Which also implies that you cannot run the tool twice without
+removing already copied files first)
+
+Editors, which are executed during the same tool invocation will be
+executed in implementation dependent order. This holds even true if the
+editors are executed in the same increment although they are defined
+for a different numerical increment value.
+
+Example: editor_1 is defined for increment 3 and editor_2 is defined
+for increment 4. Possibly increments 3 and 4 are executed during the
+same command invocation (if increment 3 was not invoked explicitly, it
+will be implicitly executed during the next bigger increment). In such
+a case editors actually executed will be treated equally. So it will
+not be guaranteed that editor_1 is executed before editor_2. If the
+packager requires a specific order, the tool must be invoked more than
+once with the exact increments given.
+
+
+In conclusion of the 2 properties above, we do not support editors
+with conflicting backup policies for the same target file. Because the
+order is not guaranteed, it would not make sense to both copy and edit
+a target file. If the template defines editors with contracicting
+beackup strategy for the same file and exception will be thrown.  (Of
+course this could have been implemented differently by defining the
+execution order in more detail. However, we had no use case in mind
+when doing the implemetation, so such usage is just forbidden.)
+
+
+
+ 
+
