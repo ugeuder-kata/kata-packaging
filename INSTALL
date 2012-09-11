@@ -28,7 +28,7 @@ II. Installation steps
 
 3. Install master configuration tool
 
-   3.a. "sudo mcfg.rpm"
+   3.a. "sudo rpm -i mcfg.rpm"
    3.b. copy the provided master configuration sample file 
         "sudo cp -i /usr/share/mcfg/examples/kata-master.ini /root/"
    3.c. Edit it "sudo -e /root/kata-master.ini"
@@ -39,7 +39,7 @@ II. Installation steps
    4.a. "sudo rpm -i kata.rpm"
    4.b. above command will most likely fail, because dependencies are missing,
         install the dependencies listed using "sudo yum install ... [1]
-   4.c. "sudo rpm -i apache-solr.rpm"
+   4.c. "sudo rpm -i kata.rpm"
 
 5. Use kata
 
