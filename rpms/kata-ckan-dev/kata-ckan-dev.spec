@@ -177,8 +177,6 @@ su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
 sed -i 's/;directory/directory/' /etc/supervisord.conf
-service supervisord restart
-chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}

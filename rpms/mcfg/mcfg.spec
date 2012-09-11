@@ -60,7 +60,7 @@ install editor.py $RPM_BUILD_ROOT/%{pydir}/
 install incremental.py $RPM_BUILD_ROOT/%{pydir}/
 install mcfg.py $RPM_BUILD_ROOT/%{pydir}/
 install target.py $RPM_BUILD_ROOT/%{pydir}/
-install DESIGN.txt $RPM_BUILD_ROOT/%{docdir}/
+install README $RPM_BUILD_ROOT/%{docdir}/
 install samples/kata-template.ini $RPM_BUILD_ROOT/%{configdir}/
 install samples/kata-master.ini $RPM_BUILD_ROOT/%{exampledir}/
 
@@ -76,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %{pydir}/incremental.py*
 %{pydir}/mcfg.py*
 %{pydir}/target.py*
-%{docdir}/DESIGN.txt
+%{docdir}/README
 %{configdir}/kata-template.ini
 %{exampledir}/kata-master.ini
 
