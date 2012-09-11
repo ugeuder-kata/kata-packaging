@@ -93,7 +93,7 @@ It will install 2 packages ...
 like suggested in http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 
 
-Additionally we need to use the EPEL repository also on the development
+We need to use the EPEL repository also on the development
 machine. See ../INSTALL how to enable EPEL.
 
 General remarks: Never build anything as root. Of course for installing
