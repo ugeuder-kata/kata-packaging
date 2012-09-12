@@ -16,3 +16,6 @@ rexec tar xf abuild.tar
 rexec autobuild/04addrepos.sh
 rexec autobuild/08setuprpmbuild.sh
 rexec autobuild/12buildsolr.sh
+rexec autobuild/16buildmcfg.sh
+rexec autobuild/20buildkatadev.sh
+rexec autobuild/24installkatadev.sh
