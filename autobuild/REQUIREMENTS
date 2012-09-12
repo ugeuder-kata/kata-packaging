@@ -30,7 +30,7 @@ Defaults:abuild !requiretty     #last match used
 
 ...
 
-abuild  ALL=(root)   NOPASSWD: /bin/rpm, /usr/bin/yum
+abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum
 
 3.) http proxy
 
