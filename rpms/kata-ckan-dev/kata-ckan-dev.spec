@@ -178,7 +178,7 @@ service httpd restart
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze.lastknown" %{ckanuser}
 # well, actually it was last but one, but we still need to do this as root
 # afterwards
-%{scriptdir}/71checkpythonpackages.sh %{katadatadir}
+%{scriptdir}/71storepythonpackages.sh %{katadatadir}
 
 %preun
 service ckan-dev stop
