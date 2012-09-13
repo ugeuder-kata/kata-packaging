@@ -73,6 +73,7 @@ install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 71storepythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 
 # misc scripts (keep them alphabetically ordered by filename)
@@ -89,7 +90,7 @@ install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
-install log/pip.freeze $RPM_BUILD_ROOT/%{katadatadir}/
+install log/pip.freeze.lastknown $RPM_BUILD_ROOT/%{katadatadir}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -114,6 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/60installextensions.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
+%{scriptdir}/71storepythonpackages.sh
 %{scriptdir}/80backuphome.sh
 %{scriptdir}/myip.sh
 
@@ -126,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0644,root,root)/etc/cron.d/harvester
 %{katadatadir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
-%{katadatadir}/pip.freeze
+%{katadatadir}/pip.freeze.lastknown
 
 
 %post
@@ -173,7 +175,10 @@ service shibd restart
 service httpd restart
 
 # run this last so the user has a chance to see the output
-su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze" %{ckanuser}
+su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze.lastknown" %{ckanuser}
+# well, actually it was last but one, but we still need to do this as root
+# afterwards
+%{scriptdir}/71checkpythonpackages.sh %{katadatadir}
 
 %preun
 service ckan-dev stop

@@ -17,18 +17,15 @@ II. Installation steps
 
 1. Enable EPEL repo
    1.a. "wget http://www.nic.funet.fi/pub/mirrors/fedora.redhat.com/pub/epel/6/i386/epel-release-6-7.noarch.rpm"
-   1.b. "sudo rpm -i epel-release-6-7.noarch.rpm"
+   1.b. "sudo yum install epel-release-6-7.noarch.rpm"
 
 2. Install Apache solr
 
-   2.a. "sudo rpm -i apache-solr.rpm"
-   2.b. above command will most likely fail, because dependencies are missing,
-        install the dependencies listed using "sudo yum install ..." [1]
-   2.c. "sudo rpm -i apache-solr.rpm"
+   2.a. "sudo yum install apache-solr.rpm"
 
 3. Install master configuration tool
 
-   3.a. "sudo rpm -i mcfg.rpm"
+   3.a. "sudo yum install mcfg.rpm"
    3.b. copy the provided master configuration sample file 
         "sudo cp -i /usr/share/mcfg/examples/kata-master.ini /root/"
    3.c. Edit it "sudo -e /root/kata-master.ini"
@@ -36,10 +33,7 @@ II. Installation steps
 
 4. Install kata
 
-   4.a. "sudo rpm -i kata.rpm"
-   4.b. above command will most likely fail, because dependencies are missing,
-        install the dependencies listed using "sudo yum install ... [1]
-   4.c. "sudo rpm -i kata.rpm"
+   4.a. "sudo yum install kata.rpm"
 
 5. Use kata
 
