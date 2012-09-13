@@ -1,0 +1,45 @@
+How to clean up after uninistallation of kata-prod 
+
+(TODO: This should be all handled by our scriptlets when uninstalling
+or upgrading our packages, so eventually this file should be empty)
+
+
+0. Introduction
+
+Note: we are just switching from using rpm -i to yum install.
+If yum remove does not work, use rpm -e.  
+
+a.)  No changes have happened in apache-solr, so this pacakge does not even
+to be uninstalled.
+
+b.) mcfg has no scriptlets, so it can be uninstalled using 
+
+$ sudo yum remove mcfg
+
+and everything should be fine.
+
+
+c.) kata-prod is uninstalled using command
+
+$ sudo yum remove kata-prod
+
+but this needs clean-up as described in the rest of this document.
+
+
+1. Clean-up of CKAN installation
+
+$ sudo /etc/init.d/httpd stop
+$ sudo userdel -r ckan
+ 
+2. Clean-up of Postgres
+
+$ sudo /etc/init.d postgresql stop
+$ sudo rm -rf /var/lib/pgsql/data
+
+3. Clean-up of supervisor
+ 
+$ sudo yum remove supervisor
+$
+
+4. Clean-up of rabbitmq
+
