@@ -43,13 +43,24 @@ $ sudo userdel -r ckan
 $ sudo rm -rf /var/lib/pgsql/data/
 
 
-5. Uninstall of supervisor
+5. Uninstallation of supervisor
 
+(the idea is to get rid of the configuration modified by kata-prod, so we can 
+start with a fresh one again)
+ 
 $ sudo yum remove supervisor
 $ sudo rm /etc/supervisord.conf.rpmsave
 
- 
-6. Clean-up rabbitmq
+
+6. Uninstallation of apache
+
+(same idea as with supervisor)
+
+$ sudo yum remove httpd
+$ sudo rm /etc/httpd/conf/httpd.conf*
+
+
+7. Clean-up rabbitmq
 
 
 TODO: Anything to be done here? Not sure whether uninstalling helps, at least
