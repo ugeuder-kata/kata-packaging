@@ -3,6 +3,7 @@ Beaker==1.6.4
 FormAlchemy==1.4.2
 FormEncode==1.2.4
 Genshi==0.6
+Jinja2==2.6
 Mako==0.7.2
 MarkupSafe==0.15
 Pairtree==0.7.1-T
@@ -24,7 +25,7 @@ apachemiddleware==0.1.1
 argparse==1.2.1
 beautifulsoup4==4.1.3
 carrot==0.10.7
--e git+https://github.com/okfn/ckan.git@1281373721786b0ac532c722888a97fdc4ab7742#egg=ckan-dev
+-e git+https://github.com/okfn/ckan.git@c31c8466f40f29edb63263bd36d714f6a9eb7994#egg=ckan-dev
 ckanclient==0.10
 -e git+https://github.com/kata-csc/ckanext-ddi.git@2a7e69954225b9e9c6279465d39f55bdf294c46b#egg=ckanext_ddi-dev
 -e git+https://github.com/okfn/ckanext-harvest.git@c1f83e0d3e5b6c6ce9922b2bf973fb951763c075#egg=ckanext_harvest-dev
@@ -33,8 +34,9 @@ ckanclient==0.10
 -e git+https://github.com/kata-csc/ckanext-sitemap.git@1df31049473a7bd6f82967a5a9de8b93d8cc0616#egg=ckanext_sitemap-dev
 -e git+https://github.com/kata-csc/ckanext-urn.git@b48dfffb0f327aaaf21664ec0057f137ab58ce41#egg=ckanext_urn-dev
 decorator==3.3.3
+fanstatic==0.12
 lxml==3.0alpha2
-nose==1.2.0
+nose==1.2.1
 ofs==0.4.1
 psycopg2==2.4.5
 pyoai==2.4.4
