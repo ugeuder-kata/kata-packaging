@@ -39,14 +39,3 @@ II. Installation steps
 
    System is operational. All configuration has happened in step 3.c.
 
-
-Footnotes
-
-[1] If you don't want to type the names of the missing dependencies you
-can use a pipe like this. (For advanced system admins, you are running
-"automatic" commands read in from a pipe as root!)
-
-sudo rpm -i package-being-tried.rpm 2>&1 | grep "is needed" | grep -v -F ".so" | cut -c 2- | cut -f 1 -d " " | sudo xargs yum install -y
-
-TODO: check the pipe, especially the 2nd grep statement has been typed here
-without testing in real life.
