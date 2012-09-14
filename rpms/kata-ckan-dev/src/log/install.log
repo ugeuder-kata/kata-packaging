@@ -4,18 +4,18 @@
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-09-12 13:59:40--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-09-13 18:07:01--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 110103 (108K) [text/plain]
 Saving to: `virtualenv.py'
 
-     0K .......... .......... .......... .......... .......... 46%  459K 0s
-    50K .......... .......... .......... .......... .......... 93%  437K 0s
-   100K .......                                               100% 14348G=0.2s
+     0K .......... .......... .......... .......... .......... 46%  370K 0s
+    50K .......... .......... .......... .......... .......... 93%  309K 0s
+   100K .......                                               100% 14348G=0.3s
 
-2012-09-12 13:59:41 (481 KB/s) - `virtualenv.py' saved [110103/110103]
+2012-09-13 18:07:02 (362 KB/s) - `virtualenv.py' saved [110103/110103]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -76,7 +76,7 @@ Installing collected packages: ckan
     warning: no files found matching '*' under directory 'ckanext/**/i18n'
     no previously-included directories found matching '.git'
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckan.egg-link (link to .)
-    Adding ckan 1.8b to easy-install.pth file
+    Adding ckan 2.0a to easy-install.pth file
     Installing ckan-admin script to /home/ckan/pyenv/bin
     
     Installed /home/ckan/pyenv/src/ckan
@@ -136,6 +136,8 @@ Downloading/unpacking markupsafe==0.15 (from -r pyenv/src/ckan/pip-requirements.
   Running setup.py egg_info for package markupsafe
 Downloading/unpacking babel==0.9.6 (from -r pyenv/src/ckan/pip-requirements.txt (line 17))
   Running setup.py egg_info for package babel
+    warning: no files found matching 'doc/api/*.*'
+    warning: no files found matching 'doc/*.html'
 Downloading/unpacking psycopg2==2.4.5 (from -r pyenv/src/ckan/pip-requirements.txt (line 18))
   Running setup.py egg_info for package psycopg2
     no previously-included directories found matching 'doc/src/_build'
@@ -179,6 +181,17 @@ Downloading/unpacking routes==1.13 (from -r pyenv/src/ckan/pip-requirements.txt 
 Downloading/unpacking paste==1.7.5.1 (from -r pyenv/src/ckan/pip-requirements.txt (line 27))
   Running setup.py egg_info for package paste
     warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
+Downloading/unpacking Jinja2==2.6 (from -r pyenv/src/ckan/pip-requirements.txt (line 28))
+  Running setup.py egg_info for package Jinja2
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+    warning: no previously-included files matching '*.pyc' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+Downloading/unpacking fanstatic==0.12 (from -r pyenv/src/ckan/pip-requirements.txt (line 29))
+  Running setup.py egg_info for package fanstatic
+    warning: no previously-included files found matching '.installed.cfg'
+    warning: no files found matching '*.txt' under directory 'doc'
 Downloading/unpacking decorator (from sqlalchemy-migrate==0.7.2->-r pyenv/src/ckan/pip-requirements.txt (line 6))
   Downloading decorator-3.3.3.tar.gz
   Running setup.py egg_info for package decorator
@@ -238,7 +251,7 @@ Downloading/unpacking repoze.lru>=0.3 (from routes==1.13->-r pyenv/src/ckan/pip-
   Running setup.py egg_info for package repoze.lru
 Downloading/unpacking Pygments (from WebError>=0.10.1->Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
   Running setup.py egg_info for package Pygments
-Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelpers, pyutilib.component.core, vdm, solrpy, formalchemy, pairtree, ofs, apachemiddleware, markupsafe, babel, psycopg2, webob, Pylons, repoze.who, tempita, zope.interface, repoze.who.plugins.openid, repoze.who-friendlyform, routes, paste, decorator, argparse, Beaker, PasteDeploy, PasteScript, FormEncode, simplejson, nose, Mako, WebError, WebTest, python-openid, repoze.lru, Pygments
+Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelpers, pyutilib.component.core, vdm, solrpy, formalchemy, pairtree, ofs, apachemiddleware, markupsafe, babel, psycopg2, webob, Pylons, repoze.who, tempita, zope.interface, repoze.who.plugins.openid, repoze.who-friendlyform, routes, paste, Jinja2, fanstatic, decorator, argparse, Beaker, PasteDeploy, PasteScript, FormEncode, simplejson, nose, Mako, WebError, WebTest, python-openid, repoze.lru, Pygments
   Running setup.py install for Genshi
     warning: no previously-included files found matching 'doc/2000ft.graffle'
     warning: no previously-included files matching '*' found under directory 'doc/logo.lineform'
@@ -296,6 +309,8 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c markupsafe/_speedups.c -o build/temp.linux-i686-2.6/markupsafe/_speedups.o
     gcc -pthread -shared build/temp.linux-i686-2.6/markupsafe/_speedups.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/markupsafe/_speedups.so
   Running setup.py install for babel
+    warning: no files found matching 'doc/api/*.*'
+    warning: no files found matching 'doc/*.html'
     Installing pybabel script to /home/ckan/pyenv/bin
   Running setup.py install for psycopg2
     building 'psycopg2._psycopg' extension
@@ -373,6 +388,15 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/paste/__init__.py (namespace package)
     warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
     Installing /home/ckan/pyenv/lib/python2.6/site-packages/Paste-1.7.5.1-py2.6-nspkg.pth
+  Running setup.py install for Jinja2
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+    warning: no previously-included files matching '*.pyc' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+  Running setup.py install for fanstatic
+    warning: no previously-included files found matching '.installed.cfg'
+    warning: no files found matching '*.txt' under directory 'doc'
   Running setup.py install for decorator
     /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
       warnings.warn(msg)
@@ -434,7 +458,7 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     Installing /home/ckan/pyenv/lib/python2.6/site-packages/repoze.lru-0.6-py2.6-nspkg.pth
   Running setup.py install for Pygments
     Installing pygmentize script to /home/ckan/pyenv/bin
-Successfully installed Genshi sqlalchemy-migrate sqlalchemy webhelpers pyutilib.component.core vdm solrpy formalchemy pairtree ofs apachemiddleware markupsafe babel psycopg2 webob Pylons repoze.who tempita zope.interface repoze.who.plugins.openid repoze.who-friendlyform routes paste decorator argparse Beaker PasteDeploy PasteScript FormEncode simplejson nose Mako WebError WebTest python-openid repoze.lru Pygments
+Successfully installed Genshi sqlalchemy-migrate sqlalchemy webhelpers pyutilib.component.core vdm solrpy formalchemy pairtree ofs apachemiddleware markupsafe babel psycopg2 webob Pylons repoze.who tempita zope.interface repoze.who.plugins.openid repoze.who-friendlyform routes paste Jinja2 fanstatic decorator argparse Beaker PasteDeploy PasteScript FormEncode simplejson nose Mako WebError WebTest python-openid repoze.lru Pygments
 Cleaning up...
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
 + service postgresql initdb
@@ -483,15 +507,17 @@ CREATE ROLE
 + cd pyenv/src/ckan
 + paster make-config ckan development.ini
 Distribution already installed:
-  ckan 1.8b from /home/ckan/pyenv/src/ckan
+  ckan 2.0a from /home/ckan/pyenv/src/ckan
 Creating development.ini
 Now you should edit the config files
   development.ini
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
 patching file development.ini
+Hunk #3 FAILED at 93.
 Hunk #6 succeeded at 280 (offset 30 lines).
-++ grep 'inet '
+1 out of 6 hunks FAILED -- saving rejects to file development.ini.rej
 ++ ip addr show dev eth0
+++ grep 'inet '
 ++ sed -E 's/ +inet +([^/]+).+/\1/'
 Device "eth0" does not exist.
 + myip=
@@ -509,8 +535,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-09-12 14:04:29,142 INFO  [ckan.model] CKAN database version upgraded: 0 -> 59
-2012-09-12 14:04:29,282 INFO  [ckan.model] Database initialised
+2012-09-13 18:12:54,038 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
+2012-09-13 18:12:54,141 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
@@ -594,13 +620,13 @@ Installing collected packages: carrot, anyjson, amqplib
 Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-09-12 14:05:26,347 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-09-12 14:05:26,398 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-09-13 18:13:52,072 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-09-13 18:13:52,127 DEBUG [ckanext.harvest.model] Harvest tables created
 
 DB tables created
 + paster --plugin=ckan user add harvester password=harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Creating user: 'harvester'
-<User id=a6f9f326-a373-4a40-a4a5-80659afdc47c name=harvester openid=None password=3050bee4004f6e066caff8b96f1a76d419f6ca340395e18f8dc3efa9032d24e840911d8132b19ea6 fullname=None email=None apikey=bfd16ac6-1b91-4930-b043-c1f95512480e created=2012-09-12 14:05:27.649637 reset_key=None about=None>
+<User id=b9981d8e-3814-4d99-b4c7-08eef86fc397 name=harvester openid=None password=879749a7062d1551b1a51e523762eef72b69b751160f8e263f620b5af27e3579190b4d626ccc6d6a fullname=None email=None apikey=5d09918b-a49e-4b81-8b8c-35f86437fdab created=2012-09-13 18:13:53.541577 reset_key=None about=None>
 + paster --plugin=ckan sysadmin add harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Added harvester as sysadmin
 + instloc=/home/ckan
@@ -898,16 +924,16 @@ Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-09-12 14:08:17,618 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-09-12 14:08:17,621 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-09-12 14:08:17,676 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-09-12 14:08:17,702 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-09-12 14:08:17,734 INFO  [ckanext.harvest.logic.action.create] Harvest source created: eff39120-2ae1-4acd-b35e-9291d5b71a92
-2012-09-12 14:08:17,762 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'eff39120-2ae1-4acd-b35e-9291d5b71a92'}
-2012-09-12 14:08:17,785 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 94bf8756-0aa1-42d4-a0ff-3f97789227b9
+2012-09-13 18:16:29,446 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-09-13 18:16:29,448 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-09-13 18:16:29,501 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-09-13 18:16:29,521 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-09-13 18:16:29,537 INFO  [ckanext.harvest.logic.action.create] Harvest source created: b385a329-2a0b-4247-aeeb-8cc3cad3d431
+2012-09-13 18:16:29,561 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'b385a329-2a0b-4247-aeeb-8cc3cad3d431'}
+2012-09-13 18:16:29,582 INFO  [ckanext.harvest.logic.action.create] Harvest job saved d192a76c-5eb5-4977-8cee-0305a9f46f9a
 
 Created new harvest source:
-Source id: eff39120-2ae1-4acd-b35e-9291d5b71a92
+Source id: b385a329-2a0b-4247-aeeb-8cc3cad3d431
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -918,16 +944,16 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-09-12 14:08:19,832 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-09-12 14:08:19,835 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-09-12 14:08:19,862 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-09-12 14:08:19,882 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-09-12 14:08:19,904 INFO  [ckanext.harvest.logic.action.create] Harvest source created: d84acb4f-c3bf-44ec-882a-b1aa832430a6
-2012-09-12 14:08:19,937 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'd84acb4f-c3bf-44ec-882a-b1aa832430a6'}
-2012-09-12 14:08:20,084 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 481d95aa-0116-4b66-a1b3-efc300ce23b9
+2012-09-13 18:16:31,095 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-09-13 18:16:31,098 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-09-13 18:16:31,123 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-09-13 18:16:31,142 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-09-13 18:16:31,159 INFO  [ckanext.harvest.logic.action.create] Harvest source created: fbdc05cf-c015-4084-95fd-48a3a44b08be
+2012-09-13 18:16:31,190 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'fbdc05cf-c015-4084-95fd-48a3a44b08be'}
+2012-09-13 18:16:31,209 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 70d5386c-d618-4b5c-ac5f-e5db72134f7e
 
 Created new harvest source:
-Source id: d84acb4f-c3bf-44ec-882a-b1aa832430a6
+Source id: fbdc05cf-c015-4084-95fd-48a3a44b08be
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -944,14 +970,14 @@ Starting httpd: [  OK  ]
 + service supervisord restart
 Stopping supervisord: [FAILED]
 Starting supervisord: [  OK  ]
-job 1 at 2012-09-12 14:13
+job 1 at 2012-09-13 18:21
 Can't open /var/run/atd.pid to signal atd. No atd running?
 Stopping shibd: [FAILED]
 Starting shibd: [  OK  ]
 Stopping httpd: [  OK  ]
 Starting httpd: [  OK  ]
 + instloc=/home/ckan
-+ expected=/usr/share/kata-ckan-dev/setup-data/pip.freeze
++ expected=/usr/share/kata-ckan-dev/setup-data/pip.freeze.lastknown
 + cd /home/ckan
 + source pyenv/bin/activate
 ++ deactivate nondestructive
@@ -983,40 +1009,27 @@ Starting httpd: [  OK  ]
 + SETCOLOR_SUCCESS='echo -en \033[1;32m'
 + SETCOLOR_FAILURE='echo -en \033[1;31m'
 + SETCOLOR_NORMAL='echo -en \033[0;39m'
-+ diff /usr/share/kata-ckan-dev/setup-data/pip.freeze -
++ current=/tmp/pip.freeze.current
 + pip freeze
++ diff /usr/share/kata-ckan-dev/setup-data/pip.freeze.lastknown /tmp/pip.freeze.current
 + echo -en '\033[1;31m'
 [1;31m+ echo 'Python package mismatches:'
 Python package mismatches:
 + cat /tmp/kata-70.tmp
-20c20
-< WebTest==1.3.4
+5a6
+> Jinja2==2.6
+27c28
+< -e git+https://github.com/okfn/ckan.git@1281373721786b0ac532c722888a97fdc4ab7742#egg=ckan-dev
 ---
-> WebTest==1.4.0
-24a25
-> beautifulsoup4==4.1.3
-26,30c27,34
-< -e git+https://github.com/okfn/ckan.git@85df0117cc85416f134084b3a2a1f5e8b51aec92#egg=ckan-dev
-< ckanext-ddi==0.1
-< -e git+https://github.com/okfn/ckanext-harvest.git@a8aebac9656a121909736e4272f210f40d924d01#egg=ckanext_harvest-dev
-< ckanext-oaipmh==0.1
-< ckanext-urn==0.1
+> -e git+https://github.com/okfn/ckan.git@c31c8466f40f29edb63263bd36d714f6a9eb7994#egg=ckan-dev
+35a37
+> fanstatic==0.12
+37c39
+< nose==1.2.0
 ---
-> -e git+https://github.com/okfn/ckan.git@1281373721786b0ac532c722888a97fdc4ab7742#egg=ckan-dev
-> ckanclient==0.10
-> -e git+https://github.com/kata-csc/ckanext-ddi.git@2a7e69954225b9e9c6279465d39f55bdf294c46b#egg=ckanext_ddi-dev
-> -e git+https://github.com/okfn/ckanext-harvest.git@c1f83e0d3e5b6c6ce9922b2bf973fb951763c075#egg=ckanext_harvest-dev
-> -e git+https://github.com/kata-csc/ckanext-oaipmh.git@c4b0489a09ea3ebf05a734139c92dd53c49a26a0#egg=ckanext_oaipmh-dev
-> -e git://github.com/kata-csc/ckanext-shibboleth.git@8ad606dd9cb91be79ffb39b4d2b2c3a77238d28d#egg=ckanext_repoze_who_shibboleth-dev
-> -e git+https://github.com/kata-csc/ckanext-sitemap.git@1df31049473a7bd6f82967a5a9de8b93d8cc0616#egg=ckanext_sitemap-dev
-> -e git+https://github.com/kata-csc/ckanext-urn.git@b48dfffb0f327aaaf21664ec0057f137ab58ce41#egg=ckanext_urn-dev
-32,33c36,37
-< lxml==2.3.5
-< nose==1.1.2
----
-> lxml==3.0alpha2
-> nose==1.2.0
-47d50
-< -e git+https://github.com/martinblech/xmltodict.git@069cbc971b92eafa047aa4e7604c22806f8c5fb2#egg=xmltodict-dev
+> nose==1.2.1
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
++ datadir=/usr/share/kata-ckan-dev/setup-data
++ mv /tmp/pip.freeze.current /usr/share/kata-ckan-dev/setup-data
++ chown root:root /usr/share/kata-ckan-dev/setup-data/pip.freeze.current
