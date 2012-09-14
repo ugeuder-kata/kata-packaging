@@ -62,20 +62,10 @@ $ sudo rm /etc/httpd/conf/httpd.conf*
 
 7. Clean-up rabbitmq
 
+$ sudo rm -rf /var/lib/rabbitmq/* 
 
-There is a way to delete the queues but it involves using custom python code
-rather than rabbitmqctl. But one can however list the messages per queue
-using:
-
-$ rabbitmqctl list_queues
-Listing queues ...
-ckan.harvest.gather     0
-ckan.harvert.fetch      0
-...done.
-
-So the uninstallation can proceed if the queues are empty, if not, please see
-this link:
-
-http://stackoverflow.com/questions/7292935/celeryrabbitmq-empty-queue
-
-(This applies to our case as well, we just remove queues for ckan.harvest.*) 
+TODO: currently unknown to me whether rabbitmq will recreate this
+properly when started again If there are problems it might be
+necessary to uninstall the package. (If there are severe problems
+older versions of this document contain more debugging info, but currently
+I assume that is not needed)
