@@ -30,7 +30,7 @@ tomcat should not be critical)
 
 2.) uninstall kata-ckan-prod 
 
-$ sudo yum remove kata-ckan- prod
+$ sudo yum remove kata-ckan-prod
 $ sudo yum remove mcfg
 
 3. Clean-up of CKAN installation
@@ -63,6 +63,19 @@ $ sudo rm /etc/httpd/conf/httpd.conf*
 7. Clean-up rabbitmq
 
 
-TODO: Anything to be done here? Not sure whether uninstalling helps, at least
-it does not clearly indicate that it saved some changed configarition as in
-supervisor case. Also at list /var/lib/rabbitmq survives uninstall
+There is a way to delete the queues but it involves using custom python code
+rather than rabbitmqctl. But one can however list the messages per queue
+using:
+
+$ rabbitmqctl list_queues
+Listing queues ...
+ckan.harvest.gather     0
+ckan.harvert.fetch      0
+...done.
+
+So the uninstallation can proceed if the queues are empty, if not, please see
+this link:
+
+http://stackoverflow.com/questions/7292935/celeryrabbitmq-empty-queue
+
+(This applies to our case as well, we just remove queues for ckan.harvest.*) 
