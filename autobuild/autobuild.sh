@@ -43,7 +43,7 @@ case $phase in
     e=$(date +%s)
     min=$(($e/60))
     version=$(($min%1000000))
-    scp -i $abuildkey ${abuilduser}@${abuildhost}:rpmbuild/RPMS/rpms.tar rpms-${version}.tar
+    scp -i $abuildkey ${abuilduser}@${abuildhost}:rpmbuild/RPMS/rpms.tar rpms-${version}.tar ;;
   3)
     echo "install prod" ;;
   *)

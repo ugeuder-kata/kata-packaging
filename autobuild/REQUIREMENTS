@@ -19,11 +19,16 @@ This has been replaced by sudo as below, because
 2.) sudo requirements
  
 On the buildhost the build user needs sudo access to root without password and
-required tty in order to run yum, cp and service commands
+required tty for the following 7 commands
 
-yum: for obvious reasons
+yum: for obvious reasons, installation is what we do here
 cp: to be able to copy shibboleth repo definition to /etc/yum/repos.d
 service: to be able to stop kata related services before building prod.rpm
+true: prod.spec calls this to force the password prompt in interactive usage
+find: called by prod.spec when packaging CKAN files
+cpio: as find
+chown: as find
+
 
 #
 # Disable "ssh hostname sudo <cmd>", because it will show the password in clear.

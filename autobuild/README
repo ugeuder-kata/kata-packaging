@@ -1,0 +1,25 @@
+autobuild is carried out in 3 phases
+
+Phase 1: installing the development KATA system
+
+Phase 2: packaging the development KATA system (i.e. builing prod.rpm)
+         and transferring all 3 rpms to the control host
+
+Phase 3: installing the production system
+
+
+Phase 1 + 2 are carried out on the development host. The phases have been
+separated because after phase 1 we have a fully functional KATA system.
+It might be useful to do some (smoke) testing between these phases. (Once
+we have that fully automated the phases can be combined.)
+
+Phase 3 is carried out on the production host. There are 2 choices:
+Either the VM used as development machine before is reset and used
+again or there is a dedicated production host. Because we haven't
+scripted VMs yet, this needs to be a separate phase.
+
+The phase is given as a numeric argument to the autobuild script
+
+$ autobuild/autobuild.sh [1|2|3]
+
+ 
