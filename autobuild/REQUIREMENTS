@@ -19,7 +19,11 @@ This has been replaced by sudo as below, because
 2.) sudo requirements
  
 On the buildhost the build user needs sudo access to root without password and
-required tty in order to run rpm and yum commands
+required tty in order to run yum, cp and service commands
+
+yum: for obvious reasons
+cp: to be able to copy shibboleth repo definition to /etc/yum/repos.d
+service: to be able to stop kata related services before building prod.rpm
 
 #
 # Disable "ssh hostname sudo <cmd>", because it will show the password in clear.
@@ -30,7 +34,7 @@ Defaults:abuild !requiretty     #last match used
 
 ...
 
-abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum
+abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service
 
 3.) http proxy
 
