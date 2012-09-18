@@ -1,7 +1,8 @@
 #! /bin/sh
 abuilduser=abuild
 abuildkey=~/id_rsa_abuild
-abuildhost=abuild
+abuildhostdev=abuild
+abuildhostprod=abuild2
 # requirements: $abuildkey must be authorized for both $abuild
 
 phase=$1
@@ -24,6 +25,7 @@ date
 $RESETCOLOR
 case $phase in
   1)
+    abuildhost=$abuildhostdev
     tar cf abuild.tar .
     scp -i $abuildkey abuild.tar ${abuilduser}@${abuildhost}:
     rexec tar xf abuild.tar
@@ -37,15 +39,28 @@ case $phase in
     echo "Now test the dev installation"
     $RESETCOLOR ;;
   2)
+    abuildhost=$abuildhostdev
     rexec autobuild/28stopservices.sh
     rexec autobuild/32buildkataprod.sh
     rexec autobuild/36tarrpms.sh
     e=$(date +%s)
     min=$(($e/60))
     version=$(($min%1000000))
-    scp -i $abuildkey ${abuilduser}@${abuildhost}:rpmbuild/RPMS/rpms.tar rpms-${version}.tar ;;
+    scp -i $abuildkey ${abuilduser}@${abuildhost}:rpmbuild/RPMS/rpms.tar rpms-${version}.tar
+    $SETCOLOR
+    if [ "$abuildhostdev" = "$abuildhostprod" ]
+    then
+      echo "Reset host $abuild for phase 3"
+    else
+      echo "Make sure $abuildhostprod has been reset before continuing with phase 3" 
+    fi
+    $RESETCOLOR ;;
+
   3)
-    echo "install prod" ;;
+    abuildhost=$abuildhostprod
+    scp -i $abuildkey $(ls rpms-*.tar | tail -1) ${abuilduser}@${abuildhost}
+    rexec autobuild/04addrepos.sh
+    rexec autobuild/40installprod.sh ;;
   *)
     echo "usage: $0 [1|2|3]"
     exit 1 ;;
