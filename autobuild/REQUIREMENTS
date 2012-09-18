@@ -39,7 +39,7 @@ Defaults:abuild !requiretty     #last match used
 
 ...
 
-abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service
+abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service, /bin/true, /bin/find, /bin/cpio, /bin/chown
 
 3.) http proxy
 

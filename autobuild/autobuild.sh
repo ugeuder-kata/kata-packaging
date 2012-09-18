@@ -58,8 +58,11 @@ case $phase in
 
   3)
     abuildhost=$abuildhostprod
-    scp -i $abuildkey $(ls rpms-*.tar | tail -1) ${abuilduser}@${abuildhost}
+    scp -i $abuildkey $(ls rpms-*.tar | tail -1) ${abuilduser}@${abuildhost}:
+    rexec mkdir autobuild
+    scp -i $abuildkey autobuild/04addrepos.sh ${abuilduser}@${abuildhost}:autobuild/04addrepos.sh
     rexec autobuild/04addrepos.sh
+    scp -i $abuildkey autobuild/40installprod.sh ${abuilduser}@${abuildhost}:autobuild/40installprod.sh
     rexec autobuild/40installprod.sh ;;
   *)
     echo "usage: $0 [1|2|3]"
