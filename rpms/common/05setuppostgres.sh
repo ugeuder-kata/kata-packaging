@@ -3,7 +3,7 @@ set -x
 patchdir="$1"
 service postgresql initdb
 pushd /var/lib/pgsql/data >/dev/null
-# sudo postgres ensures that the resulting file has the correct owner
+# su postgres ensures that the resulting file has the correct owner
 su -c 'patch -b -p2 -i ${patchdir}/pg_hba.conf.patch' postgres
 popd >/dev/null
 service postgresql start
