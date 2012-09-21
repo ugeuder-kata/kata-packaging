@@ -98,6 +98,12 @@ configuration in /etc/yum.conf like this
 
 proxy=http://192.168.56.68:80
 
+It seems also to be a good idea to disable yum's fastestmirror plugin
+in /etc/yum/pluginconf.d/fastestmirror.conf
+Changing the mirror frequently just because of a couple of
+milliseconds quicker responses will bring the cache hit rate down because
+the data of all mirrors used will be cached separately.
+
 
 Note: Apache disk cache file size is limited to 1 MB by default.
       http://httpd.apache.org/docs/2.2/mod/mod_disk_cache.html
