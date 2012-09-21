@@ -30,6 +30,10 @@ The phase is given as a numeric argument to the autobuild script
 
 $ autobuild/autobuild.sh [1|2|3]
 
+The script is started from the root of our git repo. For the time being
+the current work area is built, support for specifying a git revision was
+planned, but not yet implemented. Just checkout what you wanted to build.
+
 It is possible to have development machine and production machine in the same
 VM, if you reset the machine to a clean installation between phase 2 & 3
 
