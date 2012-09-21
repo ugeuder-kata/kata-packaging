@@ -9,7 +9,10 @@ source pyenv/bin/activate
 SETCOLOR_SUCCESS="echo -en \\033[1;32m"
 SETCOLOR_FAILURE="echo -en \\033[1;31m"
 SETCOLOR_NORMAL="echo -en \\033[0;39m"
-if pip freeze | diff $expected - >/tmp/kata-70.tmp
+current=/tmp/pip.freeze.current
+# need to write to tmp first, because we are not root 
+pip freeze >$current
+if diff $expected $current >/tmp/kata-70.tmp
 then
   $SETCOLOR_SUCCESS
   echo "Python packages checked OK." 

@@ -1,0 +1,71 @@
+How to clean up after uninistallation of kata-prod 
+
+(TODO: This should be all handled by our scriptlets when uninstalling
+or upgrading our packages, so eventually this file should be empty)
+
+
+0. Introduction
+
+Note: we are just switching from using rpm -i to yum install.
+If yum remove does not work, use rpm -e.  
+
+a.)  No changes have happened in apache-solr, so this package does not even
+to be uninstalled.
+
+b.) mcfg has no scriptlets, so it can be uninstalled using 
+
+$ sudo yum remove mcfg
+
+and everything should be fine.
+
+
+1.) Stop services
+
+$ sudo /etc/init.d/httpd stop
+$ sudo /etc/init.d/supervisord stop
+$ sudo /etc/init.d/rabbitmq-server stop
+
+(postgres is already stopped by kata-ckan-prod uninstallation,
+tomcat should not be critical)
+
+2.) uninstall kata-ckan-prod 
+
+$ sudo yum remove kata-ckan-prod
+$ sudo yum remove mcfg
+
+3. Clean-up of CKAN installation
+
+$ sudo userdel -r ckan
+ 
+
+4. Clean-up of Postgres
+
+$ sudo rm -rf /var/lib/pgsql/data/
+
+
+5. Uninstallation of supervisor
+
+(the idea is to get rid of the configuration modified by kata-prod, so we can 
+start with a fresh one again)
+ 
+$ sudo yum remove supervisor
+$ sudo rm /etc/supervisord.conf.rpmsave
+
+
+6. Uninstallation of apache
+
+(same idea as with supervisor)
+
+$ sudo yum remove httpd
+$ sudo rm /etc/httpd/conf/httpd.conf*
+
+
+7. Clean-up rabbitmq
+
+$ sudo rm -rf /var/lib/rabbitmq/* 
+
+TODO: currently unknown to me whether rabbitmq will recreate this
+properly when started again If there are problems it might be
+necessary to uninstall the package. (If there are severe problems
+older versions of this document contain more debugging info, but currently
+I assume that is not needed)
