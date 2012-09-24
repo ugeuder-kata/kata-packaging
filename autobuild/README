@@ -89,15 +89,19 @@ abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service, /bin/true, 
 
 3.) http proxy
 
-It might be useful to use a local http proxy, because a lot of packages
-are downloaded from the net repeatedly.
+It might be useful to use a local http caching proxy, because a lot of 
+packages are downloaded from the net repeatedly.
 
 For wget the proxy can be set in /etc/environment like this
 
 http_proxy=http://192.168.56.68:80
+no_proxy=127.0.0.1,localhost
 
+(the 2nd environment varible is required because CKAN contacts SOLR
+via http locally. Without that definition requests to SOLR will be routed
+to the caching proxy who cannot handle them)
 
-yum doens't seem to obey this environment variable, it needs its own
+yum doens't seem to obey these environment variables, it needs its own
 configuration in /etc/yum.conf like this
 
 proxy=http://192.168.56.68:80
