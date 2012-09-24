@@ -169,6 +169,7 @@ sed -i 's/;directory/directory/' /etc/supervisord.conf
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
+service atd restart
 at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
 
 service shibd restart

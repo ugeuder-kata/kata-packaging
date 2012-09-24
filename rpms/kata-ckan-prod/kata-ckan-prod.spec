@@ -141,6 +141,7 @@ service supervisord restart
 chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
+service atd restart
 at -f %{scriptdir}/runharvester.sh 'now + 5 minute'
 %preun
 service ckan-dev stop
