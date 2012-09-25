@@ -18,4 +18,4 @@ ckanusermail=root@localhost
 sed -e "s/%%myip%%/${myip}/" -e "s/%%ckanusermail%%/${ckanusermail}/" development.ini > development.ini.1
 mv development.ini.1 development.ini
 paster --plugin=ckan db init
-mkdir data sstore
+mkdir data sstore data_tree
