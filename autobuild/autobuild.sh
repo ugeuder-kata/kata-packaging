@@ -34,6 +34,7 @@ case $phase in
     rexec autobuild/12buildinstallsolr.sh
     rexec autobuild/16buildmcfg.sh
     rexec autobuild/20buildkatadev.sh
+    rexec autobuild/22installmcfgandconfigure.sh
     rexec autobuild/24installkatadev.sh
     $SETCOLOR
     echo "Now test the dev installation"

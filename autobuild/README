@@ -65,6 +65,7 @@ required tty for the following 7 commands
 
 yum: for obvious reasons, installation is what we do here
 cp: to be able to copy shibboleth repo definition to /etc/yum/repos.d
+    to be able to cp mcfg input files to /root
 service: to be able to stop kata related services before building prod.rpm
 true: prod.spec calls this to force the password prompt in interactive usage
 find: called by prod.spec when packaging CKAN files
@@ -86,8 +87,31 @@ Defaults:abuild !requiretty     #last match used
 abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service, /bin/true, /bin/find, /bin/cpio, /bin/chown
 
 
+3.) Input files
 
-3.) http proxy
+abuild needs the following 6 files
+
+- ~abuild/abuild-input/abuild1-sp-cert.pem
+- ~abuild/abuild-input/builld2-sp-cert.pem
+- ~abuild/abuild-input/abuild1-sp-key.pem
+- ~abuild/abuild-input/abuild2-sp-key.pem
+- ~abuild/abuild-input/abuild1-kata-master.ini
+- ~abuild/abuild-input/abuild2-kata-master.ini
+
+(all host and usernames refer to the definitions in autobuild.sh, so they
+could actually be different)
+
+TODO: describe meaning and generation of these files
+
+Note: If only the same host is used as abuild1 and abuild2, identical
+      files are needed twice (symbolic links should work). Or of course
+      strictly speaking the abuild1 variants are needed only during phase
+      1 and 2, which the abuild2 variant is needed only during phase 3.
+      
+
+
+
+4.) http proxy
 
 It might be useful to use a local http caching proxy, because a lot of 
 packages are downloaded from the net repeatedly.
