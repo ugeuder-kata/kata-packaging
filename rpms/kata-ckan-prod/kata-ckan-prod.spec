@@ -46,7 +46,6 @@ This package is for the production server.
 %build
 diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
 diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
-diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/shib.conf patches/kata/shib.conf >shib.conf.patch || true
@@ -90,7 +89,6 @@ install runharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 # patches (keep them alphabetically ordered by filename)
 install attribute-map.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
 install attribute-policy.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
-install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shib.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
@@ -128,7 +126,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{patchdir}/attribute-map.xml.patch
 %{patchdir}/attribute-policy.xml.patch
-%{patchdir}/development.ini.patch
 %{patchdir}/shib.conf.patch
 %{patchdir}/shibboleth2.xml.patch
 %{patchdir}/who.ini.patch
