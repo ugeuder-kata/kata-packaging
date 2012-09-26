@@ -22,6 +22,7 @@ Requires: apache-solr
 Requires: supervisor
 Requires: mod_wsgi
 Requires: shibboleth
+Requires: mcfg
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -44,9 +45,13 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 %setup
 
 %build
+diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
+diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
+diff -u patches/orig/shib.conf patches/kata/shib.conf >shib.conf.patch || true
+diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
 diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 
 %install
@@ -59,6 +64,7 @@ install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 # setup scripts (keep them numerically ordered)
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -81,10 +87,14 @@ install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
 
 # patches (keep them alphabetically ordered by filename)
+install attribute-map.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install attribute-policy.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
 install development.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
-install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install shib.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
+install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
 install harvester $RPM_BUILD_ROOT/etc/cron.d/
@@ -101,6 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 # same order as above
 %{scriptdir}/01getpyenv.sh
 %{scriptdir}/02getpythonpackages.sh
+%{scriptdir}/03configshibbolethsp.sh
 %{scriptdir}/05setuppostgres.sh
 %{scriptdir}/10setupckan.sh
 %{scriptdir}/14openfirewall.sh
@@ -121,21 +132,24 @@ rm -rf $RPM_BUILD_ROOT
 
 # sic! following script in datadir
 %{katadatadir}/runharvester.sh
+%{patchdir}/attribute-map.xml.patch
+%{patchdir}/attribute-policy.xml.patch
 %{patchdir}/development.ini.patch
-%{patchdir}/who.ini.patch
 %{patchdir}/httpd.conf.patch
 %{patchdir}/pg_hba.conf.patch
+%{patchdir}/shib.conf.patch
+%{patchdir}/shibboleth2.xml.patch
+%{patchdir}/who.ini.patch
 %attr(0644,root,root)/etc/cron.d/harvester
 %{katadatadir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
 %{katadatadir}/pip.freeze.lastknown
 
-
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
-
+%{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-dev"
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
@@ -149,7 +163,6 @@ from paste.script.util.logging_config import fileConfig
 fileConfig(config_filepath)
 application = loadapp('config:%s' % config_filepath)
 EOF
-
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}

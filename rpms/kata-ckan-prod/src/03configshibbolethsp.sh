@@ -1,0 +1,1 @@
+../../common/03configshibbolethsp.sh
