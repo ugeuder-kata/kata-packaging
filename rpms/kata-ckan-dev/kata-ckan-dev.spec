@@ -75,6 +75,7 @@ install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 26installsitemap.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 27installshibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 28installkataexts.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -122,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/25installddi.sh
 %{scriptdir}/26installsitemap.sh
 %{scriptdir}/27installshibboleth.sh
+%{scriptdir}/28installkataexts.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/60installextensions.sh
 %{scriptdir}/61setupsources.sh
@@ -174,7 +176,7 @@ su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/27installshibboleth.sh /home/%{ckanuser} %{ckanuser}
-
+su -c "%{scriptdir}/28installkataexts.sh /home/%{ckanuser}" %{ckanuser}
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
