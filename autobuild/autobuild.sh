@@ -3,7 +3,9 @@ abuilduser=abuild
 abuildkey=~/id_rsa_abuild
 abuildhostdev=abuild
 abuildhostprod=abuild2
-# requirements: $abuildkey must be authorized for both $abuild
+# requirements: access with ssh key $abuildkey must be authorized by 
+#               user $abuild
+# for further requirements see README
 
 phase=$1
 
