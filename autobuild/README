@@ -91,24 +91,24 @@ abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service, /bin/true, 
 
 abuild needs the following 6 files
 
-- ~abuild/abuild-input/abuild1-sp-cert.pem
-- ~abuild/abuild-input/builld2-sp-cert.pem
-- ~abuild/abuild-input/abuild1-sp-key.pem
-- ~abuild/abuild-input/abuild2-sp-key.pem
-- ~abuild/abuild-input/abuild1-kata-master.ini
-- ~abuild/abuild-input/abuild2-kata-master.ini
+- ~abuild/abuild-input/abuild-dev-sp-cert.pem
+- ~abuild/abuild-input/abuild-prod-sp-cert.pem
+- ~abuild/abuild-input/abuild-dev-sp-key.pem
+- ~abuild/abuild-input/abuild-prod-sp-key.pem
+- ~abuild/abuild-input/abuild-dev-kata-master.ini
+- ~abuild/abuild-input/abuild-prod-kata-master.ini
 
 (all host and usernames refer to the definitions in autobuild.sh, so they
 could actually be different)
 
 TODO: describe meaning and generation of these files
 
-Note: If only the same host is used as abuild1 and abuild2, identical
+Note: If only the same host is used as autobuilddev and autobuildprod, identical
       files are needed twice (symbolic links should work). Or of course
-      strictly speaking the abuild1 variants are needed only during phase
-      1 and 2, which the abuild2 variant is needed only during phase 3.
-      
-
+      strictly speaking the dev variants are needed only during phase
+      1 and 2, which the prod variants are needed only during phase 3.
+      If using a common template all files can always be present without any
+      harm.
 
 
 4.) http proxy
