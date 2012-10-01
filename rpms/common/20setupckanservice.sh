@@ -18,4 +18,13 @@ touch /home/ckan/pyenv/ckan.log
 chown ckan:apache /home/ckan/pyenv/ckan.log
 chmod g+w /home/ckan/pyenv/ckan.log
 chmod -R g+w /home/ckan/pyenv/src/ckan/{data,sstore}
-sed -i 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' /usr/lib64/python2.6/ctypes/__init__.py
+# TODO: We should not hack other packages' files
+# what will happen when Python gets a security update???
+# well, as long as we do it only in dev it doesn't matter, because
+# dev systems does not live very long
+for dir in $(echo /usr/lib*/python2.6)
+# loop exists to handle both 32 and 64 bit installations. Not sure whether
+# it could ever be run more than once, but that doesn't matter 
+do
+  sed -i.orig 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' ${dir}/ctypes/__init__.py
+done
