@@ -89,26 +89,38 @@ abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service, /bin/true, 
 
 3.) Input files
 
-abuild needs the following 6 files
+abuild needs the following 4 (6) files (keys, certificates and master 
+configuration)
 
 - ~abuild/abuild-input/abuild-dev-sp-cert.pem
 - ~abuild/abuild-input/abuild-prod-sp-cert.pem
 - ~abuild/abuild-input/abuild-dev-sp-key.pem
 - ~abuild/abuild-input/abuild-prod-sp-key.pem
-- ~abuild/abuild-input/abuild-dev-kata-master.ini
-- ~abuild/abuild-input/abuild-prod-kata-master.ini
+- ~abuild/abuild-input/abuild-dev-kata-master.ini (*)
+- ~abuild/abuild-input/abuild-prod-kata-master.ini (*)
 
-(all host and usernames refer to the definitions in autobuild.sh, so they
-could actually be different)
+(username refers to the definitions in autobuild.sh, so it could actually be
+different)
 
-TODO: describe meaning and generation of these files
+(*) these 2 master configuration files are currently not needed. autobuild
+copies them from the mcfg package instead. This might change if we need
+more configuration during autobuild
 
-Note: If only the same host is used as autobuilddev and autobuildprod, identical
-      files are needed twice (symbolic links should work). Or of course
+Note: If the same host is used as autobuilddev and autobuildprod, identical
+      files are needed twice (symbolic links work, too). Or of course
       strictly speaking the dev variants are needed only during phase
       1 and 2, which the prod variants are needed only during phase 3.
       If using a common template all files can always be present without any
       harm.
+
+In production the certificates need to be signed by Certification Authority 
+(CA). During development we can use self signed certificates. If you don't
+have the files in your autobuild enviroment yet, just start autobuild.
+It will fail (complaining that these inut files are missing). But there
+will be files /etc/shibboleth/sp-{cert,key}.pem, which can be used. Copy
+them to your VM template into the locations given above. They can be reused
+as long as the host stays the same. Reset the VM and the next time the
+build will succeed.
 
 
 4.) http proxy
