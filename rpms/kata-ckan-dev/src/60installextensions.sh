@@ -10,3 +10,5 @@ sed -i "/^ckan.plugins/s|$| $extensions|" $instloc/pyenv/src/ckan/development.in
 # ... here.
 # I don't think the equivalent is needed with Apache, because it should 
 # not have loaded any Python code yet
+
+pip install -e git://github.com/kata-csc/ckanext-kata.git#egg=ckanext-kata
