@@ -6,5 +6,5 @@ ckanuser=$2
 cd $instloc
 cd pyenv/src
 source ../bin/activate
-pip install -e git+git://github.com/kata-csc/ckanext-kata.git@rdfexport#egg=ckanext-kata
+pip install -e git+git://github.com/kata-csc/ckanext-kata.git#egg=ckanext-kata
 
