@@ -16,8 +16,7 @@ out in this document for the sake of simplicity)
 II. Installation steps
 
 1. Enable EPEL repo
-   1.a. "wget http://www.nic.funet.fi/pub/mirrors/fedora.redhat.com/pub/epel/6/i386/epel-release-6-7.noarch.rpm"
-   1.b. "sudo yum install epel-release-6-7.noarch.rpm"
+   1.a. "sudo yum install http://www.nic.funet.fi/pub/mirrors/fedora.redhat.com/pub/epel/6/i386/epel-release-6-7.noarch.rpm"
 
 2. Install Apache solr
 
