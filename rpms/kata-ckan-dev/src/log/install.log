@@ -4,18 +4,18 @@
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-09-21 19:19:11--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-10-01 19:03:00--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 110103 (108K) [text/plain]
 Saving to: `virtualenv.py'
 
-     0K .......... .......... .......... .......... .......... 46%  199K 0s
-    50K .......... .......... .......... .......... .......... 93%  401K 0s
+     0K .......... .......... .......... .......... .......... 46%  176K 0s
+    50K .......... .......... .......... .......... .......... 93%  340K 0s
    100K .......                                               100% 14348G=0.4s
 
-2012-09-21 19:19:12 (286 KB/s) - `virtualenv.py' saved [110103/110103]
+2012-10-01 19:03:01 (249 KB/s) - `virtualenv.py' saved [110103/110103]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -136,8 +136,6 @@ Downloading/unpacking markupsafe==0.15 (from -r pyenv/src/ckan/pip-requirements.
   Running setup.py egg_info for package markupsafe
 Downloading/unpacking babel==0.9.6 (from -r pyenv/src/ckan/pip-requirements.txt (line 17))
   Running setup.py egg_info for package babel
-    warning: no files found matching 'doc/api/*.*'
-    warning: no files found matching 'doc/*.html'
 Downloading/unpacking psycopg2==2.4.5 (from -r pyenv/src/ckan/pip-requirements.txt (line 18))
   Running setup.py egg_info for package psycopg2
     no previously-included directories found matching 'doc/src/_build'
@@ -309,8 +307,6 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c markupsafe/_speedups.c -o build/temp.linux-i686-2.6/markupsafe/_speedups.o
     gcc -pthread -shared build/temp.linux-i686-2.6/markupsafe/_speedups.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/markupsafe/_speedups.so
   Running setup.py install for babel
-    warning: no files found matching 'doc/api/*.*'
-    warning: no files found matching 'doc/*.html'
     Installing pybabel script to /home/ckan/pyenv/bin
   Running setup.py install for psycopg2
     building 'psycopg2._psycopg' extension
@@ -460,6 +456,21 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     Installing pygmentize script to /home/ckan/pyenv/bin
 Successfully installed Genshi sqlalchemy-migrate sqlalchemy webhelpers pyutilib.component.core vdm solrpy formalchemy pairtree ofs apachemiddleware markupsafe babel psycopg2 webob Pylons repoze.who tempita zope.interface repoze.who.plugins.openid repoze.who-friendlyform routes paste Jinja2 fanstatic decorator argparse Beaker PasteDeploy PasteScript FormEncode simplejson nose Mako WebError WebTest python-openid repoze.lru Pygments
 Cleaning up...
++ packagedir=/usr/share/kata-ckan-dev
++ cp /etc/shibboleth/shibboleth2.xml /etc/shibboleth/shibboleth2.xml.bak
++ pushd /etc/shibboleth
++ patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/shibboleth2.xml.patch
+patching file shibboleth2.xml
++ patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/attribute-map.xml.patch
+patching file attribute-map.xml
++ patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/attribute-policy.xml.patch
++ popd
++ cp /etc/httpd/conf.d/shib.conf /etc/httpd/conf.d/shib.conf.bak
++ pushd /etc/httpd/conf.d
++ patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/shib.conf.patch
+patching file shib.conf
++ popd
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
 + service postgresql initdb
 Initializing database: [  OK  ]
@@ -513,8 +524,8 @@ Now you should edit the config files
   development.ini
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
 patching file development.ini
-++ ip addr show dev eth0
 ++ grep 'inet '
+++ ip addr show dev eth0
 ++ sed -E 's/ +inet +([^/]+).+/\1/'
 Device "eth0" does not exist.
 + myip=
@@ -532,10 +543,10 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-09-21 19:25:30,013 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
-2012-09-21 19:25:30,114 INFO  [ckan.model] Database initialised
+2012-10-01 19:11:53,765 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
+2012-10-01 19:11:53,874 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
-+ mkdir data sstore
++ mkdir data sstore data_tree
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
 + service httpd stop
 Stopping httpd: [FAILED]
@@ -558,8 +569,9 @@ patching file httpd.conf
 + chown ckan:apache /home/ckan/pyenv/ckan.log
 + chmod g+w /home/ckan/pyenv/ckan.log
 + chmod -R g+w /home/ckan/pyenv/src/ckan/data /home/ckan/pyenv/src/ckan/sstore
-+ sed -i 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' /usr/lib64/python2.6/ctypes/__init__.py
-sed: can't read /usr/lib64/python2.6/ctypes/__init__.py: No such file or directory
+++ echo /usr/lib/python2.6
++ for dir in '$(echo /usr/lib*/python2.6)'
++ sed -i.orig 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' /usr/lib/python2.6/ctypes/__init__.py
 + instloc=/home/ckan
 + cd /home/ckan
 + cd pyenv/src
@@ -617,13 +629,13 @@ Installing collected packages: carrot, anyjson, amqplib
 Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-09-21 19:26:27,328 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-09-21 19:26:27,378 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-10-01 19:12:53,744 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-01 19:12:53,796 DEBUG [ckanext.harvest.model] Harvest tables created
 
 DB tables created
 + paster --plugin=ckan user add harvester password=harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Creating user: 'harvester'
-<User id=321dc235-cb68-4a67-aabf-0d90906d7647 name=harvester openid=None password=95cf6d6eeade268c20af2f2b2e4029d137730c1bfff82d47a39bf049818dff4bf227251634ad5070 fullname=None email=None apikey=b08822a3-ff64-4dd7-84c0-144ac2ed0683 created=2012-09-21 19:26:28.771728 reset_key=None about=None>
+<User id=c49d48ac-24a2-49a1-90c4-7096e3df7099 name=harvester openid=None password=aae24c394de4f0063d221b5d042b6adcc68d2e6c39c2116a566b9ce1b2c821a1802dc95728b1eaff fullname=None email=None apikey=01d4c0e2-4953-4287-a51b-56aa7e738a58 created=2012-10-01 19:12:55.173413 reset_key=None about=None>
 + paster --plugin=ckan sysadmin add harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Added harvester as sysadmin
 + instloc=/home/ckan
@@ -662,7 +674,7 @@ Obtaining ckanext-urn from git+https://github.com/kata-csc/ckanext-urn.git#egg=c
   Running setup.py egg_info for package ckanext-urn
     no previously-included directories found matching 'test'
     
-    Installed /home/ckan/pyenv/src/ckanext-urn/coverage-3.5.2-py2.6-linux-i686.egg
+    Installed /home/ckan/pyenv/src/ckanext-urn/coverage-3.5.3-py2.6-linux-i686.egg
 Installing collected packages: ckanext-urn
   Running setup.py develop for ckanext-urn
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-urn.egg-link (link to .)
@@ -705,60 +717,34 @@ Cleaning up...
 Obtaining ckanext-oaipmh from git+https://github.com/kata-csc/ckanext-oaipmh.git#egg=ckanext-oaipmh
   Cloning https://github.com/kata-csc/ckanext-oaipmh.git to ./ckanext-oaipmh
   Running setup.py egg_info for package ckanext-oaipmh
-    WARNING: ckanext.oaipmh is a namespace package, but its __init__.py does
-    not declare_namespace(); setuptools 0.7 will REQUIRE this!
-    (See the setuptools manual under "Namespace Packages" for details.)
-    
 Downloading/unpacking pyoai (from ckanext-oaipmh)
   Running setup.py egg_info for package pyoai
 Requirement already satisfied (use --upgrade to upgrade): ckanext-harvest in ./ckanext-harvest (from ckanext-oaipmh)
 Downloading/unpacking lxml (from pyoai->ckanext-oaipmh)
   Running setup.py egg_info for package lxml
-    Building lxml version 3.0.alpha2.
+    Building lxml version 2.3.6.
     Building without Cython.
     Using build configuration of libxslt 1.1.26
     Building against libxml2/libxslt in the following directory: /usr/lib
     warning: no previously-included files found matching '*.py'
-    warning: no files found matching '*.txt' under directory 'src/lxml/tests'
 Installing collected packages: ckanext-oaipmh, pyoai, lxml
   Running setup.py develop for ckanext-oaipmh
-    WARNING: ckanext.oaipmh is a namespace package, but its __init__.py does
-    not declare_namespace(); setuptools 0.7 will REQUIRE this!
-    (See the setuptools manual under "Namespace Packages" for details.)
-    
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-oaipmh.egg-link (link to .)
     Adding ckanext-oaipmh 0.1 to easy-install.pth file
     
     Installed /home/ckan/pyenv/src/ckanext-oaipmh
   Running setup.py install for pyoai
   Running setup.py install for lxml
-    Building lxml version 3.0.alpha2.
+    Building lxml version 2.3.6.
     Building without Cython.
     Using build configuration of libxslt 1.1.26
     Building against libxml2/libxslt in the following directory: /usr/lib
     building 'lxml.etree' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/home/ckan/pyenv/build/lxml/src/lxml/includes -I/usr/include/python2.6 -c src/lxml/lxml.etree.c -o build/temp.linux-i686-2.6/src/lxml/lxml.etree.o
-    src/lxml/lxml.etree.c: In function ‘__pyx_pf_4lxml_5etree_4XSLT_18__call__’:
-    src/lxml/lxml.etree.c:132276: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
-    src/lxml/lxml.etree.c:130237: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
-    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree__copyXSLT’:
-    src/lxml/lxml.etree.c:133665: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
-    src/lxml/lxml.etree.c:130237: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
-    src/lxml/lxml.etree.c: At top level:
-    src/lxml/lxml.etree.c:11906: warning: ‘__pyx_f_4lxml_5etree_displayNode’ defined but not used
-    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDocFromFilelike’:
-    src/lxml/lxml.etree.c:86509: warning: ‘__pyx_r’ may be used uninitialized in this function
-    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDocFromFile’:
-    src/lxml/lxml.etree.c:86198: warning: ‘__pyx_r’ may be used uninitialized in this function
-    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDoc’:
-    src/lxml/lxml.etree.c:85887: warning: ‘__pyx_r’ may be used uninitialized in this function
-    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseUnicodeDoc’:
-    src/lxml/lxml.etree.c:85558: warning: ‘__pyx_r’ may be used uninitialized in this function
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/usr/include/python2.6 -c src/lxml/lxml.etree.c -o build/temp.linux-i686-2.6/src/lxml/lxml.etree.o -w
     gcc -pthread -shared build/temp.linux-i686-2.6/src/lxml/lxml.etree.o -L/usr/lib -L/usr/lib -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-i686-2.6/lxml/etree.so
     building 'lxml.objectify' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/home/ckan/pyenv/build/lxml/src/lxml/includes -I/usr/include/python2.6 -c src/lxml/lxml.objectify.c -o build/temp.linux-i686-2.6/src/lxml/lxml.objectify.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/usr/include/python2.6 -c src/lxml/lxml.objectify.c -o build/temp.linux-i686-2.6/src/lxml/lxml.objectify.o -w
     gcc -pthread -shared build/temp.linux-i686-2.6/src/lxml/lxml.objectify.o -L/usr/lib -L/usr/lib -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-i686-2.6/lxml/objectify.so
-    warning: no files found matching '*.txt' under directory 'src/lxml/tests'
 Successfully installed ckanext-oaipmh pyoai lxml
 Cleaning up...
 + instloc=/home/ckan
@@ -802,7 +788,10 @@ Downloading/unpacking ckanclient (from ckanext-ddi)
   Running setup.py egg_info for package ckanclient
     /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'always_unzip'
       warnings.warn(msg)
-Installing collected packages: ckanext-ddi, beautifulsoup4, ckanclient
+Downloading/unpacking unicodecsv (from ckanext-ddi)
+  Downloading unicodecsv-0.9.0.tar.gz
+  Running setup.py egg_info for package unicodecsv
+Installing collected packages: ckanext-ddi, beautifulsoup4, ckanclient, unicodecsv
   Running setup.py develop for ckanext-ddi
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-ddi.egg-link (link to .)
     Adding ckanext-ddi 0.1 to easy-install.pth file
@@ -812,7 +801,8 @@ Installing collected packages: ckanext-ddi, beautifulsoup4, ckanclient
   Running setup.py install for ckanclient
     /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'always_unzip'
       warnings.warn(msg)
-Successfully installed ckanext-ddi beautifulsoup4 ckanclient
+  Running setup.py install for unicodecsv
+Successfully installed ckanext-ddi beautifulsoup4 ckanclient unicodecsv
 Cleaning up...
 + instloc=/home/ckan
 + cd /home/ckan
@@ -921,16 +911,16 @@ Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-09-21 19:29:06,448 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-09-21 19:29:06,450 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-09-21 19:29:06,490 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-09-21 19:29:06,509 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-09-21 19:29:06,528 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 0baefcf2-6c2d-4af2-8268-d29c1630d3cc
-2012-09-21 19:29:06,552 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'0baefcf2-6c2d-4af2-8268-d29c1630d3cc'}
-2012-09-21 19:29:06,573 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 33768229-bc12-4781-acd1-fa9529c2aece
+2012-10-01 19:15:43,942 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-01 19:15:43,945 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-01 19:15:43,984 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-01 19:15:44,002 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-10-01 19:15:44,021 INFO  [ckanext.harvest.logic.action.create] Harvest source created: c7a956ff-5a39-485b-b341-7f3a0acead49
+2012-10-01 19:15:44,044 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'c7a956ff-5a39-485b-b341-7f3a0acead49'}
+2012-10-01 19:15:44,065 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 5297a142-2ac0-40ee-8a1e-cab0715b2ffd
 
 Created new harvest source:
-Source id: 0baefcf2-6c2d-4af2-8268-d29c1630d3cc
+Source id: c7a956ff-5a39-485b-b341-7f3a0acead49
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -941,16 +931,16 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-09-21 19:29:08,035 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-09-21 19:29:08,038 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-09-21 19:29:08,062 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-09-21 19:29:08,081 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-09-21 19:29:08,099 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 8513fd8f-3a7e-4a6c-be81-d7245a4f4915
-2012-09-21 19:29:08,131 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'8513fd8f-3a7e-4a6c-be81-d7245a4f4915'}
-2012-09-21 19:29:08,150 INFO  [ckanext.harvest.logic.action.create] Harvest job saved d76cba71-d5c4-4679-9262-6db7a9b28cb3
+2012-10-01 19:15:45,536 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-01 19:15:45,539 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-01 19:15:45,562 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-01 19:15:45,581 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-10-01 19:15:45,599 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 2dac0e27-48d8-423d-ae4d-b715cb2b9da9
+2012-10-01 19:15:45,629 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'2dac0e27-48d8-423d-ae4d-b715cb2b9da9'}
+2012-10-01 19:15:45,647 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 4daf280c-eb7b-4ac1-8117-8dbd190cf48d
 
 Created new harvest source:
-Source id: 8513fd8f-3a7e-4a6c-be81-d7245a4f4915
+Source id: 2dac0e27-48d8-423d-ae4d-b715cb2b9da9
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -967,8 +957,9 @@ Starting httpd: [  OK  ]
 + service supervisord restart
 Stopping supervisord: [FAILED]
 Starting supervisord: [  OK  ]
-job 1 at 2012-09-21 19:34
-Can't open /var/run/atd.pid to signal atd. No atd running?
+Stopping atd: [FAILED]
+Starting atd: [  OK  ]
+job 1 at 2012-10-01 19:20
 Stopping shibd: [FAILED]
 Starting shibd: [  OK  ]
 Stopping httpd: [  OK  ]
@@ -1014,13 +1005,9 @@ Starting httpd: [  OK  ]
 Python package mismatches:
 + cat /tmp/kata-70.tmp
 28c28
-< -e git+https://github.com/okfn/ckan.git@c31c8466f40f29edb63263bd36d714f6a9eb7994#egg=ckan-dev
+< -e git+https://github.com/okfn/ckan.git@5173eca7a3af1cb44a51ce607d148dcd0a3fe813#egg=ckan-dev
 ---
-> -e git+https://github.com/okfn/ckan.git@e97b5c70e9325a1095778fef8e0d27c84e881b30#egg=ckan-dev
-33c33
-< -e git://github.com/kata-csc/ckanext-shibboleth.git@8ad606dd9cb91be79ffb39b4d2b2c3a77238d28d#egg=ckanext_repoze_who_shibboleth-dev
----
-> -e git://github.com/kata-csc/ckanext-shibboleth.git@dc14a2f926c1912710a5ca7e5503f7b40091cd4f#egg=ckanext_repoze_who_shibboleth-dev
+> -e git+https://github.com/okfn/ckan.git@76931efb1bba1a65bf2264106f9fa5bd7b21fa4f#egg=ckan-dev
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 + datadir=/usr/share/kata-ckan-dev/setup-data
