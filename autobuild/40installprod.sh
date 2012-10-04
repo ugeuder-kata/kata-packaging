@@ -2,9 +2,9 @@
 tar xf rpms-*.tar
 cd allrpms
 sudo yum install -y mcfg-*.rpm
-if [ -r abuild-input/abuild-prod-kata-master.ini ]
+if [ -r ~abuild/abuild-input/abuild-prod-kata-master.ini ]
 then
-  sudo cp abuild-input/abuild-prod-kata-master.ini /root/kata-master.ini
+  sudo cp ~abuild/abuild-input/abuild-prod-kata-master.ini /root/kata-master.ini
 else
   sudo cp /usr/share/mcfg/examples/kata-master.ini /root
 fi
