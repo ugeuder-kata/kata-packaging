@@ -45,6 +45,7 @@ a kata-ckan-prod.rpm package to capture the result of this installation.
 %setup
 
 %build
+# keep patches ordered alphabetically
 diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
 diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
@@ -52,6 +53,7 @@ diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || tru
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/shib.conf patches/kata/shib.conf >shib.conf.patch || true
 diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
+diff -u patches/orig/tomcat6.conf patches/kata/tomcat6.conf >tomcat6.conf.patch || true
 diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 
 %install
@@ -62,6 +64,7 @@ install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 
 # setup scripts (keep them numerically ordered)
+install 01configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -94,6 +97,7 @@ install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shib.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install tomcat6.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
@@ -109,6 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 # same order as above
+%{scriptdir}/01configuredependencies.sh
 %{scriptdir}/01getpyenv.sh
 %{scriptdir}/02getpythonpackages.sh
 %{scriptdir}/03configshibbolethsp.sh
@@ -139,6 +144,7 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/shib.conf.patch
 %{patchdir}/shibboleth2.xml.patch
+%{patchdir}/tomcat6.conf.patch
 %{patchdir}/who.ini.patch
 %attr(0644,root,root)/etc/cron.d/harvester
 %{katadatadir}/harvester.conf
@@ -147,6 +153,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
+%{scriptdir}/01configuredependencies.sh %{patchdir}
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-dev"
@@ -205,5 +212,5 @@ echo "User account %{ckanuser} not deleted, firewall change not reverted,"
 echo "postgresql configuration not reverted"
 
 %changelog
-* Mon May 21 2012 Uwe Geuder <uwe.geuder@nomvok.com>
+* Mon May 21 2012 Uwe Geuder <uwe.geuder@nomovok.com>
 - Initial version
