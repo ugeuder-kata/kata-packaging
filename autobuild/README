@@ -89,7 +89,7 @@ abuild  ALL=(root)   NOPASSWD: /bin/cp, /usr/bin/yum, /sbin/service, /bin/true, 
 
 3.) Input files
 
-abuild needs the following 4 (6) files (keys, certificates and master 
+abuild needs the following 4 to 6 files (keys, certificates and master
 configuration)
 
 - ~abuild/abuild-input/abuild-dev-sp-cert.pem
@@ -102,9 +102,9 @@ configuration)
 (username refers to the definitions in autobuild.sh, so it could actually be
 different)
 
-(*) these 2 master configuration files are currently not needed. autobuild
-copies them from the mcfg package instead. This might change if we need
-more configuration during autobuild
+(*) these 2 master configuration files are optional. Autobuild copies the
+sample from the mcfg package if the (customized) input file doesn't exist.
+
 
 Note: If the same host is used as autobuilddev and autobuildprod, identical
       files are needed twice (symbolic links work, too). Or of course
