@@ -1,0 +1,218 @@
++ patchdir=/usr/share/kata-ckan-prod/setup-patches
++ service tomcat6 stop
+Stopping tomcat6: [  OK  ]
++ cd /etc/tomcat6
++ patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/tomcat6.conf.patch
+patching file tomcat6.conf
++ python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 1
++ service tomcat6 start
+Starting tomcat6: [  OK  ]
++ patchdir=/usr/share/kata-ckan-prod/setup-patches
++ service postgresql initdb
+Initializing database: [  OK  ]
++ pushd /var/lib/pgsql/data
++ su -c 'patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/pg_hba.conf.patch' postgres
+patching file pg_hba.conf
++ popd
++ service postgresql start
+Starting postgresql service: [  OK  ]
++ chkconfig postgresql on
++ cmd='CREATE ROLE ckanuser PASSWORD '\''md5372712b8c6097730c3164ddd4f9275e0'\'' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN'
++ su -c 'psql -c "CREATE ROLE ckanuser PASSWORD '\''md5372712b8c6097730c3164ddd4f9275e0'\'' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN"' postgres
+CREATE ROLE
++ su -c 'createdb -O ckanuser ckantest' postgres
++ '[' -f /tmp/kata-SKIP10 ']'
++ instloc=/home/ckan
++ cd /home/ckan
++ source pyenv/bin/activate
+++ deactivate nondestructive
+++ unset pydoc
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ alias 'pydoc=python -m pydoc'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ cd pyenv/src/ckan
+++ ip addr show dev eth0
+++ grep 'inet '
+++ sed -E 's/ +inet +([^/]+).+/\1/'
+Device "eth0" does not exist.
++ myip=
++ sed -e 's,\(ckan.site_url = http://\)[^ ]*,\1,' development.ini
++ mv development.ini.1 development.ini
++ paster --plugin=ckan db init
+2012-10-04 22:10:02,789 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-04 22:10:02,793 DEBUG [ckanext.harvest.model] Harvest table creation deferred
+/home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_lname
+  ret = fn(self, con, *args, **kw)
+/home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_slname
+  ret = fn(self, con, *args, **kw)
+/home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_suname
+  ret = fn(self, con, *args, **kw)
+/home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_uname
+  ret = fn(self, con, *args, **kw)
+/home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
+  ret = fn(self, con, *args, **kw)
+2012-10-04 22:10:06,328 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
+2012-10-04 22:10:06,442 INFO  [ckan.model] Database initialised
+Initialising DB: SUCCESS
++ '[' -f /tmp/kata-SKIP10 ']'
++ instloc=/home/ckan
++ cd /home/ckan
++ source pyenv/bin/activate
+++ deactivate nondestructive
+++ unset pydoc
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ alias 'pydoc=python -m pydoc'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
+2012-10-04 22:10:08,005 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-04 22:10:08,054 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-10-04 22:10:08,074 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-04 22:10:08,109 DEBUG [ckanext.harvest.model] Harvest tables already exist
+
+DB tables created
++ packagedir=/usr/share/kata-ckan-prod
++ cp /etc/shibboleth/shibboleth2.xml /etc/shibboleth/shibboleth2.xml.bak
++ pushd /etc/shibboleth
++ patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/shibboleth2.xml.patch
+patching file shibboleth2.xml
++ patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/attribute-map.xml.patch
+patching file attribute-map.xml
++ patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/attribute-policy.xml.patch
++ popd
++ cp /etc/httpd/conf.d/shib.conf /etc/httpd/conf.d/shib.conf.bak
++ pushd /etc/httpd/conf.d
++ patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/shib.conf.patch
+patching file shib.conf
++ popd
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
++ patchdir=/usr/share/kata-ckan-prod/setup-patches
++ service httpd stop
+Stopping httpd: [FAILED]
++ pushd /etc/httpd/conf
++ patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/httpd.conf.patch
+patching file httpd.conf
++ mv httpd.conf httpd.conf.step1
+++ dirname /usr/share/kata-ckan-prod/setup-scripts/20setupckanservice.sh
++ myipcmd=/usr/share/kata-ckan-prod/setup-scripts/myip.sh
+++ /usr/share/kata-ckan-prod/setup-scripts/myip.sh
++ myip=192.168.56.59
++ sed -e s/%%MYIP%%/192.168.56.59/ httpd.conf.step1
++ popd
++ chkconfig httpd on
++ chown -R ckan:apache /home/ckan/pyenv
++ chmod -R 755 /home/ckan
++ setsebool -P httpd_can_network_connect 1
++ chcon -R --type=httpd_sys_content_t /home/ckan
++ touch /home/ckan/pyenv/ckan.log
++ chown ckan:apache /home/ckan/pyenv/ckan.log
++ chmod g+w /home/ckan/pyenv/ckan.log
++ chmod -R g+w /home/ckan/pyenv/src/ckan/data /home/ckan/pyenv/src/ckan/sstore
+++ echo /usr/lib/python2.6
++ for dir in '$(echo /usr/lib*/python2.6)'
++ sed -i.orig 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' /usr/lib/python2.6/ctypes/__init__.py
+Stopping supervisord: [FAILED]
+Starting supervisord: [  OK  ]
++ instloc=/home/ckan
++ cp /opt/solr/conf/schema.xml /opt/solr/conf/schema.xml.bak
++ cp /home/ckan/pyenv/src/ckan/ckan/config/solr/schema-1.4.xml /opt/solr/conf/schema.xml
++ service tomcat6 restart
+Stopping tomcat6: [  OK  ]
+Starting tomcat6: [  OK  ]
++ chkconfig tomcat6 on
++ instloc=/home/ckan
++ service rabbitmq-server start
+Starting rabbitmq-server: SUCCESS
+rabbitmq-server.
++ chkconfig rabbitmq-server on
++ /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
+2012-10-04 22:10:58,135 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-04 22:10:58,137 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-04 22:10:58,164 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-04 22:10:58,183 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-10-04 22:10:58,199 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 4c0f8ebf-5cb9-4ad5-956b-f502522fb3e1
+2012-10-04 22:10:58,223 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'4c0f8ebf-5cb9-4ad5-956b-f502522fb3e1'}
+2012-10-04 22:10:58,242 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 755e2591-a2d8-457f-9625-ef2fffdc6cf4
+
+Created new harvest source:
+Source id: 4c0f8ebf-5cb9-4ad5-956b-f502522fb3e1
+      url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
+     type: DDI
+   active: True
+     user: 
+publisher: 
+     jobs: 0
+
+There is 1 harvest source
+A new Harvest Job for this source has also been created
++ /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
+2012-10-04 22:10:59,704 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-04 22:10:59,707 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-04 22:10:59,733 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-04 22:10:59,752 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-10-04 22:10:59,767 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 88623fca-b12f-464e-a995-d79d49ff62d4
+2012-10-04 22:10:59,797 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'88623fca-b12f-464e-a995-d79d49ff62d4'}
+2012-10-04 22:10:59,816 INFO  [ckanext.harvest.logic.action.create] Harvest job saved a88c4d3e-2bb1-481b-9967-b3351fc64fec
+
+Created new harvest source:
+Source id: 88623fca-b12f-464e-a995-d79d49ff62d4
+      url: http://helda.helsinki.fi/oai/request
+     type: OAI-PMH
+   active: True
+     user: 
+publisher: 
+     jobs: 0
+
+There are 2 harvest sources
+A new Harvest Job for this source has also been created
++ service httpd restart
+Stopping httpd: [FAILED]
+Starting httpd: [  OK  ]
++ chkconfig supervisord on
++ service supervisord restart
+Stopping supervisord: [  OK  ]
+Starting supervisord: [  OK  ]
+Stopping atd: [FAILED]
+Starting atd: [  OK  ]
+job 1 at 2012-10-04 22:16

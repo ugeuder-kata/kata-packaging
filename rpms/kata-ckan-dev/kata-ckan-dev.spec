@@ -70,7 +70,6 @@ install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 22installharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 23installurn.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -119,7 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/03configshibbolethsp.sh
 %{scriptdir}/05setuppostgres.sh
 %{scriptdir}/10setupckan.sh
-%{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/22installharvester.sh
 %{scriptdir}/23installurn.sh
@@ -173,7 +171,6 @@ EOF
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh %{patchdir}
 su -c "%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}

@@ -1,1 +1,0 @@
-../../common/14openfirewall.sh

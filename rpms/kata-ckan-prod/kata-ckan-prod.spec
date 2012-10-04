@@ -82,7 +82,6 @@ install 01configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 14openfirewall.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 21setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -117,7 +116,6 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/03configshibbolethsp.sh
 %{scriptdir}/05setuppostgres.sh
 %{scriptdir}/10setupckanprod.sh
-%{scriptdir}/14openfirewall.sh
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/21setupharvester.sh
 %{scriptdir}/30configsolr.sh
@@ -147,7 +145,6 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/14openfirewall.sh
 %{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-prod"
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
