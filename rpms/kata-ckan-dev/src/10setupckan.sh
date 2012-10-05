@@ -17,6 +17,5 @@ myip=$(ip addr show dev eth0 | grep "inet " | sed -E "s/ +inet +([^/]+).+/\1/")
 ckanusermail=root@localhost
 sed -e "s/%%myip%%/${myip}/" -e "s/%%ckanusermail%%/${ckanusermail}/" development.ini > development.ini.1
 mv development.ini.1 development.ini
-cp development.ini harvester.ini
 paster --plugin=ckan db init
 mkdir data sstore data_tree
