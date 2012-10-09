@@ -1,0 +1,27 @@
+Examples:
+
+title:[1976 TO 1980]
+
+text:fi -extras_language:fi
+
+
+Not understood yet:
+
+extras_language=en  380 hits  probably goes as simple search because there
+                              is no colon. search term will be tokenized and
+                              ORed
+extras_language:en  150 hits
+
+
+title=*poli*  2 hits
+
+
+Surprising results:
+
+uusimaa                4 hits
+extras_laani=uusimaa 214 hits
+
+title:2005 AND (title:2007 OR title:survey)  2 hits
+(title:2005 AND title:2007) OR title:survey  9 hits
+title:2005 AND title:2007 OR title:survey   47 hits
+

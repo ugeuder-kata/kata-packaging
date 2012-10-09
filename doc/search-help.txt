@@ -1,0 +1,280 @@
+1. Search Overview
+
+CKAN supports 2 search modes, both a used from the same search field.
+
+If the search terms entered into the search field contain no colon (":")
+CKAN will perform a simple search. If the search expression does
+contain at least one colon (":") CKAN will perform and advanced
+search.
+
+
+2. Simple Search
+ 
+When using simple search you just enter search words.
+
+There are only 3 special characters to be taken into account
+
++ The following search word is mandatory
+- The following search is word is prohibited
+" Several search words enclosed in double quotes must occur in that
+  sequence. Double quotes must occur pairwise, otherwise they will
+  be ignored completely
+
+All other special characters, like e.g. "*", "?" or "=" will be
+ignored.
+
+
+3. Advanced search
+
+Your search terms must contain a colon ":" to activate advanced
+search.
+
+The basic principle is that search terms are entered as 
+
+   field:search
+
+Example:
+
+   title:european
+
+Advanced search supports many special characters to achieve various
+search functions
+
+
+3.1 Multiple character wildcard search
+
+To perform a multiple character wildcard search use the "*" symbol.
+Multiple character wildcard searches looks for 0 or more characters
+
+Example:
+
+   title:europ*
+
+3.2 Single character wild card search
+ 
+To perform a single character wildcard search use the "?" symbol. The
+single character wildcard search looks for terms that match that with
+the single character replaced.
+
+Example:
+
+  author:eri?sson
+
+This will match both Ericsson and Eriksson (and of course all other
+letters in the location in question)
+
+3.3 Fuzzy Searches
+
+CKAN supports fuzzy searches based on the Levenshtein Distance, or
+Edit Distance algorithm. To do a fuzzy search use the tilde, "~",
+symbol at the end of a Single word Term
+
+Example:
+
+  author:powell~
+
+  will also find jowell and many others
+
+An additional (optional) parameter can specify the required
+similarity. The value is between 0 and 1, with a value closer to 1
+only terms with a higher similarity will be matched. For example:
+
+  title:roam~0.8
+
+The default that is used if the parameter is not given is 0.5.
+
+
+3.4 Proximity searches
+
+CKAN supports finding words are a within a specific distance away.  To
+do a proximity search use the tilde, "~", symbol at the end of a
+Phrase. 
+
+Example:
+
+To search for a "international" and "domestic" within 5 words of each
+other in the abstract of a dataset use the search:
+
+   extras_abstract:"international domestic"~5
+
+
+3.5 Range Searches
+
+Range Queries allow one to match datasets whose field(s) values are
+between the lower and upper bound specified by the Range Query. Range
+Queries can be inclusive or exclusive of the upper and lower
+bounds. Sorting is done lexicographically.
+
+Example:
+
+   title:[2005 TO 2010]   (inclusive search)
+   title:{2005 TO 2010}   (exclusive search)
+
+Please note that the "TO" keyword needs to be spelled in CAPITAL
+letters.
+
+
+3.6 Boolean Operators
+
+Boolean operators allow terms to be combined through logic
+operators. CKAN supports AND, "+", OR, NOT and "-" as Boolean
+operators (Note: Boolean operators must be ALL CAPS).
+
+The AND operator is the default conjunction operator. This means that
+if there is no Boolean operator between two terms, the AND operator is
+used. 
+
+The OR operator links two terms and finds a matching dataset if
+either of the terms exist in a dataset. This is equivalent to a union
+using sets. The symbol || can be used in place of the word OR.
+
+To search for datasets that contain either "2005" or "2007" in their
+title use the query:
+
+Example:
+
+   title:2005 OR title:2007
+
+
+The AND operator matches datasets where both terms exist anywhere in
+the text of a single dataset. This is equivalent to an intersection
+using sets. The symbol && can be used in place of the word AND.
+
+Example:
+
+To search for datasets that contain "2005" and "2007" use the query:
+
+   title:2005 AND title:2007
+
+or
+
+   title:2005 title:2007
+
+Both searches are indentical because AND is the default operator.
+
+
++
+
+The "+" or required operator requires that the term after the "+"
+symbol exist somewhere in a the field of a single dataset.
+
+Example:
+
+To search for datasets that must contain "survey" and may contain
+"economy" use the query:
+
+text:+survey text:economy 
+
+NOT
+
+The NOT operator excludes datasets that contain the term after
+NOT. This is equivalent to a difference using sets. The symbol ! can
+be used in place of the word NOT.
+
+Example: 
+
+To search for datasets that contain "2007" but not "2005" in their
+title use the query:
+
+title:2005 NOT title:2007
+
+Note: The NOT operator can also be used with just one term. 
+
+Example:
+
+The following search will all results, which are not written in
+English or have no extras_language field
+
+
+NOT extras_language:en
+
+-
+
+The "-" or prohibit operator excludes datasets that contain the term
+after the "-" symbol.
+
+Example:
+
+To search for datasets that contain "2005" but not "2007" in their
+title use the query:
+
+title:2005 -title:2007
+
+
+
+3.7 Grouping
+
+CKAN supports using parentheses to group clauses to form sub
+queries. This can be very useful if you want to control the boolean
+logic for a query.
+
+Example:
+To search for either "jakarta" or "apache" and "website" use the query:
+
+title:2005 AND (title:2007 OR title:survey
+
+
+3.8 Field Grouping
+
+Lucene supports using parentheses to group multiple clauses to a single field.
+
+To search for a title that contains both the word "return" and the phrase "pink panther" use the query:
+
+title:(+return +"pink panther")
+
+
+3.9 Default field
+
+The field called text is a virtual field containing all text from all
+other fields. This field serves also as default field if you do
+not specify a field name.
+
+Example:
+
+   title:2005 and survey
+
+is equivalent to
+
+   title:2005 and text:survey
+
+Warning: If you don't specify a single field, you won't have a colon
+anymore and CKAN will switch to simple search. This might lead to very
+surprising results, because simple search ignores most of the
+special characters used in advanced search. 
+
+
+4. Available fields
+
+Look at some datasets relevant for you search to see what fields are
+available. Note that non-standard fields need to be prefixed by
+extras_
+
+Example:
+
+  Language of the dataset might be available in a field called
+  extras_language
+
+  An abstract of the dataset might be available in a field called 
+  extras_abstrtact.
+
+Note that exact details cannot be given here because the available
+fields vary in diffferent CKAN installations and/or according to the
+datasets entered.
+
+
+5. Further reading
+
+CKAN uses Apache Solr as its search engine. For further details check
+the documentation at
+
+http://lucene.apache.org/core/3_6_0/queryparsersyntax.html
+http://wiki.apache.org/solr/SolrQuerySyntax
+http://wiki.apache.org/solr/DisMaxQParserPlugin (for simple search)
+
+Please note that CKAN uses sometimes different values than what is
+mentioned in that documentation. Also note that not the whole
+functionality is offered through the simplified serach interface in
+CKAN.
+
+This description is heavily based on the original documentation. 
+ 

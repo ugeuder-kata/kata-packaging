@@ -1,0 +1,43 @@
+Simple search
+
+sort=title_string+asc&fq=+capacity%3A%22public%22+%2Bsite_id%3A%22kata.ckan.fi%22+%2Bstate%3Aactive&facet.mincount=1&rows=21&facet.field=groups&facet.field=tags&facet.field=res_format&facet.field=license&facet.limit=50&mm=1&defType=dismax&facet=true&start=0&wt=json&q=Helsinki&qf=name%5E4+title%5E4+tags%5E2+groups%5E2+text&tie=0.1&fl=id+data_dict
+
+sort=title_string asc
+fq= capacity:"public" +site_id:"kata.ckan.fi" +state:active
+facet.mincount=1
+rows=21
+facet.field=groups
+facet.field=tags
+facet.field=res_format
+facet.field=license
+facet.limit=50
+mm=1
+defType=dismax
+facet=true
+start=0
+wt=json
+q=Helsinki
+qf=name^4 title^4 tags^2 groups^2 text
+tie=0.1
+fl=id data_dict
+
+-----
+
+Advanced search
+
+sort=title_string+asc&fq=+capacity%3A%22public%22+%2Bsite_id%3A%22kata.ckan.fi%22+%2Bstate%3Aactive&facet.mincount=1&rows=21&facet.field=groups&facet.field=tags&facet.field=res_format&facet.field=license&facet.limit=50&facet=true&start=0&wt=json&q=title%3AHelsinki&fl=id+data_dict
+
+sort=title_string asc
+fq= capacity:"public" +site_id:"kata.ckan.fi" +state:active
+facet.mincount=1
+rows=21
+facet.field=groups
+facet.field=tags
+facet.field=res_format
+facet.field=license
+facet.limit=50
+facet=true
+start=0
+wt=json
+q=title:Helsinki
+fl=id+data_dict
