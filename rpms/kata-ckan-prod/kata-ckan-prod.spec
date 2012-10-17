@@ -51,6 +51,7 @@ This package is for the production server.
 diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute-map.xml.patch || true
 diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
+diff -u patches/orig/ssl.conf patches/kata/ssl.conf >ssl.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/shib.conf patches/kata/shib.conf >shib.conf.patch || true
 diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
@@ -82,6 +83,7 @@ install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 install 01configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 07setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 21setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -98,6 +100,7 @@ install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shib.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install ssl.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install tomcat6.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
@@ -116,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/01configuredependencies.sh
 %{scriptdir}/03configshibbolethsp.sh
 %{scriptdir}/05setuppostgres.sh
+%{scriptdir}/07setupapachessl.sh
 %{scriptdir}/10setupckanprod.sh
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/21setupharvester.sh
@@ -134,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/attribute-policy.xml.patch
 %{patchdir}/shib.conf.patch
 %{patchdir}/shibboleth2.xml.patch
+%{patchdir}/ssl.conf.patch
 %{patchdir}/tomcat6.conf.patch
 %{patchdir}/who.ini.patch
 
@@ -147,6 +152,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-prod"
+%{scriptdir}/07setupapachessl.sh "/usr/share/kata-ckan-dev"
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
