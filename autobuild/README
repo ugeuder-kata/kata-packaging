@@ -42,8 +42,27 @@ II.) Requirements
 
 1.) ssh requirements
 
-Host and user names can be found from autobuild.sh (they are actually
-configurable, but this has not been tested)
+Host and user names can be found from autobuild.sh
+
+If environment variable ABUILDHOSTDEV is set it will be used as dev machine
+(phases 1 & 2)
+
+If environment variable ABUILDHOSTPROD is set it will be used as prod machine
+(phase 3)
+
+If one or both of these environment variables is not set the value from 
+ABUILDHOST will repalce the missing value(s).
+
+If none of these environment variables is set default host abuild is
+used as dev machine (phases 1 & 2), host abuild2 as prod machine
+(phase 3). Typically such names can be added to /etc/hosts, both of them
+could point to the same IP.
+
+Environment variables ABUILDPORTDEV, ABUILDPORTPROD, and ABUILDPORT
+are used anlogously to specify the ssh port. (this is useful if you
+need an ssh tunnel to reach the build host) If none of these variables
+is set 22 will be used.
+
 
 A (private) ssh key is used to access the buildhost, it's public
 counterpart must be authorized for the autobuild user. The local
