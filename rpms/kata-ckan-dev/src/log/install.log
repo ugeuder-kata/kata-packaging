@@ -13,18 +13,18 @@ Starting tomcat6: [  OK  ]
 + mkdir -p /home/ckan/download
 + cd /home/ckan/download
 + wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
---2012-10-04 20:51:50--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+--2012-10-17 18:15:13--  https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 Resolving raw.github.com... 207.97.227.243
 Connecting to raw.github.com|207.97.227.243|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 110103 (108K) [text/plain]
-Saving to: “virtualenv.py”
+Saving to: `virtualenv.py'
 
-     0K .......... .......... .......... .......... .......... 46% 18.9K 3s
-    50K .......... .......... .......... .......... .......... 93%  152K 0s
-   100K .......                                               100% 14348G=3.0s
+     0K .......... .......... .......... .......... .......... 46%  203K 0s
+    50K .......... .......... .......... .......... .......... 93%  809K 0s
+   100K .......                                               100% 14348G=0.3s
 
-2012-10-04 20:51:55 (36.1 KB/s) - “virtualenv.py” saved [110103/110103]
+2012-10-17 18:15:14 (348 KB/s) - `virtualenv.py' saved [110103/110103]
 
 + cd ..
 + python download/virtualenv.py pyenv
@@ -66,7 +66,7 @@ Initialized empty Git repository in /home/ckan/pyenv/src/ckan/doc/_themes/sphinx
 Obtaining ckan from git+https://github.com/okfn/ckan.git#egg=ckan
   Cloning https://github.com/okfn/ckan.git to ./pyenv/src/ckan
   Running setup.py egg_info for package ckan
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
       warnings.warn(msg)
     WARNING: ckanext.stats is a namespace package, but its __init__.py does
     not declare_namespace(); setuptools 0.7 will REQUIRE this!
@@ -76,7 +76,7 @@ Obtaining ckan from git+https://github.com/okfn/ckan.git#egg=ckan
     no previously-included directories found matching '.git'
 Installing collected packages: ckan
   Running setup.py develop for ckan
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
       warnings.warn(msg)
     WARNING: ckanext.stats is a namespace package, but its __init__.py does
     not declare_namespace(); setuptools 0.7 will REQUIRE this!
@@ -121,7 +121,7 @@ Downloading/unpacking solrpy==0.9.5 (from -r pyenv/src/ckan/pip-requirements.txt
     warning: no previously-included files matching '*.pyo' found anywhere in distribution
 Downloading/unpacking formalchemy==1.4.2 (from -r pyenv/src/ckan/pip-requirements.txt (line 12))
   Running setup.py egg_info for package formalchemy
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
       warnings.warn(msg)
     .mo files compilation success
     warning: no previously-included files found matching 'docs/*.py'
@@ -145,8 +145,6 @@ Downloading/unpacking markupsafe==0.15 (from -r pyenv/src/ckan/pip-requirements.
   Running setup.py egg_info for package markupsafe
 Downloading/unpacking babel==0.9.6 (from -r pyenv/src/ckan/pip-requirements.txt (line 17))
   Running setup.py egg_info for package babel
-    warning: no files found matching 'doc/api/*.*'
-    warning: no files found matching 'doc/*.html'
 Downloading/unpacking psycopg2==2.4.5 (from -r pyenv/src/ckan/pip-requirements.txt (line 18))
   Running setup.py egg_info for package psycopg2
     no previously-included directories found matching 'doc/src/_build'
@@ -165,14 +163,14 @@ Downloading/unpacking repoze.who==1.0.19 (from -r pyenv/src/ckan/pip-requirement
 Downloading/unpacking tempita==0.5.1 (from -r pyenv/src/ckan/pip-requirements.txt (line 22))
   Downloading Tempita-0.5.1.tar.gz
   Running setup.py egg_info for package tempita
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
       warnings.warn(msg)
 Downloading/unpacking zope.interface==4.0.1 (from -r pyenv/src/ckan/pip-requirements.txt (line 23))
   Running setup.py egg_info for package zope.interface
 Downloading/unpacking repoze.who.plugins.openid==0.5.3 (from -r pyenv/src/ckan/pip-requirements.txt (line 24))
   Downloading repoze.who.plugins.openid-0.5.3.tar.gz
   Running setup.py egg_info for package repoze.who.plugins.openid
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'test_requires'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'test_requires'
       warnings.warn(msg)
 Downloading/unpacking repoze.who-friendlyform==1.0.8 (from -r pyenv/src/ckan/pip-requirements.txt (line 25))
   Downloading repoze.who-friendlyform-1.0.8.tar.gz
@@ -204,7 +202,7 @@ Downloading/unpacking fanstatic==0.12 (from -r pyenv/src/ckan/pip-requirements.t
 Downloading/unpacking decorator (from sqlalchemy-migrate==0.7.2->-r pyenv/src/ckan/pip-requirements.txt (line 6))
   Downloading decorator-3.3.3.tar.gz
   Running setup.py egg_info for package decorator
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
       warnings.warn(msg)
     warning: no previously-included files found matching 'Makefile'
 Requirement already satisfied (use --upgrade to upgrade): setuptools in ./pyenv/lib/python2.6/site-packages/setuptools-0.6c11-py2.6.egg (from sqlalchemy-migrate==0.7.2->-r pyenv/src/ckan/pip-requirements.txt (line 6))
@@ -273,11 +271,11 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     Installing migrate-repository script to /home/ckan/pyenv/bin
   Running setup.py install for sqlalchemy
     building 'sqlalchemy.cprocessors' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c lib/sqlalchemy/cextension/processors.c -o build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/processors.o
-    gcc -pthread -shared build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/processors.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/sqlalchemy/cprocessors.so
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c lib/sqlalchemy/cextension/processors.c -o build/temp.linux-x86_64-2.6/lib/sqlalchemy/cextension/processors.o
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/lib/sqlalchemy/cextension/processors.o -L/usr/lib64 -lpython2.6 -o build/lib.linux-x86_64-2.6/sqlalchemy/cprocessors.so
     building 'sqlalchemy.cresultproxy' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c lib/sqlalchemy/cextension/resultproxy.c -o build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/resultproxy.o
-    gcc -pthread -shared build/temp.linux-i686-2.6/lib/sqlalchemy/cextension/resultproxy.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/sqlalchemy/cresultproxy.so
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c lib/sqlalchemy/cextension/resultproxy.c -o build/temp.linux-x86_64-2.6/lib/sqlalchemy/cextension/resultproxy.o
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/lib/sqlalchemy/cextension/resultproxy.o -L/usr/lib64 -lpython2.6 -o build/lib.linux-x86_64-2.6/sqlalchemy/cresultproxy.so
     warning: no files found matching '*.jpg' under directory 'doc'
     no previously-included directories found matching 'doc/build/output'
   Running setup.py install for webhelpers
@@ -296,7 +294,7 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
   Running setup.py install for solrpy
     warning: no previously-included files matching '*.pyo' found anywhere in distribution
   Running setup.py install for formalchemy
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
       warnings.warn(msg)
     .mo files compilation success
     warning: no previously-included files found matching 'docs/*.py'
@@ -315,40 +313,38 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     warning: no files found matching 'ez_setup.py'
   Running setup.py install for markupsafe
     building 'markupsafe._speedups' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c markupsafe/_speedups.c -o build/temp.linux-i686-2.6/markupsafe/_speedups.o
-    gcc -pthread -shared build/temp.linux-i686-2.6/markupsafe/_speedups.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/markupsafe/_speedups.so
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c markupsafe/_speedups.c -o build/temp.linux-x86_64-2.6/markupsafe/_speedups.o
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/markupsafe/_speedups.o -L/usr/lib64 -lpython2.6 -o build/lib.linux-x86_64-2.6/markupsafe/_speedups.so
   Running setup.py install for babel
-    warning: no files found matching 'doc/api/*.*'
-    warning: no files found matching 'doc/*.html'
     Installing pybabel script to /home/ckan/pyenv/bin
   Running setup.py install for psycopg2
     building 'psycopg2._psycopg' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/psycopgmodule.c -o build/temp.linux-i686-2.6/psycopg/psycopgmodule.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/green.c -o build/temp.linux-i686-2.6/psycopg/green.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/pqpath.c -o build/temp.linux-i686-2.6/psycopg/pqpath.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/utils.c -o build/temp.linux-i686-2.6/psycopg/utils.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/bytes_format.c -o build/temp.linux-i686-2.6/psycopg/bytes_format.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/connection_int.c -o build/temp.linux-i686-2.6/psycopg/connection_int.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/connection_type.c -o build/temp.linux-i686-2.6/psycopg/connection_type.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/cursor_int.c -o build/temp.linux-i686-2.6/psycopg/cursor_int.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/cursor_type.c -o build/temp.linux-i686-2.6/psycopg/cursor_type.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/lobject_int.c -o build/temp.linux-i686-2.6/psycopg/lobject_int.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/lobject_type.c -o build/temp.linux-i686-2.6/psycopg/lobject_type.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/notify_type.c -o build/temp.linux-i686-2.6/psycopg/notify_type.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/xid_type.c -o build/temp.linux-i686-2.6/psycopg/xid_type.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_asis.c -o build/temp.linux-i686-2.6/psycopg/adapter_asis.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_binary.c -o build/temp.linux-i686-2.6/psycopg/adapter_binary.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_datetime.c -o build/temp.linux-i686-2.6/psycopg/adapter_datetime.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_list.c -o build/temp.linux-i686-2.6/psycopg/adapter_list.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pboolean.c -o build/temp.linux-i686-2.6/psycopg/adapter_pboolean.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pdecimal.c -o build/temp.linux-i686-2.6/psycopg/adapter_pdecimal.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pint.c -o build/temp.linux-i686-2.6/psycopg/adapter_pint.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pfloat.c -o build/temp.linux-i686-2.6/psycopg/adapter_pfloat.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_qstring.c -o build/temp.linux-i686-2.6/psycopg/adapter_qstring.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/microprotocols.c -o build/temp.linux-i686-2.6/psycopg/microprotocols.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/microprotocols_proto.c -o build/temp.linux-i686-2.6/psycopg/microprotocols_proto.o -Wdeclaration-after-statement
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/typecast.c -o build/temp.linux-i686-2.6/psycopg/typecast.o -Wdeclaration-after-statement
-    gcc -pthread -shared build/temp.linux-i686-2.6/psycopg/psycopgmodule.o build/temp.linux-i686-2.6/psycopg/green.o build/temp.linux-i686-2.6/psycopg/pqpath.o build/temp.linux-i686-2.6/psycopg/utils.o build/temp.linux-i686-2.6/psycopg/bytes_format.o build/temp.linux-i686-2.6/psycopg/connection_int.o build/temp.linux-i686-2.6/psycopg/connection_type.o build/temp.linux-i686-2.6/psycopg/cursor_int.o build/temp.linux-i686-2.6/psycopg/cursor_type.o build/temp.linux-i686-2.6/psycopg/lobject_int.o build/temp.linux-i686-2.6/psycopg/lobject_type.o build/temp.linux-i686-2.6/psycopg/notify_type.o build/temp.linux-i686-2.6/psycopg/xid_type.o build/temp.linux-i686-2.6/psycopg/adapter_asis.o build/temp.linux-i686-2.6/psycopg/adapter_binary.o build/temp.linux-i686-2.6/psycopg/adapter_datetime.o build/temp.linux-i686-2.6/psycopg/adapter_list.o build/temp.linux-i686-2.6/psycopg/adapter_pboolean.o build/temp.linux-i686-2.6/psycopg/adapter_pdecimal.o build/temp.linux-i686-2.6/psycopg/adapter_pint.o build/temp.linux-i686-2.6/psycopg/adapter_pfloat.o build/temp.linux-i686-2.6/psycopg/adapter_qstring.o build/temp.linux-i686-2.6/psycopg/microprotocols.o build/temp.linux-i686-2.6/psycopg/microprotocols_proto.o build/temp.linux-i686-2.6/psycopg/typecast.o -L/usr/lib -L/usr/lib -lpython2.6 -lpq -o build/lib.linux-i686-2.6/psycopg2/_psycopg.so
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/psycopgmodule.c -o build/temp.linux-x86_64-2.6/psycopg/psycopgmodule.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/green.c -o build/temp.linux-x86_64-2.6/psycopg/green.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/pqpath.c -o build/temp.linux-x86_64-2.6/psycopg/pqpath.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/utils.c -o build/temp.linux-x86_64-2.6/psycopg/utils.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/bytes_format.c -o build/temp.linux-x86_64-2.6/psycopg/bytes_format.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/connection_int.c -o build/temp.linux-x86_64-2.6/psycopg/connection_int.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/connection_type.c -o build/temp.linux-x86_64-2.6/psycopg/connection_type.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/cursor_int.c -o build/temp.linux-x86_64-2.6/psycopg/cursor_int.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/cursor_type.c -o build/temp.linux-x86_64-2.6/psycopg/cursor_type.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/lobject_int.c -o build/temp.linux-x86_64-2.6/psycopg/lobject_int.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/lobject_type.c -o build/temp.linux-x86_64-2.6/psycopg/lobject_type.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/notify_type.c -o build/temp.linux-x86_64-2.6/psycopg/notify_type.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/xid_type.c -o build/temp.linux-x86_64-2.6/psycopg/xid_type.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_asis.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_asis.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_binary.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_binary.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_datetime.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_datetime.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_list.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_list.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pboolean.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_pboolean.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pdecimal.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_pdecimal.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pint.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_pint.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_pfloat.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_pfloat.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/adapter_qstring.c -o build/temp.linux-x86_64-2.6/psycopg/adapter_qstring.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/microprotocols.c -o build/temp.linux-x86_64-2.6/psycopg/microprotocols.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/microprotocols_proto.c -o build/temp.linux-x86_64-2.6/psycopg/microprotocols_proto.o -Wdeclaration-after-statement
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -DPSYCOPG_DEFAULT_PYDATETIME=1 -DPSYCOPG_VERSION="2.4.5 (dt dec pq3 ext)" -DPG_VERSION_HEX=0x08040D -DPSYCOPG_EXTENSIONS=1 -DPSYCOPG_NEW_BOOLEAN=1 -DHAVE_PQFREEMEM=1 -I/usr/include/python2.6 -I. -I/usr/include -I/usr/include/pgsql/server -c psycopg/typecast.c -o build/temp.linux-x86_64-2.6/psycopg/typecast.o -Wdeclaration-after-statement
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/psycopg/psycopgmodule.o build/temp.linux-x86_64-2.6/psycopg/green.o build/temp.linux-x86_64-2.6/psycopg/pqpath.o build/temp.linux-x86_64-2.6/psycopg/utils.o build/temp.linux-x86_64-2.6/psycopg/bytes_format.o build/temp.linux-x86_64-2.6/psycopg/connection_int.o build/temp.linux-x86_64-2.6/psycopg/connection_type.o build/temp.linux-x86_64-2.6/psycopg/cursor_int.o build/temp.linux-x86_64-2.6/psycopg/cursor_type.o build/temp.linux-x86_64-2.6/psycopg/lobject_int.o build/temp.linux-x86_64-2.6/psycopg/lobject_type.o build/temp.linux-x86_64-2.6/psycopg/notify_type.o build/temp.linux-x86_64-2.6/psycopg/xid_type.o build/temp.linux-x86_64-2.6/psycopg/adapter_asis.o build/temp.linux-x86_64-2.6/psycopg/adapter_binary.o build/temp.linux-x86_64-2.6/psycopg/adapter_datetime.o build/temp.linux-x86_64-2.6/psycopg/adapter_list.o build/temp.linux-x86_64-2.6/psycopg/adapter_pboolean.o build/temp.linux-x86_64-2.6/psycopg/adapter_pdecimal.o build/temp.linux-x86_64-2.6/psycopg/adapter_pint.o build/temp.linux-x86_64-2.6/psycopg/adapter_pfloat.o build/temp.linux-x86_64-2.6/psycopg/adapter_qstring.o build/temp.linux-x86_64-2.6/psycopg/microprotocols.o build/temp.linux-x86_64-2.6/psycopg/microprotocols_proto.o build/temp.linux-x86_64-2.6/psycopg/typecast.o -L/usr/lib64 -L/usr/lib64 -lpython2.6 -lpq -o build/lib.linux-x86_64-2.6/psycopg2/_psycopg.so
     no previously-included directories found matching 'doc/src/_build'
   Running setup.py install for webob
     no previously-included directories found matching '*.pyc'
@@ -364,16 +360,16 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/plugins/__init__.py (namespace package)
     Installing /home/ckan/pyenv/lib/python2.6/site-packages/repoze.who-1.0.19-py2.6-nspkg.pth
   Running setup.py install for tempita
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
       warnings.warn(msg)
   Running setup.py install for zope.interface
     building 'zope.interface._zope_interface_coptimizations' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c src/zope/interface/_zope_interface_coptimizations.c -o build/temp.linux-i686-2.6/src/zope/interface/_zope_interface_coptimizations.o
-    gcc -pthread -shared build/temp.linux-i686-2.6/src/zope/interface/_zope_interface_coptimizations.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/zope/interface/_zope_interface_coptimizations.so
-    Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/zope/__init__.py (namespace package)
-    Installing /home/ckan/pyenv/lib/python2.6/site-packages/zope.interface-4.0.1-py2.6-nspkg.pth
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c src/zope/interface/_zope_interface_coptimizations.c -o build/temp.linux-x86_64-2.6/src/zope/interface/_zope_interface_coptimizations.o
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/src/zope/interface/_zope_interface_coptimizations.o -L/usr/lib64 -lpython2.6 -o build/lib.linux-x86_64-2.6/zope/interface/_zope_interface_coptimizations.so
+    Skipping installation of /home/ckan/pyenv/lib64/python2.6/site-packages/zope/__init__.py (namespace package)
+    Installing /home/ckan/pyenv/lib64/python2.6/site-packages/zope.interface-4.0.1-py2.6-nspkg.pth
   Running setup.py install for repoze.who.plugins.openid
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'test_requires'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'test_requires'
       warnings.warn(msg)
     Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/__init__.py (namespace package)
     Skipping installation of /home/ckan/pyenv/lib/python2.6/site-packages/repoze/who/__init__.py (namespace package)
@@ -407,7 +403,7 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     warning: no previously-included files found matching '.installed.cfg'
     warning: no files found matching '*.txt' under directory 'doc'
   Running setup.py install for decorator
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'use_2to3'
       warnings.warn(msg)
     warning: no previously-included files found matching 'Makefile'
   Running setup.py install for argparse
@@ -436,12 +432,12 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     no previously-included directories found matching '**/.svn'
   Running setup.py install for simplejson
     building 'simplejson._speedups' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c simplejson/_speedups.c -o build/temp.linux-i686-2.6/simplejson/_speedups.o
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c simplejson/_speedups.c -o build/temp.linux-x86_64-2.6/simplejson/_speedups.o
     simplejson/_speedups.c: In function ‘encoder_listencode_obj’:
     simplejson/_speedups.c:2269: warning: comparison of distinct pointer types lacks a cast
     simplejson/_speedups.c:2269: warning: passing argument 2 of ‘PyType_IsSubtype’ from incompatible pointer type
     /usr/include/python2.6/object.h:435: note: expected ‘struct PyTypeObject *’ but argument is of type ‘struct PyObject *’
-    gcc -pthread -shared build/temp.linux-i686-2.6/simplejson/_speedups.o -L/usr/lib -lpython2.6 -o build/lib.linux-i686-2.6/simplejson/_speedups.so
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/simplejson/_speedups.o -L/usr/lib64 -lpython2.6 -o build/lib.linux-x86_64-2.6/simplejson/_speedups.so
   Running setup.py install for nose
     no previously-included directories found matching 'doc/.build'
     Installing nosetests-2.6 script to /home/ckan/pyenv/bin
@@ -482,6 +478,7 @@ patching file attribute-map.xml
 + pushd /etc/httpd/conf.d
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/shib.conf.patch
 patching file shib.conf
+Hunk #2 succeeded at 13 with fuzz 1.
 + popd
 + /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
@@ -537,9 +534,20 @@ Now you should edit the config files
   development.ini
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
 patching file development.ini
-++ ip addr show dev eth0
-++ grep 'inet '
+Hunk #1 FAILED at 3.
+Hunk #2 succeeded at 25 (offset 9 lines).
+Hunk #3 succeeded at 45 (offset 4 lines).
+Hunk #4 succeeded at 70 (offset 4 lines).
+Hunk #5 succeeded at 109 (offset 4 lines).
+Hunk #6 succeeded at 130 (offset 4 lines).
+Hunk #7 succeeded at 139 (offset 4 lines).
+Hunk #8 succeeded at 233 (offset 4 lines).
+Hunk #9 succeeded at 246 (offset 4 lines).
+Hunk #10 succeeded at 294 (offset 4 lines).
+1 out of 10 hunks FAILED -- saving rejects to file development.ini.rej
 ++ sed -E 's/ +inet +([^/]+).+/\1/'
+++ grep 'inet '
+++ ip addr show dev eth0
 Device "eth0" does not exist.
 + myip=
 + ckanusermail=root@localhost
@@ -556,8 +564,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-10-04 21:03:09,658 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
-2012-10-04 21:03:09,762 INFO  [ckan.model] Database initialised
+2012-10-17 18:22:04,774 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
+2012-10-17 18:22:04,914 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore data_tree
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
@@ -570,8 +578,8 @@ patching file httpd.conf
 ++ dirname /usr/share/kata-ckan-dev/setup-scripts/20setupckanservice.sh
 + myipcmd=/usr/share/kata-ckan-dev/setup-scripts/myip.sh
 ++ /usr/share/kata-ckan-dev/setup-scripts/myip.sh
-+ myip=192.168.56.59
-+ sed -e s/%%MYIP%%/192.168.56.59/ httpd.conf.step1
++ myip=192.168.122.25
++ sed -e s/%%MYIP%%/192.168.122.25/ httpd.conf.step1
 + popd
 + chkconfig httpd on
 + chown -R ckan:apache /home/ckan/pyenv
@@ -582,9 +590,12 @@ patching file httpd.conf
 + chown ckan:apache /home/ckan/pyenv/ckan.log
 + chmod g+w /home/ckan/pyenv/ckan.log
 + chmod -R g+w /home/ckan/pyenv/src/ckan/data /home/ckan/pyenv/src/ckan/sstore
-++ echo /usr/lib/python2.6
+++ echo /usr/lib64/python2.6 /usr/lib/python2.6
++ for dir in '$(echo /usr/lib*/python2.6)'
++ sed -i.orig 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' /usr/lib64/python2.6/ctypes/__init__.py
 + for dir in '$(echo /usr/lib*/python2.6)'
 + sed -i.orig 's/CFUNCTYPE(c_int)(lambda: None)/#CFUNCTYPE(c_int)(lambda: None)/' /usr/lib/python2.6/ctypes/__init__.py
+sed: can't read /usr/lib/python2.6/ctypes/__init__.py: No such file or directory
 + instloc=/home/ckan
 + cd /home/ckan
 + cd pyenv/src
@@ -642,13 +653,13 @@ Installing collected packages: carrot, anyjson, amqplib
 Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-04 21:04:17,555 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-04 21:04:17,607 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-10-17 18:22:52,955 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-17 18:22:53,710 DEBUG [ckanext.harvest.model] Harvest tables created
 
 DB tables created
 + paster --plugin=ckan user add harvester password=harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Creating user: 'harvester'
-<User id=94c342a8-18c7-46df-aa1e-031683d92dcd name=harvester openid=None password=d163d1c59ea68fd8420c80de0aeba091679260f9e1d629355c9527e99bd852d2260c0a849682c180 fullname=None email=None apikey=99c82c23-4fa1-40cd-80f9-09cf01270a69 created=2012-10-04 21:04:18.990686 reset_key=None about=None>
+<User id=3d3b7d64-722f-43d6-8ee0-4f9f5b601cad name=harvester openid=None password=174d22ac447a2038acd0b669079ae75c09896d51d86be2ab09ac5473956787a4e647006bf31153dc fullname=None email=None apikey=2cd548e8-b085-47f1-abfe-7b1db6de46e6 created=2012-10-17 18:22:56.015251 reset_key=None about=None>
 + paster --plugin=ckan sysadmin add harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Added harvester as sysadmin
 + instloc=/home/ckan
@@ -687,7 +698,7 @@ Obtaining ckanext-urn from git+https://github.com/kata-csc/ckanext-urn.git#egg=c
   Running setup.py egg_info for package ckanext-urn
     no previously-included directories found matching 'test'
     
-    Installed /home/ckan/pyenv/src/ckanext-urn/coverage-3.5.3-py2.6-linux-i686.egg
+    Installed /home/ckan/pyenv/src/ckanext-urn/coverage-3.5.3-py2.6-linux-x86_64.egg
 Installing collected packages: ckanext-urn
   Running setup.py develop for ckanext-urn
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-urn.egg-link (link to .)
@@ -735,11 +746,12 @@ Downloading/unpacking pyoai (from ckanext-oaipmh)
 Requirement already satisfied (use --upgrade to upgrade): ckanext-harvest in ./ckanext-harvest (from ckanext-oaipmh)
 Downloading/unpacking lxml (from pyoai->ckanext-oaipmh)
   Running setup.py egg_info for package lxml
-    Building lxml version 2.3.6.
+    Building lxml version 3.0.1.
     Building without Cython.
     Using build configuration of libxslt 1.1.26
-    Building against libxml2/libxslt in the following directory: /usr/lib
+    Building against libxml2/libxslt in the following directory: /usr/lib64
     warning: no previously-included files found matching '*.py'
+    warning: no files found matching '*.txt' under directory 'src/lxml/tests'
 Installing collected packages: ckanext-oaipmh, pyoai, lxml
   Running setup.py develop for ckanext-oaipmh
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-oaipmh.egg-link (link to .)
@@ -748,16 +760,33 @@ Installing collected packages: ckanext-oaipmh, pyoai, lxml
     Installed /home/ckan/pyenv/src/ckanext-oaipmh
   Running setup.py install for pyoai
   Running setup.py install for lxml
-    Building lxml version 2.3.6.
+    Building lxml version 3.0.1.
     Building without Cython.
     Using build configuration of libxslt 1.1.26
-    Building against libxml2/libxslt in the following directory: /usr/lib
+    Building against libxml2/libxslt in the following directory: /usr/lib64
     building 'lxml.etree' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/usr/include/python2.6 -c src/lxml/lxml.etree.c -o build/temp.linux-i686-2.6/src/lxml/lxml.etree.o -w
-    gcc -pthread -shared build/temp.linux-i686-2.6/src/lxml/lxml.etree.o -L/usr/lib -L/usr/lib -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-i686-2.6/lxml/etree.so
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/home/ckan/pyenv/build/lxml/src/lxml/includes -I/usr/include/python2.6 -c src/lxml/lxml.etree.c -o build/temp.linux-x86_64-2.6/src/lxml/lxml.etree.o
+    src/lxml/lxml.etree.c: In function ‘__pyx_pf_4lxml_5etree_4XSLT_18__call__’:
+    src/lxml/lxml.etree.c:132608: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
+    src/lxml/lxml.etree.c:130569: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
+    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree__copyXSLT’:
+    src/lxml/lxml.etree.c:133997: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
+    src/lxml/lxml.etree.c:130569: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
+    src/lxml/lxml.etree.c: At top level:
+    src/lxml/lxml.etree.c:12128: warning: ‘__pyx_f_4lxml_5etree_displayNode’ defined but not used
+    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDocFromFilelike’:
+    src/lxml/lxml.etree.c:86731: warning: ‘__pyx_r’ may be used uninitialized in this function
+    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDocFromFile’:
+    src/lxml/lxml.etree.c:86420: warning: ‘__pyx_r’ may be used uninitialized in this function
+    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDoc’:
+    src/lxml/lxml.etree.c:86109: warning: ‘__pyx_r’ may be used uninitialized in this function
+    src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseUnicodeDoc’:
+    src/lxml/lxml.etree.c:85780: warning: ‘__pyx_r’ may be used uninitialized in this function
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/src/lxml/lxml.etree.o -L/usr/lib64 -L/usr/lib64 -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-x86_64-2.6/lxml/etree.so
     building 'lxml.objectify' extension
-    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/usr/include/python2.6 -c src/lxml/lxml.objectify.c -o build/temp.linux-i686-2.6/src/lxml/lxml.objectify.o -w
-    gcc -pthread -shared build/temp.linux-i686-2.6/src/lxml/lxml.objectify.o -L/usr/lib -L/usr/lib -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-i686-2.6/lxml/objectify.so
+    gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/home/ckan/pyenv/build/lxml/src/lxml/includes -I/usr/include/python2.6 -c src/lxml/lxml.objectify.c -o build/temp.linux-x86_64-2.6/src/lxml/lxml.objectify.o
+    gcc -pthread -shared build/temp.linux-x86_64-2.6/src/lxml/lxml.objectify.o -L/usr/lib64 -L/usr/lib64 -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-x86_64-2.6/lxml/objectify.so
+    warning: no files found matching '*.txt' under directory 'src/lxml/tests'
 Successfully installed ckanext-oaipmh pyoai lxml
 Cleaning up...
 + instloc=/home/ckan
@@ -799,7 +828,7 @@ Downloading/unpacking beautifulsoup4 (from ckanext-ddi)
 Downloading/unpacking ckanclient (from ckanext-ddi)
   Downloading ckanclient-0.10.tar.gz
   Running setup.py egg_info for package ckanclient
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'always_unzip'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'always_unzip'
       warnings.warn(msg)
 Downloading/unpacking unicodecsv (from ckanext-ddi)
   Downloading unicodecsv-0.9.0.tar.gz
@@ -812,7 +841,7 @@ Installing collected packages: ckanext-ddi, beautifulsoup4, ckanclient, unicodec
     Installed /home/ckan/pyenv/src/ckanext-ddi
   Running setup.py install for beautifulsoup4
   Running setup.py install for ckanclient
-    /usr/lib/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'always_unzip'
+    /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'always_unzip'
       warnings.warn(msg)
   Running setup.py install for unicodecsv
 Successfully installed ckanext-ddi beautifulsoup4 ckanclient unicodecsv
@@ -909,6 +938,56 @@ patching file who.ini
 + popd
 + chown ckan:apache /home/ckan -R
 + instloc=/home/ckan
++ ckanuser=
++ cd /home/ckan
++ cd pyenv/src
++ source ../bin/activate
+++ deactivate nondestructive
+++ unset pydoc
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home/ckan/pyenv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ '[' x '!=' x ']'
++++ basename /home/ckan/pyenv
+++ '[' pyenv = __ ']'
++++ basename /home/ckan/pyenv
+++ PS1='(pyenv)'
+++ export PS1
+++ alias 'pydoc=python -m pydoc'
+++ '[' -n /bin/sh -o -n '' ']'
+++ hash -r
++ pip install -e git+git://github.com/kata-csc/ckanext-kata.git#egg=ckanext-kata
+Obtaining ckanext-kata from git+git://github.com/kata-csc/ckanext-kata.git#egg=ckanext-kata
+  Cloning git://github.com/kata-csc/ckanext-kata.git to ./ckanext-kata
+  Running setup.py egg_info for package ckanext-kata
+Downloading/unpacking rdflib (from ckanext-kata)
+  Running setup.py egg_info for package rdflib
+Downloading/unpacking isodate (from rdflib->ckanext-kata)
+  Downloading isodate-0.4.8.tar.gz
+  Running setup.py egg_info for package isodate
+Installing collected packages: ckanext-kata, rdflib, isodate
+  Running setup.py develop for ckanext-kata
+    Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-kata.egg-link (link to .)
+    Adding ckanext-kata 0.1 to easy-install.pth file
+    
+    Installed /home/ckan/pyenv/src/ckanext-kata
+  Running setup.py install for rdflib
+  Running setup.py install for isodate
+Successfully installed ckanext-kata rdflib isodate
+Cleaning up...
++ instloc=/home/ckan
 + cp /opt/solr/conf/schema.xml /opt/solr/conf/schema.xml.bak
 + cp /home/ckan/pyenv/src/ckan/ckan/config/solr/schema-1.4.xml /opt/solr/conf/schema.xml
 + service tomcat6 restart
@@ -916,24 +995,24 @@ Stopping tomcat6: [  OK  ]
 Starting tomcat6: [  OK  ]
 + chkconfig tomcat6 on
 + instloc=/home/ckan
-+ extensions='shibboleth harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester sitemap'
-+ sed -i '/^ckan.plugins/s|$| shibboleth harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester sitemap|' /home/ckan/pyenv/src/ckan/development.ini
++ extensions='shibboleth harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester sitemap kata kata_metadata'
++ sed -i '/^ckan.plugins/s|$| shibboleth harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester sitemap kata kata_metadata|' /home/ckan/pyenv/src/ckan/development.ini
 + instloc=/home/ckan
 + service rabbitmq-server start
 Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-04 21:06:59,181 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-04 21:06:59,184 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-10-04 21:06:59,229 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-04 21:06:59,248 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-10-04 21:06:59,264 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 967d769c-0a07-4b6f-8948-fdc47a0995a0
-2012-10-04 21:06:59,288 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'967d769c-0a07-4b6f-8948-fdc47a0995a0'}
-2012-10-04 21:06:59,308 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 7e5fb8f5-a8fb-44da-b706-0b4316b64cdd
+2012-10-17 18:26:33,996 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-17 18:26:34,015 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-17 18:26:34,333 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-17 18:26:34,371 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-10-17 18:26:34,411 INFO  [ckanext.harvest.logic.action.create] Harvest source created: ceeaa866-6428-45c1-bcec-f541351069e6
+2012-10-17 18:26:34,455 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'ceeaa866-6428-45c1-bcec-f541351069e6'}
+2012-10-17 18:26:34,502 INFO  [ckanext.harvest.logic.action.create] Harvest job saved bfa57e96-cfcf-4380-89f2-3d7ac2e542ee
 
 Created new harvest source:
-Source id: 967d769c-0a07-4b6f-8948-fdc47a0995a0
+Source id: ceeaa866-6428-45c1-bcec-f541351069e6
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -944,16 +1023,16 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-04 21:07:00,828 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-04 21:07:00,831 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-10-04 21:07:00,857 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-04 21:07:00,876 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-10-04 21:07:00,891 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 8561209a-186f-464e-a20d-24df455eb614
-2012-10-04 21:07:00,922 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'8561209a-186f-464e-a20d-24df455eb614'}
-2012-10-04 21:07:00,940 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 85ef52e3-9b78-48d8-baa8-996ef2652eed
+2012-10-17 18:26:37,265 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-17 18:26:37,269 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-17 18:26:37,312 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-17 18:26:37,354 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-10-17 18:26:37,389 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 99bbf663-fc17-4965-bb70-3d5474f750c9
+2012-10-17 18:26:37,416 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'99bbf663-fc17-4965-bb70-3d5474f750c9'}
+2012-10-17 18:26:37,447 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 1e6ed890-382f-4508-954c-10c553fe3f5a
 
 Created new harvest source:
-Source id: 8561209a-186f-464e-a20d-24df455eb614
+Source id: 99bbf663-fc17-4965-bb70-3d5474f750c9
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -972,7 +1051,7 @@ Stopping supervisord: [FAILED]
 Starting supervisord: [  OK  ]
 Stopping atd: [FAILED]
 Starting atd: [  OK  ]
-job 1 at 2012-10-04 21:12
+job 1 at 2012-10-17 18:31
 Stopping shibd: [FAILED]
 Starting shibd: [  OK  ]
 Stopping httpd: [  OK  ]
@@ -1018,17 +1097,25 @@ Starting httpd: [  OK  ]
 Python package mismatches:
 + cat /tmp/kata-70.tmp
 28c28
-< -e git+https://github.com/okfn/ckan.git@5173eca7a3af1cb44a51ce607d148dcd0a3fe813#egg=ckan-dev
+< -e git+https://github.com/okfn/ckan.git@b5332a15a42189f68c7667bb2fe67bd90cf53f49#egg=ckan-dev
 ---
-> -e git+https://github.com/okfn/ckan.git@b5332a15a42189f68c7667bb2fe67bd90cf53f49#egg=ckan-dev
+> -e git+https://github.com/okfn/ckan.git@6289cb53313d22ecc37716134dc9548647c02876#egg=ckan-dev
 30c30
-< -e git+https://github.com/kata-csc/ckanext-ddi.git@32fa1d4178c6a61ef7c0148e587c3dea53c79061#egg=ckanext_ddi-dev
+< -e git+https://github.com/kata-csc/ckanext-ddi.git@155c9dc3660a01ac9a4e9c1edb6de7d2a56966a5#egg=ckanext_ddi-dev
 ---
-> -e git+https://github.com/kata-csc/ckanext-ddi.git@155c9dc3660a01ac9a4e9c1edb6de7d2a56966a5#egg=ckanext_ddi-dev
-33c33
-< -e git://github.com/kata-csc/ckanext-shibboleth.git@dc14a2f926c1912710a5ca7e5503f7b40091cd4f#egg=ckanext_repoze_who_shibboleth-dev
+> -e git+https://github.com/kata-csc/ckanext-ddi.git@2300dc012f053950ba55f9160633002e68e2967b#egg=ckanext_ddi-dev
+32c32,33
+< -e git+https://github.com/kata-csc/ckanext-oaipmh.git@73f1d0916458a7a3c94940fa4116d6cd90f6ec8c#egg=ckanext_oaipmh-dev
 ---
-> -e git://github.com/kata-csc/ckanext-shibboleth.git@b7bcd5a21d8c905e54b393509997510e59b3d7d8#egg=ckanext_repoze_who_shibboleth-dev
+> -e git://github.com/kata-csc/ckanext-kata.git@98555609a7a46e718e5234f09fb60986f33f0b22#egg=ckanext_kata-dev
+> -e git+https://github.com/kata-csc/ckanext-oaipmh.git@97988a70ef1343646f4e7922a9cf56ab4df3c3dc#egg=ckanext_oaipmh-dev
+38c39,40
+< lxml==2.3.6
+---
+> isodate==0.4.8
+> lxml==3.0.1
+44a47
+> rdflib==3.2.3
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 + datadir=/usr/share/kata-ckan-dev/setup-data
