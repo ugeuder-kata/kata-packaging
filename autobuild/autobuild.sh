@@ -81,7 +81,7 @@ case $phase in
     version=$(($min%1000000))
     scp -i $abuildkey -P $abuildport ${abuilduser}@${abuildhost}:rpmbuild/RPMS/rpms.tar rpms-${version}.tar
     $SETCOLOR
-    if [ "$abuildhostdev" = "$abuildhostprod" -a "$abuildportdev" = "$abuildportprod"]
+    if [ "$abuildhostdev" = "$abuildhostprod" -a "$abuildportdev" = "$abuildportprod" ]
     then
       echo "Reset host ${abuildhost}:${abuildport} for phase 3"
     else
@@ -102,6 +102,3 @@ case $phase in
     echo "usage: $0 [1|2|3]"
     exit 1 ;;
 esac
-
-    
-  
