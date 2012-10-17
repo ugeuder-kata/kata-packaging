@@ -27,6 +27,7 @@ Requires: supervisor
 Requires: mod_wsgi
 Requires: shibboleth
 Requires: mcfg
+Requires: mod_ssl
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...

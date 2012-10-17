@@ -1,8 +1,8 @@
-#! /bin/sh
+#! /bin/bash
 abuilduser=abuild
-abuildkey=~/id_rsa_abuild
-abuildhostdev=abuild
-abuildhostprod=abuild2
+abuildkey=~/.ssh/id_rsa_abuild
+abuildhostdev='192.168.0.22'
+abuildhostprod='192.168.0.22'
 # requirements: access with ssh key $abuildkey must be authorized by 
 #               user $abuild
 # for further requirements see README

@@ -23,6 +23,7 @@ Requires: supervisor
 Requires: mod_wsgi
 Requires: shibboleth
 Requires: mcfg
+Requires: mod_ssl
 Conflicts: kata-ckan-prod
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -50,6 +51,7 @@ diff -u patches/orig/attribute-map.xml patches/kata/attribute-map.xml >attribute
 diff -u patches/orig/attribute-policy.xml patches/kata/attribute-policy.xml >attribute-policy.xml.patch || true
 diff -u patches/orig/development.ini patches/kata/development.ini >development.ini.patch || true
 diff -u patches/orig/httpd.conf patches/kata/httpd.conf >httpd.conf.patch || true
+diff -u patches/orig/ssl.conf patches/kata/ssl.conf >ssl.conf.patch || true
 diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || true
 diff -u patches/orig/shib.conf patches/kata/shib.conf >shib.conf.patch || true
 diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
@@ -69,6 +71,7 @@ install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 07setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 22installharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -97,6 +100,7 @@ install httpd.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install pg_hba.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shib.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
+install ssl.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install tomcat6.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
@@ -118,6 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/02getpythonpackages.sh
 %{scriptdir}/03configshibbolethsp.sh
 %{scriptdir}/05setuppostgres.sh
+%{scriptdir}/07setupapachessl.sh
 %{scriptdir}/10setupckan.sh
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/22installharvester.sh
@@ -144,6 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/pg_hba.conf.patch
 %{patchdir}/shib.conf.patch
 %{patchdir}/shibboleth2.xml.patch
+%{patchdir}/ssl.conf.patch
 %{patchdir}/tomcat6.conf.patch
 %{patchdir}/who.ini.patch
 %attr(0644,root,root)/etc/cron.d/harvester
@@ -157,6 +163,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-dev"
+%{scriptdir}/07setupapachessl.sh "/usr/share/kata-ckan-dev"
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
