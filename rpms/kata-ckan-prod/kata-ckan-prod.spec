@@ -152,7 +152,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-prod"
-%{scriptdir}/07setupapachessl.sh "/usr/share/kata-ckan-dev"
+%{scriptdir}/07setupapachessl.sh "/usr/share/kata-ckan-prod"
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
