@@ -3,8 +3,8 @@ abuilduser=abuild
 abuildkey=~/id_rsa_abuild
 abuildhostdev=abuild
 abuildhostprod=abuild2
-abuildhostdevport=22
-abuildhostprodport=22
+abuildportdev=22
+abuildportprod=22
 if [ \! -z "$ABUILDHOST" ]
 then
   abuildhostdev=$ABUILDHOST
