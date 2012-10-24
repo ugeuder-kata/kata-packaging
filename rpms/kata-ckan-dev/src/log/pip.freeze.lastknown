@@ -25,23 +25,26 @@ apachemiddleware==0.1.1
 argparse==1.2.1
 beautifulsoup4==4.1.3
 carrot==0.10.7
--e git+https://github.com/okfn/ckan.git@b5332a15a42189f68c7667bb2fe67bd90cf53f49#egg=ckan-dev
+-e git+https://github.com/okfn/ckan.git@6289cb53313d22ecc37716134dc9548647c02876#egg=ckan-dev
 ckanclient==0.10
--e git+https://github.com/kata-csc/ckanext-ddi.git@155c9dc3660a01ac9a4e9c1edb6de7d2a56966a5#egg=ckanext_ddi-dev
+-e git+https://github.com/kata-csc/ckanext-ddi.git@2300dc012f053950ba55f9160633002e68e2967b#egg=ckanext_ddi-dev
 -e git+https://github.com/okfn/ckanext-harvest.git@c1f83e0d3e5b6c6ce9922b2bf973fb951763c075#egg=ckanext_harvest-dev
--e git+https://github.com/kata-csc/ckanext-oaipmh.git@73f1d0916458a7a3c94940fa4116d6cd90f6ec8c#egg=ckanext_oaipmh-dev
+-e git://github.com/kata-csc/ckanext-kata.git@98555609a7a46e718e5234f09fb60986f33f0b22#egg=ckanext_kata-dev
+-e git+https://github.com/kata-csc/ckanext-oaipmh.git@97988a70ef1343646f4e7922a9cf56ab4df3c3dc#egg=ckanext_oaipmh-dev
 -e git://github.com/kata-csc/ckanext-shibboleth.git@b7bcd5a21d8c905e54b393509997510e59b3d7d8#egg=ckanext_repoze_who_shibboleth-dev
 -e git+https://github.com/kata-csc/ckanext-sitemap.git@1df31049473a7bd6f82967a5a9de8b93d8cc0616#egg=ckanext_sitemap-dev
 -e git+https://github.com/kata-csc/ckanext-urn.git@b48dfffb0f327aaaf21664ec0057f137ab58ce41#egg=ckanext_urn-dev
 decorator==3.3.3
 fanstatic==0.12
-lxml==2.3.6
+isodate==0.4.8
+lxml==3.0.1
 nose==1.2.1
 ofs==0.4.1
 psycopg2==2.4.5
 pyoai==2.4.4
 python-openid==2.2.5
 pyutilib.component.core==4.5.3
+rdflib==3.2.3
 repoze.lru==0.6
 repoze.who==1.0.19
 repoze.who-friendlyform==1.0.8
