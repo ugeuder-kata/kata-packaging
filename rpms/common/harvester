@@ -1,2 +1,2 @@
 # m  h  dom mon dow   user command
-* 02  1   *   *     ckan /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester run --config=/home/ckan/pyenv/src/ckan/development.ini
+* 02  1   *   *     root /usr/share/kata-ckan-dev/setup-data/jobsforsources.sh
