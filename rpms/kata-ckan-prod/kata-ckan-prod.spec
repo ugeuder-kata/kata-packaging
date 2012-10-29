@@ -178,7 +178,12 @@ chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 service atd restart
-at -f %{scriptdir}/runharvester.sh 'now + 5 minute'
+at -f %{scriptdir}/runharvester.sh 'now + 3 minute'
+
+service shibd start
+service httpd start
+service supervisord start
+
 %preun
 service ckan-dev stop
 # design assumption is that kata is on a "single purpose" server, we 

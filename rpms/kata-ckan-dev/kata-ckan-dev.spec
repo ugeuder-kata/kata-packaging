@@ -196,10 +196,11 @@ sed -i 's/;directory/directory/' /etc/supervisord.conf
 su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 service atd restart
-at -f %{katadatadir}/runharvester.sh 'now + 5 minute'
+at -f %{katadatadir}/runharvester.sh 'now + 3 minute'
 
-service shibd restart
-service httpd restart
+service shibd start
+service httpd start
+service supervisord start
 
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze.lastknown" %{ckanuser}

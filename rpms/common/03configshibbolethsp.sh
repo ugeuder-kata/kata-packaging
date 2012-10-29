@@ -15,3 +15,10 @@ patch -b -p2 -i "${packagedir}/setup-patches/shib.conf.patch"
 popd >/dev/null
 
 /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
+
+chown shibd:shibd /etc/shibboleth/spkey.pem
+chmod og= /etc/shibboleth/spkey.pem
+
+# chkconfig shibd not required, obviously done by its own rpm
+
+# shibd not started here, will be done at the end of the installation
