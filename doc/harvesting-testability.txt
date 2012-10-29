@@ -1,0 +1,52 @@
+Harvesting: Design for Testability
+
+1. Required functionality
+
+As long as the data source supports it we need to implement incremental
+harvesting. Incrmemental harvesting is run periodically (in practice by cron)
+an it fetches only the dataset which have been created or modified since the
+last invocation of the harvsting job.
+
+2. Challenges during testing
+
+C1: The initial harvesting (all dataset created before our system is installed)
+  can take very long and is resource consuming. In many test cases it might
+  be sufficient harvest only a small fraction of all data existing
+
+C2: The incremental harvesting might not do anything for many days (if there
+  are no changes on the data source) Regular testing is infeasible if
+  you need to wait many days for something to happen.
+
+2. Testability features
+
+The following features are suggested for testability:
+
+F1: Cut-off date. Data older than a given timestamp are ignored. In production
+    this timestamp would be 0, 01.01.01 or whatever the minimum supported
+    timestamp is and the result is that no cut-off is applied. This 
+    helps to solve C1.
+
+F2: Flexible intervals. Instead of fetching all updates from the last
+    invocation until now, the timestamps can be arbitrarily selected.
+    Harvest everythin changed in interval [t1, t2]
+
+F3: Fast motion. Instead of harvesting daily (or even weekly) the changes that
+    have occured in the meantime it should be possible to use flexible
+    intervals and run harvest increments much more often. This leads to a
+    fast motion effect addressing C2. At 12:00 o'clock we harvest
+    day d1, at 13:00 o'clock we harvest day d1 + 1, at 14:00 we harvest 
+    day d1 + 2  etc etc.
+
+    Improvement suggestion: Maybe the timing should not be fixed but work 
+    dependent: Harvest d1, wait n minutes, harvest d2, wait n minutes,
+    harvest d3, etc etc.
+
+    Here d2 is not necessarily d1 + 1 at all, but the next date with a
+    non-empty set of datasets.
+
+
+
+    possible to 
+
+
+  
