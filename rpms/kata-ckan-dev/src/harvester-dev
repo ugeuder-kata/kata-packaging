@@ -1,0 +1,2 @@
+# m  h  dom mon dow   user command
+45 14  *   *   *     root /usr/share/kata-ckan-dev/setup-data/jobsforsources.sh

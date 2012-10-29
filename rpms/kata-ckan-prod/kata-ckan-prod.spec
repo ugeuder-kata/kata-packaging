@@ -105,7 +105,7 @@ install tomcat6.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
-install harvester $RPM_BUILD_ROOT/etc/cron.d/
+install harvester-prod $RPM_BUILD_ROOT/etc/cron.d/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 
@@ -130,7 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/runharvester.sh
 %{patchdir}/httpd.conf.patch
 %{patchdir}/pg_hba.conf.patch
-%attr(0644,root,root)/etc/cron.d/harvester
+%attr(0644,root,root)/etc/cron.d/harvester-prod
 %{scriptdir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
 
