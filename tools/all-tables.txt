@@ -1,0 +1,1045 @@
+# summary: 49 tables, 2 sequences
+# no table uses OIDs
+#
+
+                             Table "public.activity"
+    Column     |            Type             | Modifiers | Storage  | Description 
+---------------+-----------------------------+-----------+----------+-------------
+ id            | text                        | not null  | extended | 
+ timestamp     | timestamp without time zone |           | plain    | 
+ user_id       | text                        |           | extended | 
+ object_id     | text                        |           | extended | 
+ revision_id   | text                        |           | extended | 
+ activity_type | text                        |           | extended | 
+ data          | text                        |           | extended | 
+Indexes:
+    "activity_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "activity_detail" CONSTRAINT "activity_detail_activity_id_fkey" FOREIGN KEY (activity_id) REFERENCES activity(id)
+Has OIDs: no
+
+              Table "public.activity_detail"
+    Column     | Type | Modifiers | Storage  | Description 
+---------------+------+-----------+----------+-------------
+ id            | text | not null  | extended | 
+ activity_id   | text |           | extended | 
+ object_id     | text |           | extended | 
+ object_type   | text |           | extended | 
+ activity_type | text |           | extended | 
+ data          | text |           | extended | 
+Indexes:
+    "activity_detail_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "activity_detail_activity_id_fkey" FOREIGN KEY (activity_id) REFERENCES activity(id)
+Has OIDs: no
+
+                     Table "public.authorization_group"
+ Column  |            Type             | Modifiers | Storage  | Description 
+---------+-----------------------------+-----------+----------+-------------
+ id      | text                        | not null  | extended | 
+ name    | text                        |           | extended | 
+ created | timestamp without time zone |           | plain    | 
+Indexes:
+    "authorization_group_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "authorization_group_role" CONSTRAINT "authorization_group_role_authorization_group_id_fkey" FOREIGN KEY (authorization_group_id) REFERENCES authorization_group(id)
+    TABLE "authorization_group_user" CONSTRAINT "authorization_group_user_authorization_group_id_fkey" FOREIGN KEY (authorization_group_id) REFERENCES authorization_group(id)
+    TABLE "user_object_role" CONSTRAINT "user_object_role_authorized_group_id_fkey" FOREIGN KEY (authorized_group_id) REFERENCES authorization_group(id)
+Has OIDs: no
+
+              Table "public.authorization_group_role"
+         Column         | Type | Modifiers | Storage  | Description 
+------------------------+------+-----------+----------+-------------
+ user_object_role_id    | text | not null  | extended | 
+ authorization_group_id | text |           | extended | 
+Indexes:
+    "authorization_group_role_pkey" PRIMARY KEY, btree (user_object_role_id)
+Foreign-key constraints:
+    "authorization_group_role_authorization_group_id_fkey" FOREIGN KEY (authorization_group_id) REFERENCES authorization_group(id)
+    "authorization_group_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+Has OIDs: no
+
+              Table "public.authorization_group_user"
+         Column         | Type | Modifiers | Storage  | Description 
+------------------------+------+-----------+----------+-------------
+ authorization_group_id | text | not null  | extended | 
+ user_id                | text | not null  | extended | 
+ id                     | text | not null  | extended | 
+Indexes:
+    "authorization_group_user_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "authorization_group_user_authorization_group_id_fkey" FOREIGN KEY (authorization_group_id) REFERENCES authorization_group(id)
+    "authorization_group_user_user_id_fkey" FOREIGN KEY (user_id) REFERENCES "user"(id)
+Has OIDs: no
+
+                                Table "public.group"
+     Column      |            Type             | Modifiers | Storage  | Description 
+-----------------+-----------------------------+-----------+----------+-------------
+ id              | text                        | not null  | extended | 
+ name            | text                        | not null  | extended | 
+ title           | text                        |           | extended | 
+ description     | text                        |           | extended | 
+ created         | timestamp without time zone |           | plain    | 
+ state           | text                        |           | extended | 
+ revision_id     | text                        |           | extended | 
+ type            | text                        | not null  | extended | 
+ approval_status | text                        |           | extended | 
+ image_url       | text                        |           | extended | 
+Indexes:
+    "group_pkey" PRIMARY KEY, btree (id)
+    "group_name_key" UNIQUE, btree (name)
+    "idx_group_id" btree (id)
+    "idx_group_name" btree (name)
+Foreign-key constraints:
+    "group_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "group_extra" CONSTRAINT "group_extra_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    TABLE "group_extra_revision" CONSTRAINT "group_extra_revision_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    TABLE "group_revision" CONSTRAINT "group_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES "group"(id)
+    TABLE "group_role" CONSTRAINT "group_role_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    TABLE "member" CONSTRAINT "member_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    TABLE "member_revision" CONSTRAINT "member_revision_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+Has OIDs: no
+
+               Table "public.group_extra"
+   Column    | Type | Modifiers | Storage  | Description 
+-------------+------+-----------+----------+-------------
+ id          | text | not null  | extended | 
+ group_id    | text |           | extended | 
+ key         | text |           | extended | 
+ value       | text |           | extended | 
+ state       | text |           | extended | 
+ revision_id | text |           | extended | 
+Indexes:
+    "group_extra_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "group_extra_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    "group_extra_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "group_extra_revision" CONSTRAINT "group_extra_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES group_extra(id)
+Has OIDs: no
+
+                          Table "public.group_extra_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ group_id           | text                        |           | extended | 
+ key                | text                        |           | extended | 
+ value              | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+Indexes:
+    "group_extra_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_group_extra_current" btree (current)
+    "idx_group_extra_period" btree (revision_timestamp, expired_timestamp, id)
+    "idx_group_extra_period_group" btree (revision_timestamp, expired_timestamp, group_id)
+Foreign-key constraints:
+    "group_extra_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES group_extra(id)
+    "group_extra_revision_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    "group_extra_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+                             Table "public.group_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ name               | text                        | not null  | extended | 
+ title              | text                        |           | extended | 
+ description        | text                        |           | extended | 
+ created            | timestamp without time zone |           | plain    | 
+ state              | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+ type               | text                        | not null  | extended | 
+ approval_status    | text                        |           | extended | 
+ image_url          | text                        |           | extended | 
+Indexes:
+    "group_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_group_current" btree (current)
+    "idx_group_period" btree (revision_timestamp, expired_timestamp, id)
+Foreign-key constraints:
+    "group_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES "group"(id)
+    "group_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+                    Table "public.group_role"
+       Column        | Type | Modifiers | Storage  | Description 
+---------------------+------+-----------+----------+-------------
+ user_object_role_id | text | not null  | extended | 
+ group_id            | text |           | extended | 
+Indexes:
+    "group_role_pkey" PRIMARY KEY, btree (user_object_role_id)
+Foreign-key constraints:
+    "group_role_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    "group_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+Has OIDs: no
+
+                        Table "public.harvest_gather_error"
+     Column     |            Type             | Modifiers | Storage  | Description 
+----------------+-----------------------------+-----------+----------+-------------
+ id             | text                        | not null  | extended | 
+ harvest_job_id | text                        |           | extended | 
+ message        | text                        |           | extended | 
+ created        | timestamp without time zone |           | plain    | 
+Indexes:
+    "harvest_gather_error_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "harvest_gather_error_harvest_job_id_fkey" FOREIGN KEY (harvest_job_id) REFERENCES harvest_job(id)
+Has OIDs: no
+
+                             Table "public.harvest_job"
+     Column      |            Type             | Modifiers | Storage  | Description 
+-----------------+-----------------------------+-----------+----------+-------------
+ id              | text                        | not null  | extended | 
+ created         | timestamp without time zone |           | plain    | 
+ gather_started  | timestamp without time zone |           | plain    | 
+ gather_finished | timestamp without time zone |           | plain    | 
+ source_id       | text                        |           | extended | 
+ status          | text                        | not null  | extended | 
+Indexes:
+    "harvest_job_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "harvest_job_source_id_fkey" FOREIGN KEY (source_id) REFERENCES harvest_source(id)
+Referenced by:
+    TABLE "harvest_gather_error" CONSTRAINT "harvest_gather_error_harvest_job_id_fkey" FOREIGN KEY (harvest_job_id) REFERENCES harvest_job(id)
+    TABLE "harvest_object" CONSTRAINT "harvest_object_harvest_job_id_fkey" FOREIGN KEY (harvest_job_id) REFERENCES harvest_job(id)
+Has OIDs: no
+
+                               Table "public.harvest_object"
+         Column         |            Type             | Modifiers | Storage  | Description 
+------------------------+-----------------------------+-----------+----------+-------------
+ id                     | text                        | not null  | extended | 
+ guid                   | text                        |           | extended | 
+ current                | boolean                     |           | plain    | 
+ gathered               | timestamp without time zone |           | plain    | 
+ fetch_started          | timestamp without time zone |           | plain    | 
+ content                | text                        |           | extended | 
+ fetch_finished         | timestamp without time zone |           | plain    | 
+ metadata_modified_date | timestamp without time zone |           | plain    | 
+ retry_times            | integer                     |           | plain    | 
+ harvest_job_id         | text                        |           | extended | 
+ harvest_source_id      | text                        |           | extended | 
+ package_id             | text                        |           | extended | 
+Indexes:
+    "harvest_object_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "harvest_object_harvest_job_id_fkey" FOREIGN KEY (harvest_job_id) REFERENCES harvest_job(id)
+    "harvest_object_harvest_source_id_fkey" FOREIGN KEY (harvest_source_id) REFERENCES harvest_source(id)
+    "harvest_object_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+Referenced by:
+    TABLE "harvest_object_error" CONSTRAINT "harvest_object_error_harvest_object_id_fkey" FOREIGN KEY (harvest_object_id) REFERENCES harvest_object(id)
+Has OIDs: no
+
+                         Table "public.harvest_object_error"
+      Column       |            Type             | Modifiers | Storage  | Description 
+-------------------+-----------------------------+-----------+----------+-------------
+ id                | text                        | not null  | extended | 
+ harvest_object_id | text                        |           | extended | 
+ message           | text                        |           | extended | 
+ stage             | text                        |           | extended | 
+ created           | timestamp without time zone |           | plain    | 
+Indexes:
+    "harvest_object_error_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "harvest_object_error_harvest_object_id_fkey" FOREIGN KEY (harvest_object_id) REFERENCES harvest_object(id)
+Has OIDs: no
+
+                          Table "public.harvest_source"
+    Column    |            Type             | Modifiers | Storage  | Description 
+--------------+-----------------------------+-----------+----------+-------------
+ id           | text                        | not null  | extended | 
+ url          | text                        | not null  | extended | 
+ title        | text                        |           | extended | 
+ description  | text                        |           | extended | 
+ config       | text                        |           | extended | 
+ created      | timestamp without time zone |           | plain    | 
+ type         | text                        | not null  | extended | 
+ active       | boolean                     |           | plain    | 
+ user_id      | text                        |           | extended | 
+ publisher_id | text                        |           | extended | 
+Indexes:
+    "harvest_source_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "harvest_job" CONSTRAINT "harvest_job_source_id_fkey" FOREIGN KEY (source_id) REFERENCES harvest_source(id)
+    TABLE "harvest_object" CONSTRAINT "harvest_object_harvest_source_id_fkey" FOREIGN KEY (harvest_source_id) REFERENCES harvest_source(id)
+Has OIDs: no
+
+                  Table "public.member"
+   Column    | Type | Modifiers | Storage  | Description 
+-------------+------+-----------+----------+-------------
+ id          | text | not null  | extended | 
+ table_id    | text | not null  | extended | 
+ group_id    | text |           | extended | 
+ state       | text |           | extended | 
+ revision_id | text |           | extended | 
+ table_name  | text | not null  | extended | 
+ capacity    | text | not null  | extended | 
+Indexes:
+    "member_pkey" PRIMARY KEY, btree (id)
+    "idx_extra_grp_id_pkg_id" btree (group_id, table_id)
+    "idx_group_pkg_id" btree (table_id)
+    "idx_package_group_group_id" btree (group_id)
+    "idx_package_group_id" btree (id)
+    "idx_package_group_pkg_id" btree (table_id)
+    "idx_package_group_pkg_id_group_id" btree (group_id, table_id)
+Foreign-key constraints:
+    "member_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    "member_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "member_revision" CONSTRAINT "member_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES member(id)
+Has OIDs: no
+
+                            Table "public.member_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ table_id           | text                        | not null  | extended | 
+ group_id           | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+ table_name         | text                        | not null  | extended | 
+ capacity           | text                        | not null  | extended | 
+Indexes:
+    "member_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_package_group_current" btree (current)
+    "idx_package_group_period_package_group" btree (revision_timestamp, expired_timestamp, table_id, group_id)
+Foreign-key constraints:
+    "member_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES member(id)
+    "member_revision_group_id_fkey" FOREIGN KEY (group_id) REFERENCES "group"(id)
+    "member_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+                        Table "public.migrate_version"
+     Column      |          Type          | Modifiers | Storage  | Description 
+-----------------+------------------------+-----------+----------+-------------
+ repository_id   | character varying(250) | not null  | extended | 
+ repository_path | text                   |           | extended | 
+ version         | integer                |           | plain    | 
+Indexes:
+    "migrate_version_pkey" PRIMARY KEY, btree (repository_id)
+Has OIDs: no
+
+                             Table "public.package"
+      Column      |          Type          | Modifiers | Storage  | Description 
+------------------+------------------------+-----------+----------+-------------
+ id               | text                   | not null  | extended | 
+ name             | character varying(100) | not null  | extended | 
+ title            | text                   |           | extended | 
+ version          | character varying(100) |           | extended | 
+ url              | text                   |           | extended | 
+ notes            | text                   |           | extended | 
+ license_id       | text                   |           | extended | 
+ revision_id      | text                   |           | extended | 
+ author           | text                   |           | extended | 
+ author_email     | text                   |           | extended | 
+ maintainer       | text                   |           | extended | 
+ maintainer_email | text                   |           | extended | 
+ state            | text                   |           | extended | 
+ type             | text                   |           | extended | 
+Indexes:
+    "package_pkey" PRIMARY KEY, btree (id)
+    "package_name_key" UNIQUE, btree (name)
+    "idx_pkg_id" btree (id)
+    "idx_pkg_lname" btree (lower(name::text))
+    "idx_pkg_name" btree (name)
+    "idx_pkg_rev_id" btree (revision_id)
+    "idx_pkg_sid" btree (id, state)
+    "idx_pkg_slname" btree (lower(name::text), state)
+    "idx_pkg_sname" btree (name, state)
+    "idx_pkg_srev_id" btree (revision_id, state)
+    "idx_pkg_stitle" btree (title, state)
+    "idx_pkg_suname" btree (upper(name::text), state)
+    "idx_pkg_title" btree (title)
+    "idx_pkg_uname" btree (upper(name::text))
+Foreign-key constraints:
+    "package_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "harvest_object" CONSTRAINT "harvest_object_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "package_extra" CONSTRAINT "package_extra_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "package_extra_revision" CONSTRAINT "package_extra_revision_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "package_relationship" CONSTRAINT "package_relationship_object_package_id_fkey" FOREIGN KEY (object_package_id) REFERENCES package(id)
+    TABLE "package_relationship_revision" CONSTRAINT "package_relationship_revision_object_package_id_fkey" FOREIGN KEY (object_package_id) REFERENCES package(id)
+    TABLE "package_relationship_revision" CONSTRAINT "package_relationship_revision_subject_package_id_fkey" FOREIGN KEY (subject_package_id) REFERENCES package(id)
+    TABLE "package_relationship" CONSTRAINT "package_relationship_subject_package_id_fkey" FOREIGN KEY (subject_package_id) REFERENCES package(id)
+    TABLE "package_revision" CONSTRAINT "package_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package(id)
+    TABLE "package_role" CONSTRAINT "package_role_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "package_tag" CONSTRAINT "package_tag_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "package_tag_revision" CONSTRAINT "package_tag_revision_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "rating" CONSTRAINT "rating_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "related_dataset" CONSTRAINT "related_dataset_dataset_id_fkey" FOREIGN KEY (dataset_id) REFERENCES package(id)
+    TABLE "resource_group" CONSTRAINT "resource_group_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "resource_group_revision" CONSTRAINT "resource_group_revision_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    TABLE "user_following_dataset" CONSTRAINT "user_following_dataset_object_id_fkey" FOREIGN KEY (object_id) REFERENCES package(id) ON UPDATE CASCADE ON DELETE CASCADE
+Has OIDs: no
+
+              Table "public.package_extra"
+   Column    | Type | Modifiers | Storage  | Description 
+-------------+------+-----------+----------+-------------
+ id          | text | not null  | extended | 
+ package_id  | text |           | extended | 
+ key         | text |           | extended | 
+ value       | text |           | extended | 
+ revision_id | text |           | extended | 
+ state       | text |           | extended | 
+Indexes:
+    "package_extra_pkey" PRIMARY KEY, btree (id)
+    "idx_extra_id_pkg_id" btree (id, package_id)
+    "idx_extra_pkg_id" btree (package_id)
+Foreign-key constraints:
+    "package_extra_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "package_extra_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "package_extra_revision" CONSTRAINT "package_extra_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package_extra(id)
+Has OIDs: no
+
+                         Table "public.package_extra_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ package_id         | text                        |           | extended | 
+ key                | text                        |           | extended | 
+ value              | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+Indexes:
+    "package_extra_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_package_extra_current" btree (current)
+    "idx_package_extra_period" btree (revision_timestamp, expired_timestamp, id)
+    "idx_package_extra_period_package" btree (revision_timestamp, expired_timestamp, package_id)
+    "idx_package_extra_rev_id" btree (revision_id)
+Foreign-key constraints:
+    "package_extra_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package_extra(id)
+    "package_extra_revision_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "package_extra_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+              Table "public.package_relationship"
+       Column       | Type | Modifiers | Storage  | Description 
+--------------------+------+-----------+----------+-------------
+ id                 | text | not null  | extended | 
+ subject_package_id | text |           | extended | 
+ object_package_id  | text |           | extended | 
+ type               | text |           | extended | 
+ comment            | text |           | extended | 
+ revision_id        | text |           | extended | 
+ state              | text |           | extended | 
+Indexes:
+    "package_relationship_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "package_relationship_object_package_id_fkey" FOREIGN KEY (object_package_id) REFERENCES package(id)
+    "package_relationship_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    "package_relationship_subject_package_id_fkey" FOREIGN KEY (subject_package_id) REFERENCES package(id)
+Referenced by:
+    TABLE "package_relationship_revision" CONSTRAINT "package_relationship_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package_relationship(id)
+Has OIDs: no
+
+                     Table "public.package_relationship_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ subject_package_id | text                        |           | extended | 
+ object_package_id  | text                        |           | extended | 
+ type               | text                        |           | extended | 
+ comment            | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+Indexes:
+    "package_relationship_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_package_relationship_current" btree (current)
+    "idx_period_package_relationship" btree (revision_timestamp, expired_timestamp, object_package_id, subject_package_id)
+Foreign-key constraints:
+    "package_relationship_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package_relationship(id)
+    "package_relationship_revision_object_package_id_fkey" FOREIGN KEY (object_package_id) REFERENCES package(id)
+    "package_relationship_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    "package_relationship_revision_subject_package_id_fkey" FOREIGN KEY (subject_package_id) REFERENCES package(id)
+Has OIDs: no
+
+                            Table "public.package_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ name               | character varying(100)      | not null  | extended | 
+ title              | text                        |           | extended | 
+ version            | character varying(100)      |           | extended | 
+ url                | text                        |           | extended | 
+ notes              | text                        |           | extended | 
+ license_id         | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ author             | text                        |           | extended | 
+ author_email       | text                        |           | extended | 
+ maintainer         | text                        |           | extended | 
+ maintainer_email   | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+ type               | text                        |           | extended | 
+Indexes:
+    "package_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_package_current" btree (current)
+    "idx_package_period" btree (revision_timestamp, expired_timestamp, id)
+    "idx_pkg_revision_id" btree (id)
+    "idx_pkg_revision_name" btree (name)
+    "idx_pkg_revision_rev_id" btree (revision_id)
+Foreign-key constraints:
+    "package_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package(id)
+    "package_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+                   Table "public.package_role"
+       Column        | Type | Modifiers | Storage  | Description 
+---------------------+------+-----------+----------+-------------
+ user_object_role_id | text | not null  | extended | 
+ package_id          | text |           | extended | 
+Indexes:
+    "package_role_pkey" PRIMARY KEY, btree (user_object_role_id)
+Foreign-key constraints:
+    "package_role_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "package_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+Has OIDs: no
+
+               Table "public.package_tag"
+   Column    | Type | Modifiers | Storage  | Description 
+-------------+------+-----------+----------+-------------
+ id          | text | not null  | extended | 
+ package_id  | text |           | extended | 
+ tag_id      | text |           | extended | 
+ revision_id | text |           | extended | 
+ state       | text |           | extended | 
+Indexes:
+    "package_tag_pkey" PRIMARY KEY, btree (id)
+    "idx_package_tag_id" btree (id)
+    "idx_package_tag_pkg_id" btree (package_id)
+    "idx_package_tag_pkg_id_tag_id" btree (tag_id, package_id)
+    "idx_package_tag_tag_id" btree (tag_id)
+Foreign-key constraints:
+    "package_tag_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "package_tag_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    "package_tag_tag_id_fkey" FOREIGN KEY (tag_id) REFERENCES tag(id)
+Referenced by:
+    TABLE "package_tag_revision" CONSTRAINT "package_tag_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package_tag(id)
+Has OIDs: no
+
+                          Table "public.package_tag_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ package_id         | text                        |           | extended | 
+ tag_id             | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+Indexes:
+    "package_tag_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_package_tag_current" btree (current)
+    "idx_package_tag_revision_id" btree (id)
+    "idx_package_tag_revision_pkg_id" btree (package_id)
+    "idx_package_tag_revision_pkg_id_tag_id" btree (tag_id, package_id)
+    "idx_package_tag_revision_rev_id" btree (revision_id)
+    "idx_package_tag_revision_tag_id" btree (tag_id)
+    "idx_period_package_tag" btree (revision_timestamp, expired_timestamp, package_id, tag_id)
+Foreign-key constraints:
+    "package_tag_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES package_tag(id)
+    "package_tag_revision_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "package_tag_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    "package_tag_revision_tag_id_fkey" FOREIGN KEY (tag_id) REFERENCES tag(id)
+Has OIDs: no
+
+                               Table "public.rating"
+     Column      |            Type             | Modifiers | Storage  | Description 
+-----------------+-----------------------------+-----------+----------+-------------
+ id              | text                        | not null  | extended | 
+ user_id         | text                        |           | extended | 
+ user_ip_address | text                        |           | extended | 
+ package_id      | text                        |           | extended | 
+ rating          | double precision            |           | plain    | 
+ created         | timestamp without time zone |           | plain    | 
+Indexes:
+    "rating_pkey" PRIMARY KEY, btree (id)
+    "idx_rating_id" btree (id)
+    "idx_rating_package_id" btree (package_id)
+    "idx_rating_user_id" btree (user_id)
+Foreign-key constraints:
+    "rating_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "rating_user_id_fkey" FOREIGN KEY (user_id) REFERENCES "user"(id)
+Has OIDs: no
+
+                                 Table "public.related"
+   Column    |            Type             |     Modifiers      | Storage  | Description 
+-------------+-----------------------------+--------------------+----------+-------------
+ id          | text                        | not null           | extended | 
+ type        | text                        | not null           | extended | 
+ title       | text                        |                    | extended | 
+ description | text                        |                    | extended | 
+ image_url   | text                        |                    | extended | 
+ url         | text                        |                    | extended | 
+ created     | timestamp without time zone |                    | plain    | 
+ owner_id    | text                        |                    | extended | 
+ view_count  | integer                     | not null default 0 | plain    | 
+ featured    | integer                     | not null default 0 | plain    | 
+Indexes:
+    "related_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "related_dataset" CONSTRAINT "related_dataset_related_id_fkey" FOREIGN KEY (related_id) REFERENCES related(id)
+Has OIDs: no
+
+             Table "public.related_dataset"
+   Column   | Type | Modifiers | Storage  | Description 
+------------+------+-----------+----------+-------------
+ id         | text | not null  | extended | 
+ dataset_id | text | not null  | extended | 
+ related_id | text | not null  | extended | 
+ status     | text |           | extended | 
+Indexes:
+    "related_dataset_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "related_dataset_dataset_id_fkey" FOREIGN KEY (dataset_id) REFERENCES package(id)
+    "related_dataset_related_id_fkey" FOREIGN KEY (related_id) REFERENCES related(id)
+Has OIDs: no
+
+                                 Table "public.resource"
+        Column         |            Type             | Modifiers | Storage  | Description 
+-----------------------+-----------------------------+-----------+----------+-------------
+ id                    | text                        | not null  | extended | 
+ resource_group_id     | text                        |           | extended | 
+ url                   | text                        | not null  | extended | 
+ format                | text                        |           | extended | 
+ description           | text                        |           | extended | 
+ position              | integer                     |           | plain    | 
+ revision_id           | text                        |           | extended | 
+ hash                  | text                        |           | extended | 
+ state                 | text                        |           | extended | 
+ extras                | text                        |           | extended | 
+ name                  | text                        |           | extended | 
+ resource_type         | text                        |           | extended | 
+ mimetype              | text                        |           | extended | 
+ mimetype_inner        | text                        |           | extended | 
+ size                  | bigint                      |           | plain    | 
+ last_modified         | timestamp without time zone |           | plain    | 
+ cache_url             | text                        |           | extended | 
+ cache_last_updated    | timestamp without time zone |           | plain    | 
+ webstore_url          | text                        |           | extended | 
+ webstore_last_updated | timestamp without time zone |           | plain    | 
+ created               | timestamp without time zone |           | plain    | 
+Indexes:
+    "resource_pkey" PRIMARY KEY, btree (id)
+    "idx_package_resource_id" btree (id)
+    "idx_package_resource_pkg_id" btree (resource_group_id)
+    "idx_package_resource_pkg_id_resource_id" btree (resource_group_id, id)
+    "idx_package_resource_url" btree (url)
+Foreign-key constraints:
+    "resource_resource_group_id_fkey" FOREIGN KEY (resource_group_id) REFERENCES resource_group(id)
+    "resource_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "resource_revision" CONSTRAINT "resource_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES resource(id)
+Has OIDs: no
+
+              Table "public.resource_group"
+   Column    | Type | Modifiers | Storage  | Description 
+-------------+------+-----------+----------+-------------
+ id          | text | not null  | extended | 
+ package_id  | text |           | extended | 
+ label       | text |           | extended | 
+ sort_order  | text |           | extended | 
+ extras      | text |           | extended | 
+ state       | text |           | extended | 
+ revision_id | text |           | extended | 
+Indexes:
+    "resource_group_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "resource_group_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "resource_group_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "resource_group_revision" CONSTRAINT "resource_group_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES resource_group(id)
+    TABLE "resource" CONSTRAINT "resource_resource_group_id_fkey" FOREIGN KEY (resource_group_id) REFERENCES resource_group(id)
+    TABLE "resource_revision" CONSTRAINT "resource_revision_resource_group_id_fkey" FOREIGN KEY (resource_group_id) REFERENCES resource_group(id)
+Has OIDs: no
+
+                        Table "public.resource_group_revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ package_id         | text                        |           | extended | 
+ label              | text                        |           | extended | 
+ sort_order         | text                        |           | extended | 
+ extras             | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ revision_id        | text                        | not null  | extended | 
+ continuity_id      | text                        |           | extended | 
+ expired_id         | text                        |           | extended | 
+ revision_timestamp | timestamp without time zone |           | plain    | 
+ expired_timestamp  | timestamp without time zone |           | plain    | 
+ current            | boolean                     |           | plain    | 
+Indexes:
+    "resource_group_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_resource_group_current" btree (current)
+    "idx_resource_group_period" btree (revision_timestamp, expired_timestamp, id)
+    "idx_resource_group_period_package" btree (revision_timestamp, expired_timestamp, package_id)
+Foreign-key constraints:
+    "resource_group_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES resource_group(id)
+    "resource_group_revision_package_id_fkey" FOREIGN KEY (package_id) REFERENCES package(id)
+    "resource_group_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+                             Table "public.resource_revision"
+        Column         |            Type             | Modifiers | Storage  | Description 
+-----------------------+-----------------------------+-----------+----------+-------------
+ id                    | text                        | not null  | extended | 
+ resource_group_id     | text                        |           | extended | 
+ url                   | text                        | not null  | extended | 
+ format                | text                        |           | extended | 
+ description           | text                        |           | extended | 
+ position              | integer                     |           | plain    | 
+ revision_id           | text                        | not null  | extended | 
+ continuity_id         | text                        |           | extended | 
+ hash                  | text                        |           | extended | 
+ state                 | text                        |           | extended | 
+ extras                | text                        |           | extended | 
+ expired_id            | text                        |           | extended | 
+ revision_timestamp    | timestamp without time zone |           | plain    | 
+ expired_timestamp     | timestamp without time zone |           | plain    | 
+ current               | boolean                     |           | plain    | 
+ name                  | text                        |           | extended | 
+ resource_type         | text                        |           | extended | 
+ mimetype              | text                        |           | extended | 
+ mimetype_inner        | text                        |           | extended | 
+ size                  | bigint                      |           | plain    | 
+ last_modified         | timestamp without time zone |           | plain    | 
+ cache_url             | text                        |           | extended | 
+ cache_last_updated    | timestamp without time zone |           | plain    | 
+ webstore_url          | text                        |           | extended | 
+ webstore_last_updated | timestamp without time zone |           | plain    | 
+ created               | timestamp without time zone |           | plain    | 
+Indexes:
+    "resource_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "idx_package_resource_rev_id" btree (revision_id)
+    "idx_resource_current" btree (current)
+    "idx_resource_period" btree (revision_timestamp, expired_timestamp, id)
+    "idx_resource_period_resource_group" btree (revision_timestamp, expired_timestamp, resource_group_id)
+Foreign-key constraints:
+    "resource_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES resource(id)
+    "resource_revision_resource_group_id_fkey" FOREIGN KEY (resource_group_id) REFERENCES resource_group(id)
+    "resource_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+                                Table "public.revision"
+       Column       |            Type             | Modifiers | Storage  | Description 
+--------------------+-----------------------------+-----------+----------+-------------
+ id                 | text                        | not null  | extended | 
+ timestamp          | timestamp without time zone |           | plain    | 
+ author             | character varying(200)      |           | extended | 
+ message            | text                        |           | extended | 
+ state              | text                        |           | extended | 
+ approved_timestamp | timestamp without time zone |           | plain    | 
+Indexes:
+    "revision_pkey" PRIMARY KEY, btree (id)
+    "idx_rev_state" btree (state)
+    "idx_revision_author" btree (author)
+Referenced by:
+    TABLE "group_extra" CONSTRAINT "group_extra_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "group_extra_revision" CONSTRAINT "group_extra_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE ""group"" CONSTRAINT "group_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "group_revision" CONSTRAINT "group_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "member" CONSTRAINT "member_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "member_revision" CONSTRAINT "member_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package_extra" CONSTRAINT "package_extra_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package_extra_revision" CONSTRAINT "package_extra_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package_relationship" CONSTRAINT "package_relationship_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package_relationship_revision" CONSTRAINT "package_relationship_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package" CONSTRAINT "package_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package_revision" CONSTRAINT "package_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package_tag" CONSTRAINT "package_tag_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "package_tag_revision" CONSTRAINT "package_tag_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "resource_group" CONSTRAINT "resource_group_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "resource_group_revision" CONSTRAINT "resource_group_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "resource" CONSTRAINT "resource_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "resource_revision" CONSTRAINT "resource_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "system_info" CONSTRAINT "system_info_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+    TABLE "system_info_revision" CONSTRAINT "system_info_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+             Table "public.role_action"
+ Column  | Type | Modifiers | Storage  | Description 
+---------+------+-----------+----------+-------------
+ id      | text | not null  | extended | 
+ role    | text |           | extended | 
+ context | text | not null  | extended | 
+ action  | text |           | extended | 
+Indexes:
+    "role_action_pkey" PRIMARY KEY, btree (id)
+    "idx_ra_action" btree (action)
+    "idx_ra_role" btree (role)
+    "idx_ra_role_action" btree (action, role)
+Has OIDs: no
+
+                                                Table "public.system_info"
+   Column    |          Type          |                        Modifiers                         | Storage  | Description 
+-------------+------------------------+----------------------------------------------------------+----------+-------------
+ id          | integer                | not null default nextval('system_info_id_seq'::regclass) | plain    | 
+ key         | character varying(100) | not null                                                 | extended | 
+ value       | text                   |                                                          | extended | 
+ revision_id | text                   |                                                          | extended | 
+Indexes:
+    "system_info_pkey" PRIMARY KEY, btree (id)
+    "system_info_key_key" UNIQUE, btree (key)
+Foreign-key constraints:
+    "system_info_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Referenced by:
+    TABLE "system_info_revision" CONSTRAINT "system_info_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES system_info(id)
+Has OIDs: no
+
+                 Sequence "public.system_info_id_seq"
+    Column     |  Type   |        Value        | Storage | Description 
+---------------+---------+---------------------+---------+-------------
+ sequence_name | name    | system_info_id_seq  | plain   | 
+ last_value    | bigint  | 1                   | plain   | 
+ start_value   | bigint  | 1                   | plain   | 
+ increment_by  | bigint  | 1                   | plain   | 
+ max_value     | bigint  | 9223372036854775807 | plain   | 
+ min_value     | bigint  | 1                   | plain   | 
+ cache_value   | bigint  | 1                   | plain   | 
+ log_cnt       | bigint  | 0                   | plain   | 
+ is_cycled     | boolean | f                   | plain   | 
+ is_called     | boolean | f                   | plain   | 
+
+                                                 Table "public.system_info_revision"
+    Column     |          Type          |                             Modifiers                             | Storage  | Description 
+---------------+------------------------+-------------------------------------------------------------------+----------+-------------
+ id            | integer                | not null default nextval('system_info_revision_id_seq'::regclass) | plain    | 
+ key           | character varying(100) | not null                                                          | extended | 
+ value         | text                   |                                                                   | extended | 
+ revision_id   | text                   | not null                                                          | extended | 
+ continuity_id | integer                |                                                                   | plain    | 
+Indexes:
+    "system_info_revision_pkey" PRIMARY KEY, btree (id, revision_id)
+    "system_info_revision_key_key" UNIQUE, btree (key)
+Foreign-key constraints:
+    "system_info_revision_continuity_id_fkey" FOREIGN KEY (continuity_id) REFERENCES system_info(id)
+    "system_info_revision_revision_id_fkey" FOREIGN KEY (revision_id) REFERENCES revision(id)
+Has OIDs: no
+
+                 Sequence "public.system_info_revision_id_seq"
+    Column     |  Type   |            Value            | Storage | Description 
+---------------+---------+-----------------------------+---------+-------------
+ sequence_name | name    | system_info_revision_id_seq | plain   | 
+ last_value    | bigint  | 1                           | plain   | 
+ start_value   | bigint  | 1                           | plain   | 
+ increment_by  | bigint  | 1                           | plain   | 
+ max_value     | bigint  | 9223372036854775807         | plain   | 
+ min_value     | bigint  | 1                           | plain   | 
+ cache_value   | bigint  | 1                           | plain   | 
+ log_cnt       | bigint  | 0                           | plain   | 
+ is_cycled     | boolean | f                           | plain   | 
+ is_called     | boolean | f                           | plain   | 
+
+                   Table "public.system_role"
+       Column        | Type | Modifiers | Storage  | Description 
+---------------------+------+-----------+----------+-------------
+ user_object_role_id | text | not null  | extended | 
+Indexes:
+    "system_role_pkey" PRIMARY KEY, btree (user_object_role_id)
+Foreign-key constraints:
+    "system_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+Has OIDs: no
+
+                             Table "public.tag"
+    Column     |          Type          | Modifiers | Storage  | Description 
+---------------+------------------------+-----------+----------+-------------
+ id            | text                   | not null  | extended | 
+ name          | character varying(100) | not null  | extended | 
+ vocabulary_id | character varying(100) |           | extended | 
+Indexes:
+    "tag_pkey" PRIMARY KEY, btree (id)
+    "tag_name_vocabulary_id_key" UNIQUE, btree (name, vocabulary_id)
+    "idx_tag_id" btree (id)
+    "idx_tag_name" btree (name)
+Foreign-key constraints:
+    "tag_vocabulary_id_fkey" FOREIGN KEY (vocabulary_id) REFERENCES vocabulary(id)
+Referenced by:
+    TABLE "package_tag_revision" CONSTRAINT "package_tag_revision_tag_id_fkey" FOREIGN KEY (tag_id) REFERENCES tag(id)
+    TABLE "package_tag" CONSTRAINT "package_tag_tag_id_fkey" FOREIGN KEY (tag_id) REFERENCES tag(id)
+Has OIDs: no
+
+                           Table "public.task_status"
+    Column    |            Type             | Modifiers | Storage  | Description 
+--------------+-----------------------------+-----------+----------+-------------
+ id           | text                        | not null  | extended | 
+ entity_id    | text                        | not null  | extended | 
+ entity_type  | text                        | not null  | extended | 
+ task_type    | text                        | not null  | extended | 
+ key          | text                        | not null  | extended | 
+ value        | text                        | not null  | extended | 
+ state        | text                        |           | extended | 
+ error        | text                        |           | extended | 
+ last_updated | timestamp without time zone |           | plain    | 
+Indexes:
+    "task_status_pkey" PRIMARY KEY, btree (id)
+    "task_status_entity_id_task_type_key_key" UNIQUE, btree (entity_id, task_type, key)
+Has OIDs: no
+
+               Table "public.term_translation"
+      Column      | Type | Modifiers | Storage  | Description 
+------------------+------+-----------+----------+-------------
+ term             | text | not null  | extended | 
+ term_translation | text | not null  | extended | 
+ lang_code        | text | not null  | extended | 
+Indexes:
+    "term" btree (term)
+    "term_lang" btree (term, lang_code)
+Has OIDs: no
+
+                               Table "public.tracking_raw"
+      Column      |            Type             |   Modifiers   | Storage  | Description 
+------------------+-----------------------------+---------------+----------+-------------
+ user_key         | character varying(100)      | not null      | extended | 
+ url              | text                        | not null      | extended | 
+ tracking_type    | character varying(10)       | not null      | extended | 
+ access_timestamp | timestamp without time zone | default now() | plain    | 
+Indexes:
+    "tracking_raw_access_timestamp" btree (access_timestamp)
+    "tracking_raw_url" btree (url)
+    "tracking_raw_user_key" btree (user_key)
+Has OIDs: no
+
+                           Table "public.tracking_summary"
+    Column     |         Type          |     Modifiers      | Storage  | Description 
+---------------+-----------------------+--------------------+----------+-------------
+ url           | text                  | not null           | extended | 
+ package_id    | text                  |                    | extended | 
+ tracking_type | character varying(10) | not null           | extended | 
+ count         | integer               | not null           | plain    | 
+ running_total | integer               | not null default 0 | plain    | 
+ recent_views  | integer               | not null default 0 | plain    | 
+ tracking_date | date                  |                    | plain    | 
+Indexes:
+    "tracking_summary_date" btree (tracking_date)
+    "tracking_summary_package_id" btree (package_id)
+    "tracking_summary_url" btree (url)
+Has OIDs: no
+
+                             Table "public.user"
+  Column   |            Type             | Modifiers | Storage  | Description 
+-----------+-----------------------------+-----------+----------+-------------
+ id        | text                        | not null  | extended | 
+ name      | text                        | not null  | extended | 
+ apikey    | text                        |           | extended | 
+ created   | timestamp without time zone |           | plain    | 
+ about     | text                        |           | extended | 
+ openid    | text                        |           | extended | 
+ password  | text                        |           | extended | 
+ fullname  | text                        |           | extended | 
+ email     | text                        |           | extended | 
+ reset_key | text                        |           | extended | 
+Indexes:
+    "user_pkey" PRIMARY KEY, btree (id)
+    "user_name_key" UNIQUE, btree (name)
+    "idx_openid" btree (openid)
+    "idx_user_id" btree (id)
+    "idx_user_name" btree (name)
+    "idx_user_name_index" btree ((
+CASE
+    WHEN fullname IS NULL OR fullname = ''::text THEN name
+    ELSE fullname
+END))
+Referenced by:
+    TABLE "authorization_group_user" CONSTRAINT "authorization_group_user_user_id_fkey" FOREIGN KEY (user_id) REFERENCES "user"(id)
+    TABLE "rating" CONSTRAINT "rating_user_id_fkey" FOREIGN KEY (user_id) REFERENCES "user"(id)
+    TABLE "user_following_dataset" CONSTRAINT "user_following_dataset_follower_id_fkey" FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE
+    TABLE "user_following_user" CONSTRAINT "user_following_user_follower_id_fkey" FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE
+    TABLE "user_following_user" CONSTRAINT "user_following_user_object_id_fkey" FOREIGN KEY (object_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE
+    TABLE "user_object_role" CONSTRAINT "user_object_role_user_id_fkey" FOREIGN KEY (user_id) REFERENCES "user"(id)
+Has OIDs: no
+
+                     Table "public.user_following_dataset"
+   Column    |            Type             | Modifiers | Storage  | Description 
+-------------+-----------------------------+-----------+----------+-------------
+ follower_id | text                        | not null  | extended | 
+ object_id   | text                        | not null  | extended | 
+ datetime    | timestamp without time zone | not null  | plain    | 
+Indexes:
+    "user_following_dataset_pkey" PRIMARY KEY, btree (follower_id, object_id)
+Foreign-key constraints:
+    "user_following_dataset_follower_id_fkey" FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE
+    "user_following_dataset_object_id_fkey" FOREIGN KEY (object_id) REFERENCES package(id) ON UPDATE CASCADE ON DELETE CASCADE
+Has OIDs: no
+
+                       Table "public.user_following_user"
+   Column    |            Type             | Modifiers | Storage  | Description 
+-------------+-----------------------------+-----------+----------+-------------
+ follower_id | text                        | not null  | extended | 
+ object_id   | text                        | not null  | extended | 
+ datetime    | timestamp without time zone | not null  | plain    | 
+Indexes:
+    "user_following_user_pkey" PRIMARY KEY, btree (follower_id, object_id)
+Foreign-key constraints:
+    "user_following_user_follower_id_fkey" FOREIGN KEY (follower_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE
+    "user_following_user_object_id_fkey" FOREIGN KEY (object_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE
+Has OIDs: no
+
+                 Table "public.user_object_role"
+       Column        | Type | Modifiers | Storage  | Description 
+---------------------+------+-----------+----------+-------------
+ id                  | text | not null  | extended | 
+ user_id             | text |           | extended | 
+ context             | text | not null  | extended | 
+ role                | text |           | extended | 
+ authorized_group_id | text |           | extended | 
+Indexes:
+    "user_object_role_pkey" PRIMARY KEY, btree (id)
+    "idx_uor_context" btree (context)
+    "idx_uor_id" btree (id)
+    "idx_uor_role" btree (role)
+    "idx_uor_user_id" btree (user_id)
+    "idx_uor_user_id_role" btree (user_id, role)
+Foreign-key constraints:
+    "user_object_role_authorized_group_id_fkey" FOREIGN KEY (authorized_group_id) REFERENCES authorization_group(id)
+    "user_object_role_user_id_fkey" FOREIGN KEY (user_id) REFERENCES "user"(id)
+Referenced by:
+    TABLE "authorization_group_role" CONSTRAINT "authorization_group_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+    TABLE "group_role" CONSTRAINT "group_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+    TABLE "package_role" CONSTRAINT "package_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+    TABLE "system_role" CONSTRAINT "system_role_user_object_role_id_fkey" FOREIGN KEY (user_object_role_id) REFERENCES user_object_role(id)
+Has OIDs: no
+
+                      Table "public.vocabulary"
+ Column |          Type          | Modifiers | Storage  | Description 
+--------+------------------------+-----------+----------+-------------
+ id     | text                   | not null  | extended | 
+ name   | character varying(100) | not null  | extended | 
+Indexes:
+    "vocabulary_pkey" PRIMARY KEY, btree (id)
+    "vocabulary_name_key" UNIQUE, btree (name)
+Referenced by:
+    TABLE "tag" CONSTRAINT "tag_vocabulary_id_fkey" FOREIGN KEY (vocabulary_id) REFERENCES vocabulary(id)
+Has OIDs: no
+
