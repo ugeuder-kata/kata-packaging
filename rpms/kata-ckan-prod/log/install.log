@@ -61,8 +61,8 @@ Device "eth0" does not exist.
 + sed -e 's,\(ckan.site_url = http://\)[^ ]*,\1,' development.ini
 + mv development.ini.1 development.ini
 + paster --plugin=ckan db init
-2012-10-25 13:26:39,489 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-25 13:26:39,511 DEBUG [ckanext.harvest.model] Harvest table creation deferred
+2012-10-31 10:01:34,508 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-31 10:01:34,527 DEBUG [ckanext.harvest.model] Harvest table creation deferred
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_lname
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_slname
@@ -73,8 +73,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-10-25 13:27:29,241 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
-2012-10-25 13:27:29,526 INFO  [ckan.model] Database initialised
+2012-10-31 10:02:09,793 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
+2012-10-31 10:02:09,988 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + '[' -f /tmp/kata-SKIP10 ']'
 + instloc=/home/ckan
@@ -107,10 +107,10 @@ Initialising DB: SUCCESS
 ++ '[' -n /bin/sh -o -n '' ']'
 ++ hash -r
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-25 13:27:31,661 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-25 13:27:32,523 DEBUG [ckanext.harvest.model] Harvest tables created
-2012-10-25 13:27:32,569 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-25 13:27:32,626 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-31 10:02:11,841 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-31 10:02:12,490 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-10-31 10:02:12,556 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-31 10:02:12,626 DEBUG [ckanext.harvest.model] Harvest tables already exist
 
 DB tables created
 + packagedir=/usr/share/kata-ckan-prod
@@ -129,6 +129,8 @@ patching file shib.conf
 Hunk #2 succeeded at 13 with fuzz 1.
 + popd
 + /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
++ chown shibd:shibd /etc/shibboleth/spkey.pem
++ chmod og= /etc/shibboleth/spkey.pem
 + packagedir=/usr/share/kata-ckan-prod
 + cp /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.bak
 + pushd /etc/httpd/conf.d/
@@ -180,16 +182,16 @@ Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-25 13:29:19,812 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-25 13:29:19,816 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-10-25 13:29:19,854 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-25 13:29:19,892 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-10-25 13:29:19,955 INFO  [ckanext.harvest.logic.action.create] Harvest source created: f78c502f-b908-4b42-99c4-17f08119d125
-2012-10-25 13:29:19,987 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'f78c502f-b908-4b42-99c4-17f08119d125'}
-2012-10-25 13:29:20,022 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 8caeadcd-19e7-40b2-ade7-16a7750cbeec
+2012-10-31 10:03:47,413 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-31 10:03:47,420 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-31 10:03:47,484 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-31 10:03:47,526 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-10-31 10:03:47,619 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 449616c7-35a0-494d-bea5-57ef78099a3a
+2012-10-31 10:03:47,649 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'449616c7-35a0-494d-bea5-57ef78099a3a'}
+2012-10-31 10:03:47,685 INFO  [ckanext.harvest.logic.action.create] Harvest job saved e4957d0b-ffdf-4e6d-b349-4c26fdf8625e
 
 Created new harvest source:
-Source id: f78c502f-b908-4b42-99c4-17f08119d125
+Source id: 449616c7-35a0-494d-bea5-57ef78099a3a
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -200,16 +202,16 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-25 13:29:23,416 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-25 13:29:23,421 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-10-25 13:29:23,493 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-25 13:29:23,557 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-10-25 13:29:23,619 INFO  [ckanext.harvest.logic.action.create] Harvest source created: e2376701-77e7-4a32-958f-f9d896d4ef8d
-2012-10-25 13:29:23,713 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'e2376701-77e7-4a32-958f-f9d896d4ef8d'}
-2012-10-25 13:29:23,784 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 1f8ac05b-69c1-474a-909d-678b585362b8
+2012-10-31 10:03:49,561 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-10-31 10:03:49,566 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-10-31 10:03:49,609 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-10-31 10:03:49,637 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-10-31 10:03:49,690 INFO  [ckanext.harvest.logic.action.create] Harvest source created: f962f019-3761-47c4-a3c9-27b990cfaa3e
+2012-10-31 10:03:49,748 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'f962f019-3761-47c4-a3c9-27b990cfaa3e'}
+2012-10-31 10:03:49,797 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 4c7b76bc-9e33-4623-aa3e-7610302cec5c
 
 Created new harvest source:
-Source id: e2376701-77e7-4a32-958f-f9d896d4ef8d
+Source id: f962f019-3761-47c4-a3c9-27b990cfaa3e
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -219,13 +221,10 @@ publisher:
 
 There are 2 harvest sources
 A new Harvest Job for this source has also been created
-+ service httpd restart
-Stopping httpd: [FAILED]
-Starting httpd: [  OK  ]
 + chkconfig supervisord on
-+ service supervisord restart
-Stopping supervisord: [  OK  ]
-Starting supervisord: [  OK  ]
 Stopping atd: [FAILED]
 Starting atd: [  OK  ]
-job 1 at 2012-10-25 13:34
+job 1 at 2012-10-31 10:06
+Starting shibd: [  OK  ]
+Starting httpd: [  OK  ]
+Starting supervisord: 

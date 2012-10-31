@@ -5,7 +5,7 @@ Installation should be carried out on a clean RHEL 6 / CentOS 6 machine
 
 I. Packages delivered:
 
-1. mcfg.rpm
+1. mcfg.rpm  (called the master configuration tool)
 2. apache-solr.rpm
 3. kata-prod.rpm
 
@@ -33,7 +33,8 @@ II. Installation steps
    4.b. copy the provided master configuration sample file 
         "sudo cp -i /usr/share/mcfg/examples/kata-master.ini /root/"
    4.c. Edit it "sudo -e /root/kata-master.ini"
-        TODO: provide documentation for the parameters in the file
+        Cf. Appendix A configuration for details
+
 
 5. Install kata
 
@@ -43,3 +44,38 @@ II. Installation steps
 
    System is operational. All configuration has happened in step 3.c.
 
+
+A. Configuration
+
+A.1. SSL keys and certificates
+
+   Apache and Shibboleth need an SSL key and certifcate pair. It's possible
+   the use the same pair for both programs or have a different pair for each
+   program.
+
+   The configuration is slightly different for the two programs. The
+   key/certificate pair for Shibboleth will be installed by mcfg. The
+   administrator provides the input filenames in the following two
+   parameters in /root/kata-master.ini (Installation means the files are
+   copied to /etc/shibboleth as spcert.pem and spkey.pem. After installation
+   the input files could be deleted.)
+
+[shibboleth-sp-cert]
+location: /root/sp-cert.pem
+
+[shibboleth-sp-key]
+location: /root/sp-key.pem
+
+   The filenames should be given as absolute paths, the names do not matter.
+
+   For Apache the key/certificate pair is not installed by mcfg, but the file
+   names of a previously installed pair are given in the following 2
+   parameters
+
+[DEFAULT]
+apache_ssl_cert: /etc/shibboleth/spcert.pem
+apache_ssl_key: /etc/shibboleth/spkey.pem
+
+   The default values shown here refer to the Shibboleth key/certificate pair.
+   If they remain unchanged Apache will use the same certificates that
+   are being installed for Shibboleth as previously described.
