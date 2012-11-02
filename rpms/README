@@ -2,13 +2,12 @@ Contents
 
 I.      Overview
 II.     Step 1: Build & installation preparations
-III.    Step 2: Installing Shibboleth2 SP
-IV.     Step 2: Building and installation of apache-solr
-V.      Step 3: Building and installation of mcfg
-VI.     Step 4: Building and installation of kata-ckan-dev
-VII.    Step 5: Building kata-ckan-prod
-VIII.   Step 6: Installation of kata-ckan-prod
-IX.     Administrative tasks
+III.    Step 2: Building and installation of apache-solr
+IV.     Step 3: Building and installation of mcfg
+V.      Step 4: Building and installation of kata-ckan-dev
+VI.     Step 5: Building kata-ckan-prod
+VII.    Step 6: Installation of kata-ckan-prod
+VII.    Administrative tasks
 
 I. Overview
 
@@ -93,8 +92,8 @@ It will install 2 packages ...
 like suggested in http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 
 
-We need to use the EPEL repository also on the development
-machine. See ../INSTALL how to enable EPEL.
+We need to use the EPEL repository and the Shibboleth repository also
+on the development machine. See ../INSTALL how to enable these 2 repos.
 
 General remarks: Never build anything as root. Of course for installing
 (rpm -i and yum install) root is required, usage of sudo is a good practice
@@ -104,17 +103,8 @@ Two of our packages get automatically increasing version numbers based on build
 time. So the version numbers mentioned in this document will be smaller on
 than those you see in real life.
 
-III. Installing Shibboleth2 SP
 
-Shibboleth installation is required for both development and production machines.
-
-Install Shibboleth2 yum repository:
-$ cd /etc/yum.repos.d/
-$ sudo wget http://download.opensuse.org/repositories/security://shibboleth/CentOS_CentOS-6/security:shibboleth.repo
-$ sudo yum update && sudo yum install shibboleth (only 'sudo yum install shibboleth' 
-might be enough)
-
-IV.  Building and installation of apache-solr
+III.  Building and installation of apache-solr
 
 SOLR is a key dependent component for CKAN, thus we need it built and packaged
 manually as it is not packaged in any separate repository.
@@ -142,7 +132,7 @@ development machine already)
 $ sudo yum install ~/rpmbuild/RPMS/x86_64/apache-solr-3.5.0-1.el6.x86_64.rpm
 
 
-V.   Building and installation of mcfg
+IV.  Building and installation of mcfg
 
 This step is carried out on the development machine.
 
@@ -157,7 +147,7 @@ install the package using
 $ sudo yum install ~/rpmbuild/RPMS/noarch/mcfg-450005-1.el6.noarch.rpm
 
 
-VI.    Building and installation of kata-ckan-dev
+V.    Building and installation of kata-ckan-dev
 
 This step is done in the development machine.
 
@@ -190,7 +180,7 @@ Kata might be used for some testing, but it's main purpose is to be
 packaged for production.
 
 
-VII. Building kata-ckan-prod
+VI. Building kata-ckan-prod
 
 This will happen still in the development machine.
 
@@ -201,14 +191,13 @@ This step will package the current development installation and allow
 multiple repeatable installations later.
 
 
-VIII. Installing kata-ckan-prod
+VII. Installing kata-ckan-prod
 
 This step is carried out in the production machine.
 
 The complete instructions are found in file ../INSTALL
 
 
-IX.  Administrative tasks
+VIII.  Administrative tasks
 
 (tasks previously documented here are no longer relevant, new ones TODO)
-
