@@ -18,6 +18,15 @@ popd >/dev/null
 
 chown shibd:shibd /etc/shibboleth/spkey.pem
 chmod og= /etc/shibboleth/spkey.pem
+# even if Apache uses the same key these protections will not be a
+# problem, because Apache reads the key while still being root
+
+# rename the generated key & certificate to prevent human confusion,
+# it has happened...
+# (But don't delete them, we might use them to bootstrap a new SP
+# instance, e.g. in autobuild, see autobuild/README)
+mv  /etc/shibboleth/sp-key.pem /etc/shibboleth/sp-key.pem.notused
+mv  /etc/shibboleth/sp-cert.pem /etc/shibboleth/sp-cert.pem.notused
 
 # chkconfig shibd not required, obviously done by its own rpm
 
