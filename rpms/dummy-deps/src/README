@@ -1,0 +1,5 @@
+This package provides dummy dependencies for Kata. In other words it
+claims to provide some packages, which we do not need, but which other
+packages depend on. man.rpm is the classic example. It is not needed
+on the production server (in fact indexing cronjob disturbs) but it is
+pulled in via some dependencies.

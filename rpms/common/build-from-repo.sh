@@ -5,10 +5,10 @@ version=$(($min%1000000))
 here=$(pwd)
 name=$(basename "$here")
 nv="${name}-${version}"
-if [ ! \(  "$name" = kata-ckan-dev \) -a ! \( "$name" = kata-ckan-prod \) -a ! \( "$name" = mcfg \) ]
+if [ ! \(  "$name" = kata-ckan-dev \) -a ! \( "$name" = kata-ckan-prod \) -a ! \( "$name" = mcfg \) -a ! \( "$name" = dummy-deps \) ]
 then
-  echo "run this from kata-ckan-dev or kata-ckan-prod" >&2
-  echo "script deletes files with relative paths, which might not be generally"
+  echo "run this from kata-ckan-dev, kata-ckan-prod, mcfg or dummy-deps" >&2
+  echo "script deletes files, which might not be generally"
   echo "a good idea if run from a random place" >&2
   exit 2
 fi
