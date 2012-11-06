@@ -1,3 +1,111 @@
+================================================================================
+ Package                Arch   Version                Repository           Size
+================================================================================
+Installing:
+ kata-ckan-prod         x86_64 536785-1.el6           /kata-ckan-prod-536785-1.el6.x86_64
+                                                                          203 M
+Installing for dependencies:
+ SDL                    x86_64 1.2.14-3.el6           base                193 k
+ apr                    x86_64 1.3.9-5.el6_2          updates             123 k
+ apr-util               x86_64 1.3.9-3.el6_0.1        base                 87 k
+ apr-util-ldap          x86_64 1.3.9-3.el6_0.1        base                 15 k
+ erlang                 x86_64 R14B-04.1.el6          epel                 26 k
+ erlang-appmon          x86_64 R14B-04.1.el6          epel                144 k
+ erlang-asn1            x86_64 R14B-04.1.el6          epel                993 k
+ erlang-common_test     x86_64 R14B-04.1.el6          epel                508 k
+ erlang-compiler        x86_64 R14B-04.1.el6          epel                986 k
+ erlang-cosEvent        x86_64 R14B-04.1.el6          epel                148 k
+ erlang-cosEventDomain  x86_64 R14B-04.1.el6          epel                113 k
+ erlang-cosFileTransfer x86_64 R14B-04.1.el6          epel                167 k
+ erlang-cosNotification x86_64 R14B-04.1.el6          epel                718 k
+ erlang-cosProperty     x86_64 R14B-04.1.el6          epel                160 k
+ erlang-cosTime         x86_64 R14B-04.1.el6          epel                106 k
+ erlang-cosTransactions x86_64 R14B-04.1.el6          epel                164 k
+ erlang-crypto          x86_64 R14B-04.1.el6          epel                 50 k
+ erlang-debugger        x86_64 R14B-04.1.el6          epel                439 k
+ erlang-dialyzer        x86_64 R14B-04.1.el6          epel                567 k
+ erlang-diameter        x86_64 R14B-04.1.el6          epel                449 k
+ erlang-docbuilder      x86_64 R14B-04.1.el6          epel                191 k
+ erlang-edoc            x86_64 R14B-04.1.el6          epel                301 k
+ erlang-erl_docgen      x86_64 R14B-04.1.el6          epel                109 k
+ erlang-erl_interface   x86_64 R14B-04.1.el6          epel                149 k
+ erlang-erts            x86_64 R14B-04.1.el6          epel                2.0 M
+ erlang-et              x86_64 R14B-04.1.el6          epel                197 k
+ erlang-eunit           x86_64 R14B-04.1.el6          epel                139 k
+ erlang-examples        x86_64 R14B-04.1.el6          epel                832 k
+ erlang-gs              x86_64 R14B-04.1.el6          epel                608 k
+ erlang-hipe            x86_64 R14B-04.1.el6          epel                1.0 M
+ erlang-ic              x86_64 R14B-04.1.el6          epel                845 k
+ erlang-inets           x86_64 R14B-04.1.el6          epel                749 k
+ erlang-inviso          x86_64 R14B-04.1.el6          epel                153 k
+ erlang-jinterface      x86_64 R14B-04.1.el6          epel                 94 k
+ erlang-kernel          x86_64 R14B-04.1.el6          epel                1.0 M
+ erlang-megaco          x86_64 R14B-04.1.el6          epel                7.8 M
+ erlang-mnesia          x86_64 R14B-04.1.el6          epel                662 k
+ erlang-observer        x86_64 R14B-04.1.el6          epel                205 k
+ erlang-odbc            x86_64 R14B-04.1.el6          epel                 59 k
+ erlang-orber           x86_64 R14B-04.1.el6          epel                908 k
+ erlang-os_mon          x86_64 R14B-04.1.el6          epel                104 k
+ erlang-otp_mibs        x86_64 R14B-04.1.el6          epel                 27 k
+ erlang-parsetools      x86_64 R14B-04.1.el6          epel                164 k
+ erlang-percept         x86_64 R14B-04.1.el6          epel                140 k
+ erlang-pman            x86_64 R14B-04.1.el6          epel                104 k
+ erlang-public_key      x86_64 R14B-04.1.el6          epel                402 k
+ erlang-reltool         x86_64 R14B-04.1.el6          epel                296 k
+ erlang-runtime_tools   x86_64 R14B-04.1.el6          epel                209 k
+ erlang-sasl            x86_64 R14B-04.1.el6          epel                263 k
+ erlang-snmp            x86_64 R14B-04.1.el6          epel                1.5 M
+ erlang-ssh             x86_64 R14B-04.1.el6          epel                361 k
+ erlang-ssl             x86_64 R14B-04.1.el6          epel                378 k
+ erlang-stdlib          x86_64 R14B-04.1.el6          epel                2.1 M
+ erlang-syntax_tools    x86_64 R14B-04.1.el6          epel                317 k
+ erlang-test_server     x86_64 R14B-04.1.el6          epel                272 k
+ erlang-toolbar         x86_64 R14B-04.1.el6          epel                 49 k
+ erlang-tools           x86_64 R14B-04.1.el6          epel                535 k
+ erlang-tv              x86_64 R14B-04.1.el6          epel                377 k
+ erlang-typer           x86_64 R14B-04.1.el6          epel                 58 k
+ erlang-webtool         x86_64 R14B-04.1.el6          epel                 45 k
+ erlang-wx              x86_64 R14B-04.1.el6          epel                2.4 M
+ erlang-xmerl           x86_64 R14B-04.1.el6          epel                939 k
+ httpd                  x86_64 2.2.15-15.el6.centos.1 base                813 k
+ httpd-tools            x86_64 2.2.15-15.el6.centos.1 base                 70 k
+ libcurl-openssl        x86_64 7.27.0-2.2             security_shibboleth 181 k
+ liblog4shib1           x86_64 1.0.5-1.1              security_shibboleth  68 k
+ libmemcached           x86_64 0.31-1.1.el6           base                 80 k
+ libsaml8               x86_64 2.5.0-2.2              security_shibboleth 966 k
+ libtool-ltdl           x86_64 2.2.6-15.5.el6         base                 44 k
+ libxerces-c-3_1        x86_64 3.1.1-2.1              security_shibboleth 878 k
+ libxml-security-c17    x86_64 1.7.0-1.3              security_shibboleth 272 k
+ libxmltooling6         x86_64 1.5.1-5.1              security_shibboleth 683 k
+ libxslt                x86_64 1.1.26-2.el6_3.1       updates             452 k
+ mailcap                noarch 2.1.31-2.el6           base                 27 k
+ mod_ssl                x86_64 1:2.2.15-15.el6.centos.1
+                                                      base                 87 k
+ mod_wsgi               x86_64 3.2-1.el6              base                 66 k
+ opensaml-schemas       x86_64 2.5.0-2.2              security_shibboleth  29 k
+ postgresql             x86_64 8.4.13-1.el6_3         updates             2.8 M
+ postgresql-libs        x86_64 8.4.13-1.el6_3         updates             200 k
+ postgresql-server      x86_64 8.4.13-1.el6_3         updates             3.4 M
+ python-meld3           x86_64 0.6.7-1.el6            epel                 71 k
+ rabbitmq-server        noarch 2.6.1-1.el6            epel                1.1 M
+ shibboleth             x86_64 2.5.0-2.1              security_shibboleth 1.3 M
+ supervisor             noarch 2.1-8.el6              epel                292 k
+ tcl                    x86_64 1:8.5.7-6.el6          base                1.9 M
+ tk                     x86_64 1:8.5.7-5.el6          base                1.4 M
+ unixODBC               x86_64 2.2.14-11.el6          base                378 k
+ wxBase                 x86_64 2.8.12-1.el6           epel                576 k
+ wxGTK                  x86_64 2.8.12-1.el6           epel                2.9 M
+ wxGTK-gl               x86_64 2.8.12-1.el6           epel                 31 k
+ xmltooling-schemas     x86_64 1.5.1-5.1              security_shibboleth  12 k
+
+Transaction Summary
+================================================================================
+Install      92 Package(s)
+
+Total size: 259 M
+Total download size: 56 M
+Installed size: 352 M
+
 + patchdir=/usr/share/kata-ckan-prod/setup-patches
 + service tomcat6 stop
 Stopping tomcat6: [  OK  ]
@@ -53,16 +161,16 @@ CREATE ROLE
 ++ '[' -n /bin/sh -o -n '' ']'
 ++ hash -r
 + cd pyenv/src/ckan
-++ sed -E 's/ +inet +([^/]+).+/\1/'
-++ grep 'inet '
 ++ ip addr show dev eth0
+++ grep 'inet '
+++ sed -E 's/ +inet +([^/]+).+/\1/'
 Device "eth0" does not exist.
 + myip=
 + sed -e 's,\(ckan.site_url = http://\)[^ ]*,\1,' development.ini
 + mv development.ini.1 development.ini
 + paster --plugin=ckan db init
-2012-10-31 10:01:34,508 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-31 10:01:34,527 DEBUG [ckanext.harvest.model] Harvest table creation deferred
+2012-11-06 15:28:29,312 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-06 15:28:29,314 DEBUG [ckanext.harvest.model] Harvest table creation deferred
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_lname
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_slname
@@ -73,8 +181,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-10-31 10:02:09,793 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
-2012-10-31 10:02:09,988 INFO  [ckan.model] Database initialised
+2012-11-06 15:29:03,474 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
+2012-11-06 15:29:03,614 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + '[' -f /tmp/kata-SKIP10 ']'
 + instloc=/home/ckan
@@ -107,10 +215,10 @@ Initialising DB: SUCCESS
 ++ '[' -n /bin/sh -o -n '' ']'
 ++ hash -r
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-31 10:02:11,841 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-31 10:02:12,490 DEBUG [ckanext.harvest.model] Harvest tables created
-2012-10-31 10:02:12,556 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-31 10:02:12,626 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-06 15:29:05,868 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-06 15:29:06,546 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-11-06 15:29:06,575 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-06 15:29:06,633 DEBUG [ckanext.harvest.model] Harvest tables already exist
 
 DB tables created
 + packagedir=/usr/share/kata-ckan-prod
@@ -131,6 +239,8 @@ Hunk #2 succeeded at 13 with fuzz 1.
 + /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
 + chown shibd:shibd /etc/shibboleth/spkey.pem
 + chmod og= /etc/shibboleth/spkey.pem
++ mv /etc/shibboleth/sp-key.pem /etc/shibboleth/sp-key.pem.notused
++ mv /etc/shibboleth/sp-cert.pem /etc/shibboleth/sp-cert.pem.notused
 + packagedir=/usr/share/kata-ckan-prod
 + cp /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.bak
 + pushd /etc/httpd/conf.d/
@@ -148,8 +258,8 @@ patching file httpd.conf
 ++ dirname /usr/share/kata-ckan-prod/setup-scripts/20setupckanservice.sh
 + myipcmd=/usr/share/kata-ckan-prod/setup-scripts/myip.sh
 ++ /usr/share/kata-ckan-prod/setup-scripts/myip.sh
-+ myip=192.168.122.158
-+ sed -e s/%%MYIP%%/192.168.122.158/ httpd.conf.step1
++ myip=192.168.122.25
++ sed -e s/%%MYIP%%/192.168.122.25/ httpd.conf.step1
 + /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 20
 + popd
 + chkconfig httpd on
@@ -182,16 +292,16 @@ Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-31 10:03:47,413 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-31 10:03:47,420 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-10-31 10:03:47,484 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-31 10:03:47,526 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-10-31 10:03:47,619 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 449616c7-35a0-494d-bea5-57ef78099a3a
-2012-10-31 10:03:47,649 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'449616c7-35a0-494d-bea5-57ef78099a3a'}
-2012-10-31 10:03:47,685 INFO  [ckanext.harvest.logic.action.create] Harvest job saved e4957d0b-ffdf-4e6d-b349-4c26fdf8625e
+2012-11-06 15:30:15,196 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-06 15:30:15,199 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-06 15:30:15,223 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-06 15:30:15,239 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-11-06 15:30:15,274 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 8369ff1a-aa4c-42f5-9d40-9487e17c1119
+2012-11-06 15:30:15,320 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'8369ff1a-aa4c-42f5-9d40-9487e17c1119'}
+2012-11-06 15:30:15,382 INFO  [ckanext.harvest.logic.action.create] Harvest job saved c511d468-a7be-40db-b1b0-728b720da400
 
 Created new harvest source:
-Source id: 449616c7-35a0-494d-bea5-57ef78099a3a
+Source id: 8369ff1a-aa4c-42f5-9d40-9487e17c1119
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -202,16 +312,16 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-10-31 10:03:49,561 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-10-31 10:03:49,566 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-10-31 10:03:49,609 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-10-31 10:03:49,637 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-10-31 10:03:49,690 INFO  [ckanext.harvest.logic.action.create] Harvest source created: f962f019-3761-47c4-a3c9-27b990cfaa3e
-2012-10-31 10:03:49,748 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'f962f019-3761-47c4-a3c9-27b990cfaa3e'}
-2012-10-31 10:03:49,797 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 4c7b76bc-9e33-4623-aa3e-7610302cec5c
+2012-11-06 15:30:17,216 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-06 15:30:17,219 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-06 15:30:17,243 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-06 15:30:17,259 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-11-06 15:30:17,296 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 68e15b82-ed48-4e09-a99a-db33cc9f6def
+2012-11-06 15:30:17,324 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'68e15b82-ed48-4e09-a99a-db33cc9f6def'}
+2012-11-06 15:30:17,354 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 2beef7f7-b720-4599-aa77-7e915b223721
 
 Created new harvest source:
-Source id: f962f019-3761-47c4-a3c9-27b990cfaa3e
+Source id: 68e15b82-ed48-4e09-a99a-db33cc9f6def
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -224,7 +334,7 @@ A new Harvest Job for this source has also been created
 + chkconfig supervisord on
 Stopping atd: [FAILED]
 Starting atd: [  OK  ]
-job 1 at 2012-10-31 10:06
+job 1 at 2012-11-06 15:33
 Starting shibd: [  OK  ]
 Starting httpd: [  OK  ]
 Starting supervisord: 

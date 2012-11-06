@@ -15,7 +15,6 @@ Requires: patch
 Requires: postgresql-devel
 Requires: postgresql-server
 Requires: python-devel
-Requires: wget
 Requires: libxslt-devel
 Requires: rabbitmq-server
 Requires: apache-solr

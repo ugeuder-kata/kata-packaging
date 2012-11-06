@@ -8,9 +8,12 @@ I. Packages delivered:
 1. mcfg.rpm  (called the master configuration tool)
 2. apache-solr.rpm
 3. kata-prod.rpm
+4. dummy-deps.rpm
 
 (rpm files will have version numbers in their names, these have been left
-out in this document for the sake of simplicity) 
+out in this document for the sake of simplicity. Of course you need to
+specify complete file names including version numbers in all commands
+given below.)
 
 
 II. Installation steps
@@ -18,36 +21,44 @@ II. Installation steps
 1. Enable EPEL & Shibboleth repos
    1.a. "sudo yum install http://www.nic.funet.fi/pub/mirrors/fedora.redhat.com/pub/epel/6/i386/epel-release-6-7.noarch.rpm"
    1.b "cd /etc/yum.repos.d"
-   1.c "sudo wget http://download.opensuse.org/repositories/security://shibboleth/CentOS_CentOS-6/security:shibboleth.repo"
+   1.c "sudo curl -O http://download.opensuse.org/repositories/security://shibboleth/CentOS_CentOS-6/security:shibboleth.repo"
 
 
-2. Install Apache solr
+2. Install dummy-deps
 
-   2.a. "sudo yum install apache-solr.rpm"
+   (This package helps to avoid having packages installed which are not
+   required on a production server)
 
-3. Install master configuration tool
+   "sudo yum install dummy-deps.rpm"
 
-   3.a. "sudo yum install mcfg.rpm"
-   3.b. copy the provided master configuration sample file
+3. Install Apache solr
+
+   3.a. "sudo yum install apache-solr.rpm"
+
+
+4. Install master configuration tool
+
+   4.a. "sudo yum install mcfg.rpm"
+   4.b. copy the provided master configuration sample file
         "sudo cp -i /usr/share/mcfg/examples/kata-master.ini /root/"
-   3.c. Edit it "sudo -e /root/kata-master.ini"
+   4.c. Edit it "sudo -e /root/kata-master.ini"
         Cf. Appendix A configuration for details
 
 
-4. Install kata
+5. Install kata
 
    4.a. "sudo yum install kata.rpm"
 
-5. Use kata
+6. Use kata
 
-   System is operational. All configuration has happened in step 3.c.
+   System is operational. All configuration has happened in step 4.c.
 
 
 A. Configuration
 
 A.1. SSL keys and certificates
 
-   Apache and Shibboleth need an SSL key and certifcate pair. It's possible
+   Apache and Shibboleth need an SSL key and certificate pair. It's possible
    the use the same pair for both programs or have a different pair for each
    program.
 

@@ -10,7 +10,7 @@ instloc=$1
 cd $instloc
 mkdir -p ${instloc}/download
 cd ${instloc}/download
-wget https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 cd ..
 # --no-site-packages option should be used according to updated installation
 # instructions
