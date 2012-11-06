@@ -3,9 +3,10 @@ arch=$(AUTOV=1 rpm -q --qf '%{arch}\n' --specfile rpms/kata-ckan-dev/kata-ckan-d
 cd rpmbuild/RPMS/
 mkdir allrpms
 cd allrpms
-ln -s ../${arch}/apache-solr-[0-9]*.rpm
-ln -s ../${arch}/kata-ckan-prod-[0-9]*.rpm
-ln -s ../noarch/mcfg-[0-9]*.rpm
+ln -s ../${arch}/dummy-deps-[0-9][0-9][0-9][0-9][0-9][0-9]-1.el?.${arch}.rpm
+ln -s ../${arch}/apache-solr-3.5.0-1.el?.${arch}.rpm
+ln -s ../${arch}/kata-ckan-prod-[0-9][0-9][0-9][0-9][0-9][0-9]-1.el?.${arch}.rpm
+ln -s ../noarch/mcfg-[0-9][0-9][0-9][0-9][0-9][0-9]-1.el?.noarch.rpm
 cd ..
 tar chf rpms.tar allrpms
 

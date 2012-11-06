@@ -1,6 +1,7 @@
 #! /bin/sh
 tar xf rpms-*.tar
 cd allrpms
+sudo yum install -y dummy-deps-*.rpm
 sudo yum install -y mcfg-*.rpm
 if [ -r ~abuild/abuild-input/abuild-prod-kata-master.ini ]
 then
