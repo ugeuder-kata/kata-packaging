@@ -2,7 +2,6 @@
 set -x
 packagedir=$1
 
-cp /etc/shibboleth/shibboleth2.xml /etc/shibboleth/shibboleth2.xml.bak
 pushd /etc/shibboleth >/dev/null
 patch -b -p2 -i "${packagedir}/setup-patches/shibboleth2.xml.patch"
 patch -b -p2 -i "${packagedir}/setup-patches/attribute-map.xml.patch"
