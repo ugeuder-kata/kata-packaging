@@ -153,27 +153,12 @@ su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-prod"
 %{scriptdir}/07setupapachessl.sh "/usr/share/kata-ckan-prod"
-cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
-import os
-instance_dir = '/home/ckan'
-config_file = '/home/ckan/pyenv/src/ckan/development.ini'
-pyenv_bin_dir = os.path.join(instance_dir, 'pyenv', 'bin')
-activate_this = os.path.join(pyenv_bin_dir, 'activate_this.py')
-execfile(activate_this, dict(__file__=activate_this))
-from paste.deploy import loadapp
-config_filepath = os.path.join(instance_dir, config_file)
-from paste.script.util.logging_config import fileConfig
-fileConfig(config_filepath)
-application = loadapp('config:%s' % config_filepath)
-EOF
-chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/20setupckanservice.sh %{patchdir}
 
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
 sed -i 's/;directory/directory/' /etc/supervisord.conf
-service supervisord restart
 chkconfig supervisord on
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
