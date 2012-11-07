@@ -26,10 +26,11 @@ II. Installation steps
 
 2. Install dummy-deps
 
-   (This package helps to avoid having packages installed which are not
+   (This package helps to avoid having packages installed, which are not
    required on a production server)
 
    "sudo yum install dummy-deps.rpm"
+
 
 3. Install Apache solr
 
@@ -42,7 +43,7 @@ II. Installation steps
    4.b. copy the provided master configuration sample file
         "sudo cp -i /usr/share/mcfg/examples/kata-master.ini /root/"
    4.c. Edit it "sudo -e /root/kata-master.ini"
-        Cf. Appendix A configuration for details
+        Cf. Appendix A Configuration for details
 
 
 5. Install kata
