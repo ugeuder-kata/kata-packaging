@@ -1,1 +1,0 @@
-../../common/27installshibboleth.sh

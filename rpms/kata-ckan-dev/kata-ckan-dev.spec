@@ -73,13 +73,7 @@ install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 07setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 22installharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 23installurn.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 24installoaipmh.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 25installddi.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 26installsitemap.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 27installshibboleth.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 28installkataexts.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 25installckanextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -125,13 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/07setupapachessl.sh
 %{scriptdir}/10setupckan.sh
 %{scriptdir}/20setupckanservice.sh
-%{scriptdir}/22installharvester.sh
-%{scriptdir}/23installurn.sh
-%{scriptdir}/24installoaipmh.sh
-%{scriptdir}/25installddi.sh
-%{scriptdir}/26installsitemap.sh
-%{scriptdir}/27installshibboleth.sh
-%{scriptdir}/28installkataexts.sh
+%{scriptdir}/25installckanextensions.sh
 %{scriptdir}/30configsolr.sh
 %{scriptdir}/60installextensions.sh
 %{scriptdir}/61setupsources.sh
@@ -182,13 +170,7 @@ chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/05setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/20setupckanservice.sh %{patchdir}
-su -c "%{scriptdir}/22installharvester.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/23installurn.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/24installoaipmh.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/25installddi.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/26installsitemap.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/27installshibboleth.sh /home/%{ckanuser} %{ckanuser}
-su -c "%{scriptdir}/28installkataexts.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/25installckanextensions.sh /home/%{ckanuser}" %{ckanuser}
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
