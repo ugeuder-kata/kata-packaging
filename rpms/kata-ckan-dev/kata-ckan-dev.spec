@@ -75,7 +75,6 @@ install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 25installckanextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 60installextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 71storepythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -121,7 +120,6 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/20setupckanservice.sh
 %{scriptdir}/25installckanextensions.sh
 %{scriptdir}/30configsolr.sh
-%{scriptdir}/60installextensions.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/71storepythonpackages.sh
@@ -176,7 +174,6 @@ cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
 sed -i 's/;directory/directory/' /etc/supervisord.conf
 %{scriptdir}/30configsolr.sh /home/%{ckanuser}
-su -c "%{scriptdir}/60installextensions.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 service atd restart
 at -f %{katadatadir}/runharvester.sh 'now + 3 minute'
