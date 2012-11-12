@@ -2,8 +2,8 @@
  Package                Arch   Version                Repository           Size
 ================================================================================
 Installing:
- kata-ckan-dev          x86_64 536528-1.el6           /kata-ckan-dev-536528-1.el6.x86_64
-                                                                           30 k
+ kata-ckan-dev          x86_64 545236-1.el6           /kata-ckan-dev-545236-1.el6.x86_64
+                                                                           29 k
 Installing for dependencies:
  SDL                    x86_64 1.2.14-3.el6           base                193 k
  apr                    x86_64 1.3.9-5.el6_2          updates             123 k
@@ -74,7 +74,7 @@ Installing for dependencies:
  glibc-headers          x86_64 2.12-1.80.el6_3.6      updates             601 k
  httpd                  x86_64 2.2.15-15.el6.centos.1 base                813 k
  httpd-tools            x86_64 2.2.15-15.el6.centos.1 base                 70 k
- kernel-headers         x86_64 2.6.32-279.11.1.el6    updates             1.9 M
+ kernel-headers         x86_64 2.6.32-279.14.1.el6    updates             1.9 M
  libcurl-openssl        x86_64 7.27.0-2.2             security_shibboleth 181 k
  libgcrypt-devel        x86_64 1.4.5-9.el6_2.2        base                118 k
  libgpg-error-devel     x86_64 1.7-4.el6              base                 14 k
@@ -138,7 +138,7 @@ Starting tomcat6: [  OK  ]
 + curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  107k  100  107k    0     0  90201      0  0:00:01  0:00:01 --:--:--  161k
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 29  107k   29 32339    0     0  32758      0  0:00:03 --:--:--  0:00:03 73665100  107k  100  107k    0     0  88412      0  0:00:01  0:00:01 --:--:--  154k
 + cd ..
 + python download/virtualenv.py pyenv
 New python executable in pyenv/bin/python
@@ -579,7 +579,6 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
 Successfully installed Genshi sqlalchemy-migrate sqlalchemy webhelpers pyutilib.component.core vdm solrpy formalchemy pairtree ofs apachemiddleware markupsafe babel psycopg2 webob Pylons repoze.who tempita zope.interface repoze.who.plugins.openid repoze.who-friendlyform routes paste Jinja2 fanstatic decorator argparse Beaker PasteDeploy PasteScript FormEncode simplejson nose Mako WebError WebTest python-openid repoze.lru Pygments
 Cleaning up...
 + packagedir=/usr/share/kata-ckan-dev
-+ cp /etc/shibboleth/shibboleth2.xml /etc/shibboleth/shibboleth2.xml.bak
 + pushd /etc/shibboleth
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/shibboleth2.xml.patch
 patching file shibboleth2.xml
@@ -599,7 +598,6 @@ Hunk #2 succeeded at 13 with fuzz 1.
 + mv /etc/shibboleth/sp-key.pem /etc/shibboleth/sp-key.pem.notused
 + mv /etc/shibboleth/sp-cert.pem /etc/shibboleth/sp-cert.pem.notused
 + packagedir=/usr/share/kata-ckan-dev
-+ cp /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.bak
 + pushd /etc/httpd/conf.d/
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/ssl.conf.patch
 patching file ssl.conf
@@ -678,8 +676,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-11-06 10:59:59,980 INFO  [ckan.model] CKAN database version upgraded: 0 -> 60
-2012-11-06 11:00:00,157 INFO  [ckan.model] Database initialised
+2012-11-12 12:08:16,325 INFO  [ckan.model] CKAN database version upgraded: 0 -> 61
+2012-11-12 12:08:16,424 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore data_tree
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
@@ -768,45 +766,15 @@ Installing collected packages: carrot, anyjson, amqplib
 Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-06 11:01:03,543 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-06 11:01:04,259 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-11-12 12:09:30,535 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-12 12:09:31,255 DEBUG [ckanext.harvest.model] Harvest tables created
 
 DB tables created
 + paster --plugin=ckan user add harvester password=harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Creating user: 'harvester'
-<User id=dec66b29-5b7b-4d53-ae39-fe25b16e3604 name=harvester openid=None password=f689754e6f86d6bbfae71167d123cac0201ed56c9b40c404b7f093de80ec8f51974330d19799c8fa fullname=None email=None apikey=f5a83232-fc82-43b1-9b6e-46dc9f6712a0 created=2012-11-06 11:01:05.737840 reset_key=None about=None>
+<User id=ae319071-eeda-410f-8cba-7cd5605a104d name=harvester openid=None password=802cde43336a6c65f6f2fbb9947747fb454de44aaf047bcdf7b4d27db28d073ca46089380434f4d5 fullname=None email=None apikey=f3c182a4-3162-4455-86c6-a48414307900 created=2012-11-12 12:09:33.800138 reset_key=None about=None>
 + paster --plugin=ckan sysadmin add harvester --config=/home/ckan/pyenv/src/ckan/development.ini
 Added harvester as sysadmin
-+ instloc=/home/ckan
-+ cd /home/ckan
-+ cd pyenv/src
-+ source ../bin/activate
-++ deactivate nondestructive
-++ unset pydoc
-++ '[' -n '' ']'
-++ '[' -n '' ']'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
-++ '[' -n '' ']'
-++ unset VIRTUAL_ENV
-++ '[' '!' nondestructive = nondestructive ']'
-++ VIRTUAL_ENV=/home/ckan/pyenv
-++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ export PATH
-++ '[' -n '' ']'
-++ '[' -z '' ']'
-++ _OLD_VIRTUAL_PS1=
-++ '[' x '!=' x ']'
-+++ basename /home/ckan/pyenv
-++ '[' pyenv = __ ']'
-+++ basename /home/ckan/pyenv
-++ PS1='(pyenv)'
-++ export PS1
-++ alias 'pydoc=python -m pydoc'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
 + pip install -e git+https://github.com/kata-csc/ckanext-urn.git#egg=ckanext-urn
 Obtaining ckanext-urn from git+https://github.com/kata-csc/ckanext-urn.git#egg=ckanext-urn
   Cloning https://github.com/kata-csc/ckanext-urn.git to ./ckanext-urn
@@ -822,36 +790,6 @@ Installing collected packages: ckanext-urn
     Installed /home/ckan/pyenv/src/ckanext-urn
 Successfully installed ckanext-urn
 Cleaning up...
-+ instloc=/home/ckan
-+ cd /home/ckan
-+ cd pyenv/src
-+ source ../bin/activate
-++ deactivate nondestructive
-++ unset pydoc
-++ '[' -n '' ']'
-++ '[' -n '' ']'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
-++ '[' -n '' ']'
-++ unset VIRTUAL_ENV
-++ '[' '!' nondestructive = nondestructive ']'
-++ VIRTUAL_ENV=/home/ckan/pyenv
-++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ export PATH
-++ '[' -n '' ']'
-++ '[' -z '' ']'
-++ _OLD_VIRTUAL_PS1=
-++ '[' x '!=' x ']'
-+++ basename /home/ckan/pyenv
-++ '[' pyenv = __ ']'
-+++ basename /home/ckan/pyenv
-++ PS1='(pyenv)'
-++ export PS1
-++ alias 'pydoc=python -m pydoc'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
 + pip install -e git+https://github.com/kata-csc/ckanext-oaipmh.git#egg=ckanext-oaipmh
 Obtaining ckanext-oaipmh from git+https://github.com/kata-csc/ckanext-oaipmh.git#egg=ckanext-oaipmh
   Cloning https://github.com/kata-csc/ckanext-oaipmh.git to ./ckanext-oaipmh
@@ -904,36 +842,6 @@ Installing collected packages: ckanext-oaipmh, pyoai, lxml
     warning: no files found matching '*.txt' under directory 'src/lxml/tests'
 Successfully installed ckanext-oaipmh pyoai lxml
 Cleaning up...
-+ instloc=/home/ckan
-+ cd /home/ckan
-+ cd pyenv/src
-+ source ../bin/activate
-++ deactivate nondestructive
-++ unset pydoc
-++ '[' -n '' ']'
-++ '[' -n '' ']'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
-++ '[' -n '' ']'
-++ unset VIRTUAL_ENV
-++ '[' '!' nondestructive = nondestructive ']'
-++ VIRTUAL_ENV=/home/ckan/pyenv
-++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ export PATH
-++ '[' -n '' ']'
-++ '[' -z '' ']'
-++ _OLD_VIRTUAL_PS1=
-++ '[' x '!=' x ']'
-+++ basename /home/ckan/pyenv
-++ '[' pyenv = __ ']'
-+++ basename /home/ckan/pyenv
-++ PS1='(pyenv)'
-++ export PS1
-++ alias 'pydoc=python -m pydoc'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
 + pip install -e git+https://github.com/kata-csc/ckanext-ddi.git#egg=ckanext-ddi
 Obtaining ckanext-ddi from git+https://github.com/kata-csc/ckanext-ddi.git#egg=ckanext-ddi
   Cloning https://github.com/kata-csc/ckanext-ddi.git to ./ckanext-ddi
@@ -968,36 +876,6 @@ Installing collected packages: ckanext-ddi, beautifulsoup4, ckanclient, unicodec
   Running setup.py install for six
 Successfully installed ckanext-ddi beautifulsoup4 ckanclient unicodecsv python-dateutil six
 Cleaning up...
-+ instloc=/home/ckan
-+ cd /home/ckan
-+ cd pyenv/src
-+ source ../bin/activate
-++ deactivate nondestructive
-++ unset pydoc
-++ '[' -n '' ']'
-++ '[' -n '' ']'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
-++ '[' -n '' ']'
-++ unset VIRTUAL_ENV
-++ '[' '!' nondestructive = nondestructive ']'
-++ VIRTUAL_ENV=/home/ckan/pyenv
-++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ export PATH
-++ '[' -n '' ']'
-++ '[' -z '' ']'
-++ _OLD_VIRTUAL_PS1=
-++ '[' x '!=' x ']'
-+++ basename /home/ckan/pyenv
-++ '[' pyenv = __ ']'
-+++ basename /home/ckan/pyenv
-++ PS1='(pyenv)'
-++ export PS1
-++ alias 'pydoc=python -m pydoc'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
 + pip install -e git+https://github.com/kata-csc/ckanext-sitemap.git#egg=ckanext-sitemap
 Obtaining ckanext-sitemap from git+https://github.com/kata-csc/ckanext-sitemap.git#egg=ckanext-sitemap
   Cloning https://github.com/kata-csc/ckanext-sitemap.git to ./ckanext-sitemap
@@ -1010,37 +888,6 @@ Installing collected packages: ckanext-sitemap
     Installed /home/ckan/pyenv/src/ckanext-sitemap
 Successfully installed ckanext-sitemap
 Cleaning up...
-+ instloc=/home/ckan
-+ ckanuser=ckan
-+ cd /home/ckan
-+ cd pyenv/src
-+ source ../bin/activate
-++ deactivate nondestructive
-++ unset pydoc
-++ '[' -n '' ']'
-++ '[' -n '' ']'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
-++ '[' -n '' ']'
-++ unset VIRTUAL_ENV
-++ '[' '!' nondestructive = nondestructive ']'
-++ VIRTUAL_ENV=/home/ckan/pyenv
-++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ export PATH
-++ '[' -n '' ']'
-++ '[' -z '' ']'
-++ _OLD_VIRTUAL_PS1=
-++ '[' x '!=' x ']'
-+++ basename /home/ckan/pyenv
-++ '[' pyenv = __ ']'
-+++ basename /home/ckan/pyenv
-++ PS1='(pyenv)'
-++ export PS1
-++ alias 'pydoc=python -m pydoc'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
 + pip install -e git+git://github.com/kata-csc/ckanext-shibboleth.git#egg=ckanext-shibboleth
 Obtaining ckanext-shibboleth from git+git://github.com/kata-csc/ckanext-shibboleth.git#egg=ckanext-shibboleth
   Cloning git://github.com/kata-csc/ckanext-shibboleth.git to ./ckanext-shibboleth
@@ -1053,43 +900,10 @@ Installing collected packages: ckanext-shibboleth
     Installed /home/ckan/pyenv/src/ckanext-shibboleth
 Successfully installed ckanext-shibboleth
 Cleaning up...
-+ cp /home/ckan/pyenv/src/ckan/who.ini /home/ckan/pyenv/src/ckan/who.ini.bak
 + pushd /home/ckan/pyenv/src/ckan
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/who.ini.patch
 patching file who.ini
 + popd
-+ chown ckan:apache /home/ckan -R
-+ instloc=/home/ckan
-+ ckanuser=
-+ cd /home/ckan
-+ cd pyenv/src
-+ source ../bin/activate
-++ deactivate nondestructive
-++ unset pydoc
-++ '[' -n '' ']'
-++ '[' -n '' ']'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
-++ '[' -n '' ']'
-++ unset VIRTUAL_ENV
-++ '[' '!' nondestructive = nondestructive ']'
-++ VIRTUAL_ENV=/home/ckan/pyenv
-++ export VIRTUAL_ENV
-++ _OLD_VIRTUAL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ PATH=/home/ckan/pyenv/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-++ export PATH
-++ '[' -n '' ']'
-++ '[' -z '' ']'
-++ _OLD_VIRTUAL_PS1=
-++ '[' x '!=' x ']'
-+++ basename /home/ckan/pyenv
-++ '[' pyenv = __ ']'
-+++ basename /home/ckan/pyenv
-++ PS1='(pyenv)'
-++ export PS1
-++ alias 'pydoc=python -m pydoc'
-++ '[' -n /bin/sh -o -n '' ']'
-++ hash -r
 + pip install -e git+git://github.com/kata-csc/ckanext-kata.git#egg=ckanext-kata
 Obtaining ckanext-kata from git+git://github.com/kata-csc/ckanext-kata.git#egg=ckanext-kata
   Cloning git://github.com/kata-csc/ckanext-kata.git to ./ckanext-kata
@@ -1125,16 +939,17 @@ Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-06 11:04:45,780 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-06 11:04:45,785 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-11-06 11:04:45,858 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-11-06 11:04:45,893 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-11-06 11:04:45,925 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 1240658c-4f97-4757-bea4-36c25be6b9b9
-2012-11-06 11:04:45,966 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'1240658c-4f97-4757-bea4-36c25be6b9b9'}
-2012-11-06 11:04:46,007 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 7db01546-7a3f-4247-a31d-2ade0347da97
+2012-11-12 12:13:04,650 DEBUG [ckanext.kata] disable search
+2012-11-12 12:13:04,850 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-12 12:13:04,852 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-12 12:13:04,886 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-12 12:13:04,901 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-11-12 12:13:04,928 INFO  [ckanext.harvest.logic.action.create] Harvest source created: ee957164-c933-4c02-834e-8704ef15bd1f
+2012-11-12 12:13:04,949 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'ee957164-c933-4c02-834e-8704ef15bd1f'}
+2012-11-12 12:13:04,977 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 13a9cbff-b3d7-4c6d-ad69-304e69b5e6ab
 
 Created new harvest source:
-Source id: 1240658c-4f97-4757-bea4-36c25be6b9b9
+Source id: ee957164-c933-4c02-834e-8704ef15bd1f
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -1145,16 +960,17 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-06 11:04:48,357 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-06 11:04:48,362 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-11-06 11:04:48,426 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-11-06 11:04:48,461 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-11-06 11:04:48,516 INFO  [ckanext.harvest.logic.action.create] Harvest source created: d7edea29-c638-4b71-9ed4-a79efd89db12
-2012-11-06 11:04:48,544 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'd7edea29-c638-4b71-9ed4-a79efd89db12'}
-2012-11-06 11:04:48,581 INFO  [ckanext.harvest.logic.action.create] Harvest job saved dff29ca3-31ef-4c78-84e2-4b610981d553
+2012-11-12 12:13:06,220 DEBUG [ckanext.kata] disable search
+2012-11-12 12:13:06,350 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-12 12:13:06,353 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-12 12:13:06,476 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-12 12:13:06,510 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-11-12 12:13:06,603 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 72d75bd7-67a6-4d9d-a609-aaf6fdd45bd9
+2012-11-12 12:13:06,633 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'72d75bd7-67a6-4d9d-a609-aaf6fdd45bd9'}
+2012-11-12 12:13:06,669 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 4bd54007-67e3-4d26-bc44-eca7fefa2af0
 
 Created new harvest source:
-Source id: d7edea29-c638-4b71-9ed4-a79efd89db12
+Source id: 72d75bd7-67a6-4d9d-a609-aaf6fdd45bd9
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -1167,7 +983,7 @@ A new Harvest Job for this source has also been created
 + chkconfig supervisord on
 Stopping atd: [FAILED]
 Starting atd: [  OK  ]
-job 1 at 2012-11-06 11:07
+job 1 at 2012-11-12 12:16
 Starting shibd: [  OK  ]
 Starting httpd: [  OK  ]
 Starting supervisord: [  OK  ]
@@ -1211,20 +1027,22 @@ Starting supervisord: [  OK  ]
 [1;31m+ echo 'Python package mismatches:'
 Python package mismatches:
 + cat /tmp/kata-70.tmp
+7c7
+< Mako==0.7.2
+---
+> Mako==0.7.3
 28c28
-< -e git+https://github.com/okfn/ckan.git@c04db955d7611d2847eaee227b0e241b955ee80a#egg=ckan-dev
+< -e git+https://github.com/okfn/ckan.git@c59b304cb6b8a6dce09b8e9f708f9cb4d684cab4#egg=ckan-dev
 ---
-> -e git+https://github.com/okfn/ckan.git@c59b304cb6b8a6dce09b8e9f708f9cb4d684cab4#egg=ckan-dev
+> -e git+https://github.com/okfn/ckan.git@115e70326ff2eef3f42b33c79b77ad55866ef5cf#egg=ckan-dev
 30c30
-< -e git+https://github.com/kata-csc/ckanext-ddi.git@51eff48642e80640c591572f302cd62dba90d25c#egg=ckanext_ddi-dev
+< -e git+https://github.com/kata-csc/ckanext-ddi.git@4b663dbe521739e2c96f7e7589963da5895036e0#egg=ckanext_ddi-dev
 ---
-> -e git+https://github.com/kata-csc/ckanext-ddi.git@4b663dbe521739e2c96f7e7589963da5895036e0#egg=ckanext_ddi-dev
-32,33c32,33
-< -e git://github.com/kata-csc/ckanext-kata.git@d44bddf55d360848de3e514cec91e480f8ef3d0a#egg=ckanext_kata-dev
-< -e git+https://github.com/kata-csc/ckanext-oaipmh.git@be1b0aa3b13a23d3ac65aa4967a24e529ff1f581#egg=ckanext_oaipmh-dev
+> -e git+https://github.com/kata-csc/ckanext-ddi.git@4bd294c862f2ddcc8790562d1eb9956587348760#egg=ckanext_ddi-dev
+32c32
+< -e git://github.com/kata-csc/ckanext-kata.git@19831688c0baa8b5cfddf3516640a490e8e52ebc#egg=ckanext_kata-dev
 ---
-> -e git://github.com/kata-csc/ckanext-kata.git@19831688c0baa8b5cfddf3516640a490e8e52ebc#egg=ckanext_kata-dev
-> -e git+https://github.com/kata-csc/ckanext-oaipmh.git@39bc7e61f1e14e840b9e348cbd72fcc768625245#egg=ckanext_oaipmh-dev
+> -e git://github.com/kata-csc/ckanext-kata.git@186855200fbab49de6b2414af312f2e48a32ab70#egg=ckanext_kata-dev
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 + datadir=/usr/share/kata-ckan-dev/setup-data
