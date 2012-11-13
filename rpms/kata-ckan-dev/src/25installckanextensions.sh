@@ -2,9 +2,9 @@
 set -x
 instloc=$1
 
-cd $instloc
+cd $instloc/pyenv
 source ./bin/activate
-cd pyenv/src/ckan
+cd src/ckan
 
 pip install -e git+https://github.com/okfn/ckanext-harvest.git#egg=ckanext-harvest
 pip install carrot
