@@ -168,7 +168,8 @@ at -f %{scriptdir}/runharvester.sh 'now + 3 minute'
 service shibd start
 service httpd start
 service supervisord start
-
+# Pick up the cron job that was installed.
+service crond reload
 %preun
 service ckan-dev stop
 # design assumption is that kata is on a "single purpose" server, we 
