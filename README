@@ -1,0 +1,10 @@
+Kata is the the Finnish Science Data Catalog.
+
+This repository contains scripts and source used for rpm packaging
+An autobuild system is included, too.
+
+For installation by an administrator see INSTALL
+
+For an overview of the development system see rpms/README
+
+For information about autobuild see autobuild/README
