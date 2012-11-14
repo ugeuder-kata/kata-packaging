@@ -181,7 +181,8 @@ at -f %{katadatadir}/runharvester.sh 'now + 3 minute'
 service shibd start
 service httpd start
 service supervisord start
-
+# Pick up the cron job that was installed.
+service crond reload
 # run this last so the user has a chance to see the output
 su -c "%{scriptdir}/70checkpythonpackages.sh /home/%{ckanuser} %{katadatadir}/pip.freeze.lastknown" %{ckanuser}
 # well, actually it was last but one, but we still need to do this as root
