@@ -1,1 +1,0 @@
-../../common/05setuppostgres.sh

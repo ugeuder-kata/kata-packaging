@@ -65,16 +65,16 @@ install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 
 # setup scripts (keep them numerically ordered)
-install 01configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 01getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 02getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 07setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 10setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 25installckanextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 04configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 08getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 12getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 16configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 20setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 24setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 28setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 32setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 36installckanextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 40configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 71storepythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -110,16 +110,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 # same order as above
-%{scriptdir}/01configuredependencies.sh
-%{scriptdir}/01getpyenv.sh
-%{scriptdir}/02getpythonpackages.sh
-%{scriptdir}/03configshibbolethsp.sh
-%{scriptdir}/05setuppostgres.sh
-%{scriptdir}/07setupapachessl.sh
-%{scriptdir}/10setupckan.sh
-%{scriptdir}/20setupckanservice.sh
-%{scriptdir}/25installckanextensions.sh
-%{scriptdir}/30configsolr.sh
+%{scriptdir}/04configuredependencies.sh
+%{scriptdir}/08getpyenv.sh
+%{scriptdir}/12getpythonpackages.sh
+%{scriptdir}/16configshibbolethsp.sh
+%{scriptdir}/20setuppostgres.sh
+%{scriptdir}/24setupapachessl.sh
+%{scriptdir}/28setupckan.sh
+%{scriptdir}/32setupckanservice.sh
+%{scriptdir}/36installckanextensions.sh
+%{scriptdir}/40configsolr.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/71storepythonpackages.sh
@@ -146,11 +146,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
-%{scriptdir}/01configuredependencies.sh %{patchdir}
-su -c "%{scriptdir}/01getpyenv.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/02getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-dev"
-%{scriptdir}/07setupapachessl.sh "/usr/share/kata-ckan-dev"
+%{scriptdir}/04configuredependencies.sh %{patchdir}
+su -c "%{scriptdir}/08getpyenv.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/12getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-dev"
+%{scriptdir}/24setupapachessl.sh "/usr/share/kata-ckan-dev"
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
 instance_dir = '/home/ckan'
@@ -165,15 +165,15 @@ fileConfig(config_filepath)
 application = loadapp('config:%s' % config_filepath)
 EOF
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
-%{scriptdir}/05setuppostgres.sh %{patchdir}
-su -c "%{scriptdir}/10setupckan.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/20setupckanservice.sh %{patchdir}
-su -c "%{scriptdir}/25installckanextensions.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/20setuppostgres.sh %{patchdir}
+su -c "%{scriptdir}/28setupckan.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/32setupckanservice.sh %{patchdir}
+su -c "%{scriptdir}/36installckanextensions.sh /home/%{ckanuser}" %{ckanuser}
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
 sed -i 's/;directory/directory/' /etc/supervisord.conf
-%{scriptdir}/30configsolr.sh /home/%{ckanuser}
+%{scriptdir}/40configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 service atd restart
 at -f %{katadatadir}/runharvester.sh 'now + 3 minute'

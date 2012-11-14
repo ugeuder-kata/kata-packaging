@@ -1,0 +1,1 @@
+../../common/32setupckanservice.sh

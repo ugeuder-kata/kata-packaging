@@ -1,1 +1,0 @@
-../../common/30configsolr.sh

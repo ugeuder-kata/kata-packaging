@@ -8,7 +8,7 @@ mv httpd.conf httpd.conf.step1
 myipcmd=$(dirname $0)/myip.sh
 myip=$($myipcmd)
 sed -e "s/%%MYIP%%/${myip}/" httpd.conf.step1 > httpd.conf
-/usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 20
+/usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 32
 popd >/dev/null
 chkconfig httpd on
 chown -R ckan:apache /home/ckan/pyenv

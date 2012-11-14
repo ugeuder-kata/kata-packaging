@@ -80,14 +80,14 @@ install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/etc/cron.d
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 # setup scripts (keep them numerically ordered)
-install 01configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 03configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 05setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 07setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 10setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 20setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 21setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 30configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 04configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 16configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 20setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 24setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 26setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 32setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 35setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 40configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 # misc scripts (keep them alphabetically ordered by filename)
@@ -116,14 +116,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %attr(-,%{ckanuser},%{ckanuser}) /home/%{ckanuser}/pyenv
-%{scriptdir}/01configuredependencies.sh
-%{scriptdir}/03configshibbolethsp.sh
-%{scriptdir}/05setuppostgres.sh
-%{scriptdir}/07setupapachessl.sh
-%{scriptdir}/10setupckanprod.sh
-%{scriptdir}/20setupckanservice.sh
-%{scriptdir}/21setupharvester.sh
-%{scriptdir}/30configsolr.sh
+%{scriptdir}/04configuredependencies.sh
+%{scriptdir}/16configshibbolethsp.sh
+%{scriptdir}/20setuppostgres.sh
+%{scriptdir}/24setupapachessl.sh
+%{scriptdir}/26setupckanprod.sh
+%{scriptdir}/32setupckanservice.sh
+%{scriptdir}/35setupharvester.sh
+%{scriptdir}/40configsolr.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/80backuphome.sh
 %{scriptdir}/myip.sh
@@ -147,20 +147,20 @@ rm -rf $RPM_BUILD_ROOT
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 
 %post
-%{scriptdir}/01configuredependencies.sh %{patchdir}
-%{scriptdir}/05setuppostgres.sh %{patchdir}
-su -c "%{scriptdir}/10setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
-su -c "%{scriptdir}/21setupharvester.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/03configshibbolethsp.sh "/usr/share/kata-ckan-prod"
-%{scriptdir}/07setupapachessl.sh "/usr/share/kata-ckan-prod"
-%{scriptdir}/20setupckanservice.sh %{patchdir}
+%{scriptdir}/04configuredependencies.sh %{patchdir}
+%{scriptdir}/20setuppostgres.sh %{patchdir}
+su -c "%{scriptdir}/26setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
+su -c "%{scriptdir}/35setupharvester.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-prod"
+%{scriptdir}/24setupapachessl.sh "/usr/share/kata-ckan-prod"
+%{scriptdir}/32setupckanservice.sh %{patchdir}
 
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
 sed -i 's/;directory/directory/' /etc/supervisord.conf
 chkconfig supervisord on
-%{scriptdir}/30configsolr.sh /home/%{ckanuser}
+%{scriptdir}/40configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 service atd restart
 at -f %{scriptdir}/runharvester.sh 'now + 3 minute'

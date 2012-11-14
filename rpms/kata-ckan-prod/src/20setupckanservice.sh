@@ -1,1 +1,0 @@
-../../common/20setupckanservice.sh
