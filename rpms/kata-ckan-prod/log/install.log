@@ -2,8 +2,8 @@
  Package                Arch   Version                Repository           Size
 ================================================================================
 Installing:
- kata-ckan-prod         x86_64 545285-1.el6           /kata-ckan-prod-545285-1.el6.x86_64
-                                                                          158 M
+ kata-ckan-prod         x86_64 549454-1.el6           /kata-ckan-prod-549454-1.el6.x86_64
+                                                                          152 M
 Installing for dependencies:
  SDL                    x86_64 1.2.14-3.el6           base                193 k
  apr                    x86_64 1.3.9-5.el6_2          updates             123 k
@@ -102,9 +102,9 @@ Transaction Summary
 ================================================================================
 Install      92 Package(s)
 
-Total size: 214 M
+Total size: 208 M
 Total download size: 56 M
-Installed size: 307 M
+Installed size: 301 M
 
 + patchdir=/usr/share/kata-ckan-prod/setup-patches
 + service tomcat6 stop
@@ -112,7 +112,7 @@ Stopping tomcat6: [  OK  ]
 + cd /etc/tomcat6
 + patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/tomcat6.conf.patch
 patching file tomcat6.conf
-+ python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 1
++ python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 4
 + service tomcat6 start
 Starting tomcat6: [  OK  ]
 + patchdir=/usr/share/kata-ckan-prod/setup-patches
@@ -162,16 +162,16 @@ CREATE ROLE
 ++ hash -r
 + cd pyenv/src/ckan
 ++ ip addr show dev eth0
-++ sed -E 's/ +inet +([^/]+).+/\1/'
 ++ grep 'inet '
+++ sed -E 's/ +inet +([^/]+).+/\1/'
 Device "eth0" does not exist.
 + myip=
 + sed -e 's,\(ckan.site_url = http://\)[^ ]*,\1,' development.ini
 + mv development.ini.1 development.ini
 + paster --plugin=ckan db init
-2012-11-12 13:12:33,607 DEBUG [ckanext.kata] disable search
-2012-11-12 13:12:33,913 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-12 13:12:33,916 DEBUG [ckanext.harvest.model] Harvest table creation deferred
+2012-11-15 11:48:10,664 DEBUG [ckanext.kata] disable search
+2012-11-15 11:48:10,933 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-15 11:48:10,936 DEBUG [ckanext.harvest.model] Harvest table creation deferred
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_lname
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_pkg_slname
@@ -182,8 +182,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-11-12 13:13:05,543 INFO  [ckan.model] CKAN database version upgraded: 0 -> 61
-2012-11-12 13:13:05,675 INFO  [ckan.model] Database initialised
+2012-11-15 11:48:43,167 INFO  [ckan.model] CKAN database version upgraded: 0 -> 61
+2012-11-15 11:48:43,286 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + '[' -f /tmp/kata-SKIP10 ']'
 + instloc=/home/ckan
@@ -216,11 +216,11 @@ Initialising DB: SUCCESS
 ++ '[' -n /bin/sh -o -n '' ']'
 ++ hash -r
 + paster --plugin=ckanext-harvest harvester initdb --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-12 13:13:08,152 DEBUG [ckanext.kata] disable search
-2012-11-12 13:13:08,275 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-12 13:13:09,157 DEBUG [ckanext.harvest.model] Harvest tables created
-2012-11-12 13:13:09,227 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-11-12 13:13:09,299 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-15 11:48:45,886 DEBUG [ckanext.kata] disable search
+2012-11-15 11:48:45,973 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-15 11:48:46,993 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-11-15 11:48:47,026 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-15 11:48:47,071 DEBUG [ckanext.harvest.model] Harvest tables already exist
 
 DB tables created
 + packagedir=/usr/share/kata-ckan-prod
@@ -237,7 +237,7 @@ patching file attribute-map.xml
 patching file shib.conf
 Hunk #2 succeeded at 13 with fuzz 1.
 + popd
-+ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 16
 + chown shibd:shibd /etc/shibboleth/spkey.pem
 + chmod og= /etc/shibboleth/spkey.pem
 + mv /etc/shibboleth/sp-key.pem /etc/shibboleth/sp-key.pem.notused
@@ -246,7 +246,7 @@ Hunk #2 succeeded at 13 with fuzz 1.
 + pushd /etc/httpd/conf.d/
 + patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/ssl.conf.patch
 patching file ssl.conf
-+ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 7
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 24
 + popd
 + patchdir=/usr/share/kata-ckan-prod/setup-patches
 + service httpd stop
@@ -255,12 +255,12 @@ Stopping httpd: [FAILED]
 + patch -b -p2 -i /usr/share/kata-ckan-prod/setup-patches/httpd.conf.patch
 patching file httpd.conf
 + mv httpd.conf httpd.conf.step1
-++ dirname /usr/share/kata-ckan-prod/setup-scripts/20setupckanservice.sh
+++ dirname /usr/share/kata-ckan-prod/setup-scripts/32setupckanservice.sh
 + myipcmd=/usr/share/kata-ckan-prod/setup-scripts/myip.sh
 ++ /usr/share/kata-ckan-prod/setup-scripts/myip.sh
 + myip=192.168.122.25
 + sed -e s/%%MYIP%%/192.168.122.25/ httpd.conf.step1
-+ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 20
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 32
 + popd
 + chkconfig httpd on
 + chown -R ckan:apache /home/ckan/pyenv
@@ -290,17 +290,17 @@ Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-12 13:14:10,701 DEBUG [ckanext.kata] disable search
-2012-11-12 13:14:10,896 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-12 13:14:10,900 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-11-12 13:14:10,946 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-11-12 13:14:10,979 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-11-12 13:14:11,022 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 7814f320-879c-4d6f-940c-d77a7151fca5
-2012-11-12 13:14:11,045 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'7814f320-879c-4d6f-940c-d77a7151fca5'}
-2012-11-12 13:14:11,071 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 79c25e83-8819-4f98-a6e9-cac626762b72
+2012-11-15 11:49:52,224 DEBUG [ckanext.kata] disable search
+2012-11-15 11:49:52,554 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-15 11:49:52,559 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-15 11:49:52,605 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-15 11:49:52,638 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-11-15 11:49:52,682 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 3a627f5f-37ca-4f0e-a344-b979c09a40cc
+2012-11-15 11:49:52,726 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'3a627f5f-37ca-4f0e-a344-b979c09a40cc'}
+2012-11-15 11:49:52,772 INFO  [ckanext.harvest.logic.action.create] Harvest job saved e13ffd8b-bd94-49ce-9ce1-181aca09b537
 
 Created new harvest source:
-Source id: 7814f320-879c-4d6f-940c-d77a7151fca5
+Source id: 3a627f5f-37ca-4f0e-a344-b979c09a40cc
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -311,17 +311,17 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-12 13:14:12,269 DEBUG [ckanext.kata] disable search
-2012-11-12 13:14:12,348 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-12 13:14:12,350 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-11-12 13:14:12,373 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-11-12 13:14:12,388 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-11-12 13:14:12,458 INFO  [ckanext.harvest.logic.action.create] Harvest source created: b97ea1c6-76f2-4a49-8672-af1ed6156084
-2012-11-12 13:14:12,516 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'b97ea1c6-76f2-4a49-8672-af1ed6156084'}
-2012-11-12 13:14:12,590 INFO  [ckanext.harvest.logic.action.create] Harvest job saved aac761f3-7531-4574-83ed-8dce758bf055
+2012-11-15 11:49:55,351 DEBUG [ckanext.kata] disable search
+2012-11-15 11:49:55,455 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-15 11:49:55,460 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-15 11:49:55,505 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-15 11:49:55,538 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-11-15 11:49:55,620 INFO  [ckanext.harvest.logic.action.create] Harvest source created: bd05dde3-bcdb-47e4-a47f-639cc191ea27
+2012-11-15 11:49:55,647 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'bd05dde3-bcdb-47e4-a47f-639cc191ea27'}
+2012-11-15 11:49:55,678 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 3a1aa974-33a8-4425-8ab7-75f224367f02
 
 Created new harvest source:
-Source id: b97ea1c6-76f2-4a49-8672-af1ed6156084
+Source id: bd05dde3-bcdb-47e4-a47f-639cc191ea27
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -334,7 +334,8 @@ A new Harvest Job for this source has also been created
 + chkconfig supervisord on
 Stopping atd: [FAILED]
 Starting atd: [  OK  ]
-job 1 at 2012-11-12 13:17
+job 1 at 2012-11-15 11:52
 Starting shibd: [  OK  ]
 Starting httpd: [  OK  ]
 Starting supervisord: [  OK  ]
+Reloading crond: [  OK  ]

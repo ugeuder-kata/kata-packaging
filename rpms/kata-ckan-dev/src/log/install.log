@@ -2,7 +2,7 @@
  Package                Arch   Version                Repository           Size
 ================================================================================
 Installing:
- kata-ckan-dev          x86_64 546685-1.el6           /kata-ckan-dev-546685-1.el6.x86_64
+ kata-ckan-dev          x86_64 549408-1.el6           /kata-ckan-dev-549408-1.el6.x86_64
                                                                            29 k
 Installing for dependencies:
  SDL                    x86_64 1.2.14-3.el6           base                193 k
@@ -127,7 +127,7 @@ Stopping tomcat6: [  OK  ]
 + cd /etc/tomcat6
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/tomcat6.conf.patch
 patching file tomcat6.conf
-+ python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 1
++ python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 4
 + service tomcat6 start
 Starting tomcat6: [  OK  ]
 + '[' -f /tmp/kata-SKIP01 ']'
@@ -138,7 +138,7 @@ Starting tomcat6: [  OK  ]
 + curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 44  107k   44 48723    0     0  43124      0  0:00:02  0:00:01  0:00:01 91241100  107k  100  107k    0     0  84469      0  0:00:01  0:00:01 --:--:--  151k
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 29  107k   29 32339    0     0  34349      0  0:00:03 --:--:--  0:00:03 77366100  107k  100  107k    0     0  92530      0  0:00:01  0:00:01 --:--:--  161k
 + cd ..
 + python download/virtualenv.py pyenv
 New python executable in pyenv/bin/python
@@ -359,8 +359,9 @@ Downloading/unpacking WebError>=0.10.1 (from Pylons==0.9.7->-r pyenv/src/ckan/pi
   Running setup.py egg_info for package WebError
 Downloading/unpacking WebTest>=1.1 (from Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
   Running setup.py egg_info for package WebTest
-    warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
-    warning: no files found matching '*.txt' under directory 'tests'
+    no previously-included directories found matching 'docs/_build'
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '__pycache__' found anywhere in distribution
 Downloading/unpacking python-openid>=2.0 (from repoze.who.plugins.openid==0.5.3->-r pyenv/src/ckan/pip-requirements.txt (line 24))
   Running setup.py egg_info for package python-openid
     warning: no files found matching 'CHANGELOG'
@@ -565,8 +566,9 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
   Running setup.py install for WebError
     paster_plugins not set in setup(), but WebError.egg-info/paster_plugins.txt exists
   Running setup.py install for WebTest
-    warning: no previously-included files matching '*' found under directory 'docs/_build/_sources'
-    warning: no files found matching '*.txt' under directory 'tests'
+    no previously-included directories found matching 'docs/_build'
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '__pycache__' found anywhere in distribution
   Running setup.py install for python-openid
     warning: no files found matching 'CHANGELOG'
     warning: no files found matching '*.css' under directory 'doc'
@@ -592,7 +594,7 @@ patching file attribute-map.xml
 patching file shib.conf
 Hunk #2 succeeded at 13 with fuzz 1.
 + popd
-+ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 3
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 16
 + chown shibd:shibd /etc/shibboleth/spkey.pem
 + chmod og= /etc/shibboleth/spkey.pem
 + mv /etc/shibboleth/sp-key.pem /etc/shibboleth/sp-key.pem.notused
@@ -601,7 +603,7 @@ Hunk #2 succeeded at 13 with fuzz 1.
 + pushd /etc/httpd/conf.d/
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/ssl.conf.patch
 patching file ssl.conf
-+ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 7
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 24
 + popd
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
 + service postgresql initdb
@@ -676,8 +678,8 @@ Device "eth0" does not exist.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-11-13 12:17:11,461 INFO  [ckan.model] CKAN database version upgraded: 0 -> 61
-2012-11-13 12:17:11,573 INFO  [ckan.model] Database initialised
+2012-11-15 09:40:08,021 INFO  [ckan.model] CKAN database version upgraded: 0 -> 61
+2012-11-15 09:40:08,117 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + mkdir data sstore data_tree
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
@@ -687,12 +689,12 @@ Stopping httpd: [FAILED]
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/httpd.conf.patch
 patching file httpd.conf
 + mv httpd.conf httpd.conf.step1
-++ dirname /usr/share/kata-ckan-dev/setup-scripts/20setupckanservice.sh
+++ dirname /usr/share/kata-ckan-dev/setup-scripts/32setupckanservice.sh
 + myipcmd=/usr/share/kata-ckan-dev/setup-scripts/myip.sh
 ++ /usr/share/kata-ckan-dev/setup-scripts/myip.sh
 + myip=192.168.122.25
 + sed -e s/%%MYIP%%/192.168.122.25/ httpd.conf.step1
-+ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 20
++ /usr/bin/python /usr/share/mcfg/tool/mcfg.py run /usr/share/mcfg/config/kata-template.ini /root/kata-master.ini 32
 + popd
 + chkconfig httpd on
 + chown -R ckan:apache /home/ckan/pyenv
@@ -766,13 +768,13 @@ Installing collected packages: carrot, anyjson, amqplib
 Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=development.ini
-2012-11-13 12:17:55,187 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-13 12:17:55,931 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-11-15 09:40:51,999 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-15 09:40:52,725 DEBUG [ckanext.harvest.model] Harvest tables created
 
 DB tables created
 + paster --plugin=ckan user add harvester password=harvester --config=development.ini
 Creating user: 'harvester'
-<User id=bc1ea2d9-d5df-4f59-b384-4706647bd9fd name=harvester openid=None password=b1f5ca2ecaa2897542601426dae295679aceac210a7861dc6ea64fd4833e6c36f4a5f6ec8cba0077 fullname=None email=None apikey=a1644508-e572-4ba8-9cf1-7f7023b8e119 created=2012-11-13 12:17:57.583616 reset_key=None about=None>
+<User id=222bd59b-7610-4856-a76c-9389966f3d8c name=harvester openid=None password=a00b8fcacdc4fb92eb7b1524b525c5f3f8ccc99cdcfbe5f5a3a030b4020c6c80b1db5d2b562de21e fullname=None email=None apikey=d77d5345-f7a4-4f64-9074-62095e0b0db4 created=2012-11-15 09:40:55.250567 reset_key=None about=None>
 + paster --plugin=ckan sysadmin add harvester --config=development.ini
 Added harvester as sysadmin
 + pip install -e git+https://github.com/kata-csc/ckanext-urn.git#egg=ckanext-urn
@@ -937,17 +939,17 @@ Starting rabbitmq-server: SUCCESS
 rabbitmq-server.
 + chkconfig rabbitmq-server on
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-13 12:20:55,757 DEBUG [ckanext.kata] disable search
-2012-11-13 12:20:56,001 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-13 12:20:56,006 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-11-13 12:20:56,075 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-11-13 12:20:56,109 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-11-13 12:20:56,138 INFO  [ckanext.harvest.logic.action.create] Harvest source created: a8b091df-b634-44ed-950f-4e0bffc44b84
-2012-11-13 12:20:56,161 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'a8b091df-b634-44ed-950f-4e0bffc44b84'}
-2012-11-13 12:20:56,196 INFO  [ckanext.harvest.logic.action.create] Harvest job saved ef6de991-0d24-4d83-b980-eb0d0622924e
+2012-11-15 09:44:12,708 DEBUG [ckanext.kata] disable search
+2012-11-15 09:44:12,931 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-15 09:44:12,935 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-15 09:44:12,978 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-15 09:44:12,995 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-11-15 09:44:13,025 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 47e393a8-ba55-40dc-845e-2340564d0283
+2012-11-15 09:44:13,052 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'47e393a8-ba55-40dc-845e-2340564d0283'}
+2012-11-15 09:44:13,083 INFO  [ckanext.harvest.logic.action.create] Harvest job saved d25725db-cb85-49ed-82f4-fb8fe87a2b97
 
 Created new harvest source:
-Source id: a8b091df-b634-44ed-950f-4e0bffc44b84
+Source id: 47e393a8-ba55-40dc-845e-2340564d0283
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -958,17 +960,17 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-11-13 12:20:58,446 DEBUG [ckanext.kata] disable search
-2012-11-13 12:20:58,553 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-11-13 12:20:58,558 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-11-13 12:20:58,608 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-11-13 12:20:58,643 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-11-13 12:20:58,688 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 6ee069a4-8038-4b0c-a0b3-8b4ecacb6ff3
-2012-11-13 12:20:58,750 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'6ee069a4-8038-4b0c-a0b3-8b4ecacb6ff3'}
-2012-11-13 12:20:58,787 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 39ff1eff-e63f-4f74-92bf-8b06e9bb2533
+2012-11-15 09:44:14,529 DEBUG [ckanext.kata] disable search
+2012-11-15 09:44:14,651 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-11-15 09:44:14,657 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-11-15 09:44:14,705 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
+2012-11-15 09:44:14,740 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-11-15 09:44:14,824 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 2786ae54-92e3-4462-b2fc-c77e5232566a
+2012-11-15 09:44:14,861 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'2786ae54-92e3-4462-b2fc-c77e5232566a'}
+2012-11-15 09:44:14,890 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 406f55f7-6a3a-4065-ac19-83ae4c9cba1c
 
 Created new harvest source:
-Source id: 6ee069a4-8038-4b0c-a0b3-8b4ecacb6ff3
+Source id: 2786ae54-92e3-4462-b2fc-c77e5232566a
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -981,10 +983,11 @@ A new Harvest Job for this source has also been created
 + chkconfig supervisord on
 Stopping atd: [FAILED]
 Starting atd: [  OK  ]
-job 1 at 2012-11-13 12:23
+job 1 at 2012-11-15 09:47
 Starting shibd: [  OK  ]
 Starting httpd: [  OK  ]
 Starting supervisord: [  OK  ]
+Reloading crond: [  OK  ]
 + instloc=/home/ckan
 + expected=/usr/share/kata-ckan-dev/setup-data/pip.freeze.lastknown
 + cd /home/ckan
@@ -1025,10 +1028,18 @@ Starting supervisord: [  OK  ]
 [1;31m+ echo 'Python package mismatches:'
 Python package mismatches:
 + cat /tmp/kata-70.tmp
+21c21
+< WebTest==1.4.0
+---
+> WebTest==1.4.1
+28c28
+< -e git+https://github.com/okfn/ckan.git@115e70326ff2eef3f42b33c79b77ad55866ef5cf#egg=ckan-dev
+---
+> -e git+https://github.com/okfn/ckan.git@8cdd117bb1ba22e7e9fa962ed9aea8152edae424#egg=ckan-dev
 32c32
 < -e git://github.com/kata-csc/ckanext-kata.git@186855200fbab49de6b2414af312f2e48a32ab70#egg=ckanext_kata-dev
 ---
-> -e git://github.com/kata-csc/ckanext-kata.git@ce03dfcf0ac938d69015287a99e6b0d68fda725c#egg=ckanext_kata-dev
+> -e git://github.com/kata-csc/ckanext-kata.git@18b07cb80b6940394327ddf80c7d5692c4e46be8#egg=ckanext_kata-dev
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 + datadir=/usr/share/kata-ckan-dev/setup-data
