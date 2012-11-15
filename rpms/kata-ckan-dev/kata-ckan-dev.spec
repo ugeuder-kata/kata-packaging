@@ -145,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 %{katadatadir}/pip.freeze.lastknown
 
 %post
-useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
+useradd %{ckanuser}  # would need to be removed if ckanuser were changed to httpd
 %{scriptdir}/04configuredependencies.sh %{patchdir}
 su -c "%{scriptdir}/08getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/12getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}

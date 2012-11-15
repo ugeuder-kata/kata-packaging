@@ -9,7 +9,13 @@ fi
 instloc=$1
 cd $instloc
 source pyenv/bin/activate
-pip install -e git+https://github.com/okfn/ckan.git#egg=ckan
+if [ -r /etc/kata-ckan-dev/versions ]
+then
+   source /etc/kata-ckan-dev/versions
+else
+   ckan_version=
+fi
+pip install -e git+https://github.com/okfn/ckan.git${ckan_version}#egg=ckan
 pip install -r pyenv/src/ckan/pip-requirements.txt
 # according to installation instructions we need to deactive our pyenv here
 # will happen automatically because script ends here
