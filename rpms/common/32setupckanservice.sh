@@ -1,5 +1,10 @@
 #! /bin/sh
 set -x
+if [ -f /tmp/kata-SKIP32 ]
+then
+  echo "Skipping 32"
+  exit 0
+fi
 patchdir="$1"
 service httpd stop
 pushd /etc/httpd/conf >/dev/null

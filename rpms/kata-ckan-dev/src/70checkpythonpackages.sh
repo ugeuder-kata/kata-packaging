@@ -1,6 +1,11 @@
 #! /bin/sh
 # remember: we are not root here (%ckanuser from the spec file)
 set -x
+if [ -f /tmp/kata-SKIP70 ]
+then
+  echo "Skipping 70"
+  exit 0
+fi
 instloc=$1
 expected=$2
 cd $instloc

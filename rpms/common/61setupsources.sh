@@ -1,5 +1,10 @@
 #!/bin/sh
 set -x
+if [ -f /tmp/kata-SKIP61 ]
+then
+  echo "Skipping 61"
+  exit 0
+fi
 instloc=$1
 service rabbitmq-server start
 chkconfig rabbitmq-server on

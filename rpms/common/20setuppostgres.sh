@@ -1,5 +1,10 @@
 #! /bin/sh
 set -x
+if [ -f /tmp/kata-SKIP20 ]
+then
+  echo "Skipping 20"
+  exit 0
+fi
 patchdir="$1"
 service postgresql initdb
 pushd /var/lib/pgsql/data >/dev/null

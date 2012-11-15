@@ -1,5 +1,10 @@
 #!/bin/sh
 set -x
+if [ -f /tmp/kata-SKIP36 ]
+then
+  echo "Skipping 36"
+  exit 0
+fi
 instloc=$1
 
 cd $instloc/pyenv

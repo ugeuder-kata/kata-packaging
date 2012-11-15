@@ -1,5 +1,10 @@
 #!/bin/sh
 set -x
+if [ -f /tmp/kata-SKIP24 ]
+then
+  echo "Skipping 24"
+  exit 0
+fi
 packagedir=$1
 
 pushd /etc/httpd/conf.d/ >/dev/null

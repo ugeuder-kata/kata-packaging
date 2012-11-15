@@ -1,5 +1,10 @@
 #!/bin/sh
 set -x
+if [ -f /tmp/kata-SKIP16 ]
+then
+  echo "Skipping 16"
+  exit 0
+fi
 packagedir=$1
 
 pushd /etc/shibboleth >/dev/null
