@@ -1,0 +1,18 @@
+# copy this file to /etc/kata-ckan-dev/versions, 
+# if it exists it will be sourced by the shell when kata-ckan-dev.rpm
+# is installed. Missing file will be ignored and all versions will be
+# default (= git repo's current HEAD)
+
+# syntax is @version
+# e.g. ckan_version="@ckan-1.8"
+# pip seems to support tags (tested OK), branches (not yet tested) and
+# SHA1s (tested OK), empty means repo's default branch
+
+ckan_version=""
+ext_harvest_version=""
+ext_urn_version=""
+ext_oaipmh_version=""
+ext_ddi_version=""
+ext_sitemap_version=""
+ext_shibboleth_version=""
+ext_kata_version=""
