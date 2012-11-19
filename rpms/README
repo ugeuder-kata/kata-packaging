@@ -118,7 +118,8 @@ for building RPM packages from source. We just need to download a binary
 distribution of SOLR to ~/rpmbuild/SOURCES:
  http://archive.apache.org/dist/lucene/solr/3.5.0/apache-solr-3.5.0.tgz
 
-$ wget http://archive.apache.org/dist/lucene/solr/3.5.0/apache-solr-3.5.0.tgz && mv apache-solr-3.5.0.tgz ~/rpmbuild/SOURCES/
+$ curl -O http://archive.apache.org/dist/lucene/solr/3.5.0/apache-solr-3.5.0.tgz
+$ mv apache-solr-3.5.0.tgz ~/rpmbuild/SOURCES/
 
 And then issuing the rpmbuild command (never build as root)
 
@@ -157,6 +158,10 @@ and call the script ./build-from-repo.sh
 Before the kata-ckan-dev.rpm can be installed, the master configuration must
 be edited (This is not yet functional at the time of writing so it can
 be skipped.)
+
+By default packages from github will be installed as their current default
+version (tip of default branch). If other versions are desired see file
+tools/internal/kata-ckan-dev-versions.
 
 For locating and installing the package see the section about apache-solr
 above. This installation produces a lot of output. In case of errors it
