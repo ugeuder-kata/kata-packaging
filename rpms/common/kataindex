@@ -1,0 +1,2 @@
+#!/bin/bash
+/home/ckan/pyenv/bin/paster --plugin=ckan search-index rebuild -o --config=/home/ckan/pyenv/src/ckan/development.ini > /dev/null 2>&1

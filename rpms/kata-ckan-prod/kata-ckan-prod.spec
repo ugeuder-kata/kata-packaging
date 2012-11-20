@@ -77,7 +77,8 @@ find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs -0 rm -rf
 find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs -0 rm -rf
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
-install -d $RPM_BUILD_ROOT/etc/cron.d
+install -d $RPM_BUILD_ROOT/etc/cron.daily
+install -d $RPM_BUILD_ROOT/etc/cron.hourly
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 # setup scripts (keep them numerically ordered)
 install 04configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -105,7 +106,8 @@ install tomcat6.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
-install harvester-prod $RPM_BUILD_ROOT/etc/cron.d/
+install kataharvesterjobs $RPM_BUILD_ROOT/etc/cron.daily/
+install kataindex $RPM_BUILD_ROOT/etc/cron.hourly/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 
@@ -130,7 +132,8 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/runharvester.sh
 %{patchdir}/httpd.conf.patch
 %{patchdir}/pg_hba.conf.patch
-%attr(0644,root,root)/etc/cron.d/harvester-prod
+%attr(0655,root,root)/etc/cron.hourly/kataindex
+%attr(0655,root,root)/etc/cron.daily/kataharvesterjobs
 %{scriptdir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
 

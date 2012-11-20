@@ -61,7 +61,8 @@ diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
-install -d $RPM_BUILD_ROOT/etc/cron.d
+install -d $RPM_BUILD_ROOT/etc/cron.daily
+install -d $RPM_BUILD_ROOT/etc/cron.hourly
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 
 # setup scripts (keep them numerically ordered)
@@ -83,7 +84,6 @@ install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 # misc scripts (keep them alphabetically ordered by filename)
 install myip.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install runharvester.sh $RPM_BUILD_ROOT/%{katadatadir}/
-install jobsforsources.sh $RPM_BUILD_ROOT/%{katadatadir}/
 
 # patches (keep them alphabetically ordered by filename)
 install attribute-map.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
@@ -98,7 +98,8 @@ install tomcat6.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
-install harvester-dev $RPM_BUILD_ROOT/etc/cron.d/
+install kataharvesterjobs $RPM_BUILD_ROOT/etc/cron.daily/
+install kataindex $RPM_BUILD_ROOT/etc/cron.hourly/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 install log/pip.freeze.lastknown $RPM_BUILD_ROOT/%{katadatadir}/
@@ -138,9 +139,9 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/ssl.conf.patch
 %{patchdir}/tomcat6.conf.patch
 %{patchdir}/who.ini.patch
-%attr(0644,root,root)/etc/cron.d/harvester-dev
+%attr(0655,root,root)/etc/cron.daily/kataharvesterjobs
+%attr(0655,root,root)/etc/cron.hourly/kataindex
 %{katadatadir}/harvester.conf
-%{katadatadir}/jobsforsources.sh
 /etc/httpd/conf.d/kata.conf
 %{katadatadir}/pip.freeze.lastknown
 
