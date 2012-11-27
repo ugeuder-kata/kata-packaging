@@ -85,7 +85,8 @@ location: /root/sp-key.pem
 [DEFAULT]
 apache_ssl_cert: /etc/shibboleth/spcert.pem
 apache_ssl_key: /etc/shibboleth/spkey.pem
-
+apache_ssl_bundle: /etc/pki/tls/certs/ca-bundle.crt
    The default values shown here refer to the Shibboleth key/certificate pair.
-   If they remain unchanged Apache will use the same certificates that
-   are being installed for Shibboleth as previously described.
+   If they remain unchanged Apache will use the same certificates that are
+   being installed for Shibboleth as previously described. The bundle is 
+   separate from Shibboleth, but it is installed via mod_ssl.
