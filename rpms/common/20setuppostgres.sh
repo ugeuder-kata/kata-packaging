@@ -18,4 +18,4 @@ chkconfig postgresql on
 cmd="CREATE ROLE ckanuser PASSWORD 'md5372712b8c6097730c3164ddd4f9275e0' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN"
 sleep 3    # following psql happened to fail sometimes, wait a moment 
 su -c 'psql -c "'"$cmd"'"' postgres
-su -c "createdb -O ckanuser ckantest" postgres
+su -c "createdb -O ckanuser ckandb" postgres
