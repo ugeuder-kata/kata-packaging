@@ -6,8 +6,19 @@ then
   exit 0
 fi
 patchdir="$1"
-service postgresql initdb
 pushd /var/lib/pgsql/data >/dev/null
+datafiles=$(ls | wc -l)
+if [ $datafiles -ne 0 ]
+then
+  # assume that if there is any DB configuration, it is a valid CKAN DB
+  # this is of course not really true
+  echo "some database configuration found, don't overwrite it"
+  touch /tmp/kata-SKIP-dbinit
+  exit 0
+else
+  rm -f /tmp/kata-SKIP-dbinit 2>/dev/null
+fi
+service postgresql initdb
 # su postgres ensures that the resulting file has the correct owner
 su -c "patch -b -p2 -i ${patchdir}/pg_hba.conf.patch" postgres
 popd >/dev/null
