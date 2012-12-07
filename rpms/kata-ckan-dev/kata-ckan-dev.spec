@@ -71,11 +71,11 @@ install 08getpyenv.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 12getpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 16configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 22configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 28setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 32setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 36installckanextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 40configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 71storepythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -116,11 +116,11 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/12getpythonpackages.sh
 %{scriptdir}/16configshibbolethsp.sh
 %{scriptdir}/20setuppostgres.sh
+%{scriptdir}/22configsolr.sh
 %{scriptdir}/24setupapachessl.sh
 %{scriptdir}/28setupckan.sh
 %{scriptdir}/32setupckanservice.sh
 %{scriptdir}/36installckanextensions.sh
-%{scriptdir}/40configsolr.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
 %{scriptdir}/71storepythonpackages.sh
@@ -151,6 +151,7 @@ useradd %{ckanuser}  # would need to be removed if ckanuser were changed to http
 su -c "%{scriptdir}/08getpyenv.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/12getpythonpackages.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-dev"
+%{scriptdir}/22configsolr.sh /home/%{ckanuser}
 %{scriptdir}/24setupapachessl.sh "/usr/share/kata-ckan-dev"
 cat > /home/%{ckanuser}/pyenv/bin/wsgi.py <<EOF
 import os
@@ -174,7 +175,6 @@ su -c "%{scriptdir}/36installckanextensions.sh /home/%{ckanuser}" %{ckanuser}
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf
 # Enable tmp directory for logging. Otherwise goes to /
 sed -i 's/;directory/directory/' /etc/supervisord.conf
-%{scriptdir}/40configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 service atd restart
 at -f %{katadatadir}/runharvester.sh 'now + 3 minute'

@@ -84,11 +84,11 @@ install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 install 04configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 16configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 20setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 22configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 26setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 32setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 35setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 40configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
 # misc scripts (keep them alphabetically ordered by filename)
@@ -121,11 +121,11 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/04configuredependencies.sh
 %{scriptdir}/16configshibbolethsp.sh
 %{scriptdir}/20setuppostgres.sh
+%{scriptdir}/22configsolr.sh
 %{scriptdir}/24setupapachessl.sh
 %{scriptdir}/26setupckanprod.sh
 %{scriptdir}/32setupckanservice.sh
 %{scriptdir}/35setupharvester.sh
-%{scriptdir}/40configsolr.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/80backuphome.sh
 %{scriptdir}/myip.sh
@@ -152,6 +152,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 %post
 %{scriptdir}/04configuredependencies.sh %{patchdir}
 %{scriptdir}/20setuppostgres.sh %{patchdir}
+%{scriptdir}/22configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/26setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/35setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-prod"
@@ -163,7 +164,6 @@ cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.c
 # Enable tmp directory for logging. Otherwise goes to /
 sed -i 's/;directory/directory/' /etc/supervisord.conf
 chkconfig supervisord on
-%{scriptdir}/40configsolr.sh /home/%{ckanuser}
 %{scriptdir}/61setupsources.sh /home/%{ckanuser}
 service atd restart
 at -f %{scriptdir}/runharvester.sh 'now + 3 minute'

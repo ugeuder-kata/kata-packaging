@@ -1,0 +1,1 @@
+../../common/22configsolr.sh
