@@ -1,8 +1,8 @@
 #!/bin/sh
 set -x
-if [ -f /tmp/kata-SKIP40 ]
+if [ -f /tmp/kata-SKIP22 ]
 then
-  echo "Skipping 40"
+  echo "Skipping 22"
   exit 0
 fi
 instloc=$1
