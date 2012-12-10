@@ -74,7 +74,7 @@ install 20setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 22configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 28setupckan.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 32setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 32setupapache.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 36installckanextensions.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 70checkpythonpackages.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -119,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/22configsolr.sh
 %{scriptdir}/24setupapachessl.sh
 %{scriptdir}/28setupckan.sh
-%{scriptdir}/32setupckanservice.sh
+%{scriptdir}/32setupapache.sh
 %{scriptdir}/36installckanextensions.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/70checkpythonpackages.sh
@@ -169,7 +169,7 @@ EOF
 chmod 777 /home/%{ckanuser}/pyenv/bin/wsgi.py
 %{scriptdir}/20setuppostgres.sh %{patchdir}
 su -c "%{scriptdir}/28setupckan.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/32setupckanservice.sh %{patchdir}
+%{scriptdir}/32setupapache.sh %{patchdir}
 su -c "%{scriptdir}/36installckanextensions.sh /home/%{ckanuser}" %{ckanuser}
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-dev/setup-data/harvester.conf >> /etc/supervisord.conf

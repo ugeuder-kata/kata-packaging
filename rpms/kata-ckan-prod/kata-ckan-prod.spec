@@ -87,7 +87,7 @@ install 20setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 22configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 26setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
-install 32setupckanservice.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 32setupapache.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 35setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 80backuphome.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -124,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/22configsolr.sh
 %{scriptdir}/24setupapachessl.sh
 %{scriptdir}/26setupckanprod.sh
-%{scriptdir}/32setupckanservice.sh
+%{scriptdir}/32setupapache.sh
 %{scriptdir}/35setupharvester.sh
 %{scriptdir}/61setupsources.sh
 %{scriptdir}/80backuphome.sh
@@ -157,7 +157,7 @@ su -c "%{scriptdir}/26setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 su -c "%{scriptdir}/35setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-prod"
 %{scriptdir}/24setupapachessl.sh "/usr/share/kata-ckan-prod"
-%{scriptdir}/32setupckanservice.sh %{patchdir}
+%{scriptdir}/32setupapache.sh %{patchdir}
 
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf
