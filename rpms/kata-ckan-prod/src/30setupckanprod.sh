@@ -1,9 +1,9 @@
 #! /bin/sh
 # remember: we are not root here (%ckanuser from the spec file)
 set -x
-if [ -f /tmp/kata-SKIP10 ]
+if [ -f /tmp/kata-SKIP30 ]
 then
-  echo "Skipping 10"
+  echo "Skipping 30"
   exit 0
 fi
 instloc=$1
