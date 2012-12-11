@@ -10,7 +10,8 @@ instloc=$1
 cd $instloc
 source pyenv/bin/activate
 cd pyenv/src/ckan
-myip=$(ip addr show dev eth0 | grep "inet " | sed -E "s/ +inet +([^/]+).+/\1/")
+myipcmd=$(dirname $0)/myip.sh
+myip=$($myipcmd)
 # TODO: needs to be really configurable
 # ckanusermail kept from dev env
 sed -e "s,\(ckan.site_url = http://\)[^ ]*,\1${myip}," development.ini > development.ini.1
