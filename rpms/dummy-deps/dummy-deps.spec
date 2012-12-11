@@ -10,6 +10,7 @@ License: AGPL
 #Url: http://not.sure.yet
 Source0: dummy-deps-%{version}.tgz
 Provides: redhat-lsb-printing
+Provides: redhat-lsb-graphics
 # Fedora documentation says one should use...
 #BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # but the old-style(?) default %{_topdir}/BUILDROOT/... seems to work nicely
