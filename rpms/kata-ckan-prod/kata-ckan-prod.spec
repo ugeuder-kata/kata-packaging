@@ -87,6 +87,7 @@ install 20setuppostgres.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 22configsolr.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 24setupapachessl.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 30setupckanprod.sh $RPM_BUILD_ROOT/%{scriptdir}/
+install 31setupckan-root.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 32setupapache.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 35setupharvester.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 61setupsources.sh $RPM_BUILD_ROOT/%{scriptdir}/
@@ -124,6 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scriptdir}/22configsolr.sh
 %{scriptdir}/24setupapachessl.sh
 %{scriptdir}/30setupckanprod.sh
+%{scriptdir}/31setupckan-root.sh
 %{scriptdir}/32setupapache.sh
 %{scriptdir}/35setupharvester.sh
 %{scriptdir}/61setupsources.sh
@@ -154,6 +156,7 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 %{scriptdir}/20setuppostgres.sh %{patchdir}
 %{scriptdir}/22configsolr.sh /home/%{ckanuser}
 su -c "%{scriptdir}/30setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
+%{scriptdir}/31setupckan-root.sh %{ckanuser}
 su -c "%{scriptdir}/35setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-prod"
 %{scriptdir}/24setupapachessl.sh "/usr/share/kata-ckan-prod"

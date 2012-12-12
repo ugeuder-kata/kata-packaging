@@ -22,4 +22,3 @@ if [ \! -e /tmp/kata-SKIP-dbinit ]
 then
   paster --plugin=ckan db init
 fi
-mkdir data sstore data_tree
