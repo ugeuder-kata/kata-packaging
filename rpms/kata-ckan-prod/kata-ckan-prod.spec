@@ -38,6 +38,7 @@ BuildRequires: kata-ckan-dev
 %define ckanuser ckan
 %define scriptdir %{_datadir}/%{name}/setup-scripts
 %define patchdir %{_datadir}/%{name}/setup-patches
+%define katadocdir %{_datadir}/doc/%{name}
 
 %description
 Installs a complete Kata CKAN environment
@@ -111,6 +112,9 @@ install kataindex $RPM_BUILD_ROOT/etc/cron.hourly/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 
+# documentation (version info)
+install /usr/share/kata-ckan-dev/setup-data/pip.freeze.current $RPM_BUILD_ROOT/%{katadocdir}/
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -145,6 +149,8 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/ssl.conf.patch
 %{patchdir}/tomcat6.conf.patch
 
+# documentation (version info)
+%{katadocdir}/pip.freeze.current
 
 %pre
 useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
