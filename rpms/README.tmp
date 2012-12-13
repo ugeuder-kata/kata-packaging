@@ -28,7 +28,7 @@ $ exit                               (exit from previous sudo)
 
 $ sudo /etc/init.d/httpd stop
 
-(postgres is already stopped by kata-ckan-prod uninstallation,
+(postgres will be stopped by kata-ckan-prod uninstallation)
 
 
 3.) uninstall kata-ckan-prod and mcfg
