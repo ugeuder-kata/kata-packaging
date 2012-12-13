@@ -6,19 +6,52 @@ then
   exit 0
 fi
 patchdir="$1"
-pushd /var/lib/pgsql/data >/dev/null
-datafiles=$(ls | wc -l)
-if [ $datafiles -ne 0 ]
+# customer wants database to be stored under /opt/data
+#
+# 1. Observations:
+#
+# postgresql-server package installation creates 3 directories and 1 file:
+#
+# /var/lib/pgsql
+# /var/lib/pgsql/.bash_profile
+# /var/lib/pgsql/backups
+# /var/lib/pgsql/data
+#
+# (actually /var/lib/pgsql is the home directory of the postgres user account)
+#
+# Command "service postgresql initdb" populates the data directory (both with
+# configuration files and database contents). A small log file is located
+# directly in /var/lib/pgsql
+#
+# unistalling the package removes only the .bash_profile but nothing else
+#
+# 2. Design
+#
+# Our solution: replace /var/lib/pgsql by a symbolic link to /opt/data/pgsql
+
+if [ -L /var/lib/pgsql ]
 then
-  # assume that if there is any DB configuration, it is a valid CKAN DB
-  # this is of course not really true
-  echo "some database configuration found, don't overwrite it"
+  # assume that if postgres' home directory is symbolic link we already have
+  # a valid CKAN DB and want to preserve it
+  echo "Existing database link found, don't initialize Postgres DB"
   touch /tmp/kata-SKIP-dbinit
+  service postgresql start
   exit 0
 else
   rm -f /tmp/kata-SKIP-dbinit 2>/dev/null
 fi
+
+# handle the alternate storage location
+mkdir -p /opt/data/pgsql
+chown postgres:postgres /opt/data/pgsql/
+chmod og= /opt/data/pgsql/
+mv /var/lib/pgsql/.bash_profile /var/lib/pgsql/* /opt/data/pgsql/
+ln -s /opt/data/pgsql /var/lib/pgsql
+# link is now owned by root, that should not matter
+# alternate storage location done, continue as nothing had happened
+
 service postgresql initdb
+pushd /var/lib/pgsql/data >/dev/null
 # su postgres ensures that the resulting file has the correct owner
 su -c "patch -b -p2 -i ${patchdir}/pg_hba.conf.patch" postgres
 popd >/dev/null
