@@ -1,11 +1,11 @@
-How to clean up before installing a new version of kata-ckan-prod 
-
+Upgrading kata-ckan-prod
 
 0.) Introduction
 
 The installation of kata-ckan-prod.rpm is mainly intended for installation on
-a clean minimal RHEL/CentOS system. Upgrading an existing installation is only
-supported by carefully following the instructions below.
+a clean minimal RHEL/CentOS system as documented in INSTALL. Upgrading an
+existing installation is only supported by carefully following the
+instructions below.
 
 No changes have happened in apache-solr, so this package does not
 need to be uninstalled, upgraded or reinstalled.
@@ -14,7 +14,8 @@ need to be uninstalled, upgraded or reinstalled.
 1.) Clear the search index
 
 TODO: currently unclear whether we need this step. There might be
-      still changes coming to index updating 
+      still changes coming to index updating during production and
+      they will have an influence what needs to be done for upgrade.
 
 $ sudo service supervisord stop
 $ sudo service rabbitmq-server stop
@@ -82,3 +83,13 @@ properly when started again. If there are problems it might be
 necessary to uninstall the package. (If there are severe problems
 older versions of this document contain more debugging info, but currently
 I assume that is not needed)
+
+
+8.) Install the new packages
+
+Follow the steps 
+
+- install master configuration tool and
+- install KATA
+
+in the INSTALL document.
