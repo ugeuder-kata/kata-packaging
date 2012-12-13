@@ -151,14 +151,14 @@ useradd %{ckanuser}  # needs to be removed if ckanuser were changed to httpd
 
 %post
 %{scriptdir}/04configuredependencies.sh %{patchdir}
+%{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-prod"
 %{scriptdir}/20setuppostgres.sh %{patchdir}
 %{scriptdir}/22configsolr.sh /home/%{ckanuser}
+%{scriptdir}/24setupapachessl.sh "/usr/share/kata-ckan-prod"
 su -c "%{scriptdir}/30setupckanprod.sh /home/%{ckanuser}" %{ckanuser}
 %{scriptdir}/31setupckan-root.sh %{ckanuser}
-su -c "%{scriptdir}/35setupharvester.sh /home/%{ckanuser}" %{ckanuser}
-%{scriptdir}/16configshibbolethsp.sh "/usr/share/kata-ckan-prod"
-%{scriptdir}/24setupapachessl.sh "/usr/share/kata-ckan-prod"
 %{scriptdir}/32setupapache.sh %{patchdir}
+su -c "%{scriptdir}/35setupharvester.sh /home/%{ckanuser}" %{ckanuser}
 
 # Lets do this last so our harvesters are correctly picked up by the daemons.
 cat /usr/share/kata-ckan-prod/setup-scripts/harvester.conf >> /etc/supervisord.conf
