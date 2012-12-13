@@ -29,7 +29,8 @@ fi
 pip install -e git+https://github.com/okfn/ckanext-harvest.git${ext_harvest_version}#egg=ckanext-harvest
 pip install carrot
 paster --plugin=ckanext-harvest harvester initdb --config=development.ini
-paster --plugin=ckan user add harvester password=harvester --config=development.ini
+# this script is dev only, so no problem with the password on github
+paster --plugin=ckan user add harvester password=harvester email=harvester@harvesting.none --config=development.ini
 paster --plugin=ckan sysadmin add harvester --config=development.ini
 
 pip install -e git+https://github.com/kata-csc/ckanext-urn.git${ext_urn_version}#egg=ckanext-urn
