@@ -56,7 +56,7 @@ diff -u patches/orig/pg_hba.conf patches/kata/pg_hba.conf >pg_hba.conf.patch || 
 diff -u patches/orig/shib.conf patches/kata/shib.conf >shib.conf.patch || true
 diff -u patches/orig/shibboleth2.xml patches/kata/shibboleth2.xml >shibboleth2.xml.patch || true
 diff -u patches/orig/tomcat6.conf patches/kata/tomcat6.conf >tomcat6.conf.patch || true
-diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
+
 
 %install
 # cpio: we need to be root to be able to read, but we don't preserve the 
@@ -104,7 +104,6 @@ install shib.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install shibboleth2.xml.patch $RPM_BUILD_ROOT/%{patchdir}/
 install ssl.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
 install tomcat6.conf.patch $RPM_BUILD_ROOT/%{patchdir}/
-install who.ini.patch $RPM_BUILD_ROOT/%{patchdir}/
 
 # misc data/conf files (keep them alphabetically ordered by filename)
 install kataharvesterjobs $RPM_BUILD_ROOT/etc/cron.daily/
@@ -145,7 +144,6 @@ rm -rf $RPM_BUILD_ROOT
 %{patchdir}/shibboleth2.xml.patch
 %{patchdir}/ssl.conf.patch
 %{patchdir}/tomcat6.conf.patch
-%{patchdir}/who.ini.patch
 
 
 %pre
