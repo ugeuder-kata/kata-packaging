@@ -57,7 +57,11 @@ case $phase in
   1)
     abuildhost=$abuildhostdev
     abuildport=$abuildportdev
-    tar cf abuild.tar .
+    # --exclude-vcs needs to be removed when we get the perfect
+    # build script that records the git version the package
+    # was built from. Or we put that stuff into autobuild,
+    # well, we'll see...
+    tar cf abuild.tar --exclude=rpms-\*.tar --exclude-vcs .
     scp -i $abuildkey -P $abuildport abuild.tar ${abuilduser}@${abuildhost}:
     rexec tar xf abuild.tar
     rexec autobuild/04addrepos.sh
