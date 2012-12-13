@@ -8,6 +8,8 @@ case "$1" in
     cmd="--plugin=ckan sysadmin add $user --config=development.ini"
     ;;
   reindex)
+    echo "TODO: this command needs to acquire the reindexing lock"
+    echo "      (cf. https://github.com/kata-csc/kata-packaging/commit/35b1e3cc48140136b122129acab9b7ed6b715cd6 )"
     cmd="--plugin=ckan search-index rebuild --config=development.ini"
     ;;
   cmd)
