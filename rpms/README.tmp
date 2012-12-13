@@ -1,21 +1,28 @@
 How to clean up before installing a new version of kata-ckan-prod 
 
-(TODO: This should be all handled by our scriptlets when uninstalling
-or upgrading our packages, so eventually this file should be empty)
+
+0.) Introduction
+
+The installation of kata-ckan-prod.rpm is mainly intended for installation on
+a clean minimal RHEL/CentOS system. Upgrading an existing installation is only
+supported by carefully following the instructions below.
+
+No changes have happened in apache-solr, so this package does not
+need to be uninstalled, upgraded or reinstalled.
 
 
-0. Introduction
+1.) uninstall kata-ckan-prod and mcfg
 
-No changes have happened in apache-solr, so this package does not even
-need to be uninstalled.
+$ sudo yum remove mcfg           (this will pull kata-ckan-prod with it)
 
 
-1.) Clear the search index
+2.) Clear the search index
 
-$ sudo service supervisord stop
-$ sudo service rabbitmq-server stop
-                                     (these ensure that harvesters don't
-                                     fetch anything new during cleaning)
+TODO: currently unclear whether we need this step
+
+TODO: the following instructions no longer work. The code has just been 
+uninstalled... 
+
 $ sudo -s -u ckan
 $ cd
 $ source pyenv/bin/active
@@ -24,24 +31,13 @@ $ paster --plugin=ckan search-index clear --config=development.ini
 $ exit                               (exit from previous sudo)
 
 
-2.) Stop remaining services
 
-$ sudo service httpd stop
-
-(postgres will be stopped by kata-ckan-prod uninstallation)
-
-
-3.) uninstall kata-ckan-prod and mcfg
-
-$ sudo yum remove mcfg           (this will pull kata-ckan-prod with it)
-
-
-4.) Clean-up of Postgres
+3.) Clean-up of Postgres
 
 $ sudo rm -rf /var/lib/pgsql/data/
 
 
-5.) Uninstallation of supervisor
+4.) Uninstallation of supervisor
 
 (the idea is to get rid of the configuration modified by kata-prod, so we can 
 start with a fresh one again)
@@ -55,7 +51,7 @@ package in question should remain. If etckeeper is in use
 the appropriate "git rm" commands should be given instead)
 
 
-6.) Uninstallation of shibboleth
+5.) Uninstallation of shibboleth
 
 (same idea as with supervisor)
 
@@ -63,7 +59,7 @@ $ sudo yum remove shibboleth
 $ sudo rm -r /etc/shibboleth
 
 
-7.) Uninstallation of apache
+6.) Uninstallation of apache
 
 (same idea as with supervisor)
 
@@ -71,7 +67,7 @@ $ sudo yum remove httpd
 $ sudo rm -r /etc/httpd
 
 
-8.) Clean-up rabbitmq
+7.) Clean-up rabbitmq
 
 $ sudo rm -rf /var/lib/rabbitmq/* 
 
