@@ -11,17 +11,16 @@ No changes have happened in apache-solr, so this package does not
 need to be uninstalled, upgraded or reinstalled.
 
 
-1.) uninstall kata-ckan-prod and mcfg
+1.) Clear the search index
 
-$ sudo yum remove mcfg           (this will pull kata-ckan-prod with it)
+TODO: currently unclear whether we need this step. There might be
+      still changes coming to index updating 
 
-
-2.) Clear the search index
-
-TODO: currently unclear whether we need this step
-
-TODO: the following instructions no longer work. The code has just been 
-uninstalled... 
+$ sudo service supervisord stop
+$ sudo service rabbitmq-server stop
+   (Above commands ensure that harvesters don't fetch anything new during 
+   cleaning. Uninstallation of kata-ckan-prod does it, too, but
+   after uninstallation we cannot run it)
 
 $ sudo -s -u ckan
 $ cd
@@ -30,6 +29,13 @@ $ cd pyenv/src/ckan
 $ paster --plugin=ckan search-index clear --config=development.ini
 $ exit                               (exit from previous sudo)
 
+TODO: if we really need this step, above commands should be added
+to our existing paster script.
+
+
+2.) uninstall kata-ckan-prod and mcfg
+
+$ sudo yum remove mcfg           (this will pull kata-ckan-prod with it)
 
 
 3.) Clean-up of Postgres

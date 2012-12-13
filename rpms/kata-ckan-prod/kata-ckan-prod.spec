@@ -174,22 +174,30 @@ at -f %{scriptdir}/runharvester.sh 'now + 3 minute'
 service shibd start
 service httpd start
 service supervisord start
-# Pick up the cron job that was installed.
+# Pick up the cron job that was installed. (for unknown reasons cron
+# did not do it automatically)
 service crond reload
+
+
 %preun
-service ckan-dev stop
 # design assumption is that kata is on a "single purpose" server, we 
-# initialize postgres during installation, so we also stop it here
+# initialize services like postgres during installation, so we also stop 
+# them here
+service supervisord stop
+service rabbitmq-server stop
+service httpd stop
+service shibd stop
+service tomcat6 stop
 service postgresql stop
 
 %postun
 userdel -r %{ckanuser}
-# TODO: we must support updates, but we must never ever lose the production
-# database
-echo 'Consider "rm -rf /var/lib/pgsql/data"' 
-echo "Uninstallation not really supported yet, better get a clean VM..."
+
 
 %changelog
+* Thu Dec 13 2012 Uwe Geuder <uwe.geuder@nomovok.com>
+  Changelog not maintained here, see git(hub) for full history
+
 * Tue Sep 11 2012 Harri Palojärvi <harri.palojarvi@nomovok.com>
 - Added shibboleth
 
