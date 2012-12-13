@@ -1,2 +1,16 @@
 #!/bin/bash
+#http://stackoverflow.com/questions/185451/quick-and-dirty-way-to-ensure-only-one-instance-of-a-shell-script-is-running-at
+LOCKFILE=/tmp/kataindexlock
+if [ -e ${LOCKFILE} ] && kill -0 `cat ${LOCKFILE}`; then
+    echo "already running"
+    exit
+fi
+
+# make sure the lockfile is removed when we exit and then claim it
+trap "rm -f ${LOCKFILE}; exit" INT TERM EXIT
+echo $$ > ${LOCKFILE}
+
+# do stuff
 /home/ckan/pyenv/bin/paster --plugin=ckan search-index rebuild -o --config=/home/ckan/pyenv/src/ckan/development.ini > /dev/null 2>&1
+
+rm -f ${LOCKFILE}
