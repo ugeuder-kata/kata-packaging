@@ -12,8 +12,8 @@ need to be uninstalled.
 
 1.) Clear the search index
 
-$ sudo /etc/init.d/supervisord stop
-$ sudo /etc/init.d/rabbitmq-server stop
+$ sudo service supervisord stop
+$ sudo service rabbitmq-server stop
                                      (these ensure that harvesters don't
                                      fetch anything new during cleaning)
 $ sudo -s -u ckan
@@ -26,7 +26,7 @@ $ exit                               (exit from previous sudo)
 
 2.) Stop remaining services
 
-$ sudo /etc/init.d/httpd stop
+$ sudo service httpd stop
 
 (postgres will be stopped by kata-ckan-prod uninstallation)
 
