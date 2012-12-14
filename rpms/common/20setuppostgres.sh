@@ -15,6 +15,9 @@ then
   mkdir /opt/data/pgsql/backups
   chown -R postgres:postgres /opt/data/pgsql
   chmod -R og= /opt/data/pgsql
+  chcon system_u:object_r:var_lib_t:s0 /opt/data/pgsql/
+  chcon system_u:object_r:postgresql_db_t:s0 /opt/data/pgsql/data
+  chcon system_u:object_r:var_lib_t:s0 /opt/data/pgsql/backups
 fi
 pushd /opt/data/pgsql/data >/dev/null
 datafiles=$(ls | wc -l)
