@@ -111,6 +111,7 @@ install kataharvesterjobs $RPM_BUILD_ROOT/etc/cron.daily/
 install kataindex $RPM_BUILD_ROOT/etc/cron.hourly/
 install harvester.conf $RPM_BUILD_ROOT/%{scriptdir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
+install postgresql $RPM_BUILD_ROOT/etc/sysconfig/pgsql/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -138,6 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0655,root,root)/etc/cron.daily/kataharvesterjobs
 %{scriptdir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
+/etc/sysconfig/pgsql/postgresql
 
 %{patchdir}/attribute-map.xml.patch
 %{patchdir}/attribute-policy.xml.patch

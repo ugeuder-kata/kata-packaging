@@ -104,6 +104,7 @@ install kataindex $RPM_BUILD_ROOT/etc/cron.hourly/
 install harvester.conf $RPM_BUILD_ROOT/%{katadatadir}/
 install kata.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/
 install log/pip.freeze.lastknown $RPM_BUILD_ROOT/%{katadatadir}/
+install postgresql $RPM_BUILD_ROOT/etc/sysconfig/pgsql/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -146,6 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %{katadatadir}/harvester.conf
 /etc/httpd/conf.d/kata.conf
 %{katadatadir}/pip.freeze.lastknown
+/etc/sysconfig/pgsql/postgresql
 
 %post
 useradd %{ckanuser}  # would need to be removed if ckanuser were changed to httpd

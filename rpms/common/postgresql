@@ -1,0 +1,2 @@
+PGDATA=/opt/data/pgsql/data
+PGLOG=/opt/data/pgsql/pgstartup.log
