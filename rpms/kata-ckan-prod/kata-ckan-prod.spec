@@ -75,11 +75,16 @@ sudo chown ${me} $RPM_BUILD_ROOT/home
 sudo chown ${me} $RPM_BUILD_ROOT/home/%{ckanuser}
 find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs -0 rm -rf
 find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs -0 rm -rf
+
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
+# following directories owned by other packages, but we need them in the
+# build root
 install -d $RPM_BUILD_ROOT/etc/cron.daily
 install -d $RPM_BUILD_ROOT/etc/cron.hourly
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
+install -d $RPM_BUILD_ROOT/etc/sysconfig/pgsql
+
 # setup scripts (keep them numerically ordered)
 install 04configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
 install 16configshibbolethsp.sh $RPM_BUILD_ROOT/%{scriptdir}/

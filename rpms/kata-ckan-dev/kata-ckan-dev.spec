@@ -61,9 +61,12 @@ diff -u patches/orig/who.ini patches/kata/who.ini >who.ini.patch || true
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
 install -d $RPM_BUILD_ROOT/%{katadatadir}
+# following directories owned by other packages, but we need them in the
+# build root
 install -d $RPM_BUILD_ROOT/etc/cron.daily
 install -d $RPM_BUILD_ROOT/etc/cron.hourly
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
+install -d $RPM_BUILD_ROOT/etc/sysconfig/pgsql
 
 # setup scripts (keep them numerically ordered)
 install 04configuredependencies.sh $RPM_BUILD_ROOT/%{scriptdir}/
