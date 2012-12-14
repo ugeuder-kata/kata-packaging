@@ -46,6 +46,8 @@ mkdir -p /opt/data/pgsql
 chown postgres:postgres /opt/data/pgsql/
 chmod og= /opt/data/pgsql/
 mv /var/lib/pgsql/.bash_profile /var/lib/pgsql/* /opt/data/pgsql/
+# /var/lib/pgsql should now be empty, but you never know...
+mv /var/lib/pgsql /var/lib/pgsql.rpmorig
 ln -s /opt/data/pgsql /var/lib/pgsql
 # link is now owned by root, that should not matter
 # alternate storage location done, continue as nothing had happened
