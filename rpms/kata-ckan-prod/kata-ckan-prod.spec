@@ -17,17 +17,18 @@ Group: Applications/File (to be verified)
 License: GPLv2+ (to be verified)
 #Url: http://not.sure.yet
 Source: kata-ckan-prod-%{version}.tgz
+Requires: apache-solr
+Requires: libxslt
+Requires: mcfg
+Requires: mod_wsgi
+Requires: mod_ssl
+Requires: patch
+Requires: policycoreutils-python
 Requires: postgresql
 Requires: postgresql-server
-Requires: patch
-Requires: libxslt
 Requires: rabbitmq-server
-Requires: apache-solr
-Requires: supervisor
-Requires: mod_wsgi
 Requires: shibboleth
-Requires: mcfg
-Requires: mod_ssl
+Requires: supervisor
 Conflicts: kata-ckan-dev
 BuildRequires: kata-ckan-dev
 # Fedora documentation says one should use...

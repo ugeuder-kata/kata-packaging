@@ -19,6 +19,8 @@ chkconfig httpd on
 chown -R ckan:apache /home/ckan/pyenv
 chmod -R 755 /home/ckan
 setsebool -P httpd_can_network_connect 1
+# TODO: chcon is not the right thing here. Everything will break when
+# restorecon is run. See 20setuppostgres.sh for the correct solution
 chcon -R --type=httpd_sys_content_t /home/ckan
 touch /home/ckan/pyenv/ckan.log
 chown ckan:apache /home/ckan/pyenv/ckan.log

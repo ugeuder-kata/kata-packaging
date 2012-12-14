@@ -11,13 +11,24 @@ patchdir="$1"
 # let's do the same under our custom location
 if [ \! -e /opt/data/pgsql ]
 then
+  # try to build the same hierarchy as postgresql-server.rpm did it for
+  # the default location
   mkdir -p /opt/data/pgsql/data
   mkdir /opt/data/pgsql/backups
   chown -R postgres:postgres /opt/data/pgsql
   chmod -R og= /opt/data/pgsql
-  chcon system_u:object_r:var_lib_t:s0 /opt/data/pgsql/
-  chcon system_u:object_r:postgresql_db_t:s0 /opt/data/pgsql/data
-  chcon system_u:object_r:var_lib_t:s0 /opt/data/pgsql/backups
+  # chcon is not enough. service postgresql runs restorecon
+  # the exact rules are a bit guessing, especially for the
+  # backups directory
+  # well, we could save at least one or two restorecon commands here,
+' # because they are repeated soon, but they are quick and it's easier
+  # to debug what happens here
+  semanage fcontext -a -t var_lib_t /opt/data/pgsql
+  restorecon /opt/data/pgsql
+  semanage fcontext -a -t postgresql_db_t "/opt/data/pgsql/data(/.*)?"
+  restorecon /opt/data/pgsql/data
+  semanage fcontext -a -t var_lib_t "/opt/data/pgsql/backups(/.*)?"
+  restorecon /opt/data/pgsql/backups
 fi
 pushd /opt/data/pgsql/data >/dev/null
 datafiles=$(ls | wc -l)
