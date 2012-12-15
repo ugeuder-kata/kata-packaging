@@ -6,52 +6,44 @@ then
   exit 0
 fi
 patchdir="$1"
-# customer wants database to be stored under /opt/data
-#
-# 1. Observations:
-#
-# postgresql-server package installation creates 3 directories and 1 file:
-#
-# /var/lib/pgsql
-# /var/lib/pgsql/.bash_profile
-# /var/lib/pgsql/backups
-# /var/lib/pgsql/data
-#
-# (actually /var/lib/pgsql is the home directory of the postgres user account)
-#
-# Command "service postgresql initdb" populates the data directory (both with
-# configuration files and database contents). A small log file is located
-# directly in /var/lib/pgsql
-#
-# unistalling the package removes only the .bash_profile but nothing else
-#
-# 2. Design
-#
-# Our solution: replace /var/lib/pgsql by a symbolic link to /opt/data/pgsql
-
-if [ -L /var/lib/pgsql ]
+# postgresql-server rpm creates 2 directories under the default location:
+# data and backups
+# let's do the same under our custom location
+if [ \! -e /opt/data/pgsql ]
 then
-  # assume that if postgres' home directory is symbolic link we already have
-  # a valid CKAN DB and want to preserve it
-  echo "Existing database link found, don't initialize Postgres DB"
+  # try to build the same hierarchy as postgresql-server.rpm did it for
+  # the default location
+  mkdir -p /opt/data/pgsql/data
+  mkdir /opt/data/pgsql/backups
+  chown -R postgres:postgres /opt/data/pgsql
+  chmod -R og= /opt/data/pgsql
+  # chcon is not enough. service postgresql runs restorecon
+  # the exact rules are a bit guessing, especially for the
+  # backups directory
+  # well, we could save at least one or two restorecon commands here,
+  # because they are repeated soon, but they are quick and it's easier
+  # to debug what happens here
+  semanage fcontext -a -t var_lib_t /opt/data/pgsql
+  restorecon /opt/data/pgsql
+  semanage fcontext -a -t postgresql_db_t "/opt/data/pgsql/data(/.*)?"
+  restorecon /opt/data/pgsql/data
+  semanage fcontext -a -t var_lib_t "/opt/data/pgsql/backups(/.*)?"
+  restorecon /opt/data/pgsql/backups
+fi
+pushd /opt/data/pgsql/data >/dev/null
+datafiles=$(ls | wc -l)
+if [ $datafiles -ne 0 ]
+then
+  # assume that if there is any DB configuration, it is a valid CKAN DB
+  # this is of course not really true
+  echo "some database configuration found, don't overwrite it"
   touch /tmp/kata-SKIP-dbinit
   service postgresql start
   exit 0
 else
   rm -f /tmp/kata-SKIP-dbinit 2>/dev/null
 fi
-
-# handle the alternate storage location
-mkdir -p /opt/data/pgsql
-chown postgres:postgres /opt/data/pgsql/
-chmod og= /opt/data/pgsql/
-mv /var/lib/pgsql/.bash_profile /var/lib/pgsql/* /opt/data/pgsql/
-ln -s /opt/data/pgsql /var/lib/pgsql
-# link is now owned by root, that should not matter
-# alternate storage location done, continue as nothing had happened
-
 service postgresql initdb
-pushd /var/lib/pgsql/data >/dev/null
 # su postgres ensures that the resulting file has the correct owner
 su -c "patch -b -p2 -i ${patchdir}/pg_hba.conf.patch" postgres
 popd >/dev/null
