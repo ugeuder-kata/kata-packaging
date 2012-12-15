@@ -78,6 +78,7 @@ find $RPM_BUILD_ROOT/home/%{ckanuser} -name .git -print0 | xargs -0 rm -rf
 find $RPM_BUILD_ROOT/home/%{ckanuser} -name .svn -print0 | xargs -0 rm -rf
 install -d $RPM_BUILD_ROOT/%{scriptdir}
 install -d $RPM_BUILD_ROOT/%{patchdir}
+install -d $RPM_BUILD_ROOT/%{katadocdir}
 install -d $RPM_BUILD_ROOT/etc/cron.daily
 install -d $RPM_BUILD_ROOT/etc/cron.hourly
 install -d $RPM_BUILD_ROOT/etc/httpd/conf.d
