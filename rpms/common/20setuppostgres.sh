@@ -21,7 +21,7 @@ then
   # the exact rules are a bit guessing, especially for the
   # backups directory
   # well, we could save at least one or two restorecon commands here,
-' # because they are repeated soon, but they are quick and it's easier
+  # because they are repeated soon, but they are quick and it's easier
   # to debug what happens here
   semanage fcontext -a -t var_lib_t /opt/data/pgsql
   restorecon /opt/data/pgsql
