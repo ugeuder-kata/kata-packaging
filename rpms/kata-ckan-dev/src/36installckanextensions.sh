@@ -26,7 +26,9 @@ else
    # some values here in a later project phase
 fi
 
-pip install -e git+https://github.com/okfn/ckanext-harvest.git${ext_harvest_version}#egg=ckanext-harvest
+theirurl='git+https://github.com/okfn/ckanext-harvest.git'
+oururl='git+https://github.com/kata-csc/ckanext-harvest.git'
+pip install -e ${oururl}${ext_harvest_version}#egg=ckanext-harvest
 pip install carrot
 paster --plugin=ckanext-harvest harvester initdb --config=development.ini
 # this script is dev only, so no problem with the password on github

@@ -15,7 +15,9 @@ then
 else
    ckan_version=
 fi
-pip install -e git+https://github.com/okfn/ckan.git${ckan_version}#egg=ckan
+theirurl='git+https://github.com/okfn/ckan.git'
+oururl='git+https://github.com/kata-csc/ckan.git'
+pip install -e ${oururl}${ckan_version}#egg=ckan
 pip install -r pyenv/src/ckan/pip-requirements.txt
 # according to installation instructions we need to deactive our pyenv here
 # will happen automatically because script ends here
