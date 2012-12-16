@@ -2,13 +2,14 @@
  Package                Arch   Version                Repository           Size
 ================================================================================
 Installing:
- kata-ckan-dev          x86_64 588647-1.el6           /kata-ckan-dev-588647-1.el6.x86_64
-                                                                           33 k
+ kata-ckan-dev          x86_64 593380-1.el6           /kata-ckan-dev-593380-1.el6.x86_64
+                                                                           36 k
 Installing for dependencies:
  SDL                    x86_64 1.2.14-3.el6           base                193 k
  apr                    x86_64 1.3.9-5.el6_2          updates             123 k
  apr-util               x86_64 1.3.9-3.el6_0.1        base                 87 k
  apr-util-ldap          x86_64 1.3.9-3.el6_0.1        base                 15 k
+ audit-libs-python      x86_64 2.2-2.el6              base                 59 k
  cloog-ppl              x86_64 0.15.7-1.2.el6         base                 93 k
  cpp                    x86_64 4.4.6-4.el6            base                3.7 M
  erlang                 x86_64 R14B-04.1.el6          epel                 26 k
@@ -76,12 +77,15 @@ Installing for dependencies:
  httpd-tools            x86_64 2.2.15-15.el6.centos.1 base                 70 k
  kernel-headers         x86_64 2.6.32-279.14.1.el6    updates             1.9 M
  libXxf86vm             x86_64 1.1.0-1.el6            base                 18 k
+ libcgroup              x86_64 0.37-4.el6             base                104 k
  libcurl-openssl        x86_64 7.28.1-1.1             security_shibboleth 182 k
  libgcrypt-devel        x86_64 1.4.5-9.el6_2.2        base                118 k
  libgpg-error-devel     x86_64 1.7-4.el6              base                 14 k
  liblog4shib1           x86_64 1.0.5-1.1              security_shibboleth  68 k
  libmemcached           x86_64 0.31-1.1.el6           base                 80 k
  libsaml8               x86_64 2.5.1-1.1              security_shibboleth 966 k
+ libselinux-python      x86_64 2.0.94-5.3.el6         base                202 k
+ libsemanage-python     x86_64 2.0.43-4.1.el6         base                 81 k
  libtool-ltdl           x86_64 2.2.6-15.5.el6         base                 44 k
  libxerces-c-3_1        x86_64 3.1.1-2.1              security_shibboleth 878 k
  libxml-security-c17    x86_64 1.7.0-1.3              security_shibboleth 272 k
@@ -98,6 +102,7 @@ Installing for dependencies:
  mod_wsgi               x86_64 3.2-1.el6              base                 66 k
  mpfr                   x86_64 2.4.1-6.el6            base                157 k
  opensaml-schemas       x86_64 2.5.1-1.1              security_shibboleth  30 k
+ policycoreutils-python x86_64 2.0.83-19.24.el6       base                340 k
  postgresql             x86_64 8.4.13-1.el6_3         updates             2.8 M
  postgresql-devel       x86_64 8.4.13-1.el6_3         updates             813 k
  postgresql-libs        x86_64 8.4.13-1.el6_3         updates             200 k
@@ -106,6 +111,8 @@ Installing for dependencies:
  python-devel           x86_64 2.6.6-29.el6_3.3       updates             167 k
  python-meld3           x86_64 0.6.7-1.el6            epel                 71 k
  rabbitmq-server        noarch 2.6.1-1.el6            epel                1.1 M
+ setools-libs           x86_64 3.3.7-4.el6            base                400 k
+ setools-libs-python    x86_64 3.3.7-4.el6            base                222 k
  shibboleth             x86_64 2.5.1-1.1              security_shibboleth 1.3 M
  supervisor             noarch 2.1-8.el6              epel                292 k
  tcl                    x86_64 1:8.5.7-6.el6          base                1.9 M
@@ -119,11 +126,11 @@ Installing for dependencies:
 
 Transaction Summary
 ================================================================================
-Install     111 Package(s)
+Install     118 Package(s)
 
-Total size: 88 M
-Total download size: 88 M
-Installed size: 242 M
+Total size: 90 M
+Total download size: 90 M
+Installed size: 247 M
 
 + '[' -f /tmp/kata-SKIP04 ']'
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
@@ -143,7 +150,7 @@ Starting tomcat6: [  OK  ]
 + curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  111k  100  111k    0     0  86173      0  0:00:01  0:00:01 --:--:--  148k
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 13  111k   13 15955    0     0  17576      0  0:00:06 --:--:--  0:00:06 54084100  111k  100  111k    0     0  90293      0  0:00:01  0:00:01 --:--:--  170k
 + cd ..
 + python download/virtualenv.py pyenv
 New python executable in pyenv/bin/python
@@ -181,10 +188,12 @@ Installing pip.....................done.
 ++ hash -r
 + '[' -r /etc/kata-ckan-dev/versions ']'
 + ckan_version=
-+ pip install -e git+https://github.com/okfn/ckan.git#egg=ckan
++ theirurl=git+https://github.com/okfn/ckan.git
++ oururl=git+https://github.com/kata-csc/ckan.git
++ pip install -e git+https://github.com/kata-csc/ckan.git#egg=ckan
 Initialized empty Git repository in /home/ckan/pyenv/src/ckan/doc/_themes/sphinx-theme-okfn/.git/
-Obtaining ckan from git+https://github.com/okfn/ckan.git#egg=ckan
-  Cloning https://github.com/okfn/ckan.git to ./pyenv/src/ckan
+Obtaining ckan from git+https://github.com/kata-csc/ckan.git#egg=ckan
+  Cloning https://github.com/kata-csc/ckan.git to ./pyenv/src/ckan
   Running setup.py egg_info for package ckan
     /usr/lib64/python2.6/distutils/dist.py:266: UserWarning: Unknown distribution option: 'message_extractors'
       warnings.warn(msg)
@@ -353,7 +362,14 @@ Downloading/unpacking PasteScript>=1.7.3 (from Pylons==0.9.7->-r pyenv/src/ckan/
 Downloading/unpacking FormEncode>=1.2.1 (from Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
   Running setup.py egg_info for package FormEncode
     warning: no files found matching '*.py' under directory '.'
+    warning: no files found matching '*.html' under directory 'docs'
+    warning: no previously-included files matching '*.pyc' found under directory '.'
+    warning: no previously-included files matching '*.pyo' found under directory '.'
+    warning: no previously-included files matching '*~' found under directory '.'
+    no previously-included directories found matching 'docs/_build'
     no previously-included directories found matching '**/.svn'
+    no previously-included directories found matching '.hg'
+    no previously-included directories found matching '.git'
 Downloading/unpacking simplejson>=2.0.8 (from Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
   Running setup.py egg_info for package simplejson
 Downloading/unpacking nose>=0.10.4 (from Pylons==0.9.7->-r pyenv/src/ckan/pip-requirements.txt (line 20))
@@ -555,7 +571,14 @@ Installing collected packages: Genshi, sqlalchemy-migrate, sqlalchemy, webhelper
     Installing paster script to /home/ckan/pyenv/bin
   Running setup.py install for FormEncode
     warning: no files found matching '*.py' under directory '.'
+    warning: no files found matching '*.html' under directory 'docs'
+    warning: no previously-included files matching '*.pyc' found under directory '.'
+    warning: no previously-included files matching '*.pyo' found under directory '.'
+    warning: no previously-included files matching '*~' found under directory '.'
+    no previously-included directories found matching 'docs/_build'
     no previously-included directories found matching '**/.svn'
+    no previously-included directories found matching '.hg'
+    no previously-included directories found matching '.git'
   Running setup.py install for simplejson
     building 'simplejson._speedups' extension
     gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/python2.6 -c simplejson/_speedups.c -o build/temp.linux-x86_64-2.6/simplejson/_speedups.o
@@ -629,9 +652,20 @@ patching file ssl.conf
 + popd
 + '[' -f /tmp/kata-SKIP20 ']'
 + patchdir=/usr/share/kata-ckan-dev/setup-patches
-+ pushd /var/lib/pgsql/data
-++ wc -l
++ '[' '!' -e /opt/data/pgsql ']'
++ mkdir -p /opt/data/pgsql/data
++ mkdir /opt/data/pgsql/backups
++ chown -R postgres:postgres /opt/data/pgsql
++ chmod -R og= /opt/data/pgsql
++ semanage fcontext -a -t var_lib_t /opt/data/pgsql
++ restorecon /opt/data/pgsql
++ semanage fcontext -a -t postgresql_db_t '/opt/data/pgsql/data(/.*)?'
++ restorecon /opt/data/pgsql/data
++ semanage fcontext -a -t var_lib_t '/opt/data/pgsql/backups(/.*)?'
++ restorecon /opt/data/pgsql/backups
++ pushd /opt/data/pgsql/data
 ++ ls
+++ wc -l
 + datafiles=0
 + '[' 0 -ne 0 ']'
 + rm -f /tmp/kata-SKIP-dbinit
@@ -685,9 +719,13 @@ Distribution already installed:
 Creating development.ini
 Now you should edit the config files
   development.ini
++ cp development.ini development.ini.generated-orig
++ grep -e '^beaker.session.secret' -e '^app_instance_uuid' development.ini
++ sed -i -e '/^beaker\.session\.secret/ d' -e 's/^app_instance_uuid.*/%%GENERATED%%/' development.ini
 + patch -b -p2 -i /usr/share/kata-ckan-dev/setup-patches/development.ini.patch
 patching file development.ini
-Hunk #3 succeeded at 31 with fuzz 2.
++ mv development.ini development.ini.patched
++ sed -e '/%%GENERATED%%/ r /tmp/development.ini.generated-only' -e '/%%GENERATED%%/ d' development.ini.patched
 ++ dirname /usr/share/kata-ckan-dev/setup-scripts/28setupckan.sh
 + myipcmd=/usr/share/kata-ckan-dev/setup-scripts/myip.sh
 ++ /usr/share/kata-ckan-dev/setup-scripts/myip.sh
@@ -707,8 +745,8 @@ Hunk #3 succeeded at 31 with fuzz 2.
   ret = fn(self, con, *args, **kw)
 /home/ckan/pyenv/lib/python2.6/site-packages/sqlalchemy/engine/reflection.py:47: SAWarning: Skipped unsupported reflection of expression-based index idx_user_name_index
   ret = fn(self, con, *args, **kw)
-2012-12-12 15:40:44,607 INFO  [ckan.model] CKAN database version upgraded: 0 -> 62
-2012-12-12 15:40:44,733 INFO  [ckan.model] Database initialised
+2012-12-15 22:33:58,697 INFO  [ckan.model] CKAN database version upgraded: 0 -> 63
+2012-12-15 22:33:58,802 INFO  [ckan.model] Database initialised
 Initialising DB: SUCCESS
 + '[' -f /tmp/kata-SKIP31 ']'
 + ckauser=ckan
@@ -787,9 +825,11 @@ sed: can't read /usr/lib/python2.6/ctypes/__init__.py: No such file or directory
 + ext_sitemap_version=
 + ext_shibboleth_version=
 + ext_kata_version=
-+ pip install -e git+https://github.com/okfn/ckanext-harvest.git#egg=ckanext-harvest
-Obtaining ckanext-harvest from git+https://github.com/okfn/ckanext-harvest.git#egg=ckanext-harvest
-  Cloning https://github.com/okfn/ckanext-harvest.git to /home/ckan/pyenv/src/ckanext-harvest
++ theirurl=git+https://github.com/okfn/ckanext-harvest.git
++ oururl=git+https://github.com/kata-csc/ckanext-harvest.git
++ pip install -e git+https://github.com/kata-csc/ckanext-harvest.git#egg=ckanext-harvest
+Obtaining ckanext-harvest from git+https://github.com/kata-csc/ckanext-harvest.git#egg=ckanext-harvest
+  Cloning https://github.com/kata-csc/ckanext-harvest.git to /home/ckan/pyenv/src/ckanext-harvest
   Running setup.py egg_info for package ckanext-harvest
 Installing collected packages: ckanext-harvest
   Running setup.py develop for ckanext-harvest
@@ -814,13 +854,26 @@ Installing collected packages: carrot, anyjson, amqplib
 Successfully installed carrot anyjson amqplib
 Cleaning up...
 + paster --plugin=ckanext-harvest harvester initdb --config=development.ini
-2012-12-12 15:41:38,331 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-12-12 15:41:40,069 DEBUG [ckanext.harvest.model] Harvest tables created
+2012-12-15 22:34:56,836 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-12-15 22:34:57,337 DEBUG [ckanext.harvest.model] Harvest tables created
 
 DB tables created
-+ paster --plugin=ckan user add harvester password=harvester --config=development.ini
++ paster --plugin=ckan user add harvester password=harvester email=harvester@harvesting.none --config=development.ini
 Creating user: 'harvester'
-<User id=813c94c1-1ab2-4a3a-b630-e9e8634f4ffb name=harvester openid=None password=0a8c22ca46d62f370e782d8f613d4f0f578fa112105ab00ccfb83deb4d85302edf28a687d73be1b5 fullname=None email=None apikey=82d4c161-ac0a-4550-b245-eaae910cf1b0 created=2012-12-12 15:41:41.322391 reset_key=None about=None>
+{'about': None,
+ 'apikey': u'282d09e9-fae9-492f-8526-57aac54b630a',
+ 'created': '2012-12-15T22:34:58.669905',
+ 'display_name': u'harvester',
+ 'email': u'harvester@harvesting.none',
+ 'email_hash': '8597e3dc7d0c426f92d263a0aab5b782',
+ 'fullname': None,
+ 'id': u'a47fdedc-6b01-456b-9392-18629d4d05b8',
+ 'name': u'harvester',
+ 'number_administered_packages': 0L,
+ 'number_of_edits': 0L,
+ 'openid': None,
+ 'reset_key': None,
+ 'sysadmin': False}
 + paster --plugin=ckan sysadmin add harvester --config=development.ini
 Added harvester as sysadmin
 + pip install -e git+https://github.com/kata-csc/ckanext-urn.git#egg=ckanext-urn
@@ -847,7 +900,7 @@ Downloading/unpacking pyoai (from ckanext-oaipmh)
 Requirement already satisfied (use --upgrade to upgrade): ckanext-harvest in /home/ckan/pyenv/src/ckanext-harvest (from ckanext-oaipmh)
 Downloading/unpacking lxml (from pyoai->ckanext-oaipmh)
   Running setup.py egg_info for package lxml
-    Building lxml version 3.0.1.
+    Building lxml version 3.0.2.
     Building without Cython.
     Using build configuration of libxslt 1.1.26
     Building against libxml2/libxslt in the following directory: /usr/lib64
@@ -861,28 +914,28 @@ Installing collected packages: ckanext-oaipmh, pyoai, lxml
     Installed /home/ckan/pyenv/src/ckanext-oaipmh
   Running setup.py install for pyoai
   Running setup.py install for lxml
-    Building lxml version 3.0.1.
+    Building lxml version 3.0.2.
     Building without Cython.
     Using build configuration of libxslt 1.1.26
     Building against libxml2/libxslt in the following directory: /usr/lib64
     building 'lxml.etree' extension
     gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/home/ckan/pyenv/build/lxml/src/lxml/includes -I/usr/include/python2.6 -c src/lxml/lxml.etree.c -o build/temp.linux-x86_64-2.6/src/lxml/lxml.etree.o
     src/lxml/lxml.etree.c: In function ‘__pyx_pf_4lxml_5etree_4XSLT_18__call__’:
-    src/lxml/lxml.etree.c:132608: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
-    src/lxml/lxml.etree.c:130569: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
+    src/lxml/lxml.etree.c:133119: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
+    src/lxml/lxml.etree.c:131072: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
     src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree__copyXSLT’:
-    src/lxml/lxml.etree.c:133997: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
-    src/lxml/lxml.etree.c:130569: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
+    src/lxml/lxml.etree.c:134519: warning: passing argument 1 of ‘__pyx_f_4lxml_5etree_12_XSLTContext__copy’ from incompatible pointer type
+    src/lxml/lxml.etree.c:131072: note: expected ‘struct __pyx_obj_4lxml_5etree__XSLTContext *’ but argument is of type ‘struct __pyx_obj_4lxml_5etree__BaseContext *’
     src/lxml/lxml.etree.c: At top level:
-    src/lxml/lxml.etree.c:12128: warning: ‘__pyx_f_4lxml_5etree_displayNode’ defined but not used
+    src/lxml/lxml.etree.c:12177: warning: ‘__pyx_f_4lxml_5etree_displayNode’ defined but not used
     src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDocFromFilelike’:
-    src/lxml/lxml.etree.c:86731: warning: ‘__pyx_r’ may be used uninitialized in this function
+    src/lxml/lxml.etree.c:87092: warning: ‘__pyx_r’ may be used uninitialized in this function
     src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDocFromFile’:
-    src/lxml/lxml.etree.c:86420: warning: ‘__pyx_r’ may be used uninitialized in this function
+    src/lxml/lxml.etree.c:86778: warning: ‘__pyx_r’ may be used uninitialized in this function
     src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseDoc’:
-    src/lxml/lxml.etree.c:86109: warning: ‘__pyx_r’ may be used uninitialized in this function
+    src/lxml/lxml.etree.c:86465: warning: ‘__pyx_r’ may be used uninitialized in this function
     src/lxml/lxml.etree.c: In function ‘__pyx_f_4lxml_5etree_11_BaseParser__parseUnicodeDoc’:
-    src/lxml/lxml.etree.c:85780: warning: ‘__pyx_r’ may be used uninitialized in this function
+    src/lxml/lxml.etree.c:86134: warning: ‘__pyx_r’ may be used uninitialized in this function
     gcc -pthread -shared build/temp.linux-x86_64-2.6/src/lxml/lxml.etree.o -L/usr/lib64 -L/usr/lib64 -lxslt -lexslt -lxml2 -lz -lm -lpython2.6 -o build/lib.linux-x86_64-2.6/lxml/etree.so
     building 'lxml.objectify' extension
     gcc -pthread -fno-strict-aliasing -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -DNDEBUG -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv -fPIC -I/usr/include/libxml2 -I/home/ckan/pyenv/build/lxml/src/lxml/includes -I/usr/include/python2.6 -c src/lxml/lxml.objectify.c -o build/temp.linux-x86_64-2.6/src/lxml/lxml.objectify.o
@@ -959,10 +1012,14 @@ Downloading/unpacking rdflib (from ckanext-kata)
 Downloading/unpacking iso8601 (from ckanext-kata)
   Downloading iso8601-0.1.4.tar.gz
   Running setup.py egg_info for package iso8601
+Downloading/unpacking pycountry (from ckanext-kata)
+  Running setup.py egg_info for package pycountry
+    warning: no previously-included files matching 'src/pycountry' found anywhere in distribution
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
 Downloading/unpacking isodate (from rdflib->ckanext-kata)
   Downloading isodate-0.4.9.tar.gz
   Running setup.py egg_info for package isodate
-Installing collected packages: ckanext-kata, rdflib, iso8601, isodate
+Installing collected packages: ckanext-kata, rdflib, iso8601, pycountry, isodate
   Running setup.py develop for ckanext-kata
     Creating /home/ckan/pyenv/lib/python2.6/site-packages/ckanext-kata.egg-link (link to .)
     Adding ckanext-kata 0.1 to easy-install.pth file
@@ -970,8 +1027,11 @@ Installing collected packages: ckanext-kata, rdflib, iso8601, isodate
     Installed /home/ckan/pyenv/src/ckanext-kata
   Running setup.py install for rdflib
   Running setup.py install for iso8601
+  Running setup.py install for pycountry
+    warning: no previously-included files matching 'src/pycountry' found anywhere in distribution
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
   Running setup.py install for isodate
-Successfully installed ckanext-kata rdflib iso8601 isodate
+Successfully installed ckanext-kata rdflib iso8601 pycountry isodate
 Cleaning up...
 + extensions='shibboleth harvest oaipmh_harvester synchronous_search oaipmh ddi_harvester sitemap kata kata_metadata'
 + cp development.ini development.ini.backup.preext
@@ -984,17 +1044,16 @@ rabbitmq-server.
 + chkconfig rabbitmq-server on
 + '[' '!' -e /tmp/kata-SKIP-dbinit ']'
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt DDI --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-12-12 15:45:28,462 DEBUG [ckanext.kata] disable search
-2012-12-12 15:45:28,553 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-12-12 15:45:28,555 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-12-12 15:45:28,595 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-12-12 15:45:28,611 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
-2012-12-12 15:45:28,651 INFO  [ckanext.harvest.logic.action.create] Harvest source created: aefad6d1-036d-4c7b-8642-a3dd0d4e4787
-2012-12-12 15:45:28,675 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'aefad6d1-036d-4c7b-8642-a3dd0d4e4787'}
-2012-12-12 15:45:28,701 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 808fa1e1-04f5-4b88-bb13-460670737a1a
+2012-12-15 22:38:55,086 DEBUG [ckanext.kata] disable search
+2012-12-15 22:38:55,280 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-12-15 22:38:55,286 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-12-15 22:38:55,400 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt', 'publisher_id': u'', 'type': u'DDI', 'active': True, 'config': None}
+2012-12-15 22:38:55,503 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 68df28a2-6b02-4303-9ee4-65d3603359e0
+2012-12-15 22:38:55,536 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'68df28a2-6b02-4303-9ee4-65d3603359e0'}
+2012-12-15 22:38:55,568 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 3b73079f-dfd0-4767-8abe-0a3f8fdf36db
 
 Created new harvest source:
-Source id: aefad6d1-036d-4c7b-8642-a3dd0d4e4787
+Source id: 68df28a2-6b02-4303-9ee4-65d3603359e0
       url: http://www.fsd.uta.fi/fi/aineistot/luettelo/fsd-ddi-records-uris-fi.txt
      type: DDI
    active: True
@@ -1005,17 +1064,16 @@ publisher:
 There is 1 harvest source
 A new Harvest Job for this source has also been created
 + /home/ckan/pyenv/bin/paster --plugin=ckanext-harvest harvester source http://helda.helsinki.fi/oai/request OAI-PMH --config=/home/ckan/pyenv/src/ckan/development.ini
-2012-12-12 15:45:31,689 DEBUG [ckanext.kata] disable search
-2012-12-12 15:45:31,866 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
-2012-12-12 15:45:31,871 DEBUG [ckanext.harvest.model] Harvest tables already exist
-2012-12-12 15:45:31,924 DEBUG [ckanext.harvest.plugin] Using auth profile at ckanext.harvest.logic.auth
-2012-12-12 15:45:31,959 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
-2012-12-12 15:45:32,017 INFO  [ckanext.harvest.logic.action.create] Harvest source created: e42ea33b-570e-4743-a0bd-2ca1ffc60927
-2012-12-12 15:45:32,077 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'e42ea33b-570e-4743-a0bd-2ca1ffc60927'}
-2012-12-12 15:45:32,132 INFO  [ckanext.harvest.logic.action.create] Harvest job saved c5645227-d383-4887-9d07-7ccb15b76a98
+2012-12-15 22:39:00,354 DEBUG [ckanext.kata] disable search
+2012-12-15 22:39:00,455 DEBUG [ckanext.harvest.model] Harvest tables defined in memory
+2012-12-15 22:39:00,458 DEBUG [ckanext.harvest.model] Harvest tables already exist
+2012-12-15 22:39:00,496 INFO  [ckanext.harvest.logic.action.create] Creating harvest source: {'user_id': u'', 'url': u'http://helda.helsinki.fi/oai/request', 'publisher_id': u'', 'type': u'OAI-PMH', 'active': True, 'config': None}
+2012-12-15 22:39:00,577 INFO  [ckanext.harvest.logic.action.create] Harvest source created: 27e0d64f-cc34-4e83-a328-0d3e1172f110
+2012-12-15 22:39:00,645 INFO  [ckanext.harvest.logic.action.create] Harvest job create: {'source_id': u'27e0d64f-cc34-4e83-a328-0d3e1172f110'}
+2012-12-15 22:39:00,684 INFO  [ckanext.harvest.logic.action.create] Harvest job saved 7b4f7f4a-084b-47a2-b2f6-475ba6a3ab8f
 
 Created new harvest source:
-Source id: e42ea33b-570e-4743-a0bd-2ca1ffc60927
+Source id: 27e0d64f-cc34-4e83-a328-0d3e1172f110
       url: http://helda.helsinki.fi/oai/request
      type: OAI-PMH
    active: True
@@ -1028,7 +1086,7 @@ A new Harvest Job for this source has also been created
 + chkconfig supervisord on
 Stopping atd: [FAILED]
 Starting atd: [  OK  ]
-job 1 at 2012-12-12 15:48
+job 1 at 2012-12-15 22:42
 Starting shibd: [  OK  ]
 Starting httpd: [  OK  ]
 Starting supervisord: [  OK  ]
@@ -1074,10 +1132,26 @@ Reloading crond: [  OK  ]
 [1;31m+ echo 'Python package mismatches:'
 Python package mismatches:
 + cat /tmp/kata-70.tmp
-32c32
-< -e git://github.com/kata-csc/ckanext-kata.git@b6967b05cb61d9a5bb844d12464ce5144ff8ad47#egg=ckanext_kata-dev
+4c4
+< FormEncode==1.2.4
 ---
-> -e git://github.com/kata-csc/ckanext-kata.git@7e92f315b1a2ad14c42d724813a31aab61dc2c65#egg=ckanext_kata-dev
+> FormEncode==1.2.5
+28c28
+< -e git+https://github.com/okfn/ckan.git@67a6121e8c597a157e6b0064764b0da62f17b488#egg=ckan-dev
+---
+> -e git+https://github.com/kata-csc/ckan.git@008077701caa5a7f4952f4b57076b55d52f493d5#egg=ckan-dev
+31,32c31,32
+< -e git+https://github.com/okfn/ckanext-harvest.git@c1f83e0d3e5b6c6ce9922b2bf973fb951763c075#egg=ckanext_harvest-dev
+< -e git://github.com/kata-csc/ckanext-kata.git@7e92f315b1a2ad14c42d724813a31aab61dc2c65#egg=ckanext_kata-dev
+---
+> -e git+https://github.com/kata-csc/ckanext-harvest.git@0bc30cce3247c449f7e6633f23e18d1362424044#egg=ckanext_harvest-dev
+> -e git://github.com/kata-csc/ckanext-kata.git@691a8b99a42622851f114f293987e9dcefc46987#egg=ckanext_kata-dev
+41c41
+< lxml==3.0.1
+---
+> lxml==3.0.2
+44a45
+> pycountry==0.14.7
 + echo -en '\033[0;39m'
 [0;39m+ rm -f /tmp/kata-70.tmp
 + '[' -f /tmp/kata-SKIP71 ']'
