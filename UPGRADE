@@ -39,12 +39,7 @@ to our existing paster script.
 $ sudo yum remove mcfg           (this will pull kata-ckan-prod with it)
 
 
-3.) Clean-up of Postgres
-
-$ sudo rm -rf /var/lib/pgsql/data/
-
-
-4.) Uninstallation of supervisor
+3.) Uninstallation of supervisor
 
 (the idea is to get rid of the configuration modified by kata-prod, so we can 
 start with a fresh one again)
@@ -58,7 +53,7 @@ package in question should remain. If etckeeper is in use
 the appropriate "git rm" commands should be given instead)
 
 
-5.) Uninstallation of shibboleth
+4.) Uninstallation of shibboleth
 
 (same idea as with supervisor)
 
@@ -66,7 +61,7 @@ $ sudo yum remove shibboleth
 $ sudo rm -r /etc/shibboleth
 
 
-6.) Uninstallation of apache
+5.) Uninstallation of apache
 
 (same idea as with supervisor)
 
@@ -74,7 +69,7 @@ $ sudo yum remove httpd
 $ sudo rm -r /etc/httpd
 
 
-7.) Clean-up rabbitmq
+6.) Clean-up rabbitmq
 
 $ sudo rm -rf /var/lib/rabbitmq/* 
 
@@ -85,11 +80,11 @@ older versions of this document contain more debugging info, but currently
 I assume that is not needed)
 
 
-8.) Install the new packages
+7.) Install the new packages
 
 Follow the steps 
 
 - install master configuration tool and
 - install KATA
 
-in the INSTALL document.
+as documented in the INSTALL document.

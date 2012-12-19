@@ -48,7 +48,9 @@ II. Installation steps
 
 5. Install kata
 
-   4.a. "sudo yum install kata.rpm"
+   5.a. Make sure the certificate & key input files referred to by
+        /root/kata-master.ini are in place (typically /root/sp-{root,key}.pem)
+   5.b. "sudo yum install kata.rpm"
 
 6. Use kata
 
