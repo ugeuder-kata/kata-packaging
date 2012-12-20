@@ -13,7 +13,7 @@ if [ -r /etc/kata-ckan-dev/versions ]
 then
    source /etc/kata-ckan-dev/versions
 else
-   ckan_version=
+   ckan_version='kata-master'
 fi
 theirurl='git+https://github.com/okfn/ckan.git'
 oururl='git+https://github.com/kata-csc/ckan.git'
